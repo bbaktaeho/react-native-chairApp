@@ -1,0 +1,23 @@
+{
+  "name": "example",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start --reset-cache"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.0.0-beta.53",
+    "@remobile/react-native-toast": "^1.0.7",
+    "get-dev-paths": "^0.1.0",
+    "react": "16.5.0",
+    "react-native": "0.57.0",
+    "react-native-bluetooth-serial-next": "file:./lib"
+  },
+  "devDependencies": {
+    "metro-react-native-babel-preset": "0.46.0",
+    "react-test-renderer": "16.5.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
