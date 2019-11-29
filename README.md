@@ -1,8 +1,8 @@
-# version
-##### react v16.5.0
-##### react-native v0.57.0
-##### react-native-gesture-handler v1.0.12
-##### react-navigation v3.0.0
+# Version
+#### react v16.5.0
+#### react-native v0.57.0
+#### react-native-gesture-handler v1.0.12
+#### react-navigation v3.0.0
 
 # react-native-bluetooth-chairCommunication
 ### 의자소통을 위한 블루투스 기능
