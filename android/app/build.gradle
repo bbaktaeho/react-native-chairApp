@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-gesture-handler')
     compile project(':react-native-bluetooth-serial-next')
     compile project(':@remobile_react-native-toast')
     implementation fileTree(dir: "libs", include: ["*.jar"])

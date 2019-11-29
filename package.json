@@ -11,7 +11,9 @@
     "get-dev-paths": "^0.1.0",
     "react": "16.5.0",
     "react-native": "0.57.0",
-    "react-native-bluetooth-serial-next": "file:./lib"
+    "react-native-bluetooth-serial-next": "file:./lib",
+    "react-native-gesture-handler": "^1.0.12",
+    "react-navigation": "^3.0.0"
   },
   "devDependencies": {
     "metro-react-native-babel-preset": "0.46.0",
