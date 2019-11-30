@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
+import Header from "../../navigations/DrawerHeader";
+
 export default class Home extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View>
+        <Header></Header>
         <Text>홈!</Text>
       </View>
     );
