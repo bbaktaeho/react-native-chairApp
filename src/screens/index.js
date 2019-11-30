@@ -1,14 +1,6 @@
 // 앱 시작 시 로딩 화면
 import React, { Component } from "react";
-import { ImageBackground, Text, View, StyleSheet } from "react-native";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});
+import { ImageBackground, Text } from "react-native";
 
 export default class Loading extends Component {
   constructor() {
@@ -33,7 +25,7 @@ export default class Loading extends Component {
   render() {
     return (
       <ImageBackground
-        source={require("../assets/Images/intro.png")}
+        source={require("../assets/Images/intro.jpg")}
         style={{ width: "100%", height: "100%" }}
       >
         <Text>Inside</Text>
