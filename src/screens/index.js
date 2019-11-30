@@ -32,9 +32,12 @@ export default class Loading extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>로딩중</Text>
-      </View>
+      <ImageBackground
+        source={require("../assets/Images/intro.png")}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <Text>Inside</Text>
+      </ImageBackground>
     );
   }
 }
