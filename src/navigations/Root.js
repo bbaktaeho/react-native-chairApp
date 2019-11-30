@@ -1,30 +1,18 @@
-import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-import {
-  createAppContainer,
-  createBottomTabNavigator,
-  createSwitchNavigator
-} from "react-navigation";
+import Loading from "../screens";
+import { AuthNav } from "./AuthNav";
+import { MainNav } from "./MainNav";
 
-import Login from "../screens/auth/Login";
-import SignUp from "../screens/auth/SignUp";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});
-
-const SwitchNav = createSwitchNavigator(
+const Root = createSwitchNavigator(
   {
-    Login,
-    SignUp
+    Loading,
+    AuthNav,
+    MainNav
   },
   {
-    initialRouteName: "Login"
+    initialRouteName: "Loading"
   }
 );
-export const Tabs = createAppContainer(SwitchNav);
+// root에만 AppContainer 가 존재해야함
+export const Tabs = createAppContainer(Root);

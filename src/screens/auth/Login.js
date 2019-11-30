@@ -14,7 +14,10 @@ class Login extends React.Component {
     return (
       <View style={styles.container}>
         <Text>로그인 화면</Text>
-        <Button title="로그인"></Button>
+        <Button
+          onPress={() => this.props.navigation.navigate("MainNav")}
+          title="로그인"
+        ></Button>
         <Button
           onPress={() => this.props.navigation.navigate("SignUp")}
           title="회원가입"
