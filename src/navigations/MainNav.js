@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { createStackNavigator, createDrawerNavigator } from "react-navigation";
 
+import { View } from "react-native";
+import { Container, Header } from "native-base";
+
 import Home from "../screens/main/Home";
 import Detail from "../screens/main/Detail";
+import { SettingNav } from "../navigations/SettingNav";
+
+import { colors } from "../styles/styles";
 
 export const MainNav = createDrawerNavigator(
   {
@@ -17,12 +23,18 @@ export const MainNav = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "상세 정보"
       }
+    },
+    Setting: {
+      screen: SettingNav,
+      navigationOptions: {
+        drawerLabel: "설정"
+      }
     }
   },
   {
     intialRouteName: "Home",
     hideStatusBar: false,
-    drawerBackgroundColor: "rgba(255,255,255,.9)", // 앱의 백그라운드 컬러와 맞추면 됨
+    drawerBackgroundColor: colors.drawerBackground, // 앱의 백그라운드 컬러와 맞추면 됨
     overlayColor: "#6b52ae",
     contentOptions: {
       activeTintColor: "#fff",

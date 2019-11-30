@@ -1,6 +1,13 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  Image
+} from "react-native";
+import { createIconSet } from "react-native-vector-icons";
 import {
   Header,
   Content,
@@ -14,7 +21,7 @@ import {
 
 import { colors } from "../../styles/styles";
 
-export default class Home extends Component {
+export default class Sets extends Component {
   render() {
     return (
       <View>
@@ -28,17 +35,13 @@ export default class Home extends Component {
             </TouchableOpacity>
           </Left>
           <Body></Body>
+          <Right></Right>
         </Header>
-        <Text>홈</Text>
+        <ScrollView>
+          <Text>11</Text>
+          <Text>22</Text>
+        </ScrollView>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});

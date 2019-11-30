@@ -1,13 +1,34 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-// import Header from "../../navigations/DrawerHeader";
+import {
+  Header,
+  Content,
+  Container,
+  Left,
+  Button,
+  Icon,
+  Body,
+  Right
+} from "native-base";
+
+import { colors } from "../../styles/styles";
 
 export default class Detail extends Component {
   render() {
     return (
       <View>
-        {/* <Header></Header> */}
+        <Header style={{ backgroundColor: colors.header }}>
+          <Left>
+            <TouchableOpacity onPress={this.props.navigation.openDrawer}>
+              <Image
+                source={require("../../assets/Images/menu.png")}
+                style={{ width: 25, height: 25 }}
+              ></Image>
+            </TouchableOpacity>
+          </Left>
+          <Body></Body>
+        </Header>
         <Text>세부정보</Text>
       </View>
     );
@@ -21,37 +42,3 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
-// import React, { Component } from "react";
-// import { Text, Image } from "react-native";
-// import { Container, Content, Header, Left, Body, Icon } from "native-base";
-// import Ionicon from "react-native-vector-icons/Ionicons";
-
-// // import Header from "../../navigations/DrawerHeader";
-
-// export default class Detail extends Component {
-//   render() {
-//     return (
-//       <Container>
-//         <Header>
-//           <Left>
-//             <Icon
-//               name="ios-menu"
-//               onPress={() => this.props.navigation.navigate("DrawerOpen")}
-//             ></Icon>
-//           </Left>
-//         </Header>
-//         <Content contentContainerStyle={styles.container}>
-//           <Text>디테일</Text>
-//         </Content>
-//       </Container>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center"
-//   }
-// });
