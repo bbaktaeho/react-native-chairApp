@@ -1,7 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 
-import { createAppContainer, createBottomTabNavigator } from "react-navigation";
+import {
+  createAppContainer,
+  createBottomTabNavigator,
+  createSwitchNavigator
+} from "react-navigation";
 
 import App from "../src/App";
 
@@ -18,6 +22,10 @@ class Screen1 extends React.Component {
     return (
       <View style={styles.container}>
         <Text>화면 1</Text>
+        <Button
+          onPress={() => this.props.navigation.navigate("Screen2")}
+          title="화면 2"
+        ></Button>
       </View>
     );
   }
@@ -33,12 +41,23 @@ class Screen2 extends React.Component {
   }
 }
 
+const SwitchNav = createSwitchNavigator(
+  {
+    Screen1,
+    Screen2
+  },
+  {
+    initialRouteName: "Screen1"
+  }
+);
+const Tabs = createAppContainer(SwitchNav);
+
 const BottomTab = createBottomTabNavigator({
   Screen1: { screen: Screen1 },
   Screen2: { screen: Screen2 },
   Bluetooth: { screen: App }
 });
-const Tabs = createAppContainer(BottomTab);
+// const Tabs = createAppContainer(BottomTab);
 
 class Start extends React.Component {
   render() {
