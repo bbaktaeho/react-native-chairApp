@@ -7,19 +7,19 @@ export const MainNav = createDrawerNavigator(
   {
     Home,
     Detail
+  },
+  {
+    intialRouteName: "Home"
+    //   navigationOptions: {
+    //     headerStyle: {
+    //       backgroundColor: "#f4511e"
+    //     },
+    //     headerTintColor: "#fff",
+    //     headerTitleStyle: {
+    //       color: "white"
+    //     }
+    //   }
   }
-  // {
-  //   intialRouteName: "Home",
-  //   navigationOptions: {
-  //     headerStyle: {
-  //       backgroundColor: "#f4511e"
-  //     },
-  //     headerTintColor: "#fff",
-  //     headerTitleStyle: {
-  //       color: "white"
-  //     }
-  //   }
-  // }
 );
 
 // export const MainNav = createStackNavigator({ Main });
