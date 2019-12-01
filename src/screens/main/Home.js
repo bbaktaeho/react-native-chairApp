@@ -1,36 +1,17 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
-
-import {
-  Header,
-  Content,
-  Container,
-  Left,
-  Button,
-  Icon,
-  Body,
-  Right
-} from "native-base";
-
-import { colors } from "../../styles/styles";
+import { View, Text, StyleSheet } from "react-native";
+import { Container } from "native-base";
+import MainHeader from "../../components/MainHeader";
 
 export default class Home extends Component {
   render() {
     return (
-      <View>
-        <Header style={{ backgroundColor: colors.header }}>
-          <Left>
-            <TouchableOpacity onPress={this.props.navigation.openDrawer}>
-              <Image
-                source={require("../../assets/Images/menu.png")}
-                style={{ width: 25, height: 25 }}
-              ></Image>
-            </TouchableOpacity>
-          </Left>
-          <Body></Body>
-        </Header>
-        <Text>홈</Text>
-      </View>
+      <Container>
+        <MainHeader openDrawer={this.props.navigation.openDrawer}></MainHeader>
+        <View style={styles.container}>
+          <Text>홈</Text>
+        </View>
+      </Container>
     );
   }
 }

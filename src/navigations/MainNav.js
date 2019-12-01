@@ -32,8 +32,8 @@ export const MainNav = createDrawerNavigator(
     }
   },
   {
+    hideStatusBar: true,
     intialRouteName: "Home",
-    hideStatusBar: false,
     drawerBackgroundColor: colors.drawerBackground, // 앱의 백그라운드 컬러와 맞추면 됨
     overlayColor: "#6b52ae",
     contentOptions: {
