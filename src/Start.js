@@ -1,16 +1,11 @@
 import React from "react";
-import { View, StatusBar } from "react-native";
-
 import { Tabs } from "./navigations/Root";
-
+import MyStatusBar from "./components/StatusBar";
 class Start extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <StatusBar
-          barStyle="dark-content"
-          backgroundColor={"transparent"}
-        ></StatusBar>
+        <MyStatusBar></MyStatusBar>
         <Tabs></Tabs>
       </React.Fragment>
     );

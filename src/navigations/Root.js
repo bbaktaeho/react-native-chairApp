@@ -2,7 +2,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 import Loading from "../screens";
 import { AuthNav } from "./AuthNav";
-import { MainNav } from "./MainNav";
+import MainNav from "./MainNav";
 
 const Root = createSwitchNavigator(
   {

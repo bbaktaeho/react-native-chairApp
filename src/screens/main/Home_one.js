@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Container } from "native-base";
-import MainHeader from "../../components/MainHeader";
 
-export default class Home extends Component {
+export default class Home_one extends Component {
   render() {
     return (
-      <Container>
-        <MainHeader openDrawer={this.props.navigation.openDrawer}></MainHeader>
+      <React.Fragment>
         <View style={styles.container}>
-          <Text>홈</Text>
+          <Text>홈1</Text>
         </View>
-      </Container>
+      </React.Fragment>
     );
   }
 }

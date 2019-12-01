@@ -27,9 +27,7 @@ export default class Loading extends Component {
       <ImageBackground
         source={require("../assets/Images/intro.jpg")}
         style={{ width: "100%", height: "100%" }}
-      >
-        <Text>Inside</Text>
-      </ImageBackground>
+      ></ImageBackground>
     );
   }
 }
