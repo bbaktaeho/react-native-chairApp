@@ -5,7 +5,8 @@ export const SettingNav = createSwitchNavigator(
   {
     Index: { screen: Sets }
     // Vib: {},
-    // Blue: {}
+    // Blue: {},
+    // notify: {}
   },
   {
     initialRouteName: "Index"

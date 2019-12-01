@@ -9,9 +9,9 @@ import {
 import Detail from "../screens/main/Detail";
 import { SettingNav } from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
+import Privacy from "../screens/auth/Privacy";
 
 import MyStatusBar from "../components/StatusBar";
-
 import { colors } from "../styles/styles";
 
 const DrawerContent = props => (
@@ -48,6 +48,12 @@ const Mainss = createDrawerNavigator(
       screen: SettingNav,
       navigationOptions: {
         drawerLabel: "설정"
+      }
+    },
+    Privacy: {
+      screen: Privacy,
+      navigationOptions: {
+        drawerLabel: "개인 정보"
       }
     }
   },
