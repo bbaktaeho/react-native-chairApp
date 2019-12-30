@@ -58,7 +58,7 @@ const Mainss = createDrawerNavigator(
     }
   },
   {
-    hideStatusBar: true,
+    hideStatusBar: false,
     intialRouteName: "Home",
     drawerBackgroundColor: colors.drawerBackground, // 앱의 백그라운드 컬러와 맞추면 됨
     overlayColor: "#6b52ae",
@@ -74,11 +74,6 @@ const Mains = createAppContainer(Mainss);
 
 export default class MainNav extends Component {
   render() {
-    return (
-      <React.Fragment>
-        <MyStatusBar></MyStatusBar>
-        <Mains></Mains>
-      </React.Fragment>
-    );
+    return <Mains></Mains>;
   }
 }

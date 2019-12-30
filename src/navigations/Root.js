@@ -1,6 +1,6 @@
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-import Loading from "../screens";
+import Loading from "../screens/loding";
 import { AuthNav } from "./AuthNav";
 import MainNav from "./MainNav";
 
