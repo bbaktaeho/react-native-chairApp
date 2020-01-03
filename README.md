@@ -16,7 +16,7 @@
 # Install
 1. `git clone https://github.com/bbaktaeho/react-native-bluetooth-chairCommunication.git`
 2. `cd react-native-bluetooth-chairCommunication`
-3. `npm install && npm link .\lib\
+3. `npm install && npm link .\lib\`
 5. `react-native run-ios` or `react-native run-android`
 
 # Use
