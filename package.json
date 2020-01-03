@@ -16,7 +16,9 @@
     "react-native-gesture-handler": "^1.0.12",
     "react-native-reanimated": "^1.4.0",
     "react-native-vector-icons": "^6.6.0",
-    "react-navigation": "^3.9.2"
+    "react-navigation": "^3.9.2",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "metro-react-native-babel-preset": "0.46.0",
