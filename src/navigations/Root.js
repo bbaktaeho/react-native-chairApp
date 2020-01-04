@@ -1,8 +1,8 @@
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 import Loading from "../screens/loding";
-import { AuthNav } from "./AuthNav";
 import MainNav from "./MainNav";
+import AuthNav from "./AuthNav";
 
 const Root = createSwitchNavigator(
   {
@@ -15,4 +15,4 @@ const Root = createSwitchNavigator(
   }
 );
 // root에만 AppContainer 가 존재해야함
-export const Tabs = createAppContainer(Root);
+export const RootNav = createAppContainer(Root);

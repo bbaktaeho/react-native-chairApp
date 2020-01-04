@@ -12,7 +12,7 @@ export default class Loading extends Component {
 
   componentDidMount() {
     this.state.timer = setTimeout(() => {
-      this.props.navigation.navigate("AuthNav");
+      this.props.navigation.navigate("Login");
     }, 2500);
   }
 

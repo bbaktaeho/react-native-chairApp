@@ -4,11 +4,9 @@ import { View, Text, StyleSheet } from "react-native";
 export default class Home_one extends Component {
   render() {
     return (
-      <React.Fragment>
-        <View style={styles.container}>
-          <Text>홈1</Text>
-        </View>
-      </React.Fragment>
+      <View style={styles.container}>
+        <Text>홈1</Text>
+      </View>
     );
   }
 }

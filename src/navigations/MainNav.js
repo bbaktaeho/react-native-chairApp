@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
-import {
-  createAppContainer,
-  createDrawerNavigator,
-  DrawerItems
-} from "react-navigation";
+import { createDrawerNavigator, DrawerItems } from "react-navigation";
 
 import Detail from "../screens/main/Detail";
 import { SettingNav } from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 
-import MyStatusBar from "../components/StatusBar";
 import { colors } from "../styles/styles";
 
 const DrawerContent = props => (
@@ -30,7 +25,7 @@ const DrawerContent = props => (
   </View>
 );
 
-const Mainss = createDrawerNavigator(
+export default MainNav = createDrawerNavigator(
   {
     Home: {
       screen: HomeNav,
@@ -69,11 +64,3 @@ const Mainss = createDrawerNavigator(
     }
   }
 );
-
-const Mains = createAppContainer(Mainss);
-
-export default class MainNav extends Component {
-  render() {
-    return <Mains></Mains>;
-  }
-}
