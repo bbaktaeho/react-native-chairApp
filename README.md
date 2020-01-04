@@ -4,6 +4,8 @@
 
 #### react-native v0.57.0
 
+# Library
+
 #### react-native-gesture-handler v1.0.12
 
 #### react-navigation v3.9.2
@@ -11,6 +13,12 @@
 #### react-redux v6.0.0
 
 #### redux v4.0.1
+
+#### react-native-elements v1.2.7
+
+#### react-native-reanimated v1.4.0
+
+#### react-native-vector-icons v6.6.0
 
 # react-native-bluetooth-chairCommunication
 
