@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-import MainHeader from "../../components/MainHeader";
-
 export default class Detail extends Component {
   render() {
     return (

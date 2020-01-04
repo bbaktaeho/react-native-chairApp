@@ -6,6 +6,8 @@ import Detail from "../screens/main/Detail";
 import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
+import Test1 from "../test/Test1";
+import Test2 from "../test/Test2";
 
 import { colors } from "../styles/styles";
 
@@ -45,6 +47,18 @@ export default MainNav = createDrawerNavigator(
         drawerLabel: "설정"
       }
     },
+    Test1: {
+      screen: Test1,
+      navigationOptions: {
+        drawerLabel: "테스트1"
+      }
+    },
+    Test2: {
+      screen: Test2,
+      navigationOptions: {
+        drawerLabel: "테스트2"
+      }
+    },
     Privacy: {
       screen: Privacy,
       navigationOptions: ({ navigation }) => ({
@@ -61,7 +75,7 @@ export default MainNav = createDrawerNavigator(
     }
   },
   {
-    hideStatusBar: false,
+    hideStatusBar: true,
     intialRouteName: "Home",
     drawerBackgroundColor: colors.drawerBackground, // 앱의 백그라운드 컬러와 맞추면 됨
     overlayColor: "#6b52ae",

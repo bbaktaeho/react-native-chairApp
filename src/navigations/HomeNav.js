@@ -1,7 +1,5 @@
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation";
 import React from "react";
-
-import MainHaeder from "../components/MainHeader";
 
 import { Text } from "react-native";
 

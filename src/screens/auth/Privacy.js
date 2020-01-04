@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
-import MainHeader from "../../components/MainHeader";
 
 export default class Privacy extends React.Component {
   render() {
