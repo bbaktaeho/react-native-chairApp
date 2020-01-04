@@ -6,8 +6,7 @@ import MainHeader from "../../components/MainHeader";
 export default class Detail extends Component {
   render() {
     return (
-      <View>
-        <MainHeader openDrawer={this.props.navigation.openDrawer}></MainHeader>
+      <View style={styles.container}>
         <Text>세부정보</Text>
       </View>
     );

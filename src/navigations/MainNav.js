@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { createDrawerNavigator, DrawerItems } from "react-navigation";
 
 import Detail from "../screens/main/Detail";
-import { SettingNav } from "../navigations/SettingNav";
+import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 
 import { colors } from "../styles/styles";
 
 const DrawerContent = props => (
-  <View>
+  <ScrollView>
     <View
       style={{
         backgroundColor: "#f50057",
@@ -22,7 +22,7 @@ const DrawerContent = props => (
       <Text style={{ color: "white", fontSize: 30 }}>의자소통</Text>
     </View>
     <DrawerItems {...props} />
-  </View>
+  </ScrollView>
 );
 
 export default MainNav = createDrawerNavigator(
@@ -47,9 +47,17 @@ export default MainNav = createDrawerNavigator(
     },
     Privacy: {
       screen: Privacy,
-      navigationOptions: {
-        drawerLabel: "개인 정보"
-      }
+      navigationOptions: ({ navigation }) => ({
+        drawerLabel: "개인정보",
+        headerTitle: (
+          <View style={{ alignItems: "center", flex: 1 }}>
+            <Text style={{ fontSize: 16, color: "black" }}>개인정보</Text>
+          </View>
+        ),
+        headerStyle: {
+          backgroundColor: colors.header
+        }
+      })
     }
   },
   {
