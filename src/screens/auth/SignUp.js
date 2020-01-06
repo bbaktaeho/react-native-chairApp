@@ -37,7 +37,7 @@ class SignUp extends React.Component {
 
   signUp = () => {
     if (this.state.checkPasswd == this.state.passwd)
-      this.props.navigation.navigate("MainNav");
+      this.props.navigation.navigate("Login");
     else console.log("패스워드 틀림");
   };
 
