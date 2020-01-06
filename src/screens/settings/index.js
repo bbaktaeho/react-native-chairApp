@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import { View, ScrollView, Text } from "react-native";
+import MyHeader from "../../components/MyHeader";
 
-// import MainHeader from "../../components/MainHeader";
+const Set = props => (
+  <View>
+    <MyHeader navigation={props.navigation} title="설정"></MyHeader>
+    <View>
+      <ScrollView>
+        <Text>11</Text>
+        <Text>22</Text>
+      </ScrollView>
+    </View>
+  </View>
+);
 
-export default class Sets extends Component {
-  render() {
-    return (
-      <View>
-        {/* <MainHeader openDrawer={this.props.navigation.openDrawer}></MainHeader> */}
-        <ScrollView>
-          <Text>11</Text>
-          <Text>22</Text>
-        </ScrollView>
-      </View>
-    );
-  }
-}
+export default Set;

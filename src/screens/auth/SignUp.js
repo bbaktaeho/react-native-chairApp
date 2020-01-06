@@ -1,23 +1,111 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
+import { Input, Text, Icon, Button } from "react-native-elements";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
-  }
+  },
+  logoContainer: {
+    paddingBottom: 35
+  },
+  inputContainer: {
+    width: "85%",
+    paddingBottom: 35
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  button: {}
 });
 
 class SignUp extends React.Component {
+  state = {
+    email: "",
+    name: "",
+    passwd: "",
+    checkPasswd: ""
+  };
+
+  onChangeText = (key, value) => {
+    console.log(this.state);
+    this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
+  };
+
+  signUp = () => {
+    if (this.state.checkPasswd == this.state.passwd)
+      this.props.navigation.navigate("MainNav");
+    else console.log("패스워드 틀림");
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>회원가입 화면</Text>
-        <Button
-          onPress={() => this.props.navigation.navigate("Login")}
-          title="로그인하러 가기"
-        ></Button>
+        <View style={styles.logoContainer}>
+          <Text h4>회원가입</Text>
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Input
+            label="Email"
+            onChangeText={val => {
+              this.onChangeText("email", val);
+            }}
+            value={this.state.email}
+            containerStyle={{ paddingBottom: 10 }}
+            placeholder="email@address.com"
+            leftIcon={<Icon name="mail" color="black" />}
+          />
+          <Input
+            label="Name"
+            onChangeText={val => {
+              this.onChangeText("name", val);
+            }}
+            value={this.state.name}
+            containerStyle={{ paddingBottom: 10 }}
+            placeholder="name"
+            leftIcon={<Icon name="person" color="black" />}
+          />
+          <Input
+            label="Password"
+            onChangeText={val => {
+              this.onChangeText("passwd", val);
+            }}
+            value={this.state.passwd}
+            containerStyle={{ paddingBottom: 10 }}
+            placeholder="password"
+            secureTextEntry={true}
+            leftIcon={<Icon name="lock" color="black" />}
+          />
+
+          <Input
+            onChangeText={val => {
+              this.onChangeText("checkPasswd", val);
+            }}
+            value={this.state.checkPasswd}
+            label="Re-Enter Password"
+            placeholder="re_enter password"
+            secureTextEntry={true}
+            leftIcon={<Icon name="lock" color="black" />}
+          />
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <Button
+            onPress={() => this.props.navigation.navigate("MainNav")}
+            title="비회원 시작"
+            type="clear"
+          ></Button>
+
+          <Button
+            onPress={() => this.signUp()}
+            title="가입하기"
+            type="clear"
+          ></Button>
+        </View>
       </View>
     );
   }

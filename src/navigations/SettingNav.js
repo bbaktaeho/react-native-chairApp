@@ -1,23 +1,12 @@
-import { createStackNavigator } from "react-navigation";
+import { createSwitchNavigator } from "react-navigation";
 import Sets from "../screens/settings";
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { colors } from "../styles/styles";
 
-export default SettingNav = createStackNavigator(
+export default SettingNav = createSwitchNavigator(
   {
     Index: {
-      screen: Sets,
-      navigationOptions: ({ navigation }) => ({
-        headerTitle: (
-          <View style={{ alignItems: "center", flex: 1 }}>
-            <Text style={{ fontSize: 16, color: "black" }}>설정</Text>
-          </View>
-        ),
-        headerStyle: {
-          backgroundColor: colors.header
-        }
-      })
+      screen: Sets
+      // navigationOptions: ({ navigation }) => ({})
     }
     // Vib: {},
     // Blue: {},

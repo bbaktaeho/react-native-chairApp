@@ -19,7 +19,7 @@ const MyHeader = props => {
         text: props.title,
         style: { color: "black" }
       }}
-      rightComponent={<HomeMenu navigation={props.navigation}></HomeMenu>}
+      // rightComponent={<HomeMenu navigation={props.navigation}></HomeMenu>}
       backgroundColor={colors.header}
     />
   );
