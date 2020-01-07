@@ -38,7 +38,7 @@ class Login extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-          <Text h2>의자소통</Text>
+          <Text h2>로그인</Text>
         </View>
 
         <View style={styles.inputContainer}>
