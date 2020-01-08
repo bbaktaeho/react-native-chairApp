@@ -7,8 +7,8 @@ const Set = props => (
     <MyHeader navigation={props.navigation} title="설정"></MyHeader>
     <View>
       <ScrollView>
-        <Text>11</Text>
-        <Text>22</Text>
+        <Text></Text>
+        <Text></Text>
       </ScrollView>
     </View>
   </View>
