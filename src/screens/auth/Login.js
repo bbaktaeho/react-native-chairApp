@@ -1,6 +1,6 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Input, Text, Icon, Button } from "react-native-elements";
+import { View, StyleSheet, ImageBackground } from "react-native";
+import { Input, Text, Icon, Button, Image } from "react-native-elements";
 // import Icon from "react-native-vector-icons/FontAwesome";
 
 const styles = StyleSheet.create({
@@ -13,8 +13,8 @@ const styles = StyleSheet.create({
     paddingBottom: 35
   },
   inputContainer: {
-    width: "85%",
-    paddingBottom: 35
+    paddingBottom: 35,
+    width: "85%"
   },
   buttonContainer: {
     flexDirection: "row",
@@ -38,9 +38,11 @@ class Login extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-          <Text h2>로그인입니다</Text>
+          <Image
+            source={require("../../assets/Images/chair_font.png")}
+            style={{ width: 200, height: 100 }}
+          />
         </View>
-
         <View style={styles.inputContainer}>
           <Input
             label="Email"

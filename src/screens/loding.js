@@ -13,7 +13,7 @@ export default class Loading extends Component {
   componentDidMount() {
     this.state.timer = setTimeout(() => {
       this.props.navigation.navigate("Login");
-    }, 2500);
+    }, 3000);
   }
 
   componentWillMount() {
@@ -25,7 +25,7 @@ export default class Loading extends Component {
   render() {
     return (
       <ImageBackground
-        source={require("../assets/Images/intro.jpg")}
+        source={require("../assets/Images/chair_logo.png")}
         style={{ width: "100%", height: "100%" }}
       ></ImageBackground>
     );
