@@ -47,7 +47,7 @@ export default MainNav = createDrawerNavigator(
           <Image
              source={require("../assets/Images/home.png")}
              resizeMode="contain"
-             style={{ width: 20, height: 20, tintColor: tintColor }}
+             style={{ width: 40, height: 40, tintColor: tintColor }}
            />
          )
       }
@@ -60,7 +60,7 @@ export default MainNav = createDrawerNavigator(
           <Image
             source={require("../assets/Images/privarcy.png")}
             resizeMode="contain"
-            style={{ width: 20, height: 20, tintColor: tintColor }}
+            style={{ width: 40, height: 40, tintColor: tintColor }}
           />
         ),
         headerTitle: (
@@ -81,7 +81,7 @@ export default MainNav = createDrawerNavigator(
           <Image
             source={require("../assets/Images/setting.png")}
             resizeMode="contain"
-            style={{ width: 20, height: 20, tintColor: tintColor }}
+            style={{ width: 40, height: 40, tintColor: tintColor }}
           />
         )
       }
@@ -94,7 +94,7 @@ export default MainNav = createDrawerNavigator(
           <Image
             source={require("../assets/Images/info.png")}
             resizeMode="contain"
-            style={{ width: 20, height: 20, tintColor: tintColor }}
+            style={{ width: 40, height: 40, tintColor: tintColor }}
           />
         )
       }
