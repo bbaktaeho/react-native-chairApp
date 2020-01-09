@@ -6,6 +6,14 @@
 
 # Library
 
+#### "react-native-svg-charts": "^5.1.1",
+
+#### react-native-chart-kit v2.4.0
+
+#### react-native-svg v6.5.2
+
+#### prop-types v15.7.2
+
 #### react-native-gesture-handler v1.0.12
 
 #### react-navigation v3.9.2
