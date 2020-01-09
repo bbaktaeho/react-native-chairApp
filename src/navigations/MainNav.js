@@ -24,13 +24,13 @@ const DrawerContent = props => {
           justifyContent: "space-between"
         }}
       >
-        {/* <Avatar
+         <Avatar
      size="xlarge" rounded
      onPress={() => props.navigation.navigate("Privacy")}
    containerStyle={{padding : 20}}
    source={require("../assets/Images/account.png")}
-/> */}
-        <Text style={{ paddingEnd: 50, fontSize: 20 }}>임 태호</Text>
+/> 
+        <Text style={{ paddingEnd: 50, fontSize: 20, color:"black" }}>임 태호</Text>
       </View>
       <DrawerItems {...props} />
     </ScrollView>
@@ -42,14 +42,14 @@ export default MainNav = createDrawerNavigator(
     Home: {
       screen: HomeNav,
       navigationOptions: {
-        drawerLabel: "홈"
-        // drawerIcon: ({ tintColor }) => (
-        //   <Image
-        //     source={require("../assets/Images/home.png")}
-        //     resizeMode="contain"
-        //     style={{ width: 20, height: 20, tintColor: tintColor }}
-        //   />
-        // )
+        drawerLabel: "홈",
+        drawerIcon: ({ tintColor }) => (
+          <Image
+             source={require("../assets/Images/home.png")}
+             resizeMode="contain"
+             style={{ width: 20, height: 20, tintColor: tintColor }}
+           />
+         )
       }
     },
     Privacy: {
@@ -107,8 +107,7 @@ export default MainNav = createDrawerNavigator(
     overlayColor: "#D8D8D8",
     contentComponent: DrawerContent,
     contentOptions: {
-      activeTintColor: "#fff",
-      activeBackgroundColor: "#D8D8D8"
+     
     }
   }
 );
