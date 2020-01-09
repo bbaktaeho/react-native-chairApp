@@ -31,22 +31,20 @@ export default class Home_three extends React.PureComponent {
     );
     return (
       <View style={{ flex: 1 }}>
-        <MyHeader navigation={this.props.navigation} title="홈 3"></MyHeader>
+        <MyHeader navigation={this.props.navigation} title="차트"></MyHeader>
 
-        <View style={styles.container}>
-          <Card>
-            <AreaChart
-              style={{ height: 200 }}
-              data={data}
-              contentInset={{ top: 30, bottom: 30 }}
-              curve={shape.curveNatural}
-              svg={{ fill: "rgba(134, 65, 244, 0.2)" }}
-            >
-              <Grid />
-              <Line />
-            </AreaChart>
-          </Card>
-        </View>
+        <Card>
+          <AreaChart
+            style={{ height: 200 }}
+            data={data}
+            contentInset={{ top: 30, bottom: 30 }}
+            curve={shape.curveNatural}
+            svg={{ fill: "rgba(134, 65, 244, 0.2)" }}
+          >
+            <Grid />
+            <Line />
+          </AreaChart>
+        </Card>
       </View>
     );
   }
