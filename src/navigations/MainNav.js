@@ -3,13 +3,12 @@ import { View, Text, ScrollView, Image } from "react-native";
 import { createDrawerNavigator, DrawerItems } from "react-navigation";
 import { Avatar, Button } from "react-native-elements";
 
-import Detail from "../screens/main/Detail";
+// import Detail from "../screens/main/Detail";
 import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
-import Test1 from "../test/Test1";
+// import Test1 from "../test/Test1";
 import Test2 from "../test/Test2";
-import Home_bluetooth from "../screens/main/Home_bluetooth";
 
 import { colors } from "../styles/styles";
 
@@ -104,14 +103,8 @@ export default MainNav = createDrawerNavigator(
           />
         )
       }
-    },
-    // 태호가 테스트용으로 잠시 추가합니다.
-    Blue: {
-      screen: Home_bluetooth,
-      navigationOptions: {
-        drawerLabel: "블투 테스트입니당"
-      }
     }
+    // 태호가 테스트용으로 잠시 추가합니다.
   },
   {
     hideStatusBar: true,

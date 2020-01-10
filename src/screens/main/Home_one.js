@@ -6,10 +6,25 @@ import {
   ToastAndroid,
   BackHandler,
   ScrollView,
-  FlatList
+  FlatList,
+  Platform,
+  Switch,
+  SafeAreaView,
+  ActivityIndicator,
+  TouchableOpacity,
+  Alert,
+  PermissionsAndroid
 } from "react-native";
 import { Card } from "react-native-elements";
+import Toast from "@remobile/react-native-toast";
+import BluetoothSerial, {
+  withSubscription
+} from "react-native-bluetooth-serial-next";
+import { Buffer } from "buffer";
+
 import MyHeader from "../../components/MyHeader";
+
+global.Buffer = Buffer;
 
 export default class Home_one extends Component {
   constructor(props) {
@@ -18,7 +33,7 @@ export default class Home_one extends Component {
     this.state = {};
   }
   // 이벤트 등록
-  componentDidMount() {
+  async componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.handleBackButton);
   }
 
