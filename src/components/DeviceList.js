@@ -6,7 +6,7 @@ import {
   View,
   RefreshControl
 } from "react-native";
-import styles from "../styles";
+import styles from "../styles/bluetooth_styles";
 
 class DeviceList extends React.Component {
   constructor(props) {

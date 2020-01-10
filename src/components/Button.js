@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
-import styles from "../styles";
+import styles from "../styles/bluetooth_styles";
 
 const Button = ({ title, onPress, style, textStyle }) => (
   <TouchableOpacity style={[styles.button, style]} onPress={onPress}>

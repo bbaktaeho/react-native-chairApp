@@ -36,7 +36,7 @@ import { Buffer } from "buffer";
 
 import Button from "./components/Button";
 import DeviceList from "./components/DeviceList";
-import styles from "./styles";
+import styles from "./styles/bluetooth_styles";
 
 global.Buffer = Buffer;
 
@@ -47,14 +47,14 @@ class App extends React.Component {
     super(props);
     this.events = null;
     this.isConnected = false; // taeho
-    this.readData = ""; // taeho
     this.state = {
       // realtime: false, // taeho
       isEnabled: false,
       device: null,
       devices: [],
       scanning: false,
-      processing: false
+      processing: false,
+      readData: ""
     };
   }
 
@@ -77,14 +77,14 @@ class App extends React.Component {
         if (!this.isConnected) return;
         this.realtime = true;
         console.log(` ${data}`); // 로그로 데이터 출력
-        this.readData = data;
+        this.setState({ readData: data });
 
         if (this.imBoredNow && intervalId) {
           clearInterval(intervalId);
         }
         this.realtime = false;
       },
-      2000, // ms 단위
+      1000, // ms 단위
       "\r\n"
     );
   };
@@ -661,11 +661,9 @@ class App extends React.Component {
         <View style={styles.footer}>
           <ScrollView vertical contentContainerStyle={styles.fixedFooter}>
             <Text>hi</Text>
-            {/* {this.state.realtime && <Text>{this.readData}</Text>}
-            {!this.state.realtime && <Text>{this.readData}</Text>} */}
-
+            {/* {/* {this.state.realtime && <Text>{this.readData}</Text>} */}
+            {!this.state.realtime && <Text>{this.state.readData}</Text>}
             {/* <Button title="의자소통 블루투스 찾기" onPress={this.listDevices} /> */}
-
             {/* 스마트폰의 블루투스가 켜져있을 때 */}
             {/* {isEnabled && ( */}
             {/* <Button */}

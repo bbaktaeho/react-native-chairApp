@@ -9,6 +9,7 @@ import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 import Test1 from "../test/Test1";
 import Test2 from "../test/Test2";
+import Home_bluetooth from "../screens/main/Home_bluetooth";
 
 import { colors } from "../styles/styles";
 
@@ -24,13 +25,16 @@ const DrawerContent = props => {
           justifyContent: "space-between"
         }}
       >
-         <Avatar
-     size="xlarge" rounded
-     onPress={() => props.navigation.navigate("Privacy")}
-   containerStyle={{padding : 20}}
-   source={require("../assets/Images/account.png")}
-/> 
-        <Text style={{ paddingEnd: 50, fontSize: 20, color:"black" }}>임 태호</Text>
+        <Avatar
+          size="xlarge"
+          rounded
+          onPress={() => props.navigation.navigate("Privacy")}
+          containerStyle={{ padding: 20 }}
+          source={require("../assets/Images/account.png")}
+        />
+        <Text style={{ paddingEnd: 50, fontSize: 20, color: "black" }}>
+          임 태호
+        </Text>
       </View>
       <DrawerItems {...props} />
     </ScrollView>
@@ -45,11 +49,11 @@ export default MainNav = createDrawerNavigator(
         drawerLabel: "홈",
         drawerIcon: ({ tintColor }) => (
           <Image
-             source={require("../assets/Images/home.png")}
-             resizeMode="contain"
-             style={{ width: 40, height: 40, tintColor: tintColor }}
-           />
-         )
+            source={require("../assets/Images/home.png")}
+            resizeMode="contain"
+            style={{ width: 40, height: 40, tintColor: tintColor }}
+          />
+        )
       }
     },
     Privacy: {
@@ -98,6 +102,13 @@ export default MainNav = createDrawerNavigator(
           />
         )
       }
+    },
+    // 태호가 테스트용으로 잠시 추가합니다.
+    Blue: {
+      screen: Home_bluetooth,
+      navigationOptions: {
+        drawerLabel: "블투 테스트입니당"
+      }
     }
   },
   {
@@ -106,8 +117,6 @@ export default MainNav = createDrawerNavigator(
     drawerBackgroundColor: "#ffffff", // 앱의 백그라운드 컬러와 맞추면 됨
     overlayColor: "#D8D8D8",
     contentComponent: DrawerContent,
-    contentOptions: {
-     
-    }
+    contentOptions: {}
   }
 );
