@@ -45,13 +45,14 @@ export default MainNav = createDrawerNavigator(
   {
     Home: {
       screen: HomeNav,
+
       navigationOptions: {
         drawerLabel: "홈",
         drawerIcon: ({ tintColor }) => (
           <Image
             source={require("../assets/Images/home.png")}
             resizeMode="contain"
-            style={{ width: 40, height: 40, tintColor: tintColor }}
+            style={{ width: 25, height: 25, tintColor: tintColor }}
           />
         )
       }
@@ -59,12 +60,13 @@ export default MainNav = createDrawerNavigator(
     Privacy: {
       screen: Privacy,
       navigationOptions: ({ navigation }) => ({
-        drawerLabel: "내정보",
+        drawerLabel: "내 정보",
+
         drawerIcon: ({ tintColor }) => (
           <Image
             source={require("../assets/Images/privarcy.png")}
             resizeMode="contain"
-            style={{ width: 40, height: 40, tintColor: tintColor }}
+            style={{ width: 25, height: 25, tintColor: tintColor }}
           />
         ),
         headerTitle: (
@@ -85,7 +87,7 @@ export default MainNav = createDrawerNavigator(
           <Image
             source={require("../assets/Images/setting.png")}
             resizeMode="contain"
-            style={{ width: 40, height: 40, tintColor: tintColor }}
+            style={{ width: 25, height: 25, tintColor: tintColor }}
           />
         )
       }
@@ -93,12 +95,12 @@ export default MainNav = createDrawerNavigator(
     Appinfo: {
       screen: Test2,
       navigationOptions: {
-        drawerLabel: "앱정보",
+        drawerLabel: "앱 정보",
         drawerIcon: ({ tintColor }) => (
           <Image
             source={require("../assets/Images/info.png")}
             resizeMode="contain"
-            style={{ width: 40, height: 40, tintColor: tintColor }}
+            style={{ width: 25, height: 25, tintColor: tintColor }}
           />
         )
       }
@@ -117,6 +119,8 @@ export default MainNav = createDrawerNavigator(
     drawerBackgroundColor: "#ffffff", // 앱의 백그라운드 컬러와 맞추면 됨
     overlayColor: "#D8D8D8",
     contentComponent: DrawerContent,
-    contentOptions: {}
+    contentOptions: {
+      labelStyle: { fontSize: 15 }
+    }
   }
 );
