@@ -1,5 +1,5 @@
 const initialState = {
-  bluetooth: [{ connected: false, data: null }]
+  bluetooth: [{ data: null }]
 };
 
 const bluetoothReducer = (state = initialState) => {

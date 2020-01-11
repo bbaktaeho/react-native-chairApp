@@ -81,18 +81,17 @@ class Bluetooth extends React.Component {
         this.realtime = true;
         // console.log(` ${data}`); // 로그로 데이터 출력
         this.setState({ readData: data });
-
         if (this.imBoredNow && intervalId) {
           clearInterval(intervalId);
         }
         this.realtime = false;
       },
-      1000, // ms 단위
+      1500, // ms 단위
       "\r\n"
     );
   };
 
-  // 저장된 리스트들 <DiviceList> 에 출력
+  // 저장된 리스트들 <DiviceList> 에 출력<Text>블루투스를 등록 후 사용해주세요.</Text>
   listDevices = async () => {
     try {
       const list = await BluetoothSerial.list();
@@ -254,6 +253,8 @@ class Bluetooth extends React.Component {
         await BluetoothSerial.enable();
       } else {
         await BluetoothSerial.disable();
+        for (e of this.state.devices) e.connected = null;
+        this.setState({ devices });
       }
     } catch (e) {
       Toast.showShortBottom(e.message);
@@ -545,7 +546,7 @@ class Bluetooth extends React.Component {
 
             {!processing && (
               <View style={{ marginTop: 20, width: "50%" }}>
-                {Platform.OS !== "ios" && (
+                {/* {Platform.OS !== "ios" && (
                   <Button
                     title={paired ? "Unpair" : "Pair"}
                     style={{
@@ -554,7 +555,7 @@ class Bluetooth extends React.Component {
                     textStyle={{ color: "#fff" }}
                     onPress={() => this.toggleDevicePairing(device)}
                   />
-                )}
+                )} */}
                 <Button
                   title={connected ? "Disconnect" : "Connect"}
                   style={{
@@ -563,7 +564,7 @@ class Bluetooth extends React.Component {
                   textStyle={{ color: "#fff" }}
                   onPress={() => this.toggleDeviceConnection(device)}
                 />
-                {connected && (
+                {/* {connected && (
                   <React.Fragment>
                     <Button
                       title="Write"
@@ -592,7 +593,7 @@ class Bluetooth extends React.Component {
                       }
                     />
                   </React.Fragment>
-                )}
+                )} */}
                 <Button
                   title="Close"
                   onPress={() => this.setState({ device: null })}
@@ -625,7 +626,9 @@ class Bluetooth extends React.Component {
         {devices.length == 0 && (
           <View>
             <Text>블루투스를 등록 후 사용해주세요.</Text>
-            <Text>스마트폰에서 등록 후 재 실행하면 됩니다</Text>
+            <Text>
+              스마트폰에서 블루투스를 검색해서 chairComunication를 등록합니다.
+            </Text>
           </View>
         )}
 
