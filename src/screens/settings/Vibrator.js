@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
-
+import MyHeader from "../../components/MyHeader";
 export default class Vibrator extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>진동 설정</Text>
+      <View style={{ flex: 1 }}>
+        <MyHeader
+          navigation={this.props.navigation}
+          title="진동 설정"
+          type="setting"
+        ></MyHeader>
+        <View style={styles.container}>
+          <Text>진동 설정</Text>
+        </View>
       </View>
     );
   }

@@ -38,11 +38,13 @@ import Button from "../../components/Button";
 import DeviceList from "../../components/DeviceList";
 import styles from "../../styles/bluetooth_styles";
 
+import MyHeader from "../../components/MyHeader";
+
 global.Buffer = Buffer;
 
 const iconv = require("iconv-lite");
 
-class Home_bluetooth extends React.Component {
+class Bluetooth extends React.Component {
   constructor(props) {
     super(props);
     this.events = null;
@@ -606,19 +608,26 @@ class Home_bluetooth extends React.Component {
     const { isEnabled, device, devices, scanning, processing } = this.state;
 
     return (
-      <SafeAreaView style={{ flex: 1, paddingTop: 20 }}>
-        {/* 상단 바 */}
-        <View style={styles.topBar}>
-          <TouchableOpacity onPress={this.BlueIsConnected}>
-            <Text style={styles.heading}>태호의 블루투스!</Text>
-          </TouchableOpacity>
-          <View style={styles.enableInfoWrapper}>
-            <Text style={{ fontSize: 14, color: "#fff", paddingRight: 10 }}>
-              {isEnabled ? "ON" : "OFF"}
-            </Text>
-            <Switch onValueChange={this.toggleBluetooth} value={isEnabled} />
+      <View style={{ flex: 1 }}>
+        <MyHeader
+          title="블루투스 연결"
+          navigation={this.props.navigation}
+          type="setting"
+          right={() => (
+            <View style={styles.enableInfoWrapper}>
+              <Text style={{ fontSize: 14, color: "black", paddingRight: 10 }}>
+                {isEnabled ? "ON" : "OFF"}
+              </Text>
+              <Switch onValueChange={this.toggleBluetooth} value={isEnabled} />
+            </View>
+          )}
+        ></MyHeader>
+        {devices.length == 0 && (
+          <View>
+            <Text>블루투스를 등록 후 사용해주세요.</Text>
+            <Text>스마트폰에서 등록 후 재 실행하면 됩니다</Text>
           </View>
-        </View>
+        )}
 
         {/* 스캔 중이지 않다면 DeviceList 를 띄움 */}
         {/* 스캔 중 이라면 descover more 가 클릭된거임 */}
@@ -661,7 +670,7 @@ class Home_bluetooth extends React.Component {
         <View style={styles.footer}>
           <ScrollView vertical contentContainerStyle={styles.fixedFooter}>
             {this.realtime && <Text>{this.state.readData}</Text>}
-            {!this.realtime && <Text>연결이 해제됬단다..</Text>}
+            {!this.realtime && <Text>데이터 통신 테스트</Text>}
 
             {/* <Button title="의자소통 블루투스 찾기" onPress={this.listDevices} /> */}
 
@@ -678,9 +687,9 @@ class Home_bluetooth extends React.Component {
             {/* )} */}
           </ScrollView>
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 }
 
-export default withSubscription({ subscriptionName: "events" })(Home_bluetooth);
+export default withSubscription({ subscriptionName: "events" })(Bluetooth);

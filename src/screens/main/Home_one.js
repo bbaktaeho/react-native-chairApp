@@ -5,28 +5,15 @@ import {
   StyleSheet,
   ToastAndroid,
   BackHandler,
-  ScrollView,
-  FlatList,
-  Platform,
-  Switch,
-  SafeAreaView,
-  ActivityIndicator,
-  TouchableOpacity,
-  Alert,
-  PermissionsAndroid
+  ScrollView
 } from "react-native";
 import { Card } from "react-native-elements";
 import Toast from "@remobile/react-native-toast";
-import BluetoothSerial, {
-  withSubscription
-} from "react-native-bluetooth-serial-next";
-import { Buffer } from "buffer";
+import { connect } from "react-redux";
 
 import MyHeader from "../../components/MyHeader";
 
-global.Buffer = Buffer;
-
-export default class Home_one extends Component {
+class Home_one extends Component {
   constructor(props) {
     super(props);
     this.handleBackButton = this.handleBackButton.bind(this);
@@ -64,11 +51,14 @@ export default class Home_one extends Component {
   };
 
   render() {
+    const { bluetooth } = this.props;
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="홈 1"></MyHeader>
         <ScrollView>
-          <View style={styles.container}></View>
+          <View style={styles.container}>
+            <Text>{JSON.stringify(bluetooth)}</Text>
+          </View>
         </ScrollView>
       </View>
     );
@@ -82,3 +72,11 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
+
+// 전역 state 를 참조할 수 있게 해주는 함수
+const mapStateToProps = state => ({
+  bluetooth: state.bluetoothReducer.bluetooth
+});
+
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(Home_one);

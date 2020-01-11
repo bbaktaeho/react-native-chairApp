@@ -1,8 +1,8 @@
 import { createSwitchNavigator } from "react-navigation";
 import Sets from "../screens/settings/index";
-import Bluet from "../screens/settings/Bluetooth";
+import Bluetooth from "../screens/settings/Bluetooth";
 import Vib from "../screens/settings/Vibrator";
-import Not from "../screens/settings/Notify";
+// import Not from "../screens/settings/Notify";
 import React from "react";
 
 export default SettingNav = createSwitchNavigator(
@@ -11,9 +11,11 @@ export default SettingNav = createSwitchNavigator(
       screen: Sets
       // navigationOptions: ({ navigation }) => ({})
     },
-    Bluet,
-    Vib, 
-    Not
+    Blue: {
+      screen: Bluetooth
+    },
+    Vib
+    // Not
   },
   {
     initialRouteName: "Index"
