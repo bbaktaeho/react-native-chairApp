@@ -9,6 +9,7 @@ import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 // import Test1 from "../test/Test1";
 import Test2 from "../test/Test2";
+import AppConfig from "../screens/main/AppConfig";
 
 import { colors } from "../styles/styles";
 
@@ -92,7 +93,7 @@ export default MainNav = createDrawerNavigator(
       }
     },
     Appinfo: {
-      screen: Test2,
+      screen: AppConfig,
       navigationOptions: {
         drawerLabel: "앱 정보",
         drawerIcon: ({ tintColor }) => (
