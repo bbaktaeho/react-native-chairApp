@@ -30,7 +30,6 @@ class Login extends React.Component {
   };
 
   onChangeText = (key, value) => {
-    console.log(this.state);
     this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
   };
 

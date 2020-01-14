@@ -1,57 +1,85 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
-import { Card } from "react-native-elements";
+import { Card, Button } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
+
+import BluetoothSerial from "react-native-bluetooth-serial-next";
 
 export default class Home_two extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      backData: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
+      backData: [
+        { id: 1, data: 0 },
+        { id: 2, data: 0 },
+        { id: 3, data: 0 },
+        { id: 4, data: 0 }
+      ],
       seatData: [
-        { id: 1 },
-        { id: 2 },
-        { id: 3 },
-        { id: 4 },
-        { id: 5 },
-        { id: 6 },
-        { id: 7 },
-        { id: 8 },
-        { id: 9 },
-        { id: 10 },
-        { id: 11 },
-        { id: 12 },
-        { id: 13 },
-        { id: 14 },
-        { id: 15 },
-        { id: 16 },
-        { id: 17 },
-        { id: 18 },
-        { id: 19 },
-        { id: 20 },
-        { id: 21 },
-        { id: 22 },
-        { id: 23 },
-        { id: 24 },
-        { id: 25 },
-        { id: 26 },
-        { id: 27 },
-        { id: 28 },
-        { id: 29 },
-        { id: 30 },
-        { id: 31 }
+        { id: 1, data: 0 },
+        { id: 2, data: 0 },
+        { id: 3, data: 0 },
+        { id: 4, data: 0 },
+        { id: 5, data: 0 },
+        { id: 6, data: 0 },
+        { id: 7, data: 0 },
+        { id: 8, data: 0 },
+        { id: 9, data: 0 },
+        { id: 10, data: 0 },
+        { id: 11, data: 0 },
+        { id: 12, data: 0 },
+        { id: 13, data: 0 },
+        { id: 14, data: 0 },
+        { id: 15, data: 0 },
+        { id: 16, data: 0 },
+        { id: 17, data: 0 },
+        { id: 18, data: 0 },
+        { id: 19, data: 0 },
+        { id: 20, data: 0 },
+        { id: 21, data: 0 },
+        { id: 22, data: 0 },
+        { id: 23, data: 0 },
+        { id: 24, data: 0 },
+        { id: 25, data: 0 },
+        { id: 26, data: 0 },
+        { id: 27, data: 0 },
+        { id: 28, data: 0 },
+        { id: 29, data: 0 },
+        { id: 30, data: 0 },
+        { id: 31, data: 0 }
       ]
     };
   }
-  // 이벤트 등록
-  componentDidMount() {}
 
-  // 이벤트 해제
-  componentWillUnmount() {}
+  componentDidMount() {
+    let { backData, seatData } = this.state;
+    let splitData = [];
+    let back = [];
+    let seat = [];
+    if (global.connected) {
+      BluetoothSerial.readEvery(
+        (data, intervalId) => {
+          splitData = data.split(",");
+          back = splitData[1].split("^");
+          seat = splitData[0].split("^");
 
-  _renderItem = ({ item }) => {
-    return <Card containerStyle={{ flex: 1 }}></Card>;
-  };
+          for (i in backData) {
+            if (i == 3) backData[i].data = parseInt(back[i].substring(0, 3));
+            else backData[i].data = parseInt(back[i]);
+          }
+          for (i in seatData) seatData[i].data = parseInt(seat[i]);
+
+          this.setState({ backData, seatData });
+
+          if (this.imBoredNow && intervalId) {
+            clearInterval(intervalId);
+          }
+        },
+        1500,
+        "\r\n"
+      );
+    }
+  }
 
   render() {
     const { backData, seatData } = this.state;
@@ -61,12 +89,6 @@ export default class Home_two extends Component {
         <ScrollView>
           <View style={styles.container}>
             <Card title="등받이" containerStyle={{ width: "100%", flex: 1 }}>
-              {/* <FlatList
-                data={backData}
-                horizontal={true}
-                renderItem={(item, index) => this._renderItem(item)}
-                keyExtractor={item => item.id.toString()} // 각 아이템의 키 값을 지정
-              /> */}
               <View
                 style={{
                   flexDirection: "row",
@@ -80,13 +102,16 @@ export default class Home_two extends Component {
                     <View
                       style={{
                         width: "45%",
-                        backgroundColor: "white",
+                        backgroundColor: `rgb(${(
+                          (e.data % 9) *
+                          15
+                        ).toString()}, 0, 0)`,
                         height: 100,
                         borderWidth: 1,
                         borderColor: "black"
                       }}
                       key={e.id}
-                    />
+                    ></View>
                   ))}
               </View>
               <View
@@ -101,13 +126,16 @@ export default class Home_two extends Component {
                     <View
                       style={{
                         width: "45%",
-                        backgroundColor: "white",
+                        backgroundColor: `rgb(${(
+                          (e.data % 9) *
+                          15
+                        ).toString()}, 0, 0)`,
                         height: 100,
                         borderWidth: 1,
                         borderColor: "black"
                       }}
                       key={e.id}
-                    />
+                    ></View>
                   ))}
               </View>
             </Card>
@@ -127,12 +155,15 @@ export default class Home_two extends Component {
                       style={{
                         width: "14%",
                         height: 40,
-                        backgroundColor: "white",
+                        backgroundColor: `rgb(${(
+                          (e.data % 9) *
+                          15
+                        ).toString()}, 0, 0)`,
                         borderWidth: 1,
                         borderColor: "black"
                       }}
                       key={e.id}
-                    />
+                    ></View>
                   ))}
               </View>
               <View
@@ -142,70 +173,46 @@ export default class Home_two extends Component {
                   marginBottom: 8
                 }}
               >
-                {this.state.seatData
+                {seatData
                   .filter(e => e.id > 6 && e.id <= 20)
                   .map(e => (
                     <View
                       style={{
                         width: "5%",
                         height: 40,
-                        backgroundColor: "white",
+                        backgroundColor: `rgb(${(
+                          (e.data % 9) *
+                          15
+                        ).toString()}, 0, 0)`,
                         borderWidth: 1,
                         borderColor: "black"
                       }}
                       key={e.id}
-                    />
+                    ></View>
                   ))}
               </View>
               <View
                 style={{ flexDirection: "row", justifyContent: "space-around" }}
               >
-                {this.state.seatData
+                {seatData
                   .filter(e => e.id > 20)
                   .map(e => (
                     <View
                       style={{
                         width: "7%",
                         height: 40,
-                        backgroundColor: "white",
+                        backgroundColor: `rgb(${(
+                          (e.data % 9) *
+                          15
+                        ).toString()}, 0, 0)`,
                         borderWidth: 1,
                         borderColor: "black"
                       }}
                       key={e.id}
-                    />
+                    ></View>
                   ))}
               </View>
               <Text>엉덩이쪽</Text>
-              {/* <FlatList
-                data={seatData.filter(e => e.id <= 10)}
-                ListFooterComponentStyle={{
-                  flex: 1,
-                  justifyContent: "space-around"
-                }}
-                horizontal={true}
-                renderItem={(item, index) => this._renderItem(item)}
-                keyExtractor={item => item.id.toString()} // 각 아이템의 키 값을 지정
-              />
-              <FlatList
-                data={seatData.filter(e => e.id > 10 && e.id <= 25)}
-                ListFooterComponentStyle={{
-                  flex: 1,
-                  justifyContent: "space-around"
-                }}
-                horizontal={true}
-                renderItem={(item, index) => this._renderItem(item)}
-                keyExtractor={item => item.id.toString()} // 각 아이템의 키 값을 지정
-              />
-              <FlatList
-                data={seatData.filter(e => e.id > 25)}
-                ListFooterComponentStyle={{
-                  flex: 1,
-                  justifyContent: "space-around"
-                }}
-                horizontal={true}
-                renderItem={(item, index) => this._renderItem(item)}
-                keyExtractor={item => item.id.toString()} // 각 아이템의 키 값을 지정
-              /> */}
             </Card>
           </View>
         </ScrollView>

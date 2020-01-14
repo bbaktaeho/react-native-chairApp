@@ -12,30 +12,29 @@ import {
 // import Toast from "@remobile/react-native-toast";
 import { connect } from "react-redux";
 
-import BluetoothSerial, {
-  withSubscription
-} from "react-native-bluetooth-serial-next";
-
 import MyHeader from "../../components/MyHeader";
 
 class Home_one extends Component {
   constructor(props) {
     super(props);
-    this.realTime = false;
-    this.handleBackButton = this.handleBackButton.bind(this);
     this.state = {
-      readData: ""
+      // readData: ""
     };
   }
   // 이벤트 등록
-  async componentDidMount() {
-    BackHandler.addEventListener("hardwareBackPress", this.handleBackButton);
+  componentDidMount() {
+    if (global.connected) {
+      // 블루투스 모듈과 연결 성공 했을 때
+    } else {
+      // 블루투스 모듈과 연결 실패 했을 때
+    }
+    // BackHandler.addEventListener("hardwareBackPress", this.handleBackButton);
   }
 
   // 이벤트 해제
   componentWillUnmount() {
-    this.exitApp = false;
-    BackHandler.removeEventListener("hardwareBackPress", this.handleBackButton);
+    // this.exitApp = false;
+    // BackHandler.removeEventListener("hardwareBackPress", this.handleBackButton);
   }
 
   // 이벤트 동작
@@ -58,38 +57,12 @@ class Home_one extends Component {
     return true;
   };
 
-  realRead = async () => {
-    this.realTime = true;
-    await this.read();
-  };
-
-  read = () => {
-    BluetoothSerial.readEvery(
-      (data, intervalId) => {
-        console.log(` ${data}`); // 로그로 데이터 출력
-        this.setState({ readData: data });
-
-        if (intervalId) {
-          clearInterval(intervalId);
-        }
-      },
-      1500, // ms 단위
-      "\r\n"
-    );
-  };
-
   render() {
-    // const { bluetooth } = this.props;
-    const { readData } = this.state;
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="홈 1"></MyHeader>
         <ScrollView>
-          <View style={styles.container}>
-            {/* <Text>{bluetooth}</Text> */}
-
-            {/* <Text>{readData}</Text> */}
-          </View>
+          <View style={styles.container}></View>
         </ScrollView>
       </View>
     );

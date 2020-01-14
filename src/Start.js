@@ -4,15 +4,14 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./reducers";
 import MyStatusBar from "./components/StatusBar";
-import { PermissionsAndroid, Alert, BackHandler } from "react-native";
+import { PermissionsAndroid, BackHandler } from "react-native";
 
-import BluetoothSerial, {
-  withSubscription
-} from "react-native-bluetooth-serial-next";
+import BluetoothSerial from "react-native-bluetooth-serial-next";
 import Toast from "@remobile/react-native-toast";
 
 import { Buffer } from "buffer";
 global.Buffer = Buffer;
+global.connected = false;
 
 const store = createStore(rootReducer);
 
@@ -20,8 +19,6 @@ class Start extends React.Component {
   constructor(props) {
     super(props);
     this.events = null;
-    this.isConnected = false; // taeho
-    this.realtime = false;
     this.state = {
       connected: false,
       isEnabled: false,
@@ -34,7 +31,6 @@ class Start extends React.Component {
 
   async componentDidMount() {
     this.events = this.props.events;
-
     // 블루투스 검색할 수 있는 permission
     await PermissionsAndroid.check(
       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION
@@ -61,6 +57,7 @@ class Start extends React.Component {
 
       var temp = []; // 찾은 chairCommunication 저장
       var id; // 찾은 chairCommunication의 id(블루투스 adress) 저장
+      var check;
       for (let v of devices) {
         if (v.name === "chairCommunication") {
           temp = [v];
@@ -70,18 +67,22 @@ class Start extends React.Component {
       }
       if (temp.length > 0) {
         this.setState({
-          connected: true,
           isEnabled,
           devices: temp.map(device => ({
             // chairCommunication 발견 했다면 devices에 넣어놓고
             // 객체 속성을 추가함(paired, connected)
             ...device,
-            paired: true,
-            connected: true
+            paired: true
           }))
         });
         // 찾은게 있다면 강제 커넥트
         await BluetoothSerial.connect(id);
+
+        // catch에 걸리지 않으면
+        // this.state.connected = true;
+        global.connected = true;
+        Toast.showShortBottom("블루투스와 연결되었습니다");
+
         // await this.read();
       } else {
         Toast.showLongBottom("블루투스를 등록해 주세요. 곧 종료됩니다");
@@ -94,6 +95,7 @@ class Start extends React.Component {
     }
   }
 
+  // 등록한 체어가 없다면 실행
   noneChair() {
     return new Promise((resolve, reject) => {
       setTimeout(function() {

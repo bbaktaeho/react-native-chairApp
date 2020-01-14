@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { Input, Text, Icon, Button } from "react-native-elements";
+import Toast from "@remobile/react-native-toast";
 
 const styles = StyleSheet.create({
   container: {
@@ -31,14 +32,13 @@ class SignUp extends React.Component {
   };
 
   onChangeText = (key, value) => {
-    console.log(this.state);
     this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
   };
 
   signUp = () => {
     if (this.state.checkPasswd == this.state.passwd)
       this.props.navigation.navigate("Login");
-    else console.log("패스워드 틀림");
+    else Toast.showShortBottom("비밀번호 틀림");
   };
 
   render() {
