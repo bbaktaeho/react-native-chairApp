@@ -1,7 +1,9 @@
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, Alert } from "react-native";
 import { Input, Text, Icon, Button } from "react-native-elements";
 import Toast from "@remobile/react-native-toast";
+
+import { host } from "../../NET";
 
 const styles = StyleSheet.create({
   container: {
@@ -35,10 +37,33 @@ class SignUp extends React.Component {
     this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
   };
 
-  signUp = () => {
-    if (this.state.checkPasswd == this.state.passwd)
-      this.props.navigation.navigate("Login");
-    else Toast.showShortBottom("비밀번호 틀림");
+  signUp = async () => {
+    if (this.state.checkPasswd == this.state.passwd) {
+      await fetch(host + "/auth/signup", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: this.state.email,
+          name: this.state.name,
+          password: this.state.passwd
+        })
+      })
+        .then(resData => {
+          if (JSON.parse(resData._bodyInit).success) {
+            Alert.alert("", JSON.parse(resData._bodyInit).message, [
+              {
+                text: "로그인",
+                onPress: () => this.props.navigation.navigate("Login")
+              }
+            ]);
+          } else Alert.alert("", JSON.parse(resData._bodyInit).message);
+        })
+        .then(jsonData => {})
+        .done();
+    } else Toast.showShortBottom("비밀번호 틀림");
   };
 
   render() {

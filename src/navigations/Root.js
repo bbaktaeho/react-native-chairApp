@@ -3,10 +3,12 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import Loading from "../screens/loding";
 import MainNav from "./MainNav";
 import AuthNav from "./AuthNav";
+import AuthLoading from "../screens/auth/AuthLoading";
 
 const Root = createSwitchNavigator(
   {
     Loading,
+    AuthLoading,
     AuthNav,
     MainNav
   },
