@@ -8,9 +8,9 @@ import AuthLoading from "../screens/auth/AuthLoading";
 const Root = createSwitchNavigator(
   {
     Loading,
-    AuthLoading,
     AuthNav,
-    MainNav
+    MainNav,
+    AuthLoading: { screen: AuthLoading }
   },
   {
     initialRouteName: "Loading"

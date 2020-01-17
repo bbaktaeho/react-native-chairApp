@@ -1,7 +1,8 @@
 import React from "react";
-import { View, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground, Alert } from "react-native";
 import { Input, Text, Icon, Button, Image } from "react-native-elements";
 // import Icon from "react-native-vector-icons/FontAwesome";
+import { host } from "../../NET";
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +28,24 @@ class Login extends React.Component {
   state = {
     email: "",
     passwd: ""
+  };
+
+  signIn = async () => {
+    await fetch(host + "/auth/signin", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.passwd
+      })
+    }).then(resData => {
+      if (JSON.parse(resData._bodyInit).success) {
+        this.props.navigation.navigate("AuthLoading", this.state);
+      } else Alert.alert("", JSON.parse(resData._bodyInit).message);
+    });
   };
 
   onChangeText = (key, value) => {
@@ -69,7 +88,7 @@ class Login extends React.Component {
         <View style={styles.buttonContainer}>
           {!(this.state.email === "") && (
             <Button
-              onPress={() => this.props.navigation.navigate("MainNav")}
+              onPress={() => this.signIn()}
               title="로그인"
               type="clear"
             ></Button>
