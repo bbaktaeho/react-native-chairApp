@@ -26,14 +26,15 @@ const DrawerContent = props => {
         }}
       >
         <Avatar
-          size="xlarge"
+          size="large"
+          overlayContainerStyle={{backgroundColor: 'white'}}
           rounded
           onPress={() => props.navigation.navigate("Privacy")}
           containerStyle={{ padding: 20 }}
-          source={require("../assets/Images/account.png")}
+          source={require("../assets/Images/ex.png")}
         />
-        <Text style={{ paddingEnd: 50, fontSize: 20, color: "black" }}>
-          임 태호
+        <Text style={{ paddingRight:130, fontSize: 23, color: "black" }}>
+          abc123
         </Text>
       </View>
       <DrawerItems {...props} />
