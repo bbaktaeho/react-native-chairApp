@@ -38,6 +38,8 @@ class SignUp extends React.Component {
   };
 
   signUp = async () => {
+    const { email, name, passwd } = this.state;
+    if (!(email && name && passwd)) return Alert.alert("", "모두 입력하세요");
     if (this.state.checkPasswd == this.state.passwd) {
       await fetch(host + "/api/auth/register", {
         method: "POST",
@@ -52,14 +54,15 @@ class SignUp extends React.Component {
         })
       })
         .then(resData => {
-          if (JSON.parse(resData._bodyInit).success) {
-            Alert.alert("", JSON.parse(resData._bodyInit).message, [
+          const res = JSON.parse(resData._bodyInit);
+          if (res.success) {
+            Alert.alert("", res.message, [
               {
                 text: "로그인",
                 onPress: () => this.props.navigation.navigate("Login")
               }
             ]);
-          } else Alert.alert("", JSON.parse(resData._bodyInit).message);
+          } else Alert.alert("", res.message);
         })
         .then(jsonData => {})
         .done();
