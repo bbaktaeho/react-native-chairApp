@@ -27,14 +27,14 @@ const DrawerContent = props => {
       >
         <Avatar
           size="large"
-          overlayContainerStyle={{backgroundColor: 'white'}}
+          overlayContainerStyle={{ backgroundColor: "white" }}
           rounded
           onPress={() => props.navigation.navigate("Privacy")}
           containerStyle={{ padding: 20 }}
           source={require("../assets/Images/ex.png")}
         />
-        <Text style={{ paddingRight:130, fontSize: 23, color: "black" }}>
-          abc123
+        <Text style={{ paddingRight: 130, fontSize: 23, color: "black" }}>
+          비회원
         </Text>
       </View>
       <DrawerItems {...props} />
@@ -106,7 +106,6 @@ export default MainNav = createDrawerNavigator(
         )
       }
     }
-    // 태호가 테스트용으로 잠시 추가합니다.
   },
   {
     hideStatusBar: true,
