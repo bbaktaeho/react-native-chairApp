@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, AsyncStorage } from "react-native";
 import { createDrawerNavigator, DrawerItems } from "react-navigation";
 import { Avatar, Button } from "react-native-elements";
 
@@ -13,34 +13,53 @@ import AppConfig from "../screens/main/AppConfig";
 
 import { colors } from "../styles/styles";
 
-const DrawerContent = props => {
-  return (
-    <ScrollView>
-      <View
-        style={{
-          backgroundColor: "#ffffff",
-          height: 140,
-          alignItems: "center",
-          flexDirection: "row",
-          justifyContent: "space-between"
-        }}
-      >
-        <Avatar
-          size="large"
-          overlayContainerStyle={{ backgroundColor: "white" }}
-          rounded
-          onPress={() => props.navigation.navigate("Privacy")}
-          containerStyle={{ padding: 20 }}
-          source={require("../assets/Images/ex.png")}
-        />
-        <Text style={{ paddingRight: 130, fontSize: 23, color: "black" }}>
-          비회원
-        </Text>
-      </View>
-      <DrawerItems {...props} />
-    </ScrollView>
-  );
-};
+// 드로우 네비게이션 상단 컴포넌트(로그인 상태)
+class DrawerContent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.userName = "";
+  }
+
+  async componentWillMount() {
+    try {
+      const name = await AsyncStorage.getItem("user_name");
+      // if (name == "noneName") name = "";
+      if (name == null) name = "비회원";
+      this.userName = name;
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+
+  render() {
+    return (
+      <ScrollView>
+        <View
+          style={{
+            backgroundColor: "#ffffff",
+            height: 140,
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "space-between"
+          }}
+        >
+          <Avatar
+            size="large"
+            overlayContainerStyle={{ backgroundColor: "white" }}
+            rounded
+            onPress={() => this.props.navigation.navigate("Privacy")}
+            containerStyle={{ padding: 20 }}
+            source={require("../assets/Images/ex.png")}
+          />
+          <Text style={{ paddingRight: 130, fontSize: 23, color: "black" }}>
+            {this.userName}
+          </Text>
+        </View>
+        <DrawerItems {...this.props} />
+      </ScrollView>
+    );
+  }
+}
 
 export default MainNav = createDrawerNavigator(
   {

@@ -39,7 +39,7 @@ class SignUp extends React.Component {
 
   signUp = async () => {
     if (this.state.checkPasswd == this.state.passwd) {
-      await fetch(host + "/auth/signup", {
+      await fetch(host + "/api/auth/register", {
         method: "POST",
         headers: {
           Accept: "application/json",

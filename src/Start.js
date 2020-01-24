@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "./reducers";
 import MyStatusBar from "./components/StatusBar";
-import { PermissionsAndroid, BackHandler } from "react-native";
+import { PermissionsAndroid, BackHandler, AsyncStorage } from "react-native";
 
 import BluetoothSerial from "react-native-bluetooth-serial-next";
 import Toast from "@remobile/react-native-toast";
@@ -92,6 +92,16 @@ class Start extends React.Component {
       }
     } catch (e) {
       Toast.showShortBottom(e.message);
+    }
+  }
+
+  // 앱이 종료되는 시점에 앱 내부에 저장한 데이터를 모두 제거
+  // 자동 로그인 구현 시 제거해야할 로직임
+  async componentWillUnmount() {
+    try {
+      await AsyncStorage.clear();
+    } catch (e) {
+      console.log(e.message);
     }
   }
 

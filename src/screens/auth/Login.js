@@ -31,7 +31,7 @@ class Login extends React.Component {
   };
 
   signIn = async () => {
-    await fetch(host + "/auth/signin", {
+    await fetch(host + "/api/auth/login", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -42,9 +42,18 @@ class Login extends React.Component {
         password: this.state.passwd
       })
     }).then(resData => {
-      if (JSON.parse(resData._bodyInit).success) {
-        this.props.navigation.navigate("AuthLoading", this.state);
-      } else Alert.alert("", JSON.parse(resData._bodyInit).message);
+      const res = JSON.parse(resData._bodyInit);
+      if (res.success) {
+        let loginData = {
+          email: res.email,
+          name: res.name,
+          message: res.message,
+          accessToken: res.accessToken
+        };
+        console.log(loginData);
+
+        this.props.navigation.navigate("AuthLoading", loginData);
+      } else Alert.alert(res.success, res.message);
     });
   };
 

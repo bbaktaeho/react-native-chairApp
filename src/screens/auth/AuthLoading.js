@@ -10,8 +10,16 @@ export default class AuthLoading extends React.Component {
   async componentDidMount() {
     try {
       await AsyncStorage.setItem(
-        "userToken",
+        "user_email",
         this.props.navigation.getParam("email", "noneEmail")
+      );
+      await AsyncStorage.setItem(
+        "user_name",
+        this.props.navigation.getParam("name", "noneName")
+      );
+      await AsyncStorage.setItem(
+        "accessToken",
+        this.props.navigation.getParam("accessToken", "noneAccessToken")
       );
       setTimeout(() => {
         Toast.showShortBottom("로그인 성공");

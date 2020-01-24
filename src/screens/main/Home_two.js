@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, ScrollView, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  FlatList,
+  AsyncStorage
+} from "react-native";
 import { Card, Button } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
 
@@ -51,35 +58,42 @@ export default class Home_two extends Component {
     };
   }
 
-  componentDidMount() {
-    let { backData, seatData } = this.state;
-    let splitData = [];
-    let vib = [];
-    let back = [];
-    let seat = [];
-    if (global.connected) {
-      BluetoothSerial.readEvery(
-        (data, intervalId) => {
-          splitData = data.split(",");
-          vib = splitData[2];
-          global.vib = vib;
-          back = splitData[1].split("^");
-          seat = splitData[0].split("^");
-          for (i in backData) {
-            if (i == 3) backData[i].data = parseInt(back[i].substring(0, 3));
-            else backData[i].data = parseInt(back[i]);
-          }
-          for (i in seatData) seatData[i].data = parseInt(seat[i]);
+  async componentDidMount() {
+    try {
+      let { backData, seatData } = this.state;
+      let splitData = [];
+      let vib = [];
+      let back = [];
+      let seat = [];
+      if (global.connected) {
+        // 블루투스 모듈 연결이 성공했을 때
+        BluetoothSerial.readEvery(
+          (data, intervalId) => {
+            splitData = data.split(",");
+            vib = splitData[2];
+            global.vib = vib;
+            back = splitData[1].split("^");
+            seat = splitData[0].split("^");
+            for (i in backData) {
+              if (i == 3) backData[i].data = parseInt(back[i].substring(0, 3));
+              else backData[i].data = parseInt(back[i]);
+            }
+            for (i in seatData) seatData[i].data = parseInt(seat[i]);
 
-          this.setState({ backData, seatData });
+            this.setState({ backData, seatData });
 
-          if (this.imBoredNow && intervalId) {
-            clearInterval(intervalId);
-          }
-        },
-        1500,
-        "\r\n"
-      );
+            if (this.imBoredNow && intervalId) {
+              clearInterval(intervalId);
+            }
+          },
+          1500,
+          "\r\n"
+        );
+      } else {
+        // 블루투스 모듈 연결이 실패했을 때
+      }
+    } catch (err) {
+      console.log(err.message);
     }
   }
 
