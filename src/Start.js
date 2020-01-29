@@ -95,6 +95,13 @@ class Start extends React.Component {
     }
   }
 
+  async componentWillMount() {
+    try {
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+
   // 앱이 종료되는 시점에 앱 내부에 저장한 데이터를 모두 제거
   // 자동 로그인 구현 시 제거해야할 로직임
   async componentWillUnmount() {

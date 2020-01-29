@@ -8,9 +8,7 @@ import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 // import Test1 from "../test/Test1";
-import Test2 from "../test/Test2";
 import AppConfig from "../screens/main/AppConfig";
-
 import { colors } from "../styles/styles";
 
 // 드로우 네비게이션 상단 컴포넌트(로그인 상태)
@@ -23,9 +21,8 @@ class DrawerContent extends React.Component {
   async componentWillMount() {
     try {
       const name = await AsyncStorage.getItem("user_name");
-      // if (name == "noneName") name = "";
-      if (name == null) name = "비회원";
-      this.userName = name;
+      if (name === null) this.userName = "비회원";
+      else this.userName = name;
     } catch (e) {
       console.log(e.message);
     }
