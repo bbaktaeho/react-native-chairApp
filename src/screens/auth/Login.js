@@ -3,6 +3,7 @@ import { View, StyleSheet, ImageBackground, Alert } from "react-native";
 import { Input, Text, Icon, Button, Image } from "react-native-elements";
 // import Icon from "react-native-vector-icons/FontAwesome";
 import { host } from "../../NET";
+import AuthButton from "../../components/AuthButton";
 
 const styles = StyleSheet.create({
   container: {
@@ -18,10 +19,8 @@ const styles = StyleSheet.create({
     width: "85%"
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between"
-  },
-  button: {}
+    width: "80%"
+  }
 });
 
 class Login extends React.Component {
@@ -96,25 +95,24 @@ class Login extends React.Component {
 
         <View style={styles.buttonContainer}>
           {!(this.state.email === "") && (
-            <Button
+            <AuthButton
               onPress={() => this.signIn()}
               title="로그인"
-              type="clear"
-            ></Button>
+              backColor="lightblue"
+            ></AuthButton>
           )}
           {this.state.email === "" && this.state.passwd === "" && (
-            <Button
-              onPress={() => this.props.navigation.navigate("MainNav")}
+            <AuthButton
               title="비회원 시작"
-              type="clear"
-            ></Button>
+              onPress={() => this.props.navigation.navigate("MainNav")}
+            ></AuthButton>
           )}
-
-          <Button
+          <View style={{ height: 10 }}></View>
+          <AuthButton
             onPress={() => this.props.navigation.navigate("SignUp")}
             title="회원가입"
-            type="clear"
-          ></Button>
+            backColor="lightgreen"
+          ></AuthButton>
         </View>
       </View>
     );
