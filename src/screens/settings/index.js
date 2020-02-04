@@ -16,15 +16,6 @@ class Set extends React.Component {
         },
 
         {
-          name: "블루투스 연결",
-          right: () => (
-            <Icon
-              name="arrow-forward"
-              onPress={() => props.navigation.navigate("Blue")}
-            ></Icon>
-          )
-        },
-        {
           name: "진동 설정",
           right: () => (
             <Icon
@@ -54,18 +45,6 @@ class Set extends React.Component {
                 rightElement={l.right}
               />
             ))}
-            {/* <Button
-            onPress={() => props.navigation.navigate("Bluet")}
-            title="블루투스 설정"
-          ></Button>
-          <Button
-            onPress={() => props.navigation.navigate("Not")}
-            title="진동 설정"
-          ></Button>
-          <Button
-            onPress={() => props.navigation.navigate("Vib")}
-            title="알림 설정"
-          ></Button> */}
           </ScrollView>
         </View>
       </View>

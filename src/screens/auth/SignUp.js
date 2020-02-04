@@ -1,8 +1,7 @@
 import React from "react";
-import { View, StyleSheet, ScrollView, Alert } from "react-native";
-import { Input, Text, Icon, Button } from "react-native-elements";
-import Toast from "@remobile/react-native-toast";
-
+import { View, StyleSheet, Alert } from "react-native";
+import { Input, Text, Icon } from "react-native-elements";
+import AuthButton from "../../components/AuthButton";
 import { host } from "../../NET";
 
 const styles = StyleSheet.create({
@@ -19,8 +18,7 @@ const styles = StyleSheet.create({
     paddingBottom: 35
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between"
+    width: "80%"
   },
   button: {}
 });
@@ -30,16 +28,30 @@ class SignUp extends React.Component {
     email: "",
     name: "",
     passwd: "",
-    checkPasswd: ""
+    checkPasswd: "",
+    signUpButton: false
   };
 
   onChangeText = (key, value) => {
     this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
   };
 
+  myAlert = message =>
+    Alert.alert("", message, [
+      {
+        text: "확인",
+        onPress: () => {
+          this.setState({ signUpButton: false });
+        }
+      }
+    ]);
+
   signUp = async () => {
+    this.setState({ signUpButton: true }); // 버튼 클릭 시 로딩
     const { email, name, passwd } = this.state;
-    if (!(email && name && passwd)) return Alert.alert("", "모두 입력하세요");
+    if (!(email && name && passwd)) {
+      return this.myAlert("모두 입력하세요");
+    }
     if (this.state.checkPasswd == this.state.passwd) {
       await fetch(host + "/api/auth/register", {
         method: "POST",
@@ -56,24 +68,38 @@ class SignUp extends React.Component {
         .then(resData => {
           const res = JSON.parse(resData._bodyInit);
           if (res.success) {
+            this.setState({ signUpButton: false });
             Alert.alert("", res.message, [
               {
                 text: "로그인",
                 onPress: () => this.props.navigation.navigate("Login")
               }
             ]);
-          } else Alert.alert("", res.message);
+          } else {
+            return this.myAlert(res.message);
+          }
         })
         .then(jsonData => {})
         .done();
-    } else Toast.showShortBottom("비밀번호 틀림");
+    } else {
+      return Alert.alert("", "비밀번호가 틀립니다", [
+        {
+          text: "확인",
+          onPress: () => {
+            this.setState({ signUpButton: false });
+          }
+        }
+      ]);
+    }
   };
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-          <Text h4>회원가입</Text>
+          <Text h4 style={{ color: "black" }}>
+            회원가입
+          </Text>
         </View>
 
         <View style={styles.inputContainer}>
@@ -122,17 +148,20 @@ class SignUp extends React.Component {
         </View>
 
         <View style={styles.buttonContainer}>
-          <Button
-            onPress={() => this.props.navigation.navigate("MainNav")}
-            title="비회원 시작"
-            type="clear"
-          ></Button>
+          <AuthButton
+            onPress={() => this.props.navigation.navigate("Login")}
+            title="로그인"
+            backColor="lightblue"
+          ></AuthButton>
 
-          <Button
+          <View style={{ height: 10 }}></View>
+
+          <AuthButton
             onPress={() => this.signUp()}
             title="가입하기"
-            type="clear"
-          ></Button>
+            loading={this.state.signUpButton}
+            backColor="lightgreen"
+          ></AuthButton>
         </View>
       </View>
     );
