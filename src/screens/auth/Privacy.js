@@ -1,5 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  TouchableHighlight,
+  Image,
+  Alert,
+  TouchableOpacity
+} from "react-native";
 import MyHeader from "../../components/MyHeader";
 
 //source={{uri: }}
@@ -15,15 +25,43 @@ export default class Privacy extends React.Component {
             style={styles.avatar}
             source={require("../../assets/Images/ex.png")}
           />
+
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>abc123</Text>
-              <Text style={styles.description}>정보</Text>
+            </View>
 
-              <TouchableOpacity style={styles.buttonContainer1}>
+            <View>
+              <TextInput
+                style={styles.inputtextsty}
+                placeholder="Email"
+                keyboardType="email-address"
+                underlineColorAndroid="black"
+                maxFontSizeMultiplier="50"
+                secureTextEntry={true}
+                onChangeText={email => this.setState({ email })}
+              />
+              <TextInput
+                style={styles.inputtextsty2}
+                placeholder="ID"
+                underlineColorAndroid="black"
+                maxFontSizeMultiplier="10"
+                secureTextEntry={true}
+              />
+              <TextInput
+                style={styles.inputtextsty2}
+                placeholder="PassWord"
+                underlineColorAndroid="black"
+                maxFontSizeMultiplier="10"
+                secureTextEntry={true}
+              />
+            </View>
+
+            <View style={styles.touchcontent}>
+              <TouchableOpacity style={styles.buttonContainer}>
                 <Text>수정하기</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonContainer2}>
+              <TouchableOpacity style={styles.buttonContainer}>
                 <Text>회원탈퇴</Text>
               </TouchableOpacity>
             </View>
@@ -52,7 +90,6 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 28,
-    color: "#FFFFFF",
     fontWeight: "600"
   },
   body: {
@@ -63,40 +100,46 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 30
   },
-  name: {
-    fontSize: 28,
-    color: "#696969",
-    fontWeight: "600"
-  },
-  info: {
-    fontSize: 16,
-    color: "#00BFFF",
-    marginTop: 10
-  },
-  description: {
-    fontSize: 16,
-    color: "#696969",
-    marginTop: 10,
-    textAlign: "center"
-  },
-  buttonContainer1: {
-    marginTop: 10,
+  buttonContainer: {
     height: 45,
-    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    width: 150,
+    borderRadius: 30,
+    marginHorizontal: 3,
+    backgroundColor: "gainsboro"
+  },
+  inputContainer: {
+    borderBottomColor: "#F5FCFF",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 30,
+    borderBottomWidth: 1,
+    width: 250,
+    height: 45,
     marginBottom: 20,
-    width: 150,
-    borderRadius: 30,
-    backgroundColor: "gainsboro"
-  },
-  buttonContainer2: {
-    height: 45,
     flexDirection: "row",
+    alignItems: "center"
+  },
+  inputtextsty: {
+    marginTop: 20,
+    marginLeft: 90,
+    width: 250,
+    height: 45,
     justifyContent: "center",
-    alignItems: "center",
-    width: 150,
-    borderRadius: 30,
-    backgroundColor: "gainsboro"
+    alignItems: "center"
+  },
+  inputtextsty2: {
+    marginTop: 10,
+    marginLeft: 90,
+    width: 250,
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  touchcontent: {
+    justifyContent: "center",
+    marginHorizontal: 30,
+    flexDirection: "row",
+    marginTop: 40
   }
 });
