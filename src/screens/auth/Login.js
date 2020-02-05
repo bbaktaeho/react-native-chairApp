@@ -49,7 +49,7 @@ class Login extends React.Component {
           message: res.message,
           accessToken: res.accessToken
         };
-        console.log(loginData);
+        // console.log(loginData);
 
         this.props.navigation.navigate("AuthLoading", loginData);
       } else Alert.alert(res.success, res.message);
