@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -16,10 +16,14 @@ import MyHeader from "../../components/MyHeader";
 //source={{uri: }}
 
 export default class Privacy extends React.Component {
-  state = {
-    email,
-    name
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      name: ""
+    };
+  }
+
   //will-rendering-did
   //생명주기 사용으로 렌더링, 따로 함수 불러올거면 그 함수 안에 this.setState선언해야 렌더링 가능
   async componentWillMount() {
@@ -56,7 +60,16 @@ export default class Privacy extends React.Component {
     // });
   }
 
+  //
+  onChangeText = (key, value) => {
+    this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
+  };
+
   render() {
+    const { email, name } = this.state;
+
+    // const [value, onChangeText] = React.useState("Useless Placeholder");
+
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="내 정보"></MyHeader>
@@ -69,7 +82,7 @@ export default class Privacy extends React.Component {
 
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>abc123</Text>
+              <Text style={styles.name}>{name}</Text>
             </View>
 
             <View>
@@ -79,23 +92,33 @@ export default class Privacy extends React.Component {
                 keyboardType="email-address"
                 underlineColorAndroid="black"
                 maxFontSizeMultiplier="50"
-                secureTextEntry={true}
-                onChangeText={email => this.setState({ email })}
-              />
+                //
+                onChangeText={val => {
+                  this.onChangeText("email", val);
+                }}
+                value={email}
+              >
+                <Text></Text>
+              </TextInput>
+
               <TextInput
                 style={styles.inputtextsty2}
-                placeholder="ID"
+                placeholder="Name"
                 underlineColorAndroid="black"
                 maxFontSizeMultiplier="10"
-                secureTextEntry={true}
-              />
+              >
+                <Text>{name}</Text>
+              </TextInput>
+
               <TextInput
                 style={styles.inputtextsty2}
                 placeholder="PassWord"
                 underlineColorAndroid="black"
                 maxFontSizeMultiplier="10"
                 secureTextEntry={true}
-              />
+              >
+                <Text>0123456789</Text>
+              </TextInput>
             </View>
 
             <View style={styles.touchcontent}>
