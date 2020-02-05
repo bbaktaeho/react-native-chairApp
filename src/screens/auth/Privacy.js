@@ -8,13 +8,54 @@ import {
   TouchableHighlight,
   Image,
   Alert,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import MyHeader from "../../components/MyHeader";
 
 //source={{uri: }}
 
 export default class Privacy extends React.Component {
+  state = {
+    email,
+    name
+  };
+  //will-rendering-did
+  //생명주기 사용으로 렌더링, 따로 함수 불러올거면 그 함수 안에 this.setState선언해야 렌더링 가능
+  async componentWillMount() {
+    //accountShow();
+    this.state.email = await AsyncStorage.getItem("user_email");
+    this.state.name = await AsyncStorage.getItem("user_name");
+  }
+
+  async accountShow() {
+    // const email = await AsyncStorage.getItem("user_email");
+    // const name = await AsyncStorage.getItem("user_name");
+    // this.setState({email,name});
+    // fetch(host + "/api/auth/account", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     email: this.state.email,
+    //   })//바디 : 바디에 써서 서버로 보내는 것
+    // }).then(resData => {
+    //   const res = JSON.parse(resData._bodyInit);
+    //   if (res.success) {
+    //     let loginData = {
+    //       email: res.email,
+    //       name: res.name,
+    //       message: res.message,
+    //       accessToken: res.accessToken
+    //     };
+    //     // console.log(loginData);
+    //     this.props.navigation.navigate("AuthLoading", loginData);
+    //   } else Alert.alert(res.success, res.message);
+    // });
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>

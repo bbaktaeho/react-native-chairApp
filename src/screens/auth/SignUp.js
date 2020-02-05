@@ -53,7 +53,7 @@ class SignUp extends React.Component {
       return this.myAlert("모두 입력하세요");
     }
     if (this.state.checkPasswd == this.state.passwd) {
-      await fetch(host + "/api/auth/register", {
+      await fetch(host + "/api/auth/signup", {
         method: "POST",
         headers: {
           Accept: "application/json",
