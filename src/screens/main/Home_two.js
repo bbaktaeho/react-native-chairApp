@@ -67,34 +67,36 @@ export default class Home_two extends Component {
       let seat = [];
       if (global.connected) {
         // 블루투스 모듈 연결이 성공했을 때
-        BluetoothSerial.readEvery(
-          (data, intervalId) => {
-            splitData = data.split(",");
-            vib = splitData[2];
-            global.vib = vib;
-            back = splitData[1].split("^");
-            seat = splitData[0].split("^");
-            for (i in backData) {
-              if (i == 3) backData[i].data = parseInt(back[i].substring(0, 3));
-              else backData[i].data = parseInt(back[i]);
-            }
-            for (i in seatData) seatData[i].data = parseInt(seat[i]);
+        BluetoothSerial.read((data, subscription) => {
+          splitData = data.split(",");
+          vib = splitData[2];
+          global.vib = vib;
+          back = splitData[1].split("^");
+          seat = splitData[0].split("^");
+          for (i in backData) {
+            if (i == 3) backData[i].data = parseInt(back[i].substring(0, 3));
+            else backData[i].data = parseInt(back[i]);
+          }
+          for (i in seatData) seatData[i].data = parseInt(seat[i]);
 
-            this.setState({ backData, seatData });
-
-            if (this.imBoredNow && intervalId) {
-              clearInterval(intervalId);
-            }
-          },
-          1500,
-          "\r\n"
-        );
+          this.setState({ backData, seatData });
+          if (this.imBoredNow && subscription) {
+            BluetoothSerial.removeSubscription(subscription);
+          }
+        }, "\r\n");
       } else {
         // 블루투스 모듈 연결이 실패했을 때
       }
     } catch (err) {
       console.log(err.message);
     }
+  }
+
+  map1(x) {
+    return ((x - 0) * (255 - 0)) / (1000 - 0) + 0;
+  }
+  map2(x) {
+    return ((x - 0) * (255 - 0)) / (400 - 0) + 0;
   }
 
   render() {
@@ -118,9 +120,8 @@ export default class Home_two extends Component {
                     <View
                       style={{
                         width: "45%",
-                        backgroundColor: `rgb(${(
-                          (e.data % 9) *
-                          15
+                        backgroundColor: `rgb(${this.map1(
+                          e.data
                         ).toString()}, 0, 0)`,
                         height: 100,
                         borderWidth: 1,
@@ -142,9 +143,8 @@ export default class Home_two extends Component {
                     <View
                       style={{
                         width: "45%",
-                        backgroundColor: `rgb(${(
-                          (e.data % 9) *
-                          15
+                        backgroundColor: `rgb(${this.map1(
+                          e.data
                         ).toString()}, 0, 0)`,
                         height: 100,
                         borderWidth: 1,
@@ -171,9 +171,8 @@ export default class Home_two extends Component {
                       style={{
                         width: "14%",
                         height: 40,
-                        backgroundColor: `rgb(${(
-                          (e.data % 9) *
-                          15
+                        backgroundColor: `rgb(${this.map2(
+                          e.data
                         ).toString()}, 0, 0)`,
                         borderWidth: 1,
                         borderColor: "black"
@@ -190,15 +189,14 @@ export default class Home_two extends Component {
                 }}
               >
                 {seatData
-                  .filter(e => e.id > 6 && e.id <= 20)
+                  .filter(e => e.id > 6 && e.id <= 21)
                   .map(e => (
                     <View
                       style={{
                         width: "5%",
                         height: 40,
-                        backgroundColor: `rgb(${(
-                          (e.data % 9) *
-                          15
+                        backgroundColor: `rgb(${this.map2(
+                          e.data
                         ).toString()}, 0, 0)`,
                         borderWidth: 1,
                         borderColor: "black"
@@ -211,15 +209,14 @@ export default class Home_two extends Component {
                 style={{ flexDirection: "row", justifyContent: "space-around" }}
               >
                 {seatData
-                  .filter(e => e.id > 20)
+                  .filter(e => e.id > 21)
                   .map(e => (
                     <View
                       style={{
                         width: "7%",
                         height: 40,
-                        backgroundColor: `rgb(${(
-                          (e.data % 9) *
-                          15
+                        backgroundColor: `rgb(${this.map2(
+                          e.data
                         ).toString()}, 0, 0)`,
                         borderWidth: 1,
                         borderColor: "black"
