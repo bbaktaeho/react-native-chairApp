@@ -11,6 +11,7 @@ import {
   TouchableOpacity,
   AsyncStorage
 } from "react-native";
+import { Input } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
 
 //source={{uri: }}
@@ -60,7 +61,6 @@ export default class Privacy extends React.Component {
     // });
   }
 
-  //
   onChangeText = (key, value) => {
     this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
   };
@@ -86,39 +86,39 @@ export default class Privacy extends React.Component {
             </View>
 
             <View>
-              <TextInput
+              <Input
                 style={styles.inputtextsty}
-                placeholder="Email"
-                keyboardType="email-address"
-                underlineColorAndroid="black"
-                maxFontSizeMultiplier="50"
-                //
+                label="Email"
+                disabled={true}
                 onChangeText={val => {
                   this.onChangeText("email", val);
                 }}
                 value={email}
+                inputComponent="dksdkf"
               >
                 <Text></Text>
-              </TextInput>
+              </Input>
 
-              <TextInput
+              <Input
                 style={styles.inputtextsty2}
                 placeholder="Name"
-                underlineColorAndroid="black"
-                maxFontSizeMultiplier="10"
+                label="Name"
+                onChangeText={val => {
+                  this.onChangeText("name", val);
+                }}
+                value={name}
               >
-                <Text>{name}</Text>
-              </TextInput>
+                <Text></Text>
+              </Input>
 
-              <TextInput
+              <Input
                 style={styles.inputtextsty2}
-                placeholder="PassWord"
-                underlineColorAndroid="black"
-                maxFontSizeMultiplier="10"
+                placeholder="Password"
+                label="Password"
                 secureTextEntry={true}
               >
                 <Text>0123456789</Text>
-              </TextInput>
+              </Input>
             </View>
 
             <View style={styles.touchcontent}>
