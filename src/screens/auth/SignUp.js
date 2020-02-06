@@ -97,7 +97,7 @@ class SignUp extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-          <Text h4 style={{ color: "black" }}>
+          <Text h3 style={{ color: "black" }}>
             회원가입
           </Text>
         </View>
@@ -148,14 +148,6 @@ class SignUp extends React.Component {
         </View>
 
         <View style={styles.buttonContainer}>
-          <AuthButton
-            onPress={() => this.props.navigation.navigate("Login")}
-            title="로그인"
-            backColor="lightblue"
-          ></AuthButton>
-
-          <View style={{ height: 10 }}></View>
-
           <AuthButton
             onPress={() => this.signUp()}
             title="가입하기"
