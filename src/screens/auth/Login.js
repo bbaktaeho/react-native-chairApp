@@ -26,10 +26,12 @@ const styles = StyleSheet.create({
 class Login extends React.Component {
   state = {
     email: "",
-    passwd: ""
+    passwd: "",
+    loginButton: false
   };
 
   signIn = async () => {
+    this.setState({ loginButton: true });
     await fetch(host + "/api/auth/login", {
       method: "POST",
       headers: {
@@ -49,10 +51,18 @@ class Login extends React.Component {
           message: res.message,
           accessToken: res.accessToken
         };
-        // console.log(loginData);
-
+        this.setState({ loginButton: false });
         this.props.navigation.navigate("AuthLoading", loginData);
-      } else Alert.alert(res.success, res.message);
+      } else {
+        Alert.alert(res.success, res.message, [
+          {
+            text: "확인",
+            onPress: () => {
+              this.setState({ loginButton: false });
+            }
+          }
+        ]);
+      }
     });
   };
 
@@ -99,6 +109,7 @@ class Login extends React.Component {
               onPress={() => this.signIn()}
               title="로그인"
               backColor="lightblue"
+              loading={this.state.loginButton}
             ></AuthButton>
           )}
           {this.state.email === "" && this.state.passwd === "" && (

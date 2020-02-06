@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  ActivityIndicator
-} from "react-native";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { BarIndicator } from "react-native-indicators";
 
 const styles = StyleSheet.create({
   authButton: {
@@ -29,7 +25,9 @@ const AuthButton = ({
     {!loading && (
       <Text style={{ color: "black", fontWeight: "bold" }}>{title}</Text>
     )}
-    {loading && <ActivityIndicator></ActivityIndicator>}
+    {loading && (
+      <BarIndicator color="rgb(255,255,255)" size={30}></BarIndicator>
+    )}
   </TouchableOpacity>
 );
 

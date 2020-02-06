@@ -1,5 +1,6 @@
 import React from "react";
-import { View, ActivityIndicator, AsyncStorage } from "react-native";
+import { View, AsyncStorage } from "react-native";
+import { PacmanIndicator } from "react-native-indicators";
 import Toast from "@remobile/react-native-toast";
 
 export default class AuthLoading extends React.Component {
@@ -35,7 +36,7 @@ export default class AuthLoading extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large"></ActivityIndicator>
+        <PacmanIndicator size={50}></PacmanIndicator>
       </View>
     );
   }
