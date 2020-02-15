@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Input, Text, Icon } from "react-native-elements";
 import AuthButton from "../../components/AuthButton";
-import { host } from "../../NET";
+import URL from "../../NET";
 
 const styles = StyleSheet.create({
   container: {
@@ -48,12 +48,12 @@ class SignUp extends React.Component {
 
   signUp = async () => {
     this.setState({ signUpButton: true }); // 버튼 클릭 시 로딩
-    const { email, name, passwd } = this.state;
+    const { email, name, passwd, checkPasswd, passwd } = this.state;
     if (!(email && name && passwd)) {
       return this.myAlert("모두 입력하세요");
     }
-    if (this.state.checkPasswd == this.state.passwd) {
-      await fetch(host + "/api/auth/signup", {
+    if (checkPasswd == passwd) {
+      await fetch(URL.signup, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -71,7 +71,7 @@ class SignUp extends React.Component {
             this.setState({ signUpButton: false });
             Alert.alert("", res.message, [
               {
-                text: "로그인",
+                text: "로그인하러 가기",
                 onPress: () => this.props.navigation.navigate("Login")
               }
             ]);

@@ -7,7 +7,7 @@ export default AuthNav = createStackNavigator(
     Login: {
       screen: Login,
       navigationOptions: ({ navigation }) => ({
-        header: null
+        header: () => {}
       })
     },
     SignUp: {

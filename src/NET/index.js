@@ -1,2 +1,7 @@
-export const host = "https://chair-communication.herokuapp.com";
-// 24시간 배포 완료
+const host = "https://chair-communication.herokuapp.com";
+export default URL = {
+  login: host + "/user/login",
+  signup: host + "/user/signup",
+  account: host + "/user/account",
+  withdrawal: host + "/user/withdrawal"
+};

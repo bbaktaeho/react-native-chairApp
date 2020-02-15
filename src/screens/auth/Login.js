@@ -1,8 +1,7 @@
 import React from "react";
-import { View, StyleSheet, ImageBackground, Alert } from "react-native";
-import { Input, Text, Icon, Button, Image } from "react-native-elements";
-// import Icon from "react-native-vector-icons/FontAwesome";
-import { host } from "../../NET";
+import { View, StyleSheet, Alert } from "react-native";
+import { Input, Icon, Image } from "react-native-elements";
+import URL from "../../NET";
 import AuthButton from "../../components/AuthButton";
 
 const styles = StyleSheet.create({
@@ -32,7 +31,7 @@ class Login extends React.Component {
 
   signIn = async () => {
     this.setState({ loginButton: true });
-    await fetch(host + "/api/auth/login", {
+    await fetch(URL.login, {
       method: "POST",
       headers: {
         Accept: "application/json",
