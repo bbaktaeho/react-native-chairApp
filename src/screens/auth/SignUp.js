@@ -19,11 +19,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: "80%"
-  },
-  button: {}
+  }
 });
 
-class SignUp extends React.Component {
+export default class SignUp extends React.Component {
   state = {
     email: "",
     name: "",
@@ -159,5 +158,3 @@ class SignUp extends React.Component {
     );
   }
 }
-
-export default SignUp;
