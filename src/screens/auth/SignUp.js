@@ -47,7 +47,7 @@ export default class SignUp extends React.Component {
 
   signUp = async () => {
     this.setState({ signUpButton: true }); // 버튼 클릭 시 로딩
-    const { email, name, passwd, checkPasswd, passwd } = this.state;
+    const { email, name, passwd, checkPasswd } = this.state;
     if (!(email && name && passwd)) {
       return this.myAlert("모두 입력하세요");
     }
