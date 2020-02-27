@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { View, Text, ScrollView, Image, AsyncStorage } from "react-native";
 import { createDrawerNavigator, DrawerItems } from "react-navigation";
-import { Avatar, Button } from "react-native-elements";
+import { Avatar, Button, Icon } from "react-native-elements";
 
 // import Detail from "../screens/main/Detail";
 import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
-// import Test1 from "../test/Test1";
 import AppConfig from "../screens/main/AppConfig";
 import { colors } from "../styles/styles";
 
@@ -62,63 +61,34 @@ export default MainNav = createDrawerNavigator(
   {
     Home: {
       screen: HomeNav,
-
       navigationOptions: {
         drawerLabel: "홈",
-        drawerIcon: ({ tintColor }) => (
-          <Image
-            source={require("../assets/Images/home.png")}
-            resizeMode="contain"
-            style={{ width: 25, height: 25, tintColor: tintColor }}
-          />
-        )
+        drawerIcon: () => <Icon name="home" size={25} />
       }
     },
+
     Privacy: {
       screen: Privacy,
-      navigationOptions: ({ navigation }) => ({
+      navigationOptions: {
         drawerLabel: "내 정보",
-
-        drawerIcon: ({ tintColor }) => (
-          <Image
-            source={require("../assets/Images/privarcy.png")}
-            resizeMode="contain"
-            style={{ width: 25, height: 25, tintColor: tintColor }}
-          />
-        ),
-        headerTitle: (
-          <View style={{ alignItems: "center", flex: 1 }}>
-            <Text style={{ fontSize: 16, color: "black" }}>개인정보</Text>
-          </View>
-        ),
-        headerStyle: {
-          backgroundColor: colors.header
-        }
-      })
+        drawerIcon: () => <Icon name="user" size={25} type="font-awesome" />
+      }
     },
+
     Setting: {
       screen: SettingNav,
       navigationOptions: {
         drawerLabel: "설정",
-        drawerIcon: ({ tintColor }) => (
-          <Image
-            source={require("../assets/Images/setting.png")}
-            resizeMode="contain"
-            style={{ width: 25, height: 25, tintColor: tintColor }}
-          />
-        )
+        drawerIcon: () => <Icon name="cog" size={25} type="font-awesome" />
       }
     },
+
     Appinfo: {
       screen: AppConfig,
       navigationOptions: {
         drawerLabel: "앱 정보",
-        drawerIcon: ({ tintColor }) => (
-          <Image
-            source={require("../assets/Images/info.png")}
-            resizeMode="contain"
-            style={{ width: 25, height: 25, tintColor: tintColor }}
-          />
+        drawerIcon: () => (
+          <Icon name="info-circle" size={25} type="font-awesome" />
         )
       }
     }

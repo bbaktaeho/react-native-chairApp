@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
 import Divider from "react-native-divider";
-import { Overlay } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
 
 export default class AppConfig extends Component {
@@ -42,20 +41,6 @@ export default class AppConfig extends Component {
             으로 알려줍니다.
           </Text>
         </View>
-        {/**/}
-        <Overlay isVisible={true} overlayBackgroundColor="lightpink">
-          <Text>overlay!!</Text>
-        </Overlay>
-        {/**/}
-        <Overlay
-          isVisible={true}
-          windowBackgroundColor="rgba(255, 255, 255, .5)"
-          overlayBackgroundColor="gray"
-          width="auto"
-          height="auto"
-        >
-          <Text>Hello!!!!!!!!!!!!!!!!!!!</Text>
-        </Overlay>
       </View>
     );
   }

@@ -94,7 +94,6 @@ export default class Privacy extends React.Component {
                   this.onChangeText("email", val);
                 }}
                 value={email}
-                inputComponent="dksdkf"
               >
                 <Text></Text>
               </Input>
@@ -117,7 +116,7 @@ export default class Privacy extends React.Component {
                 label="Password"
                 secureTextEntry={true}
               >
-                <Text>0123456789</Text>
+                <Text>0123857</Text>
               </Input>
             </View>
 
