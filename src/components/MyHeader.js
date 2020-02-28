@@ -25,7 +25,7 @@ const MyHeader = props => {
         text: props.title,
         style: { color: "black" }
       }}
-      rightComponent={<LogoutMenu />}
+      rightComponent={<LogoutMenu navigation={props.navigation} />}
       backgroundColor={colors.header}
     />
   );
