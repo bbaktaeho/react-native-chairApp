@@ -78,7 +78,6 @@ export default class Home_two extends Component {
             else backData[i].data = parseInt(back[i]);
           }
           for (i in seatData) seatData[i].data = parseInt(seat[i]);
-
           this.setState({ backData, seatData });
           if (this.imBoredNow && subscription) {
             BluetoothSerial.removeSubscription(subscription);
@@ -93,14 +92,16 @@ export default class Home_two extends Component {
   }
 
   map1(x) {
-    return ((x - 0) * (255 - 0)) / (1000 - 0) + 0;
+    return 255 - ((x - 0) * (255 - 0)) / (1000 - 0) + 0;
   }
+
   map2(x) {
-    return ((x - 0) * (255 - 0)) / (400 - 0) + 0;
+    return 255 - ((x - 0) * (255 - 0)) / (400 - 0) + 0;
   }
 
   render() {
     const { backData, seatData } = this.state;
+
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="센서"></MyHeader>
@@ -120,9 +121,9 @@ export default class Home_two extends Component {
                     <View
                       style={{
                         width: "45%",
-                        backgroundColor: `rgb(${this.map1(
+                        backgroundColor: `rgb(255, ${this.map1(
                           e.data
-                        ).toString()}, 0, 0)`,
+                        ).toString()} , ${this.map1(e.data).toString()})`,
                         height: 100,
                         borderWidth: 1,
                         borderColor: "black"
@@ -143,9 +144,9 @@ export default class Home_two extends Component {
                     <View
                       style={{
                         width: "45%",
-                        backgroundColor: `rgb(${this.map1(
+                        backgroundColor: `rgb(255, ${this.map1(
                           e.data
-                        ).toString()}, 0, 0)`,
+                        ).toString()} , ${this.map1(e.data).toString()})`,
                         height: 100,
                         borderWidth: 1,
                         borderColor: "black"
@@ -171,9 +172,9 @@ export default class Home_two extends Component {
                       style={{
                         width: "14%",
                         height: 40,
-                        backgroundColor: `rgb(${this.map2(
+                        backgroundColor: `rgb(255, ${this.map2(
                           e.data
-                        ).toString()}, 0, 0)`,
+                        ).toString()} , ${this.map2(e.data).toString()})`,
                         borderWidth: 1,
                         borderColor: "black"
                       }}
@@ -195,9 +196,9 @@ export default class Home_two extends Component {
                       style={{
                         width: "5%",
                         height: 40,
-                        backgroundColor: `rgb(${this.map2(
+                        backgroundColor: `rgb(255, ${this.map2(
                           e.data
-                        ).toString()}, 0, 0)`,
+                        ).toString()} , ${this.map2(e.data).toString()})`,
                         borderWidth: 1,
                         borderColor: "black"
                       }}
@@ -215,9 +216,9 @@ export default class Home_two extends Component {
                       style={{
                         width: "7%",
                         height: 40,
-                        backgroundColor: `rgb(${this.map2(
+                        backgroundColor: `rgb(255, ${this.map2(
                           e.data
-                        ).toString()}, 0, 0)`,
+                        ).toString()} , ${this.map2(e.data).toString()})`,
                         borderWidth: 1,
                         borderColor: "black"
                       }}

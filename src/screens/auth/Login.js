@@ -118,7 +118,7 @@ class Login extends React.Component {
             <AuthButton
               title="비회원 시작"
               backColor="#CEAEA7"
-              onPress={() => this.props.navigation.navigate("MainNav")}
+              onPress={() => this.props.navigation.navigate("Guide")}
             ></AuthButton>
           )}
           <View>
