@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.53",
+    "@react-native-community/masked-view": "^0.1.6",
     "@remobile/react-native-toast": "^1.0.7",
     "d3-array": "^1.2.0",
     "d3-scale": "^1.0.6",

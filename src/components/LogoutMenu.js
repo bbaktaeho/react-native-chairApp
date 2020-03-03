@@ -5,8 +5,8 @@ import { Icon } from "react-native-elements";
 const LogoutMenu = props => {
   return (
     <Icon
-      name="log-out"
-      size={20}
+      name="power"
+      size={22}
       type="feather"
       onPress={() => {
         Alert.alert(

@@ -1,24 +1,24 @@
 import React from "react";
 import { View, StyleSheet, Alert } from "react-native";
-import { Input, Text, Icon } from "react-native-elements";
+import { Input, Text, Icon, Image } from "react-native-elements";
 import AuthButton from "../../components/AuthButton";
 import URL from "../../NET";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center"
   },
   logoContainer: {
-    paddingBottom: 35
+    marginTop: 35
   },
   inputContainer: {
-    width: "85%",
-    paddingBottom: 35
+    width: "90%",
+    marginTop: 30
   },
   buttonContainer: {
-    width: "80%"
+    width: "85%",
+    marginTop: 50
   }
 });
 
@@ -96,42 +96,39 @@ export default class SignUp extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-          <Text h3 style={{ color: "black" }}>
-            회원가입
-          </Text>
+          <Image
+            source={require("../../assets/Images/chair_font.png")}
+            style={{ width: 200, height: 100 }}
+          />
         </View>
-
         <View style={styles.inputContainer}>
           <Input
-            label="Email"
             onChangeText={val => {
               this.onChangeText("email", val);
             }}
             value={this.state.email}
-            containerStyle={{ paddingBottom: 10 }}
-            placeholder="email@address.com"
-            leftIcon={<Icon name="mail" color="black" />}
+            containerStyle={{ paddingBottom: 20 }}
+            placeholder="이메일 입력"
+            leftIcon={<Icon name="mail" color="gray" />}
           />
           <Input
-            label="Name"
             onChangeText={val => {
               this.onChangeText("name", val);
             }}
             value={this.state.name}
-            containerStyle={{ paddingBottom: 10 }}
-            placeholder="name"
-            leftIcon={<Icon name="person" color="black" />}
+            containerStyle={{ paddingBottom: 20 }}
+            placeholder="이름 입력"
+            leftIcon={<Icon name="person" color="gray" />}
           />
           <Input
-            label="Password"
             onChangeText={val => {
               this.onChangeText("passwd", val);
             }}
             value={this.state.passwd}
-            containerStyle={{ paddingBottom: 10 }}
-            placeholder="password"
+            containerStyle={{ paddingBottom: 20 }}
+            placeholder="비밀번호 입력"
             secureTextEntry={true}
-            leftIcon={<Icon name="lock" color="black" />}
+            leftIcon={<Icon name="lock" color="gray" />}
           />
 
           <Input
@@ -139,10 +136,9 @@ export default class SignUp extends React.Component {
               this.onChangeText("checkPasswd", val);
             }}
             value={this.state.checkPasswd}
-            label="Re-Enter Password"
-            placeholder="re_enter password"
+            placeholder="비밀번호 재입력"
             secureTextEntry={true}
-            leftIcon={<Icon name="lock" color="black" />}
+            leftIcon={<Icon name="lock" color="gray" />}
           />
         </View>
 
@@ -151,7 +147,7 @@ export default class SignUp extends React.Component {
             onPress={() => this.signUp()}
             title="가입하기"
             loading={this.state.signUpButton}
-            backColor="lightgreen"
+            backColor="#C8A480"
           ></AuthButton>
         </View>
       </View>

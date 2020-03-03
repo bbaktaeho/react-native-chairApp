@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { Text, View, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import { Input, Icon, Image } from "react-native-elements";
 import URL from "../../NET";
 import AuthButton from "../../components/AuthButton";
@@ -15,10 +15,17 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     paddingBottom: 35,
-    width: "85%"
+    width: "90%"
   },
   buttonContainer: {
-    width: "80%"
+    width: "88%"
+  },
+  touchableContainer: {
+    marginTop: 30
+  },
+  text: {
+    fontStyle: "italic",
+    color: "#CEAEA7"
   }
 });
 
@@ -80,14 +87,13 @@ class Login extends React.Component {
         </View>
         <View style={styles.inputContainer}>
           <Input
-            label="Email"
             onChangeText={val => {
               this.onChangeText("email", val);
             }}
             value={this.state.email}
-            containerStyle={{ paddingBottom: 10 }}
-            placeholder="email@address.com"
-            leftIcon={<Icon name="mail" color="black" />}
+            containerStyle={{ paddingBottom: 13 }}
+            placeholder="이메일"
+            leftIcon={<Icon name="mail" color="gray" />}
           />
 
           <Input
@@ -95,10 +101,9 @@ class Login extends React.Component {
               this.onChangeText("passwd", val);
             }}
             value={this.state.passwd}
-            label="Password"
-            placeholder="password"
+            placeholder="비밀번호"
             secureTextEntry={true}
-            leftIcon={<Icon name="lock" color="black" />}
+            leftIcon={<Icon name="lock" color="gray" />}
           />
         </View>
 
@@ -107,22 +112,34 @@ class Login extends React.Component {
             <AuthButton
               onPress={() => this.signIn()}
               title="로그인"
-              backColor="lightblue"
+              backColor="#CEAEA7"
               loading={this.state.loginButton}
             ></AuthButton>
           )}
           {this.state.email === "" && this.state.passwd === "" && (
             <AuthButton
               title="비회원 시작"
+              backColor="#CEAEA7"
               onPress={() => this.props.navigation.navigate("MainNav")}
             ></AuthButton>
           )}
-          <View style={{ height: 10 }}></View>
+          <View>
+            <Text></Text>
+          </View>
           <AuthButton
             onPress={() => this.props.navigation.navigate("SignUp")}
             title="회원가입"
-            backColor="lightgreen"
+            backColor="#C8A480"
           ></AuthButton>
+        </View>
+
+        <View>
+          <TouchableOpacity
+            style={styles.touchableContainer}
+            onPress={() => this.props.navigation.navigate("ResetPassword")}
+          >
+            <Text style={styles.text}>Forgot your password?</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

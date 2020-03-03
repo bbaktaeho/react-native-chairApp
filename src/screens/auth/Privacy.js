@@ -1,34 +1,19 @@
-import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button,
-  TouchableHighlight,
-  Image,
-  Alert,
-  TouchableOpacity,
-  AsyncStorage
-} from "react-native";
-import { Input } from "react-native-elements";
+import React from "react";
+import { StyleSheet, Text, View, Image, AsyncStorage } from "react-native";
+import { Input, Icon } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
+import AuthButton from "../../components/AuthButton";
 
 //source={{uri: }}
 
 export default class Privacy extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      name: ""
-    };
-  }
+  state = {
+    email: "",
+    name: "",
+    password: ""
+  };
 
-  //will-rendering-did
-  //생명주기 사용으로 렌더링, 따로 함수 불러올거면 그 함수 안에 this.setState선언해야 렌더링 가능
   async componentWillMount() {
-    //accountShow();
     this.state.email = await AsyncStorage.getItem("user_email");
     this.state.name = await AsyncStorage.getItem("user_name");
   }
@@ -62,72 +47,41 @@ export default class Privacy extends React.Component {
   }
 
   onChangeText = (key, value) => {
-    this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
+    this.setState({ [key]: value });
   };
 
   render() {
-    const { email, name } = this.state;
-
-    // const [value, onChangeText] = React.useState("Useless Placeholder");
+    const { email, name, Password } = this.state;
 
     return (
-      <View style={{ flex: 1 }}>
-        <MyHeader navigation={this.props.navigation} title="내 정보"></MyHeader>
+      <View style={styles.container}>
         <View style={styles.container}>
+          <MyHeader
+            navigation={this.props.navigation}
+            title="내 정보"
+          ></MyHeader>
           <View style={styles.header}></View>
           <Image
             style={styles.avatar}
             source={require("../../assets/Images/ex.png")}
           />
+        </View>
 
-          <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              <Text style={styles.name}>{name}</Text>
-            </View>
+        <View View style={styles.container}>
+          <Text>안녕</Text>
+          <View style={styles.inputContainer}>
+            <Input
+              onChangeText={val => {
+                this.onChangeText("email", val);
+              }}
+              value={this.state.email}
+              containerStyle={{ paddingBottom: 13 }}
+              placeholder="이메일"
+            />
+          </View>
 
-            <View>
-              <Input
-                style={styles.inputtextsty}
-                label="Email"
-                disabled={true}
-                onChangeText={val => {
-                  this.onChangeText("email", val);
-                }}
-                value={email}
-              >
-                <Text></Text>
-              </Input>
-
-              <Input
-                style={styles.inputtextsty2}
-                placeholder="Name"
-                label="Name"
-                onChangeText={val => {
-                  this.onChangeText("name", val);
-                }}
-                value={name}
-              >
-                <Text></Text>
-              </Input>
-
-              <Input
-                style={styles.inputtextsty2}
-                placeholder="Password"
-                label="Password"
-                secureTextEntry={true}
-              >
-                <Text>0123857</Text>
-              </Input>
-            </View>
-
-            <View style={styles.touchcontent}>
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>수정하기</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>회원탈퇴</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.buttonContainer}>
+            <AuthButton title="수정하기" backColor="#C8A480"></AuthButton>
           </View>
         </View>
       </View>
@@ -136,6 +90,9 @@ export default class Privacy extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   header: {
     backgroundColor: "gainsboro",
     height: 200
@@ -149,7 +106,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: "center",
     position: "absolute",
-    marginTop: 130
+    marginTop: 230
   },
   name: {
     fontSize: 28,
@@ -163,46 +120,52 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 30
   },
-  buttonContainer: {
-    height: 45,
+  imageContainer: {
+    marginTop: 20
+  },
+
+  inputContainer: {
     justifyContent: "center",
     alignItems: "center",
-    width: 150,
-    borderRadius: 30,
-    marginHorizontal: 3,
-    backgroundColor: "gainsboro"
+    marginTop: 50,
+    paddingBottom: 35,
+    width: "90%"
   },
-  inputContainer: {
-    borderBottomColor: "#F5FCFF",
-    backgroundColor: "#FFFFFF",
-    borderRadius: 30,
-    borderBottomWidth: 1,
-    width: 250,
-    height: 45,
-    marginBottom: 20,
-    flexDirection: "row",
-    alignItems: "center"
+  buttonContainer: {
+    width: "88%"
   },
-  inputtextsty: {
-    marginTop: 20,
-    marginLeft: 90,
-    width: 250,
-    height: 45,
-    justifyContent: "center",
-    alignItems: "center"
+  touchableContainer: {
+    marginTop: 30
   },
-  inputtextsty2: {
-    marginTop: 10,
-    marginLeft: 90,
-    width: 250,
-    height: 45,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  touchcontent: {
-    justifyContent: "center",
-    marginHorizontal: 30,
-    flexDirection: "row",
-    marginTop: 40
+  text: {
+    fontStyle: "italic",
+    color: "#CEAEA7"
   }
 });
+
+{
+  /* <View style={styles.body}>
+          <View style={styles.bodyContent}>
+            <Text style={styles.name}>{name}</Text>
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Input
+              onChangeText={val => {
+                this.onChangeText("email", val);
+              }}
+              value={this.state.email}
+              containerStyle={{ paddingBottom: 13 }}
+              placeholder="이메일"
+            />
+
+            <Input
+              onChangeText={val => {
+                this.onChangeText("password", val);
+              }}
+              value={this.state.passwd}
+              placeholder="비밀번호"
+              secureTextEntry={true}
+            />
+          </View> */
+}

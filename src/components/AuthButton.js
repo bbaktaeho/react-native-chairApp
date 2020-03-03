@@ -4,7 +4,7 @@ import { BarIndicator } from "react-native-indicators";
 
 const styles = StyleSheet.create({
   authButton: {
-    borderRadius: 30,
+    borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
@@ -22,9 +22,7 @@ const AuthButton = ({
     style={[styles.authButton, { backgroundColor: backColor }]}
     onPress={onPress}
   >
-    {!loading && (
-      <Text style={{ color: "black", fontWeight: "bold" }}>{title}</Text>
-    )}
+    {!loading && <Text style={{ color: "white" }}>{title}</Text>}
     {loading && (
       <BarIndicator color="rgb(255,255,255)" size={30}></BarIndicator>
     )}
