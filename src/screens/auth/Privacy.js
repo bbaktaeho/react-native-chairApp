@@ -1,8 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, View, Image, AsyncStorage } from "react-native";
-import { Input, Icon } from "react-native-elements";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  AsyncStorage,
+  ScrollView,
+  TouchableOpacity
+} from "react-native";
+import { Input } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
-import AuthButton from "../../components/AuthButton";
 
 //source={{uri: }}
 
@@ -54,44 +61,80 @@ export default class Privacy extends React.Component {
     const { email, name, Password } = this.state;
 
     return (
-      <View style={styles.container}>
-        <View style={styles.container}>
-          <MyHeader
-            navigation={this.props.navigation}
-            title="내 정보"
-          ></MyHeader>
-          <View style={styles.header}></View>
-          <Image
-            style={styles.avatar}
-            source={require("../../assets/Images/ex.png")}
-          />
-        </View>
-
-        <View View style={styles.container}>
-          <Text>안녕</Text>
-          <View style={styles.inputContainer}>
-            <Input
-              onChangeText={val => {
-                this.onChangeText("email", val);
-              }}
-              value={this.state.email}
-              containerStyle={{ paddingBottom: 13 }}
-              placeholder="이메일"
+      <ScrollView>
+        <View style={styles.container1}>
+          <View style={styles.container1}>
+            <MyHeader
+              navigation={this.props.navigation}
+              title="내 정보"
+            ></MyHeader>
+            <View style={styles.header}></View>
+            <Image
+              style={styles.avatar}
+              source={require("../../assets/Images/ex.png")}
             />
           </View>
 
-          <View style={styles.buttonContainer}>
-            <AuthButton title="수정하기" backColor="#C8A480"></AuthButton>
+          <View style={styles.container2}>
+            <View style={styles.nameContainer}>
+              <Text style={{ fontSize: 23, fontWeight: "bold" }}>안녕</Text>
+            </View>
+
+            <View style={styles.inputContainer}>
+              <Input
+                onChangeText={val => {
+                  this.onChangeText("email", val);
+                }}
+                value={this.state.email}
+                containerStyle={{ paddingBottom: 13 }}
+                leftIcon={<Text>이메일ㅤㅤ</Text>}
+              ></Input>
+
+              <Input
+                onChangeText={val => {
+                  this.onChangeText("name", val);
+                }}
+                value={this.state.email}
+                containerStyle={{ paddingBottom: 13 }}
+                leftIcon={<Text>이름ㅤㅤㅤ</Text>}
+              ></Input>
+
+              <Input
+                onChangeText={val => {
+                  this.onChangeText("password", val);
+                }}
+                secureTextEntry={true}
+                value={this.state.email}
+                containerStyle={{ paddingBottom: 13 }}
+                leftIcon={<Text>비밀번호ㅤ</Text>}
+              >
+                <Text>123456789</Text>
+              </Input>
+            </View>
+
+            <View style={styles.touchcontent}>
+              <TouchableOpacity style={styles.buttonContainer}>
+                <Text style={{ color: "white" }}>수정하기</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.buttonContainer}>
+                <Text style={{ color: "white" }}>회원탈퇴</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container1: {
     flex: 1
+  },
+  container2: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   },
   header: {
     backgroundColor: "gainsboro",
@@ -106,66 +149,32 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: "center",
     position: "absolute",
-    marginTop: 230
+    marginTop: 200
   },
-  name: {
-    fontSize: 28,
-    fontWeight: "600"
+  nameContainer: {
+    marginTop: 50
   },
   body: {
     marginTop: 40
   },
-  bodyContent: {
-    flex: 1,
-    alignItems: "center",
-    padding: 30
-  },
   imageContainer: {
     marginTop: 20
   },
-
   inputContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 50,
     paddingBottom: 35,
-    width: "90%"
+    width: "80%",
+    marginTop: 20
   },
   buttonContainer: {
-    width: "88%"
+    justifyContent: "center",
+    alignItems: "center",
+    width: "38%",
+    height: 45,
+    borderRadius: 10,
+    marginHorizontal: 5,
+    backgroundColor: "#C8A480"
   },
-  touchableContainer: {
-    marginTop: 30
-  },
-  text: {
-    fontStyle: "italic",
-    color: "#CEAEA7"
+  touchcontent: {
+    flexDirection: "row"
   }
 });
-
-{
-  /* <View style={styles.body}>
-          <View style={styles.bodyContent}>
-            <Text style={styles.name}>{name}</Text>
-          </View>
-
-          <View style={styles.inputContainer}>
-            <Input
-              onChangeText={val => {
-                this.onChangeText("email", val);
-              }}
-              value={this.state.email}
-              containerStyle={{ paddingBottom: 13 }}
-              placeholder="이메일"
-            />
-
-            <Input
-              onChangeText={val => {
-                this.onChangeText("password", val);
-              }}
-              value={this.state.passwd}
-              placeholder="비밀번호"
-              secureTextEntry={true}
-            />
-          </View> */
-}

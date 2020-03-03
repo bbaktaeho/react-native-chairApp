@@ -1,8 +1,20 @@
 import React, { Component } from "react";
-import { Alert } from "react-native";
+import { Alert, BackHandler } from "react-native";
 import { Icon } from "react-native-elements";
 
 const LogoutMenu = props => {
+  logout_removeItem = async () => {
+    // await AsyncStorage.removeItem("token");
+
+    props.navigation.navigate("AuthNav");
+  };
+
+  exit_removeItem = async () => {
+    // await AsyncStorage.removeItem("token");
+
+    BackHandler.exitApp();
+  };
+
   return (
     <Icon
       name="power"
@@ -16,11 +28,11 @@ const LogoutMenu = props => {
             { text: "취소", style: "cancel" },
             {
               text: "로그아웃",
-              onPress: () => props.navigation.navigate("AuthNav")
+              onPress: () => this.logout_removeItem()
             },
             {
               text: "종료",
-              onPress: () => press2
+              onPress: () => this.exit_removeItem()
             }
           ],
           {

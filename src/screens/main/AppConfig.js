@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
-import Divider from "react-native-divider";
+import { Divider } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
 
 export default class AppConfig extends Component {
@@ -23,18 +23,20 @@ export default class AppConfig extends Component {
             {"\n"}
           </Text>
         </View>
-        <Divider>버전 정보</Divider>
+        <Divider />
         <View>
-          <Text style={styles.s11}>{"\n"}Version.1.0.0</Text>
+          <Text style={styles.s11}>{"\n"}버전 정보</Text>
           <Text style={styles.s2}>
+            {"\n"}Version.1.0.0{"\n"}
             {"\n"}로그인 버그 수정, 내 자세 예측 기능 추가.{"\n"}
             {"\n"}
             {"\n"}
             {"\n"}
           </Text>
         </View>
-        <Divider>의자소통 정보</Divider>
+        <Divider />
         <View>
+          <Text style={styles.s11}>{"\n"}의자소통정보</Text>
           <Text style={styles.s2}>
             {"\n"}바른 자세를 유지하고 싶은 사용자들에게 도움을 주는 어플{"\n"}
             리케이션으로, 불량 자세를 감지하여 의자 진동이나 push알림{"\n"}
@@ -66,6 +68,7 @@ const styles = StyleSheet.create({
   },
   s11: {
     marginLeft: 30,
+    color: "silver",
     fontWeight: "bold",
     fontSize: 16
   }

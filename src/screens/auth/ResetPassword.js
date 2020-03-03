@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ToastAndroid } from "react-native";
 import { Input, Icon } from "react-native-elements";
 import AuthButton from "../../components/AuthButton";
+import URL from "../../NET";
 
 const styles = StyleSheet.create({
   container: {
@@ -31,6 +32,29 @@ export default class ResetPassword extends Component {
     this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
   };
 
+  changePassword = async () => {
+    const { email, name } = this.state;
+    await fetch(URL.password, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        name: name
+      })
+    }).then(resData => {
+      const res = JSON.parse(resData._bodyInit);
+      if (res.success) {
+        console.log("비밀번호 변경 성공");
+        this.props.navigation.navigate("AuthNav");
+      } else {
+        ToastAndroid.show("다시 입력해주세요", ToastAndroid.SHORT);
+      }
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -56,7 +80,11 @@ export default class ResetPassword extends Component {
         </View>
 
         <View style={styles.buttonContainer}>
-          <AuthButton title="확인" backColor="#C8A480"></AuthButton>
+          <AuthButton
+            title="확인"
+            backColor="#C8A480"
+            onPress={() => this.changePassword()}
+          ></AuthButton>
         </View>
       </View>
     );
