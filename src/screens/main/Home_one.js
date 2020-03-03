@@ -6,11 +6,13 @@ import {
   ToastAndroid,
   BackHandler,
   ScrollView,
-  Button
+  Image
 } from "react-native";
 // import { Card } from "react-native-elements";
 // import Toast from "@remobile/react-native-toast";
 import { connect } from "react-redux";
+
+import Swiper from "react-native-swiper";
 
 import MyHeader from "../../components/MyHeader";
 
