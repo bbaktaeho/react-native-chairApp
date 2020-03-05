@@ -11,6 +11,7 @@ import { Input } from "react-native-elements";
 import Tabs from "react-native-tabs";
 import MyHeader from "../../components/MyHeader";
 import AuthButton from "../../components/AuthButton";
+import URL from "../../NET";
 
 export default class Privacy extends Component {
   constructor(props) {

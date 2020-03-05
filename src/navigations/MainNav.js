@@ -3,28 +3,44 @@ import { View, Text, ScrollView, Image, AsyncStorage } from "react-native";
 import { createDrawerNavigator, DrawerItems } from "react-navigation";
 import { Avatar, Button, Icon } from "react-native-elements";
 
-// import Detail from "../screens/main/Detail";
 import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 import AppConfig from "../screens/main/AppConfig";
-import { colors } from "../styles/styles";
+
+import URL from "../NET";
 
 // 드로우 네비게이션 상단 컴포넌트(로그인 상태)
 class DrawerContent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.userName = "";
-  }
+  state = {
+    username: "안녕"
+  };
 
-  async componentWillMount() {
-    try {
-      const name = await AsyncStorage.getItem("user_name");
-      if (name === null) this.userName = "비회원";
-      else this.userName = name;
-    } catch (e) {
-      console.log(e.message);
-    }
+  requestInfo = async () => {
+    const token = await AsyncStorage.getItem("token");
+    await fetch(URL.account, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        token: token
+      })
+    }).then(resData => {
+      const res = JSON.parse(resData._bodyInit);
+      console.log(res);
+
+      if (res.success) {
+        if (res.user.name == null) {
+          this.setState({ username: "비회원" });
+        } else this.setState({ username: res.user.name });
+      } else console.log(e.message);
+    });
+  };
+
+  UNSAFE_componentWillMount() {
+    this.requestInfo();
   }
 
   render() {
@@ -48,7 +64,7 @@ class DrawerContent extends React.Component {
             source={require("../assets/Images/ex.png")}
           />
           <Text style={{ paddingRight: 130, fontSize: 23, color: "black" }}>
-            {this.userName}
+            {this.state.username}
           </Text>
         </View>
         <DrawerItems {...this.props} />

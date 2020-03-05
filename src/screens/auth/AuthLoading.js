@@ -4,24 +4,19 @@ import { PacmanIndicator } from "react-native-indicators";
 import Toast from "@remobile/react-native-toast";
 
 export default class AuthLoading extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   async componentDidMount() {
     try {
       await AsyncStorage.setItem(
-        "user_email",
-        this.props.navigation.getParam("email", "noneEmail")
+        "message",
+        this.props.navigation.getParam("message", "nonemessage")
       );
       await AsyncStorage.setItem(
-        "user_name",
-        this.props.navigation.getParam("name", "noneName")
+        "token",
+        this.props.navigation.getParam("token", "nonetoken")
       );
-      await AsyncStorage.setItem(
-        "accessToken",
-        this.props.navigation.getParam("accessToken", "noneAccessToken")
-      );
+      //loginData asyncstorage에 저장됨
+      console.log(await AsyncStorage.getItem("token"));
+
       setTimeout(() => {
         Toast.showShortBottom("로그인 성공");
         this.props.navigation.navigate("MainNav");
