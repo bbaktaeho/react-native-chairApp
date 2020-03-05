@@ -1,5 +1,5 @@
-const host = "https://chair-communication.herokuapp.com";
-//const host = "http://localhost:3333";
+//const host = "https://chair-communication.herokuapp.com";
+const host = "http://13.124.213.28:9000";
 
 export default URL = {
   login: host + "/user/login",

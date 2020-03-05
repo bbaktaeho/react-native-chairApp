@@ -6,7 +6,8 @@ import {
   ToastAndroid,
   BackHandler,
   ScrollView,
-  Image
+  Image,
+  AsyncStorage
 } from "react-native";
 // import { Card } from "react-native-elements";
 // import Toast from "@remobile/react-native-toast";
@@ -60,6 +61,7 @@ class Home_one extends Component {
   };
 
   render() {
+    // const aa = AsyncStorage.getItem(token);
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="홈 1"></MyHeader>

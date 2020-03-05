@@ -4,13 +4,14 @@ import { Icon } from "react-native-elements";
 
 const LogoutMenu = props => {
   logout_removeItem = async () => {
-    // await AsyncStorage.removeItem("token");
+    await AsyncStorage.removeItem("token");
 
     props.navigation.navigate("AuthNav");
+    console.log(token);
   };
 
   exit_removeItem = async () => {
-    // await AsyncStorage.removeItem("token");
+    await AsyncStorage.removeItem("token");
 
     BackHandler.exitApp();
   };
