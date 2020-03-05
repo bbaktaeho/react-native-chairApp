@@ -2,8 +2,6 @@
 import { combineReducers } from "redux";
 import bluetoothReducer from "./bluetoothReducer";
 
-const rootReducer = combineReducers({
-  bluetoothReducer
+export default combineReducers({
+  bluedata: bluetoothReducer
 });
-
-export default rootReducer;

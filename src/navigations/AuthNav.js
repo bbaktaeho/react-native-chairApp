@@ -3,6 +3,7 @@ import Login from "../screens/auth/Login";
 import SignUp from "../screens/auth/SignUp";
 import ResetPassword from "../screens/auth/ResetPassword";
 import Guide from "../screens/guide/Guide";
+import First_pos from "../screens/guide/First_pos";
 
 export default AuthNav = createStackNavigator(
   {
@@ -26,6 +27,12 @@ export default AuthNav = createStackNavigator(
     },
     Guide: {
       screen: Guide,
+      navigationOptions: ({ navigation }) => ({
+        header: () => {}
+      })
+    },
+    First_pos: {
+      screen: First_pos,
       navigationOptions: ({ navigation }) => ({
         header: () => {}
       })

@@ -11,6 +11,8 @@ import {
 // import { Card } from "react-native-elements";
 // import Toast from "@remobile/react-native-toast";
 import { connect } from "react-redux";
+import ActionCreator from "../../actions/index";
+import initStore from "../../store/index";
 
 import Swiper from "react-native-swiper";
 
@@ -79,10 +81,21 @@ const styles = StyleSheet.create({
   }
 });
 
-// 전역 state 를 참조할 수 있게 해주는 함수
-const mapStateToProps = state => ({
-  bluetooth: state.bluetoothReducer.bluetooth
-});
+function mapStateToProps(state) {
+  return {
+    backData: state.bluedata.backData,
+    seatData: state.bluedata.seatData
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    backchange: (num, da) => {
+      dispatch(ActionCreator.backchange(num, da));
+    },
+    seatchange: (num, da) => {
+      dispatch(ActionCreator, seatchange(num, da));
+    }
+  };
+}
 
-const mapDispatchToProps = {};
 export default connect(mapStateToProps, mapDispatchToProps)(Home_one);
