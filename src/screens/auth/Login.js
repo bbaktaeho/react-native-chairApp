@@ -1,5 +1,12 @@
 import React from "react";
-import { Text, View, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Alert,
+  TouchableOpacity,
+  AsyncStorage
+} from "react-native";
 import { Input, Icon, Image } from "react-native-elements";
 import URL from "../../NET";
 import AuthButton from "../../components/AuthButton";

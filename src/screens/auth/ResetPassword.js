@@ -34,7 +34,7 @@ export default class ResetPassword extends Component {
 
   changePassword = async () => {
     const { email, name } = this.state;
-    await fetch(URL.password, {
+    await fetch(URL.modify, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -48,7 +48,7 @@ export default class ResetPassword extends Component {
       const res = JSON.parse(resData._bodyInit);
       if (res.success) {
         console.log("비밀번호 변경 성공");
-        this.props.navigation.navigate("AuthNav");
+        this.props.navigation.navigate("Login");
       } else {
         ToastAndroid.show("다시 입력해주세요", ToastAndroid.SHORT);
       }

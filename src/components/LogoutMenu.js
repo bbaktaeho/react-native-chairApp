@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import { Alert, BackHandler } from "react-native";
+import { Alert, BackHandler, AsyncStorage } from "react-native";
 import { Icon } from "react-native-elements";
 
 const LogoutMenu = props => {
   logout_removeItem = async () => {
-    // await AsyncStorage.removeItem("token");
-
+    await AsyncStorage.removeItem("token");
+    await AsyncStorage.removeItem("message");
     props.navigation.navigate("AuthNav");
   };
 
   exit_removeItem = async () => {
-    // await AsyncStorage.removeItem("token");
-
+    await AsyncStorage.removeItem("token");
+    await AsyncStorage.removeItem("message");
     BackHandler.exitApp();
   };
 
