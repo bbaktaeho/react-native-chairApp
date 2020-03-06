@@ -2,6 +2,7 @@
 
 ```
 $ sudo npm link lib/
+: android rebuild project(android studio)
 $ react-native run-android
 ```
 
