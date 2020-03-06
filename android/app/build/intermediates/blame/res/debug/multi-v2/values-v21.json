@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/bbaktaeho/Desktop/testChairApp/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
+            "outputFile": "C:\\Users\\82103\\Documents\\jh\\gh\\chairApp\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
-                    "source": "/Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/d1a7a3c148a2aa34d9df004f32c051f1/res/values-v21/values-v21.xml",
+                    "source": "C:\\Users\\82103\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\d9e9e9b21deaaa2edfb6504844bd1264\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,19,20,21,22,24,26,27,28,29,30,32,34,36,38,40,42,43,48,50,52,53,54,56,58,59,60,61,62,63,107,110,154,157,160,162,164,166,169,171,174,175,176,179,180,181,182,183,184,187,188,190,192,194,196,200,202,203,204,205,207,211,213,215,216,217,218,219,221,222,223,233,234,235,247",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d7676e1e89ba3ae32cc2a7f75cf0d621/res/values-v21/values-v21.xml",
+                    "source": "C:\\Users\\82103\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\6a27f25558260fc24fbe9c05611d4a18\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

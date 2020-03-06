@@ -123,7 +123,7 @@ class Login extends React.Component {
           )}
           {this.state.email === "" && this.state.passwd === "" && (
             <AuthButton
-              title="비회원"
+              title="비회원 시작"
               backColor="#CEAEA7"
               onPress={() => this.props.navigation.navigate("Guide")}
             ></AuthButton>
