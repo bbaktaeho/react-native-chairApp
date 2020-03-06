@@ -1,6 +1,6 @@
 android/local.properties
 android/.gradle/
 android/app/build/
-android/app/app.iml
 android/.idea/
 lib/android/build/
+*.iml
