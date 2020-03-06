@@ -1,4 +1,0 @@
-#Fri Mar 06 17:05:24 KST 2020
-base.0=/Users/bbaktaeho/Desktop/testChairApp/android/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
-renamed.0=classes.dex
