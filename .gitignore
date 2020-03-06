@@ -4,4 +4,3 @@ android/app/build/
 android/app/app.iml
 android/.idea/
 lib/android/build/
-node_modules/@remobile/
