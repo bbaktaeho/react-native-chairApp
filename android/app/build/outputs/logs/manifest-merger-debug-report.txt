@@ -1,180 +1,180 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12
-MERGED from [:react-native-svg] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-svg/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-9:12
-MERGED from [:react-native-vector-icons] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-gesture-handler] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-bluetooth-serial-next] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-bluetooth-serial-next/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-15:12
-MERGED from [:@remobile_react-native-toast] /Users/bbaktaeho/Desktop/testChairApp/node_modules/@remobile/react-native-toast/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [com.facebook.react:react-native:0.57.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/react-native-0.57.0.aar/1dc42b1f48e6c4197b266e0960bfd619/AndroidManifest.xml:2:1-15:12
-MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/d1a7a3c148a2aa34d9df004f32c051f1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/11ac89d3864dfe2d762f2a523b78868c/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/973ed15b0715422b2f9373be9f435636/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/08cee14093bde8db012a6962346ffc25/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/e39f37052393b6a52da7c74a9016f4aa/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/6584367ac0cd2d451213bf3ed850e93c/AndroidManifest.xml:2:1-9:12
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/5801cd47973b5bc46f0822dcf5d5783a/AndroidManifest.xml:2:1-13:12
-MERGED from [org.webkit:android-jsc:r174650] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/fee2fc62f6bc57550f8244e3c9f26d44/AndroidManifest.xml:1:1-3:12
-MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/df169565610f0d53e047388f96af3342/AndroidManifest.xml:2:1-9:12
-MERGED from [com.android.support:support-fragment:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/1e8c602506a36c332571807ef326ece2/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/2f3685fd5eb20a07189a13945ab48ac9/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/171793cb2da10a2bfde388e218f2bdc8/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/b7fb5423f70e8271942317c7fc2b4695/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/7f458fe47aa1f644b96eca22bc98a99d/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d7676e1e89ba3ae32cc2a7f75cf0d621/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/87366b198ad8cd298a0d01ff633a1431/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/bd5086cd2c415afc7092fd504ef930ba/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/20c5fab3be4745b90c7d531f76a40fd5/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/eb5849a85f82540bea0fefab15d325ab/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12
+ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-svg] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-svg\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-vector-icons] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-vector-icons\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-gesture-handler] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-gesture-handler\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-bluetooth-serial-next] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-bluetooth-serial-next\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:@remobile_react-native-toast] C:\Users\82103\Documents\jh\chairApp\node_modules\@remobile\react-native-toast\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.react:react-native:0.57.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\react-native-0.57.0.aar\09cb6d2eb89bbc0a32f2d92048ab2080\AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\d9e9e9b21deaaa2edfb6504844bd1264\AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fresco:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\fresco-1.10.0.aar\61b781ada1ccb494c4c116f63dde4b30\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\imagepipeline-okhttp3-1.10.0.aar\3dc9cb4b211a710cf72244229793e58d\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\drawee-1.10.0.aar\1fcc04e86dc52369c68fb2d988506a18\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\imagepipeline-1.10.0.aar\1120af97001cfc4cf9ca676e831b0510\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\imagepipeline-base-1.10.0.aar\ce228cdd943e7b3ae401e252e4c6f462\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.5.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\soloader-0.5.1.aar\4d354d4e5afa0c75aa61d70e8b152930\AndroidManifest.xml:2:1-13:12
+MERGED from [org.webkit:android-jsc:r174650] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\android-jsc-r174650.aar\3627a9aa50b72ec4de8eeb3e005ed582\AndroidManifest.xml:1:1-3:12
+MERGED from [com.facebook.fresco:fbcore:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\fbcore-1.10.0.aar\db64f7e0c33b8a9e4ba37f4263635411\AndroidManifest.xml:2:1-9:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\ac98c8b5b5bfa1a35a75c47ba8ef446d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\86310916700ee27b2f244c6e32f99f0d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\1b375f195485cd4c92ee5215da8d27e8\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\191bbb1d5077ef5bfb108ed6fe121071\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\b8503f9075db6f6b6c6bff1c3e011615\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\6a27f25558260fc24fbe9c05611d4a18\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\91b6bdd4ee20f244f740dfdeba43df32\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\bbef99b706825fa887ace1391547b286\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ec7ce65ff2555360cf85802cb76b038a\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\caa1bea4a86925112194478d2cfab5ae\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12
 	package
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:2:5-26
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:2:5-26
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:11-69
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.INTERNET
-ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:4:5-67
+ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:4:5-67
 	android:name
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:4:22-64
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:4:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
-ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:5:5-77
-MERGED from [com.facebook.react:react-native:0.57.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/react-native-0.57.0.aar/1dc42b1f48e6c4197b266e0960bfd619/AndroidManifest.xml:11:5-78
-MERGED from [com.facebook.react:react-native:0.57.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/react-native-0.57.0.aar/1dc42b1f48e6c4197b266e0960bfd619/AndroidManifest.xml:11:5-78
+ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:5:5-77
+MERGED from [com.facebook.react:react-native:0.57.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\react-native-0.57.0.aar\09cb6d2eb89bbc0a32f2d92048ab2080\AndroidManifest.xml:11:5-78
+MERGED from [com.facebook.react:react-native:0.57.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\react-native-0.57.0.aar\09cb6d2eb89bbc0a32f2d92048ab2080\AndroidManifest.xml:11:5-78
 	android:name
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:5:22-75
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:5:22-75
 application
-ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:7:5-24:19
-MERGED from [com.facebook.react:react-native:0.57.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/react-native-0.57.0.aar/1dc42b1f48e6c4197b266e0960bfd619/AndroidManifest.xml:13:5-20
-MERGED from [com.facebook.react:react-native:0.57.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/react-native-0.57.0.aar/1dc42b1f48e6c4197b266e0960bfd619/AndroidManifest.xml:13:5-20
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/5801cd47973b5bc46f0822dcf5d5783a/AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/5801cd47973b5bc46f0822dcf5d5783a/AndroidManifest.xml:11:5-20
-MERGED from [org.webkit:android-jsc:r174650] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/fee2fc62f6bc57550f8244e3c9f26d44/AndroidManifest.xml:2:3-17
-MERGED from [org.webkit:android-jsc:r174650] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/fee2fc62f6bc57550f8244e3c9f26d44/AndroidManifest.xml:2:3-17
+ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:7:5-24:19
+MERGED from [com.facebook.react:react-native:0.57.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\react-native-0.57.0.aar\09cb6d2eb89bbc0a32f2d92048ab2080\AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.react:react-native:0.57.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\react-native-0.57.0.aar\09cb6d2eb89bbc0a32f2d92048ab2080\AndroidManifest.xml:13:5-20
+MERGED from [com.facebook.soloader:soloader:0.5.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\soloader-0.5.1.aar\4d354d4e5afa0c75aa61d70e8b152930\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.5.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\soloader-0.5.1.aar\4d354d4e5afa0c75aa61d70e8b152930\AndroidManifest.xml:11:5-20
+MERGED from [org.webkit:android-jsc:r174650] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\android-jsc-r174650.aar\3627a9aa50b72ec4de8eeb3e005ed582\AndroidManifest.xml:2:3-17
+MERGED from [org.webkit:android-jsc:r174650] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\android-jsc-r174650.aar\3627a9aa50b72ec4de8eeb3e005ed582\AndroidManifest.xml:2:3-17
 	android:label
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:9:7-39
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:9:7-39
 	android:icon
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:10:7-41
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:10:7-41
 	android:allowBackup
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:11:7-34
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:11:7-34
 	android:theme
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:12:7-38
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:12:7-38
 	android:name
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:8:7-38
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:8:7-38
 activity#com.example.MainActivity
-ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:13:7-22:18
+ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:13:7-22:18
 	android:label
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:15:9-41
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:15:9-41
 	android:windowSoftInputMode
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:17:9-51
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:17:9-51
 	android:configChanges
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:16:9-79
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:16:9-79
 	android:name
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:14:9-37
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:14:9-37
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:18:9-21:25
+ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:18:9-21:25
 action#android.intent.action.MAIN
-ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:19:13-65
+ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:19:13-65
 	android:name
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:19:21-62
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:19:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:20:13-73
+ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:20:13-73
 	android:name
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:20:23-70
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:20:23-70
 activity#com.facebook.react.devsupport.DevSettingsActivity
-ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:23:7-84
+ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:23:7-84
 	android:name
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:23:17-81
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:23:17-81
 uses-sdk
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-MERGED from [:react-native-svg] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-svg/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-svg] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-svg/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-vector-icons] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-vector-icons] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-gesture-handler] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-gesture-handler] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-gesture-handler/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-bluetooth-serial-next] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-bluetooth-serial-next/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-bluetooth-serial-next] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-bluetooth-serial-next/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:@remobile_react-native-toast] /Users/bbaktaeho/Desktop/testChairApp/node_modules/@remobile/react-native-toast/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:@remobile_react-native-toast] /Users/bbaktaeho/Desktop/testChairApp/node_modules/@remobile/react-native-toast/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.57.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/react-native-0.57.0.aar/1dc42b1f48e6c4197b266e0960bfd619/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.react:react-native:0.57.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/react-native-0.57.0.aar/1dc42b1f48e6c4197b266e0960bfd619/AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/d1a7a3c148a2aa34d9df004f32c051f1/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/d1a7a3c148a2aa34d9df004f32c051f1/AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/11ac89d3864dfe2d762f2a523b78868c/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fresco:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/fresco-1.10.0.aar/11ac89d3864dfe2d762f2a523b78868c/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/973ed15b0715422b2f9373be9f435636/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.10.0.aar/973ed15b0715422b2f9373be9f435636/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/08cee14093bde8db012a6962346ffc25/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:drawee:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/drawee-1.10.0.aar/08cee14093bde8db012a6962346ffc25/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/e39f37052393b6a52da7c74a9016f4aa/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.10.0.aar/e39f37052393b6a52da7c74a9016f4aa/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/6584367ac0cd2d451213bf3ed850e93c/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.10.0.aar/6584367ac0cd2d451213bf3ed850e93c/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/5801cd47973b5bc46f0822dcf5d5783a/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.soloader:soloader:0.5.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/soloader-0.5.1.aar/5801cd47973b5bc46f0822dcf5d5783a/AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/df169565610f0d53e047388f96af3342/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:fbcore:1.10.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/fbcore-1.10.0.aar/df169565610f0d53e047388f96af3342/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:support-fragment:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/1e8c602506a36c332571807ef326ece2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/1e8c602506a36c332571807ef326ece2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/2f3685fd5eb20a07189a13945ab48ac9/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/2f3685fd5eb20a07189a13945ab48ac9/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/171793cb2da10a2bfde388e218f2bdc8/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/171793cb2da10a2bfde388e218f2bdc8/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/b7fb5423f70e8271942317c7fc2b4695/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/b7fb5423f70e8271942317c7fc2b4695/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/7f458fe47aa1f644b96eca22bc98a99d/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/7f458fe47aa1f644b96eca22bc98a99d/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d7676e1e89ba3ae32cc2a7f75cf0d621/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/d7676e1e89ba3ae32cc2a7f75cf0d621/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/87366b198ad8cd298a0d01ff633a1431/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/87366b198ad8cd298a0d01ff633a1431/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/bd5086cd2c415afc7092fd504ef930ba/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/bd5086cd2c415afc7092fd504ef930ba/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/20c5fab3be4745b90c7d531f76a40fd5/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/20c5fab3be4745b90c7d531f76a40fd5/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/eb5849a85f82540bea0fefab15d325ab/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] /Users/bbaktaeho/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/eb5849a85f82540bea0fefab15d325ab/AndroidManifest.xml:20:5-44
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+MERGED from [:react-native-svg] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-svg\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-svg\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-vector-icons] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-vector-icons\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-vector-icons] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-vector-icons\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-gesture-handler\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-gesture-handler] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-gesture-handler\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-bluetooth-serial-next] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-bluetooth-serial-next\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-bluetooth-serial-next] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-bluetooth-serial-next\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:@remobile_react-native-toast] C:\Users\82103\Documents\jh\chairApp\node_modules\@remobile\react-native-toast\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:@remobile_react-native-toast] C:\Users\82103\Documents\jh\chairApp\node_modules\@remobile\react-native-toast\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.57.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\react-native-0.57.0.aar\09cb6d2eb89bbc0a32f2d92048ab2080\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.57.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\react-native-0.57.0.aar\09cb6d2eb89bbc0a32f2d92048ab2080\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\d9e9e9b21deaaa2edfb6504844bd1264\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\d9e9e9b21deaaa2edfb6504844bd1264\AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fresco:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\fresco-1.10.0.aar\61b781ada1ccb494c4c116f63dde4b30\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\fresco-1.10.0.aar\61b781ada1ccb494c4c116f63dde4b30\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\imagepipeline-okhttp3-1.10.0.aar\3dc9cb4b211a710cf72244229793e58d\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\imagepipeline-okhttp3-1.10.0.aar\3dc9cb4b211a710cf72244229793e58d\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\drawee-1.10.0.aar\1fcc04e86dc52369c68fb2d988506a18\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\drawee-1.10.0.aar\1fcc04e86dc52369c68fb2d988506a18\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\imagepipeline-1.10.0.aar\1120af97001cfc4cf9ca676e831b0510\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\imagepipeline-1.10.0.aar\1120af97001cfc4cf9ca676e831b0510\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\imagepipeline-base-1.10.0.aar\ce228cdd943e7b3ae401e252e4c6f462\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\imagepipeline-base-1.10.0.aar\ce228cdd943e7b3ae401e252e4c6f462\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.5.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\soloader-0.5.1.aar\4d354d4e5afa0c75aa61d70e8b152930\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.5.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\soloader-0.5.1.aar\4d354d4e5afa0c75aa61d70e8b152930\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fbcore:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\fbcore-1.10.0.aar\db64f7e0c33b8a9e4ba37f4263635411\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:1.10.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\fbcore-1.10.0.aar\db64f7e0c33b8a9e4ba37f4263635411\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\ac98c8b5b5bfa1a35a75c47ba8ef446d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\ac98c8b5b5bfa1a35a75c47ba8ef446d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\86310916700ee27b2f244c6e32f99f0d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\86310916700ee27b2f244c6e32f99f0d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\1b375f195485cd4c92ee5215da8d27e8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\1b375f195485cd4c92ee5215da8d27e8\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\191bbb1d5077ef5bfb108ed6fe121071\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\191bbb1d5077ef5bfb108ed6fe121071\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\b8503f9075db6f6b6c6bff1c3e011615\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\b8503f9075db6f6b6c6bff1c3e011615\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\6a27f25558260fc24fbe9c05611d4a18\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\6a27f25558260fc24fbe9c05611d4a18\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\91b6bdd4ee20f244f740dfdeba43df32\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\91b6bdd4ee20f244f740dfdeba43df32\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\bbef99b706825fa887ace1391547b286\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\bbef99b706825fa887ace1391547b286\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ec7ce65ff2555360cf85802cb76b038a\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ec7ce65ff2555360cf85802cb76b038a\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\caa1bea4a86925112194478d2cfab5ae\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\82103\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\caa1bea4a86925112194478d2cfab5ae\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.BLUETOOTH
-ADDED from [:react-native-bluetooth-serial-next] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-bluetooth-serial-next/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-68
+ADDED from [:react-native-bluetooth-serial-next] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-bluetooth-serial-next\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:5-68
 	android:name
-		ADDED from [:react-native-bluetooth-serial-next] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-bluetooth-serial-next/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:22-65
+		ADDED from [:react-native-bluetooth-serial-next] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-bluetooth-serial-next\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:11:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from [:react-native-bluetooth-serial-next] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-bluetooth-serial-next/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:5-74
+ADDED from [:react-native-bluetooth-serial-next] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-bluetooth-serial-next\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:5-74
 	android:name
-		ADDED from [:react-native-bluetooth-serial-next] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-bluetooth-serial-next/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:22-71
+		ADDED from [:react-native-bluetooth-serial-next] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-bluetooth-serial-next\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:12:22-71
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from [:react-native-bluetooth-serial-next] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-bluetooth-serial-next/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-81
+ADDED from [:react-native-bluetooth-serial-next] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-bluetooth-serial-next\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:13:5-81
 	android:name
-		ADDED from [:react-native-bluetooth-serial-next] /Users/bbaktaeho/Desktop/testChairApp/node_modules/react-native-bluetooth-serial-next/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:22-78
+		ADDED from [:react-native-bluetooth-serial-next] C:\Users\82103\Documents\jh\chairApp\node_modules\react-native-bluetooth-serial-next\android\build\intermediates\manifests\full\debug\AndroidManifest.xml:13:22-78
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-IMPLIED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+IMPLIED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/bbaktaeho/Desktop/testChairApp/android/app/src/main/AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
+IMPLIED from C:\Users\82103\Documents\jh\chairApp\android\app\src\main\AndroidManifest.xml:1:1-26:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE
