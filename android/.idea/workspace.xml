@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle____local_aars____Users_bbaktaeho_Desktop_testChairApp_node_modules_react_native_bluetooth_serial_next_android_libs_btsdk_jar_unspecified_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0_aar.xml" afterDir="false" />
@@ -37,6 +38,9 @@
       <change beforePath="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android/react-native-gesture-handler.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/react-native-svg/android/react-native-svg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/react-native-svg/android/react-native-svg.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android/react-native-vector-icons.iml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/../lib/android/react-native-bluetooth-serial-next.iml" beforeDir="false" />
+>>>>>>> adfd7a0197a26edb070fef01e4a55a5a0645299b
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,9 +49,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_27" />
+>>>>>>> adfd7a0197a26edb070fef01e4a55a5a0645299b
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -75,8 +82,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
+<<<<<<< HEAD
+      <pane id="AndroidView" />
+=======
+      <pane id="ProjectPane" />
+>>>>>>> adfd7a0197a26edb070fef01e4a55a5a0645299b
       <pane id="PackagesPane" />
       <pane id="ProjectPane" />
     </panes>
@@ -179,7 +191,11 @@
     <frame x="194" y="10" width="1120" height="800" extended-state="1" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.32924527" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.3298969" />
+>>>>>>> adfd7a0197a26edb070fef01e4a55a5a0645299b
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -192,7 +208,11 @@
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Build" order="5" visible="true" weight="0.32833582" />
+=======
+      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.32929516" />
+>>>>>>> adfd7a0197a26edb070fef01e4a55a5a0645299b
       <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />

@@ -7,10 +7,17 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
+<<<<<<< HEAD
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/../node_modules/@remobile/react-native-toast/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-bluetooth-serial-next/android" />
+=======
+            <option value="$PROJECT_DIR$/../../chairApp/lib/android" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/../node_modules/@remobile/react-native-toast/android" />
+>>>>>>> adfd7a0197a26edb070fef01e4a55a5a0645299b
             <option value="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-svg/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-vector-icons/android" />
