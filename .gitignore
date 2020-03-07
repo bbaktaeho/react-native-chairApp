@@ -11,4 +11,5 @@ node_modules/**/build/
 !node_modules/jest-docblock/build/
 !node_modules/react-devtools-core/build/
 !node_modules/d3-scale/build/
+!node_modules/d3-interpolate-path/build/
 *.iml
