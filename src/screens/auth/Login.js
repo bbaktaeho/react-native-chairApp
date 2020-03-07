@@ -133,7 +133,7 @@ class Login extends React.Component {
           </View>
           <AuthButton
             onPress={() => this.props.navigation.navigate("SignUp")}
-            title="마 가입해라!!"
+            title="기미짱"
             backColor="#C8A480"
           ></AuthButton>
         </View>
