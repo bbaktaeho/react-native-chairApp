@@ -8,6 +8,7 @@ SDK platforms -> Android 8.1 (Oreo) install
 
 ```
 $ sudo npm link lib/
+$ rm -rf lib/node_modules/base64-js lib/node_modules/buffer lib/node_modules/ieee754 lib/node_modules/regenerator-runtime
 : android rebuild project(android studio -> .../chairApp/android open!)
 $ react-native run-android
 ```
@@ -17,6 +18,6 @@ $ react-native run-android
 ```
 > npm link lib/
 > npm install @remobile/react-native-toast --save
-: android rebuild project(android studio -> .../chairApp/android open!)
+: android clean project && rebuild project(android studio -> .../chairApp/android open -> 상단탭 build)
 > react-native run-android
 ```
