@@ -4,4 +4,5 @@ android/app/build/
 android/.idea/
 lib/android/build/
 node_modules/**/build/
+!node_modules/jest-haste-map/build/
 *.iml
