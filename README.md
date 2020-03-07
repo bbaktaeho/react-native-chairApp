@@ -16,7 +16,6 @@ $ react-native run-android
 ## windows10
 
 ```
-> npm link lib/
 : android clean project && rebuild project(android studio -> .../chairApp/android open -> 상단탭 build)
 > react-native run-android
 ```
