@@ -3,4 +3,5 @@ android/.gradle/
 android/app/build/
 android/.idea/
 lib/android/build/
+node_modules/**/build/
 *.iml
