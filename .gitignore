@@ -5,4 +5,8 @@ android/.idea/
 lib/android/build/
 node_modules/**/build/
 !node_modules/jest-haste-map/build/
+!node_modules/jest-worker/build/
+!node_modules/jest-serializer/build/
+!node_modules/jest-react-native/build/
+!node_modules/jest-docblock/build/
 *.iml
