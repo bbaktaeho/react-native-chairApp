@@ -5,6 +5,7 @@ android/.idea/
 lib/android/build/
 node_modules/**/build/
 node_modules/.cache/@babel/register/
+node_modules/react-native/node_modules/.cache/@babel/register/
 !node_modules/jest-haste-map/build/
 !node_modules/jest-worker/build/
 !node_modules/jest-serializer/build/
