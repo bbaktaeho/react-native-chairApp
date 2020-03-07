@@ -17,7 +17,6 @@ $ react-native run-android
 
 ```
 > npm link lib/
-> npm install @remobile/react-native-toast --save
 : android clean project && rebuild project(android studio -> .../chairApp/android open -> 상단탭 build)
 > react-native run-android
 ```
