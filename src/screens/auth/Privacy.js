@@ -14,23 +14,49 @@ import AuthButton from "../../components/AuthButton";
 import URL from "../../NET";
 
 export default class Privacy extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { page: "first", email: "", name: "", password: "" };
-  }
+  state = {
+    page: "second",
+    email: "",
+    name: "",
+    password: "123456789",
+    chemail: "",
+    chname: "",
+    chpassword: ""
+  };
 
-  async componentWillMount() {
-    this.state.email = await AsyncStorage.getItem("user_email");
-    this.state.name = await AsyncStorage.getItem("user_name");
-  }
+  requestInfo = async () => {
+    const token = await AsyncStorage.getItem("token");
+    await fetch(URL.account, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        token: token
+      })
+    }).then(resData => {
+      const res = JSON.parse(resData._bodyInit);
+      console.log(res);
+
+      if (res.success) {
+        this.setState({ email: res.user.email, name: res.user.name });
+      } else {
+        this.setState({ email: "비회원", name: "비회원" });
+      }
+    });
+  };
 
   onChangeText = (key, value) => {
     this.setState({ [key]: value });
   };
 
-  render() {
-    // const { email, name, password, page } = this.state;
+  componentWillMount() {
+    this.requestInfo();
+  }
 
+  render() {
+    const { email, name, password } = this.state;
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -44,7 +70,7 @@ export default class Privacy extends Component {
                 style={styles.avatar}
                 source={require("../../assets/Images/ex.png")}
               />
-              <Text style={styles.textContainer}>이름</Text>
+              <Text style={styles.textContainer}>{name}</Text>
             </View>
           </View>
 
@@ -94,52 +120,41 @@ export default class Privacy extends Component {
               {this.state.page == "first" && (
                 <View>
                   <Input
-                    onChangeText={val => {
-                      this.onChangeText("email", val);
-                    }}
-                    value={this.state.email}
+                    disabled={true}
+                    value={email}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>이메일ㅤㅤ</Text>}
                   ></Input>
 
                   <Input
-                    onChangeText={val => {
-                      this.onChangeText("name", val);
-                    }}
-                    value={this.state.email}
+                    disabled={true}
+                    value={name}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>이름ㅤㅤㅤ</Text>}
                   ></Input>
 
                   <Input
-                    onChangeText={val => {
-                      this.onChangeText("password", val);
-                    }}
+                    disabled={true}
                     secureTextEntry={true}
-                    value={this.state.email}
+                    value={password}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>비밀번호ㅤ</Text>}
-                  >
-                    <Text>123456789</Text>
-                  </Input>
+                  ></Input>
                 </View>
               )}
               {this.state.page == "second" && (
                 <View>
                   <Input
-                    onChangeText={val => {
-                      this.onChangeText("email", val);
-                    }}
-                    value={this.state.email}
+                    disabled={true}
+                    value={email}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>현재 이메일ㅤㅤ</Text>}
                   ></Input>
 
                   <Input
                     onChangeText={val => {
-                      this.onChangeText("name", val);
+                      this.onChangeText("chemail", val);
                     }}
-                    value={this.state.email}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>변경 이메일ㅤㅤㅤ</Text>}
                   ></Input>
@@ -154,19 +169,17 @@ export default class Privacy extends Component {
               {this.state.page == "third" && (
                 <View>
                   <Input
-                    onChangeText={val => {
-                      this.onChangeText("email", val);
-                    }}
-                    value={this.state.email}
+                    disabled={true}
+                    value={password}
+                    secureTextEntry={true}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>현재 비밀번호ㅤㅤ</Text>}
                   ></Input>
 
                   <Input
                     onChangeText={val => {
-                      this.onChangeText("name", val);
+                      this.onChangeText("chpassword", val);
                     }}
-                    value={this.state.email}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>변경 비밀번호ㅤㅤㅤ</Text>}
                   ></Input>

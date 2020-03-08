@@ -65,7 +65,7 @@ export default class ResetPassword extends Component {
             }}
             value={this.state.email}
             containerStyle={{ paddingBottom: 20 }}
-            placeholder="이메일 입력이아아아ㅏ아야야아아앙"
+            placeholder="이메일 입력"
             leftIcon={<Icon name="mail" color="gray" />}
           />
           <Input

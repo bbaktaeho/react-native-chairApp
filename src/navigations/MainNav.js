@@ -32,10 +32,10 @@ class DrawerContent extends React.Component {
       console.log(res);
 
       if (res.success) {
-        if (res.user.name == null) {
-          this.setState({ username: "비회원" });
-        } else this.setState({ username: res.user.name });
-      } else console.log(e.message);
+        this.setState({ username: res.user.name });
+      } else {
+        this.setState({ username: "비회원" });
+      }
     });
   };
 
