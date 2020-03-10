@@ -93,18 +93,24 @@ class Bluete extends React.Component {
           global.vib = vib;
           back = splitData[1].split("^");
           seat = splitData[0].split("^");
-          for (var i = 1; i < 5; i++) {
+          for (var i = 0; i < 4; i++) {
             switch (i) {
+              case 0:
+                a = parseInt(back[i]);
               case 1:
-                a = parseInt(back[i - 1]);
+                b = parseInt(back[i]);
               case 2:
-                b = parseInt(back[i - 1]);
+                c = parseInt(back[i]);
               case 3:
-                c = parseInt(back[i - 1]);
-              case 4:
-                this.props.backchange(4, a, b, c, parseInt(back[i - 1]));
             }
           }
+          this.props.backchange(
+            a,
+            b,
+            c,
+            parseInt(back[3].substring(0, 3)),
+            seat
+          );
 
           if (this.imBoredNow && subscription) {
             BluetoothSerial.removeSubscription(subscription);
@@ -161,11 +167,11 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    backchange: (num, da, da2, da3, da4) => {
-      dispatch(ActionCreator.backchange(num, da, da2, da3, da4));
-    },
     seatchange: (num, da) => {
       dispatch(ActionCreator, seatchange(num, da));
+    },
+    backchange: (da, da2, da3, da4, da5) => {
+      dispatch(ActionCreator.backchange(da, da2, da3, da4, da5));
     }
   };
 }

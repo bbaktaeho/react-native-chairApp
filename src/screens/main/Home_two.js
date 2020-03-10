@@ -10,6 +10,7 @@ import {
 import { Card, Button } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
 import { Provider, connect } from "react-redux";
+import Pos from "../../screens/guide/Pos.js";
 import initStore from "../../store/index.js";
 import ActionCreator from "../../actions/index.js";
 
@@ -31,12 +32,13 @@ class Home_two extends Component {
   }
 
   render() {
+    const { backData, seatData } = this.props;
+
     return (
-      <Provider store={store}>
-        <View>
-          <Text></Text>
-        </View>
-      </Provider>
+      <View style={{ flex: 1 }}>
+        <MyHeader navigation={this.props.navigation} title="센서"></MyHeader>
+        <Pos></Pos>
+      </View>
     );
   }
 }
@@ -57,8 +59,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    backchange: (num, da, da2, da3, da4) => {
-      dispatch(ActionCreator.backchange(num, da, da2, da3, da4));
+    backchange: (da, da2, da3, da4, da5) => {
+      dispatch(ActionCreator.backchange(da, da2, da3, da4, da5));
     },
     seatchange: (num, da) => {
       dispatch(ActionCreator, seatchange(num, da));

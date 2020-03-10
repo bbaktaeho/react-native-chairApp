@@ -94,7 +94,7 @@ export default class SwiperComponent extends Component {
             <AuthButton
               title="측정하기"
               backColor="#CEAEA7"
-              onPress={() => this.props.navigation.navigate("MainNav")}
+              onPress={() => this.props.navigation.navigate("First_pos")}
             ></AuthButton>
           </View>
         </View>
