@@ -6,7 +6,9 @@ export default URL = {
   login: host + "/user/login",
   signup: host + "/user/signup",
   account: host + "/user/account",
+  emailmodify: host + "/user/emailmodify",
+  passwordmodify: host + "/user/passwordmodify",
   password: host + "/user/password",
-  withdrawal: host + "/user/withdrawal",
-  modify: host + "/modify"
+  modify: host + "/modify",
+  withdrawal: host + "/user/withdrawal"
 };

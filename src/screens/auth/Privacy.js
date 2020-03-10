@@ -15,7 +15,7 @@ import URL from "../../NET";
 
 export default class Privacy extends Component {
   state = {
-    page: "second",
+    page: "first",
     email: "",
     name: "",
     password: "123456789",
@@ -45,6 +45,10 @@ export default class Privacy extends Component {
         this.setState({ email: "비회원", name: "비회원" });
       }
     });
+  };
+
+  emailModify = async () => {
+    await fetch();
   };
 
   onChangeText = (key, value) => {
