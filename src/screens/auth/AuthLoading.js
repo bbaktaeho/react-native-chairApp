@@ -5,29 +5,26 @@ import Toast from "@remobile/react-native-toast";
 
 export default class AuthLoading extends React.Component {
   async componentDidMount() {
-    try {
-      await AsyncStorage.setItem(
-        "message",
-        this.props.navigation.getParam("message", "nonemessage")
-      );
-      await AsyncStorage.setItem(
-        "token",
-        this.props.navigation.getParam("token", "nonetoken")
-      );
-      //loginData asyncstorage에 저장됨
-      console.log(await AsyncStorage.getItem("token"));
+    const token = this.props.navigation.getParam("token", "nonetoken");
+    const check = this.props.navigation.getParam("check", "nonecheck");
 
-      setTimeout(() => {
-        Toast.showShortBottom("로그인 성공");
-        this.props.navigation.navigate("Guide");
-        // this.props.navigation.navigate("MainNav");
-      }, 1500);
+    try {
+      await AsyncStorage.setItem("token", token);
+      if (check == 0) {
+        setTimeout(() => {
+          Toast.showShortBottom("로그인 성공");
+          this.props.navigation.navigate("Guide");
+        }, 1500);
+      } else {
+        setTimeout(() => {
+          Toast.showShortBottom("로그인 성공");
+          this.props.navigation.navigate("MainNav");
+        }, 1500);
+      }
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   }
-
-  componentWillMount() {}
 
   render() {
     return (

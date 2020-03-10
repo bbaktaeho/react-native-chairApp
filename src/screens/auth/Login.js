@@ -60,8 +60,10 @@ class Login extends React.Component {
       if (res.success) {
         let loginData = {
           message: res.message,
-          token: res.token
+          token: res.data.token,
+          check: res.data.check
         };
+
         this.setState({ loginButton: false });
         this.props.navigation.navigate("AuthLoading", loginData);
       } else {

@@ -92,7 +92,7 @@ export default class SwiperComponent extends Component {
           <Text style={styles.text}>버튼을 눌러주세요</Text>
           <View style={styles.content4}>
             <AuthButton
-              title="측정하기"
+              title="의자소통 시작하기"
               backColor="#CEAEA7"
               onPress={() => this.props.navigation.navigate("First_pos")}
             ></AuthButton>
