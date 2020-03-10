@@ -159,7 +159,6 @@ class Pos extends Component {
               <Text>엉덩이쪽</Text>
             </Card>
           </View>
-          <View></View>
         </ScrollView>
       </View>
     );

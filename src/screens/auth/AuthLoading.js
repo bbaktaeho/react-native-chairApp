@@ -19,7 +19,8 @@ export default class AuthLoading extends React.Component {
 
       setTimeout(() => {
         Toast.showShortBottom("로그인 성공");
-        this.props.navigation.navigate("MainNav");
+        this.props.navigation.navigate("Guide");
+        // this.props.navigation.navigate("MainNav");
       }, 1500);
     } catch (e) {
       console.log(e);

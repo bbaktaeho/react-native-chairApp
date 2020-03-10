@@ -75,8 +75,6 @@ class Login extends React.Component {
         ]);
       }
     });
-
-    this.props.navigation.navigate("Guide");
   };
 
   onChangeText = (key, value) => {

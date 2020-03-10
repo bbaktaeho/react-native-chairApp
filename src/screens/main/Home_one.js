@@ -18,6 +18,7 @@ import initStore from "../../store/index";
 import Swiper from "react-native-swiper";
 
 import MyHeader from "../../components/MyHeader";
+import Pos2 from "../../screens/guide/Pos2.js";
 
 class Home_one extends Component {
   constructor(props) {
@@ -68,7 +69,9 @@ class Home_one extends Component {
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="홈 1"></MyHeader>
         <ScrollView>
-          <View style={styles.container}></View>
+          <View style={styles.container}>
+            <Pos2></Pos2>
+          </View>
         </ScrollView>
       </View>
     );

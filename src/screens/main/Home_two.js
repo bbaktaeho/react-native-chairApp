@@ -32,8 +32,6 @@ class Home_two extends Component {
   }
 
   render() {
-    const { backData, seatData } = this.props;
-
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="센서"></MyHeader>
