@@ -13,7 +13,7 @@ import URL from "../NET";
 // 드로우 네비게이션 상단 컴포넌트(로그인 상태)
 class DrawerContent extends React.Component {
   state = {
-    username: "안녕"
+    username: ""
   };
 
   requestInfo = async () => {

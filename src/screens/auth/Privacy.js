@@ -19,9 +19,8 @@ export default class Privacy extends Component {
     email: "",
     name: "",
     password: "123456789",
-    chemail: "",
-    chname: "",
-    chpassword: ""
+    newemail: "",
+    newpassword: ""
   };
 
   requestInfo = async () => {
@@ -37,8 +36,6 @@ export default class Privacy extends Component {
       })
     }).then(resData => {
       const res = JSON.parse(resData._bodyInit);
-      console.log(res);
-
       if (res.success) {
         this.setState({ email: res.user.email, name: res.user.name });
       } else {
@@ -47,8 +44,33 @@ export default class Privacy extends Component {
     });
   };
 
-  emailModify = async () => {
-    await fetch();
+  logout_removeItem = async props => {
+    await AsyncStorage.removeItem("token");
+    props.navigation.navigate("AuthNav");
+  };
+
+  emailmodify = async () => {
+    const token = await AsyncStorage.getItem("token");
+    const { newemail } = this.state;
+    fetch(URL.emailmodify, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        token: token,
+        email: newemail
+      })
+    }).then(resData => {
+      const res = JSON.parse(resData._bodyInit);
+      if (res.success) {
+        console.log(res.message);
+        this.logout_removeItem();
+      } else {
+        console.log(res.message);
+      }
+    });
   };
 
   onChangeText = (key, value) => {
@@ -157,14 +179,14 @@ export default class Privacy extends Component {
 
                   <Input
                     onChangeText={val => {
-                      this.onChangeText("chemail", val);
+                      this.onChangeText("newemail", val);
                     }}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>변경 이메일ㅤㅤㅤ</Text>}
                   ></Input>
 
                   <AuthButton
-                    onPress={() => this.props.navigation.navigate("AuthNav")}
+                    onPress={() => this.emailmodify()}
                     title="수정하기"
                     backColor="#C8A480"
                   ></AuthButton>
@@ -182,7 +204,7 @@ export default class Privacy extends Component {
 
                   <Input
                     onChangeText={val => {
-                      this.onChangeText("chpassword", val);
+                      this.onChangeText("newpassword", val);
                     }}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>변경 비밀번호ㅤㅤㅤ</Text>}
@@ -249,24 +271,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     marginTop: 25
   },
-  body: {
-    marginTop: 40
-  },
-  imageContainer: {
-    marginTop: 20
-  },
   inputContainer: {
     width: "80%",
     marginTop: 20
-  },
-  buttonContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: "38%",
-    height: 45,
-    borderRadius: 10,
-    marginHorizontal: 5,
-    backgroundColor: "#C8A480"
   },
   textContainer: {
     fontSize: 23,
