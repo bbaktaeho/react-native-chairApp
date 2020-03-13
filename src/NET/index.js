@@ -10,5 +10,6 @@ export default URL = {
   passwordmodify: host + "/user/passwordmodify",
   password: host + "/user/password",
   modify: host + "/modify",
-  withdrawal: host + "/user/withdrawal"
+  withdrawal: host + "/user/withdrawal",
+  check: host + "/user/login/check"
 };

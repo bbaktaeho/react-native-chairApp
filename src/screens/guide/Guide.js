@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, AsyncStorage } from "react-native";
 import { Image } from "react-native-elements";
 
 import Swiper from "react-native-swiper";
@@ -37,6 +37,29 @@ const styles = StyleSheet.create({
 });
 
 export default class SwiperComponent extends Component {
+  loginCheck = async () => {
+    const token = await AsyncStorage.getItem("token");
+    fetch(URL.check, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        token: token,
+        check: "1"
+      })
+    }).then(resData => {
+      const res = JSON.parse(resData._bodyInit);
+      if (res.success) {
+        console.log(res.message);
+        this.props.navigation.navigate("MainNav");
+      } else {
+        console.log(res.message);
+      }
+    });
+  };
+
   render() {
     return (
       <Swiper
@@ -94,9 +117,9 @@ export default class SwiperComponent extends Component {
           <Text style={styles.text}>버튼을 눌러주세요</Text>
           <View style={styles.content4}>
             <AuthButton
+              onPress={() => this.loginCheck()}
               title="의자소통 시작하기"
               backColor="#CEAEA7"
-              onPress={() => this.props.navigation.navigate("MainNav")}
             ></AuthButton>
           </View>
         </View>
