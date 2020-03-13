@@ -9,6 +9,15 @@ import {
   Image,
   AsyncStorage
 } from "react-native";
+import { Path } from "react-native-svg";
+import {
+  PieChart,
+  AreaChart,
+  Grid,
+  StackedAreaChart,
+  YAxis
+} from "react-native-svg-charts";
+import * as shape from "d3-shape";
 
 import MyHeader from "../../components/MyHeader";
 

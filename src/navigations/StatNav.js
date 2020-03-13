@@ -19,15 +19,27 @@ export default StatNav = createBottomTabNavigator(
         const { routeName } = navigation.state;
 
         if (routeName === "일일") {
-          return <Text>일일</Text>;
+          return (
+            <Text style={{ color: (focused && "#46c3ad") || "#888" }}>
+              일일
+            </Text>
+          );
+        } else if (routeName === "월간") {
+          return (
+            <Text style={{ color: (focused && "#46c3ad") || "#888" }}>
+              월간
+            </Text>
+          );
+        } else if (routeName === "총") {
+          return (
+            <Text style={{ color: (focused && "#46c3ad") || "#888" }}>총</Text>
+          );
         }
-        return (
-          <Text style={{ color: (focused && "#46c3ad") || "#888" }}></Text>
-        );
       }
     }),
     lazy: false,
     tabBarOptions: {
+      showLabel: false,
       activeTintColor: "#46c3ad",
       inactiveTintColor: "#888"
     }

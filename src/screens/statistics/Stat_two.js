@@ -23,7 +23,9 @@ class Stat_two extends Component {
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="통 계"></MyHeader>
         <ScrollView>
-          <View style={styles.container}></View>
+          <View style={styles.container}>
+            <Text>2</Text>
+          </View>
         </ScrollView>
       </View>
     );
