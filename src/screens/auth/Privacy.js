@@ -18,7 +18,7 @@ export default class Privacy extends Component {
     page: "first",
     email: "",
     name: "",
-    password: "123456789",
+    password: "",
     newemail: "",
     newpassword: ""
   };
@@ -44,9 +44,9 @@ export default class Privacy extends Component {
     });
   };
 
-  logout_removeItem = async props => {
+  logout_removeItem = async () => {
     await AsyncStorage.removeItem("token");
-    props.navigation.navigate("AuthNav");
+    this.props.navigation.navigate("AuthNav");
   };
 
   emailmodify = async () => {
@@ -73,6 +73,55 @@ export default class Privacy extends Component {
     });
   };
 
+  passwordmodify = async () => {
+    const token = await AsyncStorage.getItem("token");
+    const { password, newpassword } = this.state;
+    fetch(URL.passwordmodify, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        token: token,
+        password: password,
+        newPassword: newpassword
+      })
+    }).then(resData => {
+      const res = JSON.parse(resData._bodyInit);
+      if (res.success) {
+        console.log(res.message);
+        this.logout_removeItem();
+      } else {
+        console.log(res.message);
+      }
+    });
+  };
+
+  withdrawal = async () => {
+    const token = await AsyncStorage.getItem("token");
+    const { password } = this.state;
+    fetch(URL.withdrawal, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        token: token,
+        password: password
+      })
+    }).then(resData => {
+      const res = JSON.parse(resData._bodyInit);
+      if (res.success) {
+        console.log(res.message);
+        this.logout_removeItem();
+      } else {
+        console.log(res.message);
+      }
+    });
+  };
+
   onChangeText = (key, value) => {
     this.setState({ [key]: value });
   };
@@ -82,7 +131,7 @@ export default class Privacy extends Component {
   }
 
   render() {
-    const { email, name, password } = this.state;
+    const { email, name } = this.state;
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -162,7 +211,7 @@ export default class Privacy extends Component {
                   <Input
                     disabled={true}
                     secureTextEntry={true}
-                    value={password}
+                    value="1234567"
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>비밀번호ㅤ</Text>}
                   ></Input>
@@ -195,8 +244,9 @@ export default class Privacy extends Component {
               {this.state.page == "third" && (
                 <View>
                   <Input
-                    disabled={true}
-                    value={password}
+                    onChangeText={val => {
+                      this.onChangeText("password", val);
+                    }}
                     secureTextEntry={true}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>현재 비밀번호ㅤㅤ</Text>}
@@ -206,12 +256,13 @@ export default class Privacy extends Component {
                     onChangeText={val => {
                       this.onChangeText("newpassword", val);
                     }}
+                    secureTextEntry={true}
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>변경 비밀번호ㅤㅤㅤ</Text>}
                   ></Input>
 
                   <AuthButton
-                    onPress={() => this.props.navigation.navigate("AuthNav")}
+                    onPress={() => this.passwordmodify()}
                     title="수정하기"
                     backColor="#C8A480"
                   ></AuthButton>
@@ -222,8 +273,15 @@ export default class Privacy extends Component {
                   <Text>
                     탈퇴한 회원 정보는 모두 삭제됩니다. 탈퇴하시겠습니까?
                   </Text>
+                  <Input
+                    onChangeText={val => {
+                      this.onChangeText("password", val);
+                    }}
+                    containerStyle={{ paddingBottom: 13 }}
+                    leftIcon={<Text>비밀번호ㅤㅤㅤ</Text>}
+                  ></Input>
                   <AuthButton
-                    onPress={() => this.props.navigation.navigate("AuthNav")}
+                    onPress={() => this.withdrawal()}
                     title="탈퇴하기"
                     backColor="#C8A480"
                   ></AuthButton>
