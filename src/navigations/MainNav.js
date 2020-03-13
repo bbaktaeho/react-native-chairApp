@@ -7,6 +7,7 @@ import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 import AppConfig from "../screens/main/AppConfig";
+import StatNav from "../navigations/StatNav";
 
 import URL from "../NET";
 
@@ -87,6 +88,14 @@ export default MainNav = createDrawerNavigator(
       screen: Privacy,
       navigationOptions: {
         drawerLabel: "내 정보",
+        drawerIcon: () => <Icon name="user" size={25} type="font-awesome" />
+      }
+    },
+
+    Stat: {
+      screen: StatNav,
+      navigationOptions: {
+        drawerLabel: "통계",
         drawerIcon: () => <Icon name="user" size={25} type="font-awesome" />
       }
     },
