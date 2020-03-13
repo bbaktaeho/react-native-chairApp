@@ -84,10 +84,12 @@ export default class SwiperComponent extends Component {
           </View>
         </View>
         <View style={styles.content3}>
-          <Image
-            source={require("../../assets/Images/chair_logo2.png")}
-            style={{ width: 300, height: 300 }}
-          />
+          <View style={(styles.content3, { paddingTop: 150 })}>
+            <Image
+              source={require("../../assets/Images/chair_logo2.png")}
+              style={{ width: 300, height: 300 }}
+            />
+          </View>
           <Text style={styles.text}>바른 자세로 앉으셨다면</Text>
           <Text style={styles.text}>버튼을 눌러주세요</Text>
           <View style={styles.content4}>

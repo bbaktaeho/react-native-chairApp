@@ -28,6 +28,7 @@ class Pos2 extends Component {
       r_avg: 0,
       m_avg: 0
     };
+
     var calf = {
       left: [],
       right: [],
@@ -92,6 +93,19 @@ class Pos2 extends Component {
 
     var result = () => {
       if (
+        calf.l_avg == 0 &&
+        calf.r_avg == 0 &&
+        hip.r_avg == 0 &&
+        hip.l_avg == 0 &&
+        back.l_avg == 0 &&
+        back.r_avg == 0 &&
+        thigh.l_avg == 0 &&
+        thigh.r_avg == 0 &&
+        thigh.m_avg == 0
+      ) {
+        return "의자에 앉지 않았습니다(p0)";
+      }
+      if (
         (calf.l_avg == 0 && calf.r_avg != 0) ||
         (calf.l_avg != 0 && calf.r_avg == 0)
       ) {
@@ -107,7 +121,7 @@ class Pos2 extends Component {
           return "엉덩이를 앞으로 내밀었습니다 (p3)";
         } else {
           if (back.r_avg == 0 && back.l_avg == 0) {
-            return "상체를 숙였습니다";
+            return "상체를 숙였습니다 (p4)";
           } else {
             console.log(Math.abs(hip.l_avg - hip.r_avg));
 
@@ -116,9 +130,9 @@ class Pos2 extends Component {
                 return "왼쪽으로 치우쳤습니다(p5)";
               } else return "오른쪽으로 치우쳤습니다(p6)";
             } else {
-              if (thigh.m_avg < 21) return "두 발을 모두 바닥에 붙이세요";
+              if (thigh.m_avg < 21) return "두 발을 모두 바닥에 붙이세요(p7)";
               else {
-                return "올바른 자세입니다 (p7)";
+                return "올바른 자세입니다 (p8)";
               }
             }
           }
