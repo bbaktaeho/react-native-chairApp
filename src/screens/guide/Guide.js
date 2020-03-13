@@ -39,25 +39,30 @@ const styles = StyleSheet.create({
 export default class SwiperComponent extends Component {
   loginCheck = async () => {
     const token = await AsyncStorage.getItem("token");
-    fetch(URL.check, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        token: token,
-        check: "1"
-      })
-    }).then(resData => {
-      const res = JSON.parse(resData._bodyInit);
-      if (res.success) {
-        console.log(res.message);
-        this.props.navigation.navigate("MainNav");
-      } else {
-        console.log(res.message);
-      }
-    });
+
+    if (token == null) {
+      this.props.navigation.navigate("MainNav");
+    } else {
+      fetch(URL.check, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          token: token,
+          check: "1"
+        })
+      }).then(resData => {
+        const res = JSON.parse(resData._bodyInit);
+        if (res.success) {
+          console.log(res.message);
+          this.props.navigation.navigate("MainNav");
+        } else {
+          console.log(res.message);
+        }
+      });
+    }
   };
 
   render() {
