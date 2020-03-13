@@ -19,25 +19,30 @@ class DrawerContent extends React.Component {
 
   requestInfo = async () => {
     const token = await AsyncStorage.getItem("token");
-    await fetch(URL.account, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        token: token
-      })
-    }).then(resData => {
-      const res = JSON.parse(resData._bodyInit);
-      console.log(res);
 
-      if (res.success) {
-        this.setState({ username: res.user.name });
-      } else {
-        this.setState({ username: "비회원" });
-      }
-    });
+    if (token == null) {
+      this.setState({ username: "비회원" });
+    } else {
+      await fetch(URL.account, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          token: token
+        })
+      }).then(resData => {
+        const res = JSON.parse(resData._bodyInit);
+        console.log(res);
+
+        if (res.success) {
+          this.setState({ username: res.user.name });
+        } else {
+          console.log(res.message);
+        }
+      });
+    }
   };
 
   UNSAFE_componentWillMount() {
