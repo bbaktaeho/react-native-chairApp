@@ -101,7 +101,9 @@ export default MainNav = createDrawerNavigator(
       screen: StatNav,
       navigationOptions: {
         drawerLabel: "통계",
-        drawerIcon: () => <Icon name="user" size={25} type="font-awesome" />
+        drawerIcon: () => (
+          <Icon name="bar-chart" size={25} type="font-awesome" />
+        )
       }
     },
 
