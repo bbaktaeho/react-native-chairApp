@@ -11,6 +11,7 @@ import {
 } from "react-native";
 
 import MyHeader from "../../components/MyHeader";
+import { Picker, DatePicker } from "react-native-wheel-pick";
 
 class Stat_two extends Component {
   constructor(props) {
@@ -24,7 +25,26 @@ class Stat_two extends Component {
         <MyHeader navigation={this.props.navigation} title="통 계"></MyHeader>
         <ScrollView>
           <View style={styles.container}>
-            <Text>2</Text>
+            <Picker
+              style={{ backgroundColor: "white", width: 300, height: 215 }}
+              selectedValue="January"
+              pickerData={[
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+              ]}
+              onValueChange={value => {}}
+              itemSpace={30} // this only support in android
+            />
           </View>
         </ScrollView>
       </View>
