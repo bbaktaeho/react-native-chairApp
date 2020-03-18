@@ -7,6 +7,9 @@ import {
   Picker,
   PickerPropertiesAndroid
 } from "react-native";
+import { BarChart, XAxis, Grid, YAxis } from "react-native-svg-charts";
+import { LinearGradient, Stop, Defs } from "react-native-svg";
+import * as scale from "d3-scale";
 
 import MyHeader from "../../components/MyHeader";
 
@@ -18,7 +21,33 @@ class Stat_one extends Component {
   };
 
   render() {
+    const data = [
+      { pos: "1번자세", val: 20 },
+      { pos: "2번자세", val: 50 },
+      { pos: "3번자세", val: 30 },
+      { pos: "4번자세", val: 70 },
+      { pos: "5번자세", val: 10 },
+      { pos: "6번자세", val: 0 },
+      { pos: "7번자세", val: 60 },
+      { pos: "8번자세", val: 50 }
+    ];
+    const da2 = ["시간", "", "", "", "", "", "", ""];
     const { year, month, date } = this.state;
+
+    const Gradient = () => (
+      <Defs key={"gradient"}>
+        <LinearGradient
+          id={"gradient"}
+          x1={"0%"}
+          y={"0%"}
+          x2={"0%"}
+          y2={"100%"}
+        >
+          <Stop offset={"0%"} stopColor={"rgb(134, 65, 244)"} />
+          <Stop offset={"100%"} stopColor={"rgb(66, 194, 244)"} />
+        </LinearGradient>
+      </Defs>
+    );
 
     return (
       <View style={{ flex: 1 }}>
@@ -112,6 +141,34 @@ class Stat_one extends Component {
               </Picker>
 
               <Text style={{ fontWeight: "bold" }}>일</Text>
+            </View>
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <View style={{ flex: 1, flexDirection: "row" }}>
+              <YAxis
+                data={data}
+                yAccessor={({ index }) => index}
+                scale={scale.scaleBand}
+                formatLabel={(_, index) => da2[index]}
+              />
+            </View>
+            <View style={{ flex: 9, paddingRight: 20 }}>
+              <BarChart
+                style={{ height: 200 }}
+                data={data}
+                contentInset={{ top: 10, bottom: 10 }}
+                spacing={0.2}
+                yAccessor={({ item }) => item.val}
+                svg={{ fill: "url(#gradient)" }}
+              >
+                <Gradient></Gradient>
+              </BarChart>
+              <XAxis
+                data={data}
+                scale={scale.scaleBand}
+                formatLabel={(_, index) => data[index].pos}
+                labelStyle={{ color: "black" }}
+              />
             </View>
           </View>
         </ScrollView>
