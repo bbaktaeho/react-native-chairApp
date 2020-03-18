@@ -8,7 +8,6 @@ import ActionCreator from "./actions/index";
 import initStore from "./store/index";
 
 import BluetoothSerial from "react-native-bluetooth-serial-next";
-import Toast from "@remobile/react-native-toast";
 const store = initStore();
 
 import { Buffer } from "buffer";

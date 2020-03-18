@@ -1,11 +1,15 @@
 import React from "react";
 import { Provider, connect } from "react-redux";
-import { PermissionsAndroid, BackHandler, AsyncStorage } from "react-native";
+import {
+  PermissionsAndroid,
+  BackHandler,
+  AsyncStorage,
+  ToastAndroid
+} from "react-native";
 import ActionCreator from "../actions/index";
 import initStore from "../store/index";
 
 import BluetoothSerial from "react-native-bluetooth-serial-next";
-import Toast from "@remobile/react-native-toast";
 
 import { Buffer } from "buffer";
 global.Buffer = Buffer;
@@ -79,7 +83,7 @@ class Bluete extends React.Component {
         // catch에 걸리지 않으면
         // this.state.connected = true;
         global.connected = true;
-        Toast.showShortBottom("블루투스와 연결되었습니다");
+        ToastAndroid.show("블루투스와 연결되었습니다", ToastAndroid.SHORT);
 
         let splitData = [];
         let vib = [];
@@ -118,13 +122,16 @@ class Bluete extends React.Component {
         }, "\r\n");
         // await this.read();
       } else {
-        Toast.showLongBottom("블루투스를 등록해 주세요. 곧 종료됩니다");
+        ToastAndroid.show(
+          "블루투스를 등록해 주세요. 곧 종료됩니다.",
+          ToastAndroid.LONG
+        );
 
         // 여기는 다 완성되고 나서 주석을 지워주시면 됩니다.
         // await this.noneChair();
       }
     } catch (e) {
-      Toast.showShortBottom(e.message);
+      ToastAndroid.show(e.message, ToastAndroid.SHORT);
     }
   }
 

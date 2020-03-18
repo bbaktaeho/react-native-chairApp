@@ -1,7 +1,6 @@
 import React from "react";
-import { View, AsyncStorage } from "react-native";
+import { View, AsyncStorage, ToastAndroid } from "react-native";
 import { PacmanIndicator } from "react-native-indicators";
-import Toast from "@remobile/react-native-toast";
 
 export default class AuthLoading extends React.Component {
   async componentDidMount() {
@@ -12,12 +11,12 @@ export default class AuthLoading extends React.Component {
       await AsyncStorage.setItem("token", token);
       if (check == 0) {
         setTimeout(() => {
-          Toast.showShortBottom("로그인 성공");
+          ToastAndroid.show("로그인 성공", ToastAndroid.SHORT);
           this.props.navigation.navigate("Guide");
         }, 1500);
       } else {
         setTimeout(() => {
-          Toast.showShortBottom("로그인 성공");
+          ToastAndroid.show("로그인 성공", ToastAndroid.SHORT);
           this.props.navigation.navigate("MainNav");
         }, 1500);
       }

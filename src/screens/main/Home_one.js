@@ -10,7 +10,6 @@ import {
   AsyncStorage
 } from "react-native";
 // import { Card } from "react-native-elements";
-// import Toast from "@remobile/react-native-toast";
 import { connect } from "react-redux";
 import ActionCreator from "../../actions/index";
 import initStore from "../../store/index";
