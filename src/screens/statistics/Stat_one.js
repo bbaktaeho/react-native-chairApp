@@ -1,44 +1,24 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, ScrollView, Platform } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Picker,
+  PickerPropertiesAndroid
+} from "react-native";
 
 import MyHeader from "../../components/MyHeader";
-import {
-  PieChart,
-  AreaChart,
-  Grid,
-  StackedAreaChart,
-  YAxis
-} from "react-native-svg-charts";
-import * as shape from "d3-shape";
-import { Picker, DatePicker } from "react-native-wheel-pick";
 
 class Stat_one extends Component {
   state = {
-    date: "",
-    selectdate: ""
+    year: "",
+    month: "",
+    date: ""
   };
 
   render() {
-    const data1 = [
-      50,
-      10,
-      40,
-      95,
-      -4,
-      -24,
-      85,
-      91,
-      35,
-      53,
-      -53,
-      24,
-      50,
-      -20,
-      -80
-    ];
-    const Line = ({ line }) => (
-      <Path key={"line"} d={line} stroke={"rgb(134, 65, 244)"} fill={"none"} />
-    );
+    const { year, month, date } = this.state;
 
     return (
       <View style={{ flex: 1 }}>
@@ -46,26 +26,93 @@ class Stat_one extends Component {
 
         <ScrollView>
           <View style={styles.container}>
-            <DatePicker
-              date={new Date("2017-08-18")}
-              minimumDate={new Date("2017-01-01")}
-              maximumDate={new Date("2020-12-31")}
-              style={{
-                backgroundColor: "white",
-                height: 200
-              }}
-              onDateChange={date => {}}
-            />
-            <AreaChart
-              style={{ height: 200 }}
-              data={data1}
-              contentInset={{ top: 30, bottom: 30 }}
-              curve={shape.curveNatural}
-              svg={{ fill: "rgba(134, 65, 244, 0.2)" }}
-            >
-              <Grid />
-              <Line />
-            </AreaChart>
+            <View style={styles.pickContainer}>
+              <Picker
+                selectedValue={year}
+                style={{ height: 50, width: 103, color: "#CEAEA7" }}
+                onValueChange={(itemValue, itemIndex) =>
+                  this.setState({ year: itemValue })
+                }
+                mode="dropdown"
+              >
+                <Picker.Item label="2017" value="2017" />
+                <Picker.Item label="2018" value="2018" />
+                <Picker.Item label="2019" value="2019" />
+                <Picker.Item label="2020" value="2020" />
+                <Picker.Item label="2021" value="2021" />
+              </Picker>
+              <Text style={{ fontWeight: "bold" }}>년 </Text>
+
+              <Picker
+                selectedValue={month}
+                style={{
+                  height: 50,
+                  width: 75,
+                  color: "#CEAEA7"
+                }}
+                onValueChange={(itemValue, itemIndex) =>
+                  this.setState({ month: itemValue })
+                }
+                mode="dropdown"
+              >
+                <Picker.Item label="1" value="1" />
+                <Picker.Item label="2" value="2" />
+                <Picker.Item label="3" value="3" />
+                <Picker.Item label="4" value="4" />
+                <Picker.Item label="5" value="5" />
+                <Picker.Item label="6" value="6" />
+                <Picker.Item label="7" value="7" />
+                <Picker.Item label="8" value="8" />
+                <Picker.Item label="9" value="9" />
+                <Picker.Item label="10" value="10" />
+                <Picker.Item label="11" value="11" />
+                <Picker.Item label="12" value="12" />
+              </Picker>
+              <Text style={{ fontWeight: "bold" }}>월 </Text>
+
+              <Picker
+                selectedValue={date}
+                style={{ height: 50, width: 75, color: "#CEAEA7" }}
+                onValueChange={(itemValue, itemIndex) =>
+                  this.setState({ date: itemValue })
+                }
+                mode="dropdown"
+              >
+                <Picker.Item label="1" value="1" />
+                <Picker.Item label="2" value="2" />
+                <Picker.Item label="3" value="3" />
+                <Picker.Item label="4" value="4" />
+                <Picker.Item label="5" value="5" />
+                <Picker.Item label="6" value="6" />
+                <Picker.Item label="7" value="7" />
+                <Picker.Item label="8" value="8" />
+                <Picker.Item label="9" value="9" />
+                <Picker.Item label="10" value="10" />
+                <Picker.Item label="11" value="11" />
+                <Picker.Item label="12" value="12" />
+                <Picker.Item label="13" value="13" />
+                <Picker.Item label="14" value="14" />
+                <Picker.Item label="15" value="15" />
+                <Picker.Item label="16" value="16" />
+                <Picker.Item label="17" value="17" />
+                <Picker.Item label="18" value="18" />
+                <Picker.Item label="19" value="19" />
+                <Picker.Item label="20" value="20" />
+                <Picker.Item label="21" value="21" />
+                <Picker.Item label="22" value="22" />
+                <Picker.Item label="23" value="23" />
+                <Picker.Item label="24" value="24" />
+                <Picker.Item label="25" value="25" />
+                <Picker.Item label="26" value="26" />
+                <Picker.Item label="27" value="27" />
+                <Picker.Item label="28" value="28" />
+                <Picker.Item label="29" value="29" />
+                <Picker.Item label="30" value="30" />
+                <Picker.Item label="31" value="31" />
+              </Picker>
+
+              <Text style={{ fontWeight: "bold" }}>일</Text>
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -75,7 +122,10 @@ class Stat_one extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
+  },
+  pickContainer: {
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center"
   }
