@@ -1,10 +1,8 @@
 import React from "react";
-import { View, StyleSheet, ScrollView, Text } from "react-native";
-import { Path } from "react-native-svg";
-import { PieChart } from "react-native-svg-charts";
-import { Icon, ListItem, Divider } from "react-native-elements";
-
-import * as shape from "d3-shape";
+import { View, StyleSheet, Text } from "react-native";
+import { PieChart, BarChart, XAxis } from "react-native-svg-charts";
+import { Icon, ListItem } from "react-native-elements";
+import * as scale from "d3-scale";
 
 import MyHeader from "../../components/MyHeader";
 
@@ -61,8 +59,7 @@ class Stat_three extends React.PureComponent {
         <View
           style={{
             flex: 3,
-            flexDirection: "row",
-            marginTop: 100
+            flexDirection: "row"
           }}
         >
           <View style={{ flex: 2 }}>
@@ -75,6 +72,7 @@ class Stat_three extends React.PureComponent {
           </View>
           <View style={{ flex: 1 }}>
             <ListItem
+              containerStyle={{ backgroundColor: View.backgroundColor }}
               leftElement={
                 <Icon
                   name="circle"
@@ -85,6 +83,7 @@ class Stat_three extends React.PureComponent {
               title={<Text>1번 자세</Text>}
             />
             <ListItem
+              containerStyle={{ backgroundColor: View.backgroundColor }}
               leftElement={
                 <Icon
                   name="circle"
@@ -95,6 +94,7 @@ class Stat_three extends React.PureComponent {
               title={<Text>2번 자세</Text>}
             />
             <ListItem
+              containerStyle={{ backgroundColor: View.backgroundColor }}
               leftElement={
                 <Icon
                   name="circle"
@@ -105,6 +105,7 @@ class Stat_three extends React.PureComponent {
               title={<Text>3번 자세</Text>}
             />
             <ListItem
+              containerStyle={{ backgroundColor: View.backgroundColor }}
               leftElement={
                 <Icon
                   name="circle"
@@ -115,6 +116,7 @@ class Stat_three extends React.PureComponent {
               title={<Text>4번 자세</Text>}
             />
             <ListItem
+              containerStyle={{ backgroundColor: View.backgroundColor }}
               leftElement={
                 <Icon
                   name="circle"
@@ -127,9 +129,9 @@ class Stat_three extends React.PureComponent {
           </View>
         </View>
         <View style={{ flex: 3, paddingLeft: 50 }}>
-          <Text>총 사용시간 : </Text>
-          <Text>바른 자세 : </Text>
-          <Text>바르지 않은 자세 : </Text>
+          <Text style={styles.te1}>총 사용시간 : </Text>
+          <Text style={styles.te1}>바른 자세 : </Text>
+          <Text style={styles.te1}>바르지 않은 자세 : </Text>
         </View>
       </View>
     );
@@ -141,6 +143,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
+  },
+  te1: {
+    fontSize: 23,
+    fontWeight: "bold"
   }
 });
 
