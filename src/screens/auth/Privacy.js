@@ -11,6 +11,7 @@ import { Input } from "react-native-elements";
 import Tabs from "react-native-tabs";
 import MyHeader from "../../components/MyHeader";
 import AuthButton from "../../components/AuthButton";
+import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
 export default class Privacy extends Component {
@@ -316,7 +317,7 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: "gainsboro",
-    height: 210
+    height: 240
   },
   avatar: {
     width: 130,
@@ -336,7 +337,7 @@ const styles = StyleSheet.create({
   textContainer: {
     fontSize: 23,
     fontWeight: "bold",
-    marginTop: 170,
+    marginTop: 190,
     alignSelf: "center"
   }
 });
