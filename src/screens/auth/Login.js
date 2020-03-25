@@ -10,6 +10,7 @@ import {
 import { Input, Icon, Image } from "react-native-elements";
 import URL from "../../NET";
 import AuthButton from "../../components/AuthButton";
+import Fetch from "../../components/Fetch";
 
 const styles = StyleSheet.create({
   container: {
@@ -45,25 +46,21 @@ class Login extends React.Component {
 
   signIn = async () => {
     this.setState({ loginButton: true });
-    await fetch(URL.login, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.passwd
-      })
-    }).then(resData => {
-      const res = JSON.parse(resData._bodyInit);
+
+    const res = await Fetch(URL.login, "POST", {
+      email: this.state.email,
+      password: this.state.passwd
+    });
+
+    if (res == "error") {
+      console.log("fetch error");
+    } else {
       if (res.success) {
         let loginData = {
           message: res.message,
           token: res.data.token,
           check: res.data.check
         };
-
         this.setState({ loginButton: false });
         this.props.navigation.navigate("AuthLoading", loginData);
       } else {
@@ -76,7 +73,7 @@ class Login extends React.Component {
           }
         ]);
       }
-    });
+    }
   };
 
   onChangeText = (key, value) => {

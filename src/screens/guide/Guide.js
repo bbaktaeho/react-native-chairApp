@@ -43,25 +43,17 @@ export default class SwiperComponent extends Component {
     if (token == null) {
       this.props.navigation.navigate("MainNav");
     } else {
-      fetch(URL.check, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          token: token,
-          check: "1"
-        })
-      }).then(resData => {
-        const res = JSON.parse(resData._bodyInit);
-        if (res.success) {
-          console.log(res.message);
-          this.props.navigation.navigate("MainNav");
-        } else {
-          console.log(res.message);
-        }
+      const res = await Fetch(URL.check, "PUT", {
+        token: token,
+        check: "1"
       });
+
+      if (res == "error") {
+        console.log("fetch error");
+      } else {
+        console.log(res.message);
+        this.props.navigation.navigate("MainNav");
+      }
     }
   };
 

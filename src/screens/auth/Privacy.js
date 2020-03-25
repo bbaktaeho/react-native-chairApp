@@ -26,23 +26,18 @@ export default class Privacy extends Component {
 
   requestInfo = async () => {
     const token = await AsyncStorage.getItem("token");
-    await fetch(URL.account, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        token: token
-      })
-    }).then(resData => {
-      const res = JSON.parse(resData._bodyInit);
-      if (res.success) {
-        this.setState({ email: res.user.email, name: res.user.name });
+
+    if (token == null) {
+      this.setState({ email: "비회원", name: "비회원" });
+    } else {
+      const res = await Fetch(URL.account, "POST", { token: token });
+
+      if (res == "error") {
+        console.log("fetch error");
       } else {
-        this.setState({ email: "비회원", name: "비회원" });
+        this.setState({ email: res.user.email, name: res.user.name });
       }
-    });
+    }
   };
 
   logout_removeItem = async () => {
@@ -53,74 +48,53 @@ export default class Privacy extends Component {
   emailmodify = async () => {
     const token = await AsyncStorage.getItem("token");
     const { newemail } = this.state;
-    fetch(URL.emailmodify, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        token: token,
-        email: newemail
-      })
-    }).then(resData => {
-      const res = JSON.parse(resData._bodyInit);
-      if (res.success) {
-        console.log(res.message);
-        this.logout_removeItem();
-      } else {
-        console.log(res.message);
-      }
+
+    const res = await Fetch(URL.emailmodify, "PUT", {
+      token: token,
+      email: newemail
     });
+
+    if (res == "error") {
+      console.log("fetch error");
+    } else {
+      console.log(res.message);
+      this.logout_removeItem();
+    }
   };
 
   passwordmodify = async () => {
     const token = await AsyncStorage.getItem("token");
     const { password, newpassword } = this.state;
-    fetch(URL.passwordmodify, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        token: token,
-        password: password,
-        newPassword: newpassword
-      })
-    }).then(resData => {
-      const res = JSON.parse(resData._bodyInit);
-      if (res.success) {
-        console.log(res.message);
-        this.logout_removeItem();
-      } else {
-        console.log(res.message);
-      }
+
+    const res = await Fetch(URL.passwordmodify, "PUT", {
+      token: token,
+      password: password,
+      newPassword: newpassword
     });
+
+    if (res == "error") {
+      console.log("fetch error");
+    } else {
+      console.log(res.message);
+      this.logout_removeItem();
+    }
   };
 
   withdrawal = async () => {
     const token = await AsyncStorage.getItem("token");
     const { password } = this.state;
-    fetch(URL.withdrawal, {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        token: token,
-        password: password
-      })
-    }).then(resData => {
-      const res = JSON.parse(resData._bodyInit);
-      if (res.success) {
-        console.log(res.message);
-        this.logout_removeItem();
-      } else {
-        console.log(res.message);
-      }
+
+    const res = await Fetch(URL.withdrawal, "DELETE", {
+      token: token,
+      password: password
     });
+
+    if (res == "error") {
+      console.log("fetch error");
+    } else {
+      console.log(res.message);
+      this.logout_removeItem();
+    }
   };
 
   onChangeText = (key, value) => {
