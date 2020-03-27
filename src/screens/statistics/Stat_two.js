@@ -18,16 +18,20 @@ class Stat_two extends React.PureComponent {
 
   render() {
     const data = [
-      { pos: "1번자세", val: 20 },
-      { pos: "2번자세", val: 50 },
-      { pos: "3번자세", val: 30 },
-      { pos: "4번자세", val: 70 },
-      { pos: "5번자세", val: 10 },
-      { pos: "6번자세", val: 0 },
-      { pos: "7번자세", val: 60 },
-      { pos: "8번자세", val: 50 }
+      { pos: "바른자세", val: 20 },
+      { pos: "둔부앞자세", val: 50 },
+      { pos: "숙인자세", val: 30 },
+      { pos: "왼다리꼬기", val: 80 },
+      { pos: "오른다리꼬기", val: 10 },
+      { pos: "오른쪽기울기", val: 0 },
+      { pos: "왼쪽기울기", val: 60 },
+      { pos: "걸터앉기", val: 50 },
+      { pos: "양반다리", val: 30 }
     ];
-    const da2 = [70, 60, 50, 40, 30, 20, 10, ""];
+    const da2 = [80, 70, 60, 50, 40, 30, 20, 10, 0];
+
+    data.sort((a, b) => b.val - a.val);
+
     const { year, month } = this.state;
     return (
       <View style={{ flex: 1 }}>

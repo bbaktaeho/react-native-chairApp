@@ -48,6 +48,11 @@ class Stat_three extends React.PureComponent {
         key: 8,
         value: 10,
         svg: { fill: "#eabefa" }
+      },
+      {
+        key: 9,
+        value: 10,
+        svg: { fill: "#bdacbf" }
       }
     ];
 

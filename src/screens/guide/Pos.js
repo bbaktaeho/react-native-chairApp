@@ -34,7 +34,17 @@ class Pos extends Component {
   map2(x) {
     return 255 - ((x - 0) * (255 - 0)) / (400 - 0) + 0;
   }
-
+  connecte() {
+    if (global.connect == true) return "rgb(0, 255, 0)";
+    else return "rgb(255, 0, 0)";
+  }
+  batterycheck(x) {
+    if (x > 80) return "battery-full";
+    else if (50 < x && x <= 79) return "battery-three-quarters";
+    else if (26 < x && x <= 49) return "battery-half";
+    else if (6 < x && x <= 24) return "battery-quarter";
+    else return "battery-empty";
+  }
   render() {
     const { backData, seatData } = this.props;
 
@@ -48,18 +58,18 @@ class Pos extends Component {
               justifyContent: "space-between"
             }}
           >
-            <View style={{ flexDirection: "row" }}>
+            <View style={{ flexDirection: "row", paddingLeft: 10 }}>
               <Text style={{ fontSize: 18 }}>연결 상태 : </Text>
               <Icon
                 name="circle"
-                color="rgb(0,255,0)"
+                color={this.connecte()}
                 type="font-awesome"
               ></Icon>
             </View>
-            <View>
+            <View style={{ paddingRight: 10 }}>
               <Icon
-                name="battery-full"
-                color="rgb(0,255,0)"
+                size={30}
+                name={this.batterycheck(0)}
                 type="font-awesome"
               ></Icon>
             </View>
