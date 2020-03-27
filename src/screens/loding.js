@@ -1,6 +1,6 @@
 // 앱 시작 시 로딩 화면
 import React, { Component } from "react";
-import { ImageBackground, Text } from "react-native";
+import { ImageBackground, Text, AsyncStorage } from "react-native";
 
 export default class Loading extends Component {
   constructor() {
@@ -10,7 +10,7 @@ export default class Loading extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.state.timer = setTimeout(() => {
       this.props.navigation.navigate("Login");
     }, 3000);
@@ -25,7 +25,7 @@ export default class Loading extends Component {
   render() {
     return (
       <ImageBackground
-        source={require("../assets/Images/chair_logo.png")}
+        source={require("../assets/Images/logo-1.png")}
         style={{ width: "100%", height: "100%" }}
         resizeMode="contain"
       ></ImageBackground>

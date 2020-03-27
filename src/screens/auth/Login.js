@@ -85,8 +85,8 @@ class Login extends React.Component {
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Image
-            source={require("../../assets/Images/chair_font.png")}
-            style={{ width: 200, height: 100 }}
+            source={require("../../assets/Images/chair-1.png")}
+            style={{ width: 600, height: 100 }}
           />
         </View>
         <View style={styles.inputContainer}>
@@ -133,7 +133,7 @@ class Login extends React.Component {
           <AuthButton
             onPress={() => this.props.navigation.navigate("SignUp")}
             title="회원가입"
-            backColor="#C8A480"
+            backColor="#CEAEA7"
           ></AuthButton>
         </View>
 

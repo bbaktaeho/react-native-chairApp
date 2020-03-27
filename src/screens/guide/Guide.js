@@ -4,6 +4,7 @@ import { Image } from "react-native-elements";
 
 import Swiper from "react-native-swiper";
 import AuthButton from "../../components/AuthButton";
+import Fetch from "../../components/Fetch";
 
 const styles = StyleSheet.create({
   wrapper: {},

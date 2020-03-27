@@ -52,6 +52,7 @@ export default class SignUp extends React.Component {
     if (!(email && name && passwd)) {
       return this.myAlert("모두 입력하세요");
     }
+
     if (checkPasswd == passwd) {
       const res = await Fetch(URL.signup, "POST", {
         email: email,
@@ -61,6 +62,7 @@ export default class SignUp extends React.Component {
 
       if (res == "error") {
         console.log("fetch error");
+        return this.myAlert("존재하는 이메일입니다.");
       } else {
         if (res.success) {
           this.setState({ signUpButton: false });
