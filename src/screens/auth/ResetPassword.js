@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, StyleSheet, ToastAndroid } from "react-native";
 import { Input, Icon } from "react-native-elements";
 import AuthButton from "../../components/AuthButton";
+import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
 const styles = StyleSheet.create({
@@ -34,25 +35,22 @@ export default class ResetPassword extends Component {
 
   changePassword = async () => {
     const { email, name } = this.state;
-    await fetch(URL.modify, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,
-        name: name
-      })
-    }).then(resData => {
-      const res = JSON.parse(resData._bodyInit);
+
+    const res = await Fetch(URL.modify, "POST", {
+      email: email,
+      name: name
+    });
+
+    if (res == "error") {
+      console.log("fetch error");
+    } else {
       if (res.success) {
         console.log("비밀번호 변경 성공");
         this.props.navigation.navigate("Login");
       } else {
         ToastAndroid.show("다시 입력해주세요", ToastAndroid.SHORT);
       }
-    });
+    }
   };
 
   render() {

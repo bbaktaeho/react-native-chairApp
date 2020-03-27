@@ -8,6 +8,7 @@ import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 import AppConfig from "../screens/main/AppConfig";
 import StatNav from "../navigations/StatNav";
+import Fetch from "../components/Fetch";
 
 import URL from "../NET";
 
@@ -23,25 +24,13 @@ class DrawerContent extends React.Component {
     if (token == null) {
       this.setState({ username: "비회원" });
     } else {
-      await fetch(URL.account, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          token: token
-        })
-      }).then(resData => {
-        const res = JSON.parse(resData._bodyInit);
-        console.log(res);
+      const res = await Fetch(URL.account, "POST", { token: token });
 
-        if (res.success) {
-          this.setState({ username: res.user.name });
-        } else {
-          console.log(res.message);
-        }
-      });
+      if (res == "error") {
+        console.log("fetch error");
+      } else {
+        this.setState({ username: res.user.name });
+      }
     }
   };
 
@@ -62,9 +51,7 @@ class DrawerContent extends React.Component {
           }}
         >
           <Avatar
-            size="large"
             overlayContainerStyle={{ backgroundColor: "white" }}
-            rounded
             onPress={() => this.props.navigation.navigate("Privacy")}
             containerStyle={{ padding: 20 }}
             source={require("../assets/Images/ex.png")}

@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Input, Text, Icon, Image } from "react-native-elements";
 import AuthButton from "../../components/AuthButton";
+import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
 const styles = StyleSheet.create({
@@ -52,34 +53,27 @@ export default class SignUp extends React.Component {
       return this.myAlert("모두 입력하세요");
     }
     if (checkPasswd == passwd) {
-      await fetch(URL.signup, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: this.state.email,
-          name: this.state.name,
-          password: this.state.passwd
-        })
-      })
-        .then(resData => {
-          const res = JSON.parse(resData._bodyInit);
-          if (res.success) {
-            this.setState({ signUpButton: false });
-            Alert.alert("", res.message, [
-              {
-                text: "로그인하러 가기",
-                onPress: () => this.props.navigation.navigate("Login")
-              }
-            ]);
-          } else {
-            return this.myAlert(res.message);
-          }
-        })
-        .then(jsonData => {})
-        .done();
+      const res = await Fetch(URL.signup, "POST", {
+        email: email,
+        name: name,
+        password: passwd
+      });
+
+      if (res == "error") {
+        console.log("fetch error");
+      } else {
+        if (res.success) {
+          this.setState({ signUpButton: false });
+          Alert.alert("", res.message, [
+            {
+              text: "로그인하러 가기",
+              onPress: () => this.props.navigation.navigate("Login")
+            }
+          ]);
+        } else {
+          return this.myAlert(res.message);
+        }
+      }
     } else {
       return Alert.alert("", "비밀번호가 틀립니다", [
         {
