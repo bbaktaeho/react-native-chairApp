@@ -143,7 +143,8 @@ class Stat_one extends Component {
               <Text style={{ fontWeight: "bold" }}>일</Text>
             </View>
           </View>
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flex: 2 }}></View>
+          <View style={{ flex: 4, flexDirection: "row" }}>
             <View style={{ flex: 1, flexDirection: "row" }}>
               <YAxis
                 data={data}
@@ -154,7 +155,7 @@ class Stat_one extends Component {
             </View>
             <View style={{ flex: 9, paddingRight: 20 }}>
               <BarChart
-                style={{ height: 200 }}
+                style={{ height: 400 }}
                 data={data}
                 contentInset={{ top: 10, bottom: 10 }}
                 spacing={0.2}

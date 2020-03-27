@@ -91,7 +91,7 @@ class Stat_two extends React.PureComponent {
             </View>
             <View style={{ flex: 9, paddingRight: 20 }}>
               <BarChart
-                style={{ height: 200 }}
+                style={{ height: 400 }}
                 data={data}
                 contentInset={{ top: 10, bottom: 10 }}
                 spacing={0.2}

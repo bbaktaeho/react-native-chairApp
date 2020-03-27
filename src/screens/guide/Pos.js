@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import {
   View,
-  Text,
   StyleSheet,
+  Dimensions,
+  ImageBackground,
   ScrollView,
-  FlatList,
-  AsyncStorage
+  Text
 } from "react-native";
-import { Card, Button } from "react-native-elements";
-
-import { Provider, connect } from "react-redux";
+import { Icon, ListItem } from "react-native-elements";
+import { Svg, Rect } from "react-native-svg";
+import _ from "lodash";
+import { connect } from "react-redux";
 import initStore from "../../store/index";
 import ActionCreator from "../../actions/index.js";
+
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
 
 const store = initStore();
 
@@ -22,9 +26,10 @@ class Pos extends Component {
   }
 
   map1(x) {
-    return 255 - ((x - 0) * (255 - 0)) / (1000 - 0) + 0;
+    let z = ((x - 0) * (255 - 0)) / (60 - 0) + 0;
+    let y = 245 - parseInt(z);
+    return `rgb(${y},255,${y})`;
   }
-  0;
 
   map2(x) {
     return 255 - ((x - 0) * (255 - 0)) / (400 - 0) + 0;
@@ -36,128 +41,294 @@ class Pos extends Component {
     return (
       <View style={{ flex: 1 }}>
         <ScrollView>
-          <View style={styles.container}>
-            <Card title="등받이" containerStyle={{ width: "100%", flex: 1 }}>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-around",
-                  marginBottom: 8
-                }}
-              >
-                {backData
-                  .filter(e => e.id <= 2)
-                  .map(e => (
-                    <View
-                      style={{
-                        width: "45%",
-                        backgroundColor: `rgb(255, ${this.map1(
-                          e.data
-                        ).toString()} , ${this.map1(e.data).toString()})`,
-                        height: 100,
-                        borderWidth: 1,
-                        borderColor: "black"
-                      }}
-                      key={e.id}
-                    ></View>
-                  ))}
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-around"
-                }}
-              >
-                {backData
-                  .filter(e => e.id > 2)
-                  .map(e => (
-                    <View
-                      style={{
-                        width: "45%",
-                        backgroundColor: `rgb(255, ${this.map1(
-                          e.data
-                        ).toString()} , ${this.map1(e.data).toString()})`,
-                        height: 100,
-                        borderWidth: 1,
-                        borderColor: "black"
-                      }}
-                      key={e.id}
-                    ></View>
-                  ))}
-              </View>
-            </Card>
-            <Card title="엉덩받이" containerStyle={{ width: "100%", flex: 1 }}>
-              <Text>다리쪽</Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-around",
-                  marginBottom: 8
-                }}
-              >
-                {seatData
-                  .filter(e => e.id <= 6)
-                  .map(e => (
-                    <View
-                      style={{
-                        width: "14%",
-                        height: 40,
-                        backgroundColor: `rgb(255, ${this.map2(
-                          e.data
-                        ).toString()} , ${this.map2(e.data).toString()})`,
-                        borderWidth: 1,
-                        borderColor: "black"
-                      }}
-                      key={e.id}
-                    ></View>
-                  ))}
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-around",
-                  marginBottom: 8
-                }}
-              >
-                {seatData
-                  .filter(e => e.id > 6 && e.id <= 21)
-                  .map(e => (
-                    <View
-                      style={{
-                        width: "5%",
-                        height: 40,
-                        backgroundColor: `rgb(255, ${this.map2(
-                          e.data
-                        ).toString()} , ${this.map2(e.data).toString()})`,
-                        borderWidth: 1,
-                        borderColor: "black"
-                      }}
-                      key={e.id}
-                    ></View>
-                  ))}
-              </View>
-              <View
-                style={{ flexDirection: "row", justifyContent: "space-around" }}
-              >
-                {seatData
-                  .filter(e => e.id > 21)
-                  .map(e => (
-                    <View
-                      style={{
-                        width: "7%",
-                        height: 40,
-                        backgroundColor: `rgb(255, ${this.map2(
-                          e.data
-                        ).toString()} , ${this.map2(e.data).toString()})`,
-                        borderWidth: 1,
-                        borderColor: "black"
-                      }}
-                      key={e.id}
-                    ></View>
-                  ))}
-              </View>
-              <Text>엉덩이쪽</Text>
-            </Card>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "space-between"
+            }}
+          >
+            <View style={{ flexDirection: "row" }}>
+              <Text style={{ fontSize: 18 }}>연결 상태 : </Text>
+              <Icon
+                name="circle"
+                color="rgb(0,255,0)"
+                type="font-awesome"
+              ></Icon>
+            </View>
+            <View>
+              <Icon
+                name="battery-full"
+                color="rgb(0,255,0)"
+                type="font-awesome"
+              ></Icon>
+            </View>
+          </View>
+          <View style={{ flex: 2 }}>
+            <ImageBackground
+              source={require("../../assets/Images/df.png")}
+              style={{ width: 415, height: 230 }}
+              resizeMode="contain"
+            >
+              <Svg width={420} height={250}>
+                <Rect
+                  x="105"
+                  y="30"
+                  width="90"
+                  height="70"
+                  fill={this.map1(30)}
+                />
+                <Rect
+                  x="220"
+                  y="30"
+                  width="90"
+                  height="70"
+                  fill={this.map1(15)}
+                />
+                <Rect
+                  x="105"
+                  y="130"
+                  width="90"
+                  height="70"
+                  fill={this.map1(10)}
+                />
+                <Rect
+                  x="220"
+                  y="130"
+                  width="90"
+                  height="70"
+                  fill={this.map1(20)}
+                />
+              </Svg>
+            </ImageBackground>
+          </View>
+          <View style={{ flex: 3 }}>
+            <ImageBackground
+              source={require("../../assets/Images/as.png")}
+              style={{ width: 410, height: 230 }}
+              resizeMode="contain"
+            >
+              <Svg width={screenWidth} height={250}>
+                <Rect
+                  x="65"
+                  y="170"
+                  width="35"
+                  height="25"
+                  fill={this.map1(25)}
+                />
+                <Rect
+                  x="105"
+                  y="170"
+                  width="35"
+                  height="25"
+                  fill={this.map1(27)}
+                />
+                <Rect
+                  x="145"
+                  y="170"
+                  width="35"
+                  height="25"
+                  fill={this.map1(9)}
+                />
+                <Rect
+                  x="240"
+                  y="170"
+                  width="35"
+                  height="25"
+                  fill={this.map1(6)}
+                />
+                <Rect
+                  x="280"
+                  y="170"
+                  width="35"
+                  height="25"
+                  fill={this.map1(25)}
+                />
+                <Rect
+                  x="320"
+                  y="170"
+                  width="35"
+                  height="25"
+                  fill={this.map1(22)}
+                />
+
+                <Rect
+                  x="32"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(11)}
+                />
+                <Rect
+                  x="56"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(18)}
+                />
+                <Rect
+                  x="80"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(16)}
+                />
+                <Rect
+                  x="104"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(27)}
+                />
+                <Rect
+                  x="128"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(26)}
+                />
+                <Rect
+                  x="152"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(23)}
+                />
+                <Rect
+                  x="176"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(9)}
+                />
+                <Rect
+                  x="200"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(11)}
+                />
+                <Rect
+                  x="224"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(13)}
+                />
+                <Rect
+                  x="248"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(21)}
+                />
+                <Rect
+                  x="272"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(20)}
+                />
+                <Rect
+                  x="296"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(23)}
+                />
+                <Rect
+                  x="320"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(25)}
+                />
+                <Rect
+                  x="344"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(23)}
+                />
+                <Rect
+                  x="368"
+                  y="100"
+                  width="20"
+                  height="25"
+                  fill={this.map1(16)}
+                />
+                <Rect
+                  x="50"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(0)}
+                />
+                <Rect
+                  x="80"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(10)}
+                />
+                <Rect
+                  x="110"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(16)}
+                />
+                <Rect
+                  x="140"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(12)}
+                />
+                <Rect
+                  x="170"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(19)}
+                />
+                <Rect
+                  x="220"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(20)}
+                />
+                <Rect
+                  x="250"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(21)}
+                />
+                <Rect
+                  x="280"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(19)}
+                />
+                <Rect
+                  x="310"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(10)}
+                />
+                <Rect
+                  x="340"
+                  y="30"
+                  width="25"
+                  height="25"
+                  fill={this.map1(5)}
+                />
+              </Svg>
+            </ImageBackground>
           </View>
         </ScrollView>
       </View>
