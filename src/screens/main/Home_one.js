@@ -68,9 +68,7 @@ class Home_one extends Component {
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="홈 1"></MyHeader>
         <ScrollView>
-          <View style={styles.container}>
-            <Pos2></Pos2>
-          </View>
+          <View style={styles.container}>{/* <Pos2></Pos2> */}</View>
         </ScrollView>
       </View>
     );

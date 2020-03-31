@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import initStore from "../../store/index";
 import ActionCreator from "../../actions/index.js";
 import { $CombinedState } from "redux";
+import divCardStyle from "../../myStyles/divCardStyle";
 
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
@@ -56,7 +57,7 @@ class Pos extends Component {
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Card containerStyle={{ width: "95%", flex: 1 }}>
+            <Card containerStyle={divCardStyle.c}>
               <View
                 style={{
                   flex: 1,
@@ -81,7 +82,7 @@ class Pos extends Component {
                 </View>
               </View>
             </Card>
-            <Card containerStyle={{ width: "95%", flex: 1 }}>
+            <Card containerStyle={divCardStyle.c}>
               <Svg width={screenWidth} height="230">
                 <Rect
                   x="23%"
