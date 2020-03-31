@@ -17,25 +17,31 @@ export default HomeNav = createBottomTabNavigator(
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
-        let icon = "▲";
 
         if (routeName === "one") {
-          icon = "🌈";
+          return (
+            <Text style={{ color: (focused && "#46c3ad") || "#888" }}>
+              자세
+            </Text>
+          );
         } else if (routeName === "two") {
-          icon = "🌙";
+          return (
+            <Text style={{ color: (focused && "#46c3ad") || "#888" }}>
+              센서
+            </Text>
+          );
+        } else if (routeName === "three") {
+          return (
+            <Text style={{ color: (focused && "#46c3ad") || "#888" }}>
+              예측
+            </Text>
+          );
         }
-
-        // can use react-native-vector-icons
-        // <Icon name={iconName} size={iconSize} color={iconColor} />
-        return (
-          <Text style={{ color: (focused && "#46c3ad") || "#888" }}>
-            {icon}
-          </Text>
-        );
       }
     }),
     lazy: false,
     tabBarOptions: {
+      showLabel: false,
       activeTintColor: "#46c3ad",
       inactiveTintColor: "#888"
     }
