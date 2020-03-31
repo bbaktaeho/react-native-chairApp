@@ -6,13 +6,14 @@ import HamburgerMenu from "./HamburgerMenu";
 import PreviousMenu from "./PreviousMenu";
 import LogoutMenu from "./LogoutMenu";
 import { colors } from "../styles/styles";
+import myHeaderStyle from "../myStyles/MyHeaderStyle";
 
 const MyHeader = props => {
   return (
     <Header
       statusBarProps={{ translucent: true }} // 이건 해도되고 안해도 되고
       containerStyle={Platform.select({
-        android: Platform.Version <= 20 ? { paddingTop: 0, height: 56 } : {}
+        android: Platform.Version <= 20 ? myHeaderStyle.container : {}
       })}
       leftComponent={
         props.type == "setting" ? (
