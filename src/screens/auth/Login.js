@@ -44,6 +44,16 @@ class Login extends React.Component {
     loginButton: false
   };
 
+  myAlert = message =>
+    Alert.alert("경고", message, [
+      {
+        text: "확인",
+        onPress: () => {
+          this.setState({ loginButton: false });
+        }
+      }
+    ]);
+
   signIn = async () => {
     this.setState({ loginButton: true });
 
@@ -52,27 +62,16 @@ class Login extends React.Component {
       password: this.state.passwd
     });
 
-    if (res == "error") {
-      console.log("fetch error");
+    if (res.success) {
+      let loginData = {
+        message: res.message,
+        token: res.data.token,
+        check: res.data.check
+      };
+      this.setState({ loginButton: false });
+      this.props.navigation.navigate("AuthLoading", loginData);
     } else {
-      if (res.success) {
-        let loginData = {
-          message: res.message,
-          token: res.data.token,
-          check: res.data.check
-        };
-        this.setState({ loginButton: false });
-        this.props.navigation.navigate("AuthLoading", loginData);
-      } else {
-        Alert.alert(res.success, res.message, [
-          {
-            text: "확인",
-            onPress: () => {
-              this.setState({ loginButton: false });
-            }
-          }
-        ]);
-      }
+      return this.myAlert(res);
     }
   };
 

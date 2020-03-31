@@ -13,7 +13,7 @@ function Fetch(url = String, method = String, req = Object) {
         if (res.success) {
           resolve(res);
         } else {
-          resolve("error");
+          resolve(res.message);
         }
       })
       .catch(() => {

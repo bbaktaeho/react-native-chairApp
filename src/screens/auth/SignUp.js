@@ -36,13 +36,11 @@ export default class SignUp extends React.Component {
     this.setState({ [key]: value }); // 생소한 문법이지만 key가 'email' 일 때 [key]: value 부분은 email: value 로 변경됨
   };
 
-  myAlert = message =>
-    Alert.alert("", message, [
+  myAlert = (title, message, text, onPress) =>
+    Alert.alert(title, message, [
       {
-        text: "확인",
-        onPress: () => {
-          this.setState({ signUpButton: false });
-        }
+        text,
+        onPress
       }
     ]);
 
@@ -50,7 +48,7 @@ export default class SignUp extends React.Component {
     this.setState({ signUpButton: true }); // 버튼 클릭 시 로딩
     const { email, name, passwd, checkPasswd } = this.state;
     if (!(email && name && passwd)) {
-      return this.myAlert("모두 입력하세요");
+      return this.myAlert("경고", "모두 입력하세요", "확인");
     }
 
     if (checkPasswd == passwd) {
@@ -60,31 +58,20 @@ export default class SignUp extends React.Component {
         password: passwd
       });
 
-      if (res == "error") {
-        console.log("fetch error");
-        return this.myAlert("존재하는 이메일입니다.");
+      if (res.success) {
+        this.setState({ signUpButton: false });
+        return this.myAlert("", "로그인 성공", "로그인하러 가기", () =>
+          this.props.navigation.navigate("Login")
+        );
       } else {
-        if (res.success) {
+        return this.myAlert("경고", res, "확인", () => {
           this.setState({ signUpButton: false });
-          Alert.alert("", res.message, [
-            {
-              text: "로그인하러 가기",
-              onPress: () => this.props.navigation.navigate("Login")
-            }
-          ]);
-        } else {
-          return this.myAlert(res.message);
-        }
+        });
       }
     } else {
-      return Alert.alert("", "비밀번호가 틀립니다", [
-        {
-          text: "확인",
-          onPress: () => {
-            this.setState({ signUpButton: false });
-          }
-        }
-      ]);
+      return this.myAlert("경고", "비밀번호가 다릅니다.", "확인", () => {
+        this.setState({ signUpButton: false });
+      });
     }
   };
 
