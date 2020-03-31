@@ -5,7 +5,9 @@ import {
   View,
   Image,
   AsyncStorage,
-  ScrollView
+  ScrollView,
+  ToastAndroid,
+  Alert
 } from "react-native";
 import { Input } from "react-native-elements";
 import Tabs from "react-native-tabs";
@@ -21,7 +23,8 @@ export default class Privacy extends Component {
     name: "",
     password: "",
     newemail: "",
-    newpassword: ""
+    newpassword: "",
+    privacyButton: false
   };
 
   requestInfo = async () => {
@@ -40,12 +43,22 @@ export default class Privacy extends Component {
     }
   };
 
+  myAlert = (title, message, text, onPress) =>
+    Alert.alert(title, message, [
+      {
+        text,
+        onPress
+      }
+    ]);
+
   logout_removeItem = async () => {
     await AsyncStorage.removeItem("token");
+    ToastAndroid.show("다시 로그인 해주세요.", ToastAndroid.SHORT);
     this.props.navigation.navigate("AuthNav");
   };
 
   emailmodify = async () => {
+    this.setState({ privacyButton: true });
     const token = await AsyncStorage.getItem("token");
     const { newemail } = this.state;
 
@@ -57,12 +70,17 @@ export default class Privacy extends Component {
     if (res == "error") {
       console.log("fetch error");
     } else {
-      console.log(res.message);
-      this.logout_removeItem();
+      if (res.success) {
+        this.logout_removeItem();
+      } else {
+        ToastAndroid.show(res, ToastAndroid.LONG);
+        this.setState({ privacyButton: false });
+      }
     }
   };
 
   passwordmodify = async () => {
+    this.setState({ privacyButton: true });
     const token = await AsyncStorage.getItem("token");
     const { password, newpassword } = this.state;
 
@@ -75,7 +93,6 @@ export default class Privacy extends Component {
     if (res == "error") {
       console.log("fetch error");
     } else {
-      console.log(res.message);
       this.logout_removeItem();
     }
   };
@@ -106,7 +123,7 @@ export default class Privacy extends Component {
   }
 
   render() {
-    const { email, name } = this.state;
+    const { email, name, privacyButton } = this.state;
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -206,13 +223,14 @@ export default class Privacy extends Component {
                       this.onChangeText("newemail", val);
                     }}
                     containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>변경 이메일ㅤㅤㅤ</Text>}
+                    leftIcon={<Text>변경 이메일ㅤㅤ</Text>}
                   ></Input>
 
                   <AuthButton
                     onPress={() => this.emailmodify()}
                     title="수정하기"
                     backColor="#C8A480"
+                    loading={privacyButton}
                   ></AuthButton>
                 </View>
               )}
@@ -233,7 +251,7 @@ export default class Privacy extends Component {
                     }}
                     secureTextEntry={true}
                     containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>변경 비밀번호ㅤㅤㅤ</Text>}
+                    leftIcon={<Text>변경 비밀번호ㅤㅤ</Text>}
                   ></Input>
 
                   <AuthButton
