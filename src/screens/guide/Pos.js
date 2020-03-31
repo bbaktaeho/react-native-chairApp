@@ -7,12 +7,13 @@ import {
   ScrollView,
   Text
 } from "react-native";
-import { Icon, ListItem } from "react-native-elements";
+import { Icon, ListItem, Card, Image } from "react-native-elements";
 import { Svg, Rect } from "react-native-svg";
 import _ from "lodash";
 import { connect } from "react-redux";
 import initStore from "../../store/index";
 import ActionCreator from "../../actions/index.js";
+import { $CombinedState } from "redux";
 
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
@@ -26,16 +27,17 @@ class Pos extends Component {
   }
 
   map1(x) {
-    let z = ((x - 0) * (255 - 0)) / (60 - 0) + 0;
+    return "rgb(0,0,0)";
+    /*let z = ((x - 0) * (245 - 0)) / (60 - 0) + 0;
     let y = 245 - parseInt(z);
-    return `rgb(${y},255,${y})`;
+    return `rgb(${y},255,${y})`;*/
   }
 
   map2(x) {
     return 255 - ((x - 0) * (255 - 0)) / (400 - 0) + 0;
   }
   connecte() {
-    if (global.connect == true) return "rgb(0, 255, 0)";
+    if (global.connected == true) return "rgb(0, 255, 0)";
     else return "rgb(255, 0, 0)";
   }
   batterycheck(x) {
@@ -46,299 +48,292 @@ class Pos extends Component {
     else return "battery-empty";
   }
   render() {
-    const { backData, seatData } = this.props;
+    const { backData, seatData, angle, battery } = this.props;
 
     return (
       <View style={{ flex: 1 }}>
         <ScrollView>
           <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              justifyContent: "space-between"
-            }}
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <View style={{ flexDirection: "row", paddingLeft: 10 }}>
-              <Text style={{ fontSize: 18 }}>연결 상태 : </Text>
-              <Icon
-                name="circle"
-                color={this.connecte()}
-                type="font-awesome"
-              ></Icon>
-            </View>
-            <View style={{ paddingRight: 10 }}>
-              <Icon
-                size={30}
-                name={this.batterycheck(0)}
-                type="font-awesome"
-              ></Icon>
-            </View>
-          </View>
-          <View style={{ flex: 2 }}>
-            <ImageBackground
-              source={require("../../assets/Images/df.png")}
-              style={{ width: 415, height: 230 }}
-              resizeMode="contain"
-            >
-              <Svg width={420} height={250}>
+            <Card containerStyle={{ width: "95%", flex: 1 }}>
+              <View
+                style={{
+                  flex: 1,
+                  flexDirection: "row",
+                  justifyContent: "space-between"
+                }}
+              >
+                <View style={{ flexDirection: "row", paddingLeft: 10 }}>
+                  <Text style={{ fontSize: 18 }}>연결 상태 : </Text>
+                  <Icon
+                    name="circle"
+                    color={this.connecte()}
+                    type="font-awesome"
+                  ></Icon>
+                </View>
+                <View style={{ paddingRight: 10 }}>
+                  <Icon
+                    size={30}
+                    name={this.batterycheck(battery)}
+                    type="font-awesome"
+                  ></Icon>
+                </View>
+              </View>
+            </Card>
+            <Card containerStyle={{ width: "95%", flex: 1 }}>
+              <Svg width={screenWidth} height="230">
                 <Rect
-                  x="105"
-                  y="30"
-                  width="90"
-                  height="70"
-                  fill={this.map1(30)}
+                  x="23%"
+                  y="17%"
+                  width="15%"
+                  height="20%"
+                  fill={this.map1(backData[0].data)}
                 />
                 <Rect
-                  x="220"
-                  y="30"
-                  width="90"
-                  height="70"
-                  fill={this.map1(15)}
+                  x="48%"
+                  y="17%"
+                  width="15%"
+                  height="20%"
+                  fill={this.map1(backData[1].data)}
                 />
                 <Rect
-                  x="105"
-                  y="130"
-                  width="90"
-                  height="70"
-                  fill={this.map1(10)}
+                  x="23%"
+                  y="63%"
+                  width="15%"
+                  height="20%"
+                  fill={this.map1(backData[2].data)}
                 />
                 <Rect
-                  x="220"
-                  y="130"
-                  width="90"
-                  height="70"
-                  fill={this.map1(20)}
-                />
-              </Svg>
-            </ImageBackground>
-          </View>
-          <View style={{ flex: 3 }}>
-            <ImageBackground
-              source={require("../../assets/Images/as.png")}
-              style={{ width: 410, height: 230 }}
-              resizeMode="contain"
-            >
-              <Svg width={screenWidth} height={250}>
-                <Rect
-                  x="65"
-                  y="170"
-                  width="35"
-                  height="25"
-                  fill={this.map1(25)}
-                />
-                <Rect
-                  x="105"
-                  y="170"
-                  width="35"
-                  height="25"
-                  fill={this.map1(27)}
-                />
-                <Rect
-                  x="145"
-                  y="170"
-                  width="35"
-                  height="25"
-                  fill={this.map1(9)}
-                />
-                <Rect
-                  x="240"
-                  y="170"
-                  width="35"
-                  height="25"
-                  fill={this.map1(6)}
-                />
-                <Rect
-                  x="280"
-                  y="170"
-                  width="35"
-                  height="25"
-                  fill={this.map1(25)}
-                />
-                <Rect
-                  x="320"
-                  y="170"
-                  width="35"
-                  height="25"
-                  fill={this.map1(22)}
-                />
-
-                <Rect
-                  x="32"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(11)}
-                />
-                <Rect
-                  x="56"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(18)}
-                />
-                <Rect
-                  x="80"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(16)}
-                />
-                <Rect
-                  x="104"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(27)}
-                />
-                <Rect
-                  x="128"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(26)}
-                />
-                <Rect
-                  x="152"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(23)}
-                />
-                <Rect
-                  x="176"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(9)}
-                />
-                <Rect
-                  x="200"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(11)}
-                />
-                <Rect
-                  x="224"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(13)}
-                />
-                <Rect
-                  x="248"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(21)}
-                />
-                <Rect
-                  x="272"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(20)}
-                />
-                <Rect
-                  x="296"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(23)}
-                />
-                <Rect
-                  x="320"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(25)}
-                />
-                <Rect
-                  x="344"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(23)}
-                />
-                <Rect
-                  x="368"
-                  y="100"
-                  width="20"
-                  height="25"
-                  fill={this.map1(16)}
-                />
-                <Rect
-                  x="50"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(0)}
-                />
-                <Rect
-                  x="80"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(10)}
-                />
-                <Rect
-                  x="110"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(16)}
-                />
-                <Rect
-                  x="140"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(12)}
-                />
-                <Rect
-                  x="170"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(19)}
-                />
-                <Rect
-                  x="220"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(20)}
-                />
-                <Rect
-                  x="250"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(21)}
-                />
-                <Rect
-                  x="280"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(19)}
-                />
-                <Rect
-                  x="310"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(10)}
-                />
-                <Rect
-                  x="340"
-                  y="30"
-                  width="25"
-                  height="25"
-                  fill={this.map1(5)}
+                  x="48%"
+                  y="63%"
+                  width="15%"
+                  height="20%"
+                  fill={this.map1(backData[3].data)}
                 />
               </Svg>
-            </ImageBackground>
+            </Card>
+            <Card>
+              <Svg width={screenWidth} height="300">
+                <Rect
+                  x="11%"
+                  y="75%"
+                  width="9%"
+                  height="11%"
+                  fill={this.map1(seatData[0].data)}
+                />
+                <Rect
+                  x="21.5%"
+                  y="75%"
+                  width="9%"
+                  height="11%"
+                  fill={this.map1(seatData[1].data)}
+                />
+                <Rect
+                  x="32%"
+                  y="75%"
+                  width="9%"
+                  height="11%"
+                  fill={this.map1(seatData[2].data)}
+                />
+                <Rect
+                  x="59%"
+                  y="75%"
+                  width="9%"
+                  height="11%"
+                  fill={this.map1(seatData[3].data)}
+                />
+                <Rect
+                  x="69.5%"
+                  y="75%"
+                  width="9%"
+                  height="11%"
+                  fill={this.map1(seatData[4].data)}
+                />
+                <Rect
+                  x="80%"
+                  y="75%"
+                  width="9%"
+                  height="11%"
+                  fill={this.map1(seatData[5].data)}
+                />
+                <Rect
+                  x="5%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[6].data)}
+                />
+                <Rect
+                  x="11%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[7].data)}
+                />
+                <Rect
+                  x="17%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[8].data)}
+                />
+                <Rect
+                  x="23%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[9].data)}
+                />
+                <Rect
+                  x="29%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[10].data)}
+                />
+                <Rect
+                  x="35.5%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[11].data)}
+                />
+                <Rect
+                  x="41.5%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[12].data)}
+                />
+                <Rect
+                  x="47.5%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[13].data)}
+                />
+                <Rect
+                  x="53.5%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[14].data)}
+                />
+                <Rect
+                  x="59.5%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[15].data)}
+                />
+                <Rect
+                  x="66%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[16].data)}
+                />
+                <Rect
+                  x="72%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[17].data)}
+                />
+                <Rect
+                  x="78%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[18].data)}
+                />
+                <Rect
+                  x="84%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[19].data)}
+                />
+                <Rect
+                  x="90%"
+                  y="45%"
+                  width="5%"
+                  height="11%"
+                  fill={this.map1(seatData[20].data)}
+                />
+                <Rect
+                  x="6%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[21].data)}
+                />
+                <Rect
+                  x="14.5%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[22].data)}
+                />
+                <Rect
+                  x="23%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[23].data)}
+                />
+                <Rect
+                  x="31.5%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[24].data)}
+                />
+                <Rect
+                  x="40%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[25].data)}
+                />
+                <Rect
+                  x="53%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[26].data)}
+                />
+                <Rect
+                  x="61.5%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[27].data)}
+                />
+                <Rect
+                  x="70%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[28].data)}
+                />
+                <Rect
+                  x="78.5%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[29].data)}
+                />
+                <Rect
+                  x="87%"
+                  y="14%"
+                  width="7%"
+                  height="11%"
+                  fill={this.map1(seatData[30].data)}
+                />
+              </Svg>
+            </Card>
           </View>
         </ScrollView>
       </View>
@@ -357,18 +352,19 @@ const styles = StyleSheet.create({
 function mapStateToProps(state) {
   return {
     backData: state.bluedata.backData,
-    seatData: state.bluedata.seatData
+    seatData: state.bluedata.seatData,
+    angle: state.bluedata.angle,
+    battery: state.bluedata.battery
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    backchange: (da, da2, da3, da4, da5) => {
-      dispatch(ActionCreator.backchange(da, da2, da3, da4, da5));
-    },
     seatchange: (num, da) => {
       dispatch(ActionCreator, seatchange(num, da));
+    },
+    backchange: (da, da2, da3, da4, da5, da6, da7) => {
+      dispatch(ActionCreator.backchange(da, da2, da3, da4, da5, da6, da7));
     }
   };
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(Pos);

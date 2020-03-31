@@ -94,6 +94,8 @@ class Bluete extends React.Component {
         BluetoothSerial.read((data, subscription) => {
           splitData = data.split(",");
           vib = splitData[2];
+          angled = splitData[3];
+          batteryd = splitData[4];
           global.vib = vib;
           back = splitData[1].split("^");
           seat = splitData[0].split("^");
@@ -113,7 +115,9 @@ class Bluete extends React.Component {
             b,
             c,
             parseInt(back[3].substring(0, 3)),
-            seat
+            seat,
+            angled,
+            batteryd
           );
 
           if (this.imBoredNow && subscription) {
@@ -169,7 +173,9 @@ class Bluete extends React.Component {
 function mapStateToProps(state) {
   return {
     backData: state.bluedata.backData,
-    seatData: state.bluedata.seatData
+    seatData: state.bluedata.seatData,
+    angle: state.bluedata.angle,
+    battery: state.bluedata.battery
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -177,8 +183,8 @@ function mapDispatchToProps(dispatch) {
     seatchange: (num, da) => {
       dispatch(ActionCreator, seatchange(num, da));
     },
-    backchange: (da, da2, da3, da4, da5) => {
-      dispatch(ActionCreator.backchange(da, da2, da3, da4, da5));
+    backchange: (da, da2, da3, da4, da5, da6, da7) => {
+      dispatch(ActionCreator.backchange(da, da2, da3, da4, da5, da6, da7));
     }
   };
 }

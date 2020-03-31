@@ -39,7 +39,9 @@ const initState = {
     { id: 29, data: 0 },
     { id: 30, data: 0 },
     { id: 31, data: 0 }
-  ]
+  ],
+  angle: 0,
+  battery: 0
 };
 
 export default bluedata = (state = initState, action) => {
@@ -96,7 +98,9 @@ export default bluedata = (state = initState, action) => {
           { id: 29, data: action.payload6[28] },
           { id: 30, data: action.payload6[29] },
           { id: 31, data: action.payload6[30] }
-        ]
+        ],
+        angle: action.payload7,
+        battery: action.payload8
       };
 
     case types.SEATCHANGE:
