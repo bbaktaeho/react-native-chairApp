@@ -7,6 +7,7 @@ import {
   Picker,
   PickerPropertiesAndroid
 } from "react-native";
+import { Icon, ListItem, Card, Image } from "react-native-elements";
 import { BarChart, XAxis, Grid, YAxis } from "react-native-svg-charts";
 import { LinearGradient, Stop, Defs } from "react-native-svg";
 import * as scale from "d3-scale";
@@ -144,43 +145,44 @@ class Stat_one extends Component {
               <Text style={{ fontWeight: "bold" }}>일</Text>
             </View>
           </View>
-          <View style={{ flex: 2 }}></View>
-          <View style={{ flex: 4, flexDirection: "row" }}>
-            <View style={{ flex: 1, flexDirection: "row" }}>
-              <YAxis
-                data={data}
-                yAccessor={({ index }) => index}
-                scale={scale.scaleBand}
-                formatLabel={(_, index) => da2[index]}
-              />
+          <Card>
+            <View style={{ flex: 4, flexDirection: "row" }}>
+              <View style={{ flex: 1, flexDirection: "row" }}>
+                <YAxis
+                  data={data}
+                  yAccessor={({ index }) => index}
+                  scale={scale.scaleBand}
+                  formatLabel={(_, index) => da2[index]}
+                />
+              </View>
+              <View style={{ flex: 9, paddingRight: 20 }}>
+                <BarChart
+                  style={{ height: 400 }}
+                  data={data}
+                  contentInset={{ top: 10, bottom: 10 }}
+                  spacing={0.2}
+                  yAccessor={({ item }) => item.val}
+                  svg={{ fill: "url(#gradient)" }}
+                >
+                  <Gradient></Gradient>
+                </BarChart>
+                <XAxis
+                  data={data}
+                  scale={scale.scaleBand}
+                  style={{ marginHorizontal: -15, height: 20 }}
+                  formatLabel={(_, index) => data[index].pos}
+                  svg={{
+                    fill: "black",
+                    fontSize: 8,
+                    fontWeight: "bold",
+                    rotation: 20,
+                    originY: 30,
+                    y: 5
+                  }}
+                />
+              </View>
             </View>
-            <View style={{ flex: 9, paddingRight: 20 }}>
-              <BarChart
-                style={{ height: 400 }}
-                data={data}
-                contentInset={{ top: 10, bottom: 10 }}
-                spacing={0.2}
-                yAccessor={({ item }) => item.val}
-                svg={{ fill: "url(#gradient)" }}
-              >
-                <Gradient></Gradient>
-              </BarChart>
-              <XAxis
-                data={data}
-                scale={scale.scaleBand}
-                style={{ marginHorizontal: -15, height: 20 }}
-                formatLabel={(_, index) => data[index].pos}
-                svg={{
-                  fill: "black",
-                  fontSize: 8,
-                  fontWeight: "bold",
-                  rotation: 20,
-                  originY: 30,
-                  y: 5
-                }}
-              />
-            </View>
-          </View>
+          </Card>
         </ScrollView>
       </View>
     );

@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  FlatList,
-  AsyncStorage
-} from "react-native";
+import { View, Text } from "react-native";
 
 import { Provider, connect } from "react-redux";
 import ActionCreator from "../../actions/index.js";
+import ActionCreator2 from "../../actions_2/index.js";
 
 class Pos2 extends Component {
   constructor(props) {
@@ -18,8 +12,8 @@ class Pos2 extends Component {
   }
 
   render() {
-    const { backData, seatData } = this.props;
-
+    const { backData, seatData, statData } = this.props;
+    console.log(statData);
     var thigh = {
       left: [],
       right: [],
@@ -150,7 +144,8 @@ class Pos2 extends Component {
 function mapStateToProps(state) {
   return {
     backData: state.bluedata.backData,
-    seatData: state.bluedata.seatData
+    seatData: state.bluedata.seatData,
+    statData: state.statdata.statData
   };
 }
 function mapDispatchToProps(dispatch) {
