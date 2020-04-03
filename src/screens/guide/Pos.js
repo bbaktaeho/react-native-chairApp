@@ -121,42 +121,42 @@ class Pos extends Component {
               <Svg width={screenWidth} height="300">
                 <Rect
                   x="4%"
-                  y="75%"
+                  y="14%"
                   width="9%"
                   height="11%"
                   fill={this.map1(seatData[0].data)}
                 />
                 <Rect
                   x="15.5%"
-                  y="75%"
+                  y="14%"
                   width="9%"
                   height="11%"
                   fill={this.map1(seatData[1].data)}
                 />
                 <Rect
                   x="26%"
-                  y="75%"
+                  y="14%"
                   width="9%"
                   height="11%"
                   fill={this.map1(seatData[2].data)}
                 />
                 <Rect
                   x="53%"
-                  y="75%"
+                  y="14%"
                   width="9%"
                   height="11%"
                   fill={this.map1(seatData[3].data)}
                 />
                 <Rect
                   x="63.5%"
-                  y="75%"
+                  y="14%"
                   width="9%"
                   height="11%"
                   fill={this.map1(seatData[4].data)}
                 />
                 <Rect
                   x="74%"
-                  y="75%"
+                  y="14%"
                   width="9%"
                   height="11%"
                   fill={this.map1(seatData[5].data)}
@@ -268,70 +268,70 @@ class Pos extends Component {
                 />
                 <Rect
                   x="6%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[21].data)}
                 />
                 <Rect
                   x="12.5%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[22].data)}
                 />
                 <Rect
                   x="19%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[23].data)}
                 />
                 <Rect
                   x="25.5%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[24].data)}
                 />
                 <Rect
                   x="32%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[25].data)}
                 />
                 <Rect
                   x="49%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[26].data)}
                 />
                 <Rect
                   x="55.5%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[27].data)}
                 />
                 <Rect
                   x="62%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[28].data)}
                 />
                 <Rect
                   x="68.5%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[29].data)}
                 />
                 <Rect
                   x="75%"
-                  y="14%"
+                  y="75%"
                   width="6%"
                   height="11%"
                   fill={this.map1(seatData[30].data)}

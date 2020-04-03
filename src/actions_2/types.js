@@ -7,7 +7,8 @@ const types = {
   PLUS_6: "Plus_6",
   PLUS_7: "Plus_7",
   PLUS_8: "Plus_8",
-  PLUS_9: "Plus_9"
+  PLUS_9: "Plus_9",
+  UP: "Up"
 };
 
 export default types;

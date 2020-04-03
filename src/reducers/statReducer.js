@@ -33,7 +33,7 @@ export default statdata = (state = initState, action) => {
     case types.PLUS_1:
       return {
         statData: {
-          data1: action.payload,
+          data1: state.statData.data1 + parseInt(action.payload),
           data2: state.statData.data2,
           data3: state.statData.data3,
           data4: state.statData.data4,
@@ -48,7 +48,7 @@ export default statdata = (state = initState, action) => {
       return {
         statData: {
           data1: state.statData.data1,
-          data2: action.payload,
+          data2: state.statData.data2 + action.payload,
           data3: state.statData.data3,
           data4: state.statData.data4,
           data5: state.statData.data5,
@@ -63,7 +63,7 @@ export default statdata = (state = initState, action) => {
         statData: {
           data1: state.statData.data1,
           data2: state.statData.data2,
-          data3: action.payload,
+          data3: state.statData.data3 + action.payload,
           data4: state.statData.data4,
           data5: state.statData.data5,
           data6: state.statData.data6,
@@ -78,7 +78,7 @@ export default statdata = (state = initState, action) => {
           data1: state.statData.data1,
           data2: state.statData.data2,
           data3: state.statData.data3,
-          data4: action.payload,
+          data4: state.statData.data4 + action.payload,
           data5: state.statData.data5,
           data6: state.statData.data6,
           data7: state.statData.data7,
@@ -93,7 +93,7 @@ export default statdata = (state = initState, action) => {
           data2: state.statData.data2,
           data3: state.statData.data3,
           data4: state.statData.data4,
-          data5: action.payload,
+          data5: state.statData.data5 + action.payload,
           data6: state.statData.data6,
           data7: state.statData.data7,
           data8: state.statData.data8,
@@ -108,7 +108,7 @@ export default statdata = (state = initState, action) => {
           data3: state.statData.data3,
           data4: state.statData.data4,
           data5: state.statData.data5,
-          data6: action.payload,
+          data6: state.statData.data6 + action.payload,
           data7: state.statData.data7,
           data8: state.statData.data8,
           data9: state.statData.data9
@@ -123,7 +123,7 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5,
           data6: state.statData.data6,
-          data7: action.payload,
+          data7: state.statData.data7 + action.payload,
           data8: state.statData.data8,
           data9: state.statData.data9
         }
@@ -138,7 +138,7 @@ export default statdata = (state = initState, action) => {
           data5: state.statData.data5,
           data6: state.statData.data6,
           data7: state.statData.data7,
-          data8: action.payload,
+          data8: state.statData.data8 + action.payload,
           data9: state.statData.data9
         }
       };

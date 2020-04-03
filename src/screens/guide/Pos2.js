@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, TextInput } from "react-native";
 
 import { Provider, connect } from "react-redux";
 import ActionCreator from "../../actions/index.js";
 import ActionCreator2 from "../../actions_2/index.js";
+import initStore from "../../store/index";
 
 class Pos2 extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class Pos2 extends Component {
 
   render() {
     const { backData, seatData, statData } = this.props;
-    console.log(statData);
+    const store = initStore();
+
     var thigh = {
       left: [],
       right: [],
@@ -112,13 +114,11 @@ class Pos2 extends Component {
         }
       } else {
         if (hip.r_avg == 0 && hip.l_avg == 0) {
-          return "엉덩이를 앞으로 내밀었습니다 (p3)";
+          return "p3";
         } else {
           if (back.r_avg == 0 && back.l_avg == 0) {
             return "상체를 숙였습니다 (p4)";
           } else {
-            console.log(Math.abs(hip.l_avg - hip.r_avg));
-
             if (Math.abs(hip.l_avg - hip.r_avg) > 30) {
               if (hip.l_avg > hip.r_avg) {
                 return "왼쪽으로 치우쳤습니다(p5)";
@@ -135,7 +135,7 @@ class Pos2 extends Component {
     };
     return (
       <View>
-        <Text>{result()}</Text>
+        <TextInput value={result()}></TextInput>
       </View>
     );
   }
@@ -150,6 +150,9 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
+    plus_1: num => {
+      dispatch(ActionCreator2.plus_1(num));
+    },
     backchange: (da, da2, da3, da4, da5) => {
       dispatch(ActionCreator.backchange(da, da2, da3, da4, da5));
     },

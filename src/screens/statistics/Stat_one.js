@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Picker,
-  PickerPropertiesAndroid
-} from "react-native";
-import { Icon, ListItem, Card, Image } from "react-native-elements";
+import { View, Text, StyleSheet, ScrollView, Picker } from "react-native";
+
+import { Provider, connect } from "react-redux";
+import { Card } from "react-native-elements";
 import { BarChart, XAxis, Grid, YAxis } from "react-native-svg-charts";
 import { LinearGradient, Stop, Defs } from "react-native-svg";
 import * as scale from "d3-scale";
@@ -22,16 +17,18 @@ class Stat_one extends Component {
   };
 
   render() {
-    const data = [
-      { pos: "바른자세", val: 20 },
-      { pos: "둔부앞자세", val: 50 },
-      { pos: "숙인자세", val: 30 },
-      { pos: "왼다리꼬기", val: 80 },
-      { pos: "오른다리꼬기", val: 10 },
-      { pos: "오른쪽기울기", val: 0 },
-      { pos: "왼쪽기울기", val: 60 },
-      { pos: "걸터앉기", val: 50 },
-      { pos: "양반다리", val: 30 }
+    const { statData } = this.props;
+    console.log(statData);
+    let data = [
+      { pos: "바른자세", val: statData.data1 },
+      { pos: "둔부앞자세", val: statData.data2 },
+      { pos: "숙인자세", val: statData.data3 },
+      { pos: "왼다리꼬기", val: statData.data4 },
+      { pos: "오른다리꼬기", val: statData.data5 },
+      { pos: "오른쪽기울기", val: statData.data6 },
+      { pos: "왼쪽기울기", val: statData.data7 },
+      { pos: "걸터앉기", val: statData.data8 },
+      { pos: "양반다리", val: statData.data9 }
     ];
     const da2 = ["시간", "", "", "", "", "", "", "", ""];
     const { year, month, date } = this.state;
@@ -200,4 +197,14 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Stat_one;
+function mapStateToProps(state) {
+  return {
+    backData: state.bluedata.backData,
+    seatData: state.bluedata.seatData,
+    angle: state.bluedata.angle,
+    battery: state.bluedata.battery,
+    statData: state.statdata.statData
+  };
+}
+
+export default connect(mapStateToProps)(Stat_one);

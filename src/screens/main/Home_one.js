@@ -12,6 +12,7 @@ import {
 // import { Card } from "react-native-elements";
 import { connect } from "react-redux";
 import ActionCreator from "../../actions/index";
+import ActionCreator2 from "../../actions_2/index";
 import initStore from "../../store/index";
 
 import Swiper from "react-native-swiper";
@@ -68,7 +69,9 @@ class Home_one extends Component {
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="홈 1"></MyHeader>
         <ScrollView>
-          <View style={styles.container}>{/* <Pos2></Pos2> */}</View>
+          <View style={styles.container}>
+            <Pos2></Pos2>
+          </View>
         </ScrollView>
       </View>
     );
@@ -86,7 +89,8 @@ const styles = StyleSheet.create({
 function mapStateToProps(state) {
   return {
     backData: state.bluedata.backData,
-    seatData: state.bluedata.seatData
+    seatData: state.bluedata.seatData,
+    statData: state.statdata.statData
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -96,6 +100,9 @@ function mapDispatchToProps(dispatch) {
     },
     seatchange: (num, da) => {
       dispatch(ActionCreator, seatchange(num, da));
+    },
+    plus_1: num => {
+      dispatch(ActionCreator2, plus_1(num));
     }
   };
 }

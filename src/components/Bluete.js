@@ -7,6 +7,7 @@ import {
   ToastAndroid
 } from "react-native";
 import ActionCreator from "../actions/index";
+import ActionCreator2 from "../actions_2/index";
 import initStore from "../store/index";
 
 import BluetoothSerial from "react-native-bluetooth-serial-next";
@@ -97,16 +98,16 @@ class Bluete extends React.Component {
           angled = splitData[3];
           batteryd = splitData[4];
           global.vib = vib;
-          back = splitData[1].split("^");
+          backd = splitData[1].split("^");
           seat = splitData[0].split("^");
           for (var i = 0; i < 4; i++) {
             switch (i) {
               case 0:
-                a = parseInt(back[i]);
+                a = parseInt(backd[i]);
               case 1:
-                b = parseInt(back[i]);
+                b = parseInt(backd[i]);
               case 2:
-                c = parseInt(back[i]);
+                c = parseInt(backd[i]);
               case 3:
             }
           }
@@ -114,12 +115,126 @@ class Bluete extends React.Component {
             a,
             b,
             c,
-            parseInt(back[3].substring(0, 3)),
+            parseInt(backd[3].substring(0, 3)),
             seat,
             angled,
             batteryd
           );
 
+          var thigh = {
+            left: [],
+            right: [],
+            middle: [],
+            l_avg: 0,
+            r_avg: 0,
+            m_avg: 0
+          };
+
+          var calf = {
+            left: [],
+            right: [],
+            l_avg: 0,
+            r_avg: 0
+          };
+
+          var hip = {
+            left: [],
+            right: [],
+            l_avg: 0,
+            r_avg: 0
+          };
+
+          var back = {
+            left: [],
+            right: [],
+            l_avg: 0,
+            r_avg: 0
+          };
+
+          for (let i = 0; i < 6; i++) {
+            thigh.left[i] = parseInt(seat[i + 6]);
+            thigh.right[i] = parseInt(seat[i + 15]);
+            if (i < 3) {
+              thigh.middle[i] = parseInt(seat[i + 12]);
+              thigh.m_avg += thigh.middle[i];
+            }
+            thigh.l_avg[i] += thigh.left[i];
+            thigh.r_avg[i] += thigh.right[i];
+          }
+
+          thigh.l_avg /= 6;
+          thigh.r_avg /= 6;
+
+          for (let i = 0; i < 3; i++) {
+            calf.left[i] = parseInt(seat[i]);
+            calf.right[i] = parseInt(seat[i + 3]);
+            calf.l_avg += calf.left[i];
+            calf.r_avg += calf.right[i];
+          }
+          calf.l_avg /= 3;
+          calf.r_avg /= 3;
+
+          for (let i = 0; i < 5; i++) {
+            hip.left[i] = parseInt(seat[i + 21]);
+            hip.right[i] = parseInt(seat[i + 26]);
+
+            hip.l_avg += hip.left[i];
+            hip.r_avg += hip.right[i];
+          }
+
+          for (let i = 0; i < 2; i++) {
+            back.left[i] = parseInt(backd[i]);
+            back.right[i] = parseInt(backd[i + 2]);
+            back.l_avg += back.left[i];
+            back.r_avg += back.right[i];
+          }
+
+          back.r_avg /= 2;
+          back.l_avg /= 2;
+
+          if (
+            calf.l_avg == 0 &&
+            calf.r_avg == 0 &&
+            hip.r_avg == 0 &&
+            hip.l_avg == 0 &&
+            back.l_avg == 0 &&
+            back.r_avg == 0 &&
+            thigh.l_avg == 0 &&
+            thigh.r_avg == 0 &&
+            thigh.m_avg == 0
+          ) {
+          }
+
+          if (
+            (calf.l_avg == 0 && calf.r_avg != 0) ||
+            (calf.l_avg != 0 && calf.r_avg == 0)
+          ) {
+            //다리 꼬았는지 확인
+            if (calf.l_avg == 0 && calf.r_avg != 0) {
+              this.props.plus_1(1);
+            } else {
+              this.props.plus_2(1);
+            }
+          } else {
+            if (hip.r_avg == 0 && hip.l_avg == 0) {
+              this.props.plus_3(1);
+            } else {
+              if ((back.r_avg == 0) & (back.l_avg == 0)) {
+                this.props.plus_4(1);
+              } else {
+                if (Math.abs(hip.l_avg - hip.r_avg) > 30) {
+                  if (hip.l_avg > hip.r_avg) {
+                    this.props.plus_5(1);
+                  } else this.props.plus_6(1);
+                } else {
+                  if (thigh.m_avg < 21) this.props.plus_7(1);
+                  else {
+                    this.props.plus_8(1);
+                  }
+                }
+              }
+            }
+          }
           if (this.imBoredNow && subscription) {
             BluetoothSerial.removeSubscription(subscription);
           }
@@ -175,16 +290,41 @@ function mapStateToProps(state) {
     backData: state.bluedata.backData,
     seatData: state.bluedata.seatData,
     angle: state.bluedata.angle,
-    battery: state.bluedata.battery
+    battery: state.bluedata.battery,
+    statData: state.statdata.statData
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
     seatchange: (num, da) => {
-      dispatch(ActionCreator, seatchange(num, da));
+      dispatch(ActionCreator.seatchange(num, da));
     },
     backchange: (da, da2, da3, da4, da5, da6, da7) => {
       dispatch(ActionCreator.backchange(da, da2, da3, da4, da5, da6, da7));
+    },
+    plus_1: num => {
+      dispatch(ActionCreator2.plus_1(num));
+    },
+    plus_2: num => {
+      dispatch(ActionCreator2.plus_2(num));
+    },
+    plus_3: num => {
+      dispatch(ActionCreator2.plus_3(num));
+    },
+    plus_4: num => {
+      dispatch(ActionCreator2.plus_4(num));
+    },
+    plus_5: num => {
+      dispatch(ActionCreator2.plus_5(num));
+    },
+    plus_6: num => {
+      dispatch(ActionCreator2.plus_6(num));
+    },
+    plus_7: num => {
+      dispatch(ActionCreator2.plus_7(num));
+    },
+    plus_8: num => {
+      dispatch(ActionCreator2.plus_8(num));
     }
   };
 }
