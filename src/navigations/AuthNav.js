@@ -10,36 +10,36 @@ export default AuthNav = createStackNavigator(
     Login: {
       screen: Login,
       navigationOptions: ({ navigation }) => ({
-        header: () => {}
-      })
+        header: () => {},
+      }),
     },
     SignUp: {
       screen: SignUp,
       navigationOptions: ({ navigation }) => ({
-        title: "회원가입"
-      })
+        title: "회원가입",
+      }),
     },
     ResetPassword: {
       screen: ResetPassword,
       navigationOptions: ({ navigation }) => ({
-        title: "비밀번호 변경"
-      })
+        title: "비밀번호 찾기",
+      }),
     },
     Guide: {
       screen: Guide,
       navigationOptions: ({ navigation }) => ({
-        header: () => {}
-      })
+        header: () => {},
+      }),
     },
     First_pos: {
       screen: First_pos,
       navigationOptions: ({ navigation }) => ({
-        header: () => {}
-      })
-    }
+        header: () => {},
+      }),
+    },
   },
   {
     initialRouteName: "Login",
-    headerLayoutPreset: "center"
+    headerLayoutPreset: "center",
   }
 );

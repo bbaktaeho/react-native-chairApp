@@ -6,7 +6,7 @@ export default class Loading extends Component {
   constructor() {
     super();
     this.state = {
-      timer: null
+      timer: null,
     };
   }
 
@@ -25,8 +25,13 @@ export default class Loading extends Component {
   render() {
     return (
       <ImageBackground
-        source={require("../assets/Images/logo-1.png")}
-        style={{ width: "100%", height: "100%" }}
+        source={require("../assets/Images/MainLogo_2.png")}
+        style={{
+          width: "100%",
+          height: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
         resizeMode="contain"
       ></ImageBackground>
     );

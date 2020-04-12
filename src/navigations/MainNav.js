@@ -15,7 +15,7 @@ import URL from "../NET";
 // 드로우 네비게이션 상단 컴포넌트(로그인 상태)
 class DrawerContent extends React.Component {
   state = {
-    username: ""
+    username: "",
   };
 
   requestInfo = async () => {
@@ -47,7 +47,7 @@ class DrawerContent extends React.Component {
             height: 140,
             alignItems: "center",
             flexDirection: "row",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
           }}
         >
           <Avatar
@@ -72,16 +72,16 @@ export default MainNav = createDrawerNavigator(
       screen: HomeNav,
       navigationOptions: {
         drawerLabel: "홈",
-        drawerIcon: () => <Icon name="home" size={25} />
-      }
+        drawerIcon: () => <Icon name="home" size={25} />,
+      },
     },
 
     Privacy: {
       screen: Privacy,
       navigationOptions: {
         drawerLabel: "내 정보",
-        drawerIcon: () => <Icon name="user" size={25} type="font-awesome" />
-      }
+        drawerIcon: () => <Icon name="user" size={25} type="font-awesome" />,
+      },
     },
 
     Stat: {
@@ -90,16 +90,16 @@ export default MainNav = createDrawerNavigator(
         drawerLabel: "통계",
         drawerIcon: () => (
           <Icon name="bar-chart" size={25} type="font-awesome" />
-        )
-      }
+        ),
+      },
     },
 
     Setting: {
       screen: SettingNav,
       navigationOptions: {
         drawerLabel: "설정",
-        drawerIcon: () => <Icon name="cog" size={25} type="font-awesome" />
-      }
+        drawerIcon: () => <Icon name="cog" size={25} type="font-awesome" />,
+      },
     },
 
     Appinfo: {
@@ -108,9 +108,9 @@ export default MainNav = createDrawerNavigator(
         drawerLabel: "앱 정보",
         drawerIcon: () => (
           <Icon name="info-circle" size={25} type="font-awesome" />
-        )
-      }
-    }
+        ),
+      },
+    },
   },
   {
     hideStatusBar: true,
@@ -119,7 +119,7 @@ export default MainNav = createDrawerNavigator(
     overlayColor: "#D8D8D8",
     contentComponent: DrawerContent,
     contentOptions: {
-      labelStyle: { fontSize: 15 }
-    }
+      labelStyle: { fontSize: 15 },
+    },
   }
 );

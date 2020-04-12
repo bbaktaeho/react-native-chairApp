@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Alert,
   TouchableOpacity,
-  AsyncStorage
+  AsyncStorage,
+  ScrollView,
 } from "react-native";
 import { Input, Icon, Image } from "react-native-elements";
 import URL from "../../NET";
@@ -15,43 +16,48 @@ import Fetch from "../../components/Fetch";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   logoContainer: {
-    paddingBottom: 35
+    marginTop: 90,
   },
   inputContainer: {
-    paddingBottom: 35,
-    width: "90%"
+    marginTop: 50,
+    width: "85%",
   },
   buttonContainer: {
-    width: "88%"
+    marginTop: 30,
+    width: "88%",
   },
   touchableContainer: {
-    marginTop: 30
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  touchable: {
+    marginTop: 30,
+    width: "35%",
+    alignItems: "center",
   },
   text: {
-    fontStyle: "italic",
-    color: "#CEAEA7"
-  }
+    color: "#CEAEA7",
+  },
 });
 
 class Login extends React.Component {
   state = {
     email: "",
     passwd: "",
-    loginButton: false
+    loginButton: false,
   };
 
-  myAlert = message =>
+  myAlert = (message) =>
     Alert.alert("경고", message, [
       {
         text: "확인",
         onPress: () => {
           this.setState({ loginButton: false });
-        }
-      }
+        },
+      },
     ]);
 
   signIn = async () => {
@@ -59,14 +65,14 @@ class Login extends React.Component {
 
     const res = await Fetch(URL.login, "POST", {
       email: this.state.email,
-      password: this.state.passwd
+      password: this.state.passwd,
     });
 
     if (res.success) {
       let loginData = {
         message: res.message,
         token: res.data.token,
-        check: res.data.check
+        check: res.data.check,
       };
       this.setState({ loginButton: false });
       this.props.navigation.navigate("AuthLoading", loginData);
@@ -81,70 +87,83 @@ class Login extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image
-            source={require("../../assets/Images/chair-1.png")}
-            style={{ width: 600, height: 100 }}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Input
-            onChangeText={val => {
-              this.onChangeText("email", val);
-            }}
-            value={this.state.email}
-            containerStyle={{ paddingBottom: 13 }}
-            placeholder="이메일"
-            leftIcon={<Icon name="mail" color="gray" />}
-          />
-
-          <Input
-            onChangeText={val => {
-              this.onChangeText("passwd", val);
-            }}
-            value={this.state.passwd}
-            placeholder="비밀번호"
-            secureTextEntry={true}
-            leftIcon={<Icon name="lock" color="gray" />}
-          />
-        </View>
-
-        <View style={styles.buttonContainer}>
-          {!(this.state.email === "") && (
-            <AuthButton
-              onPress={() => this.signIn()}
-              title="로그인"
-              backColor="#CEAEA7"
-              loading={this.state.loginButton}
-            ></AuthButton>
-          )}
-          {this.state.email === "" && this.state.passwd === "" && (
-            <AuthButton
-              title="비회원으로 시작하기"
-              backColor="#CEAEA7"
-              onPress={() => this.props.navigation.navigate("Guide")}
-            ></AuthButton>
-          )}
-          <View>
-            <Text></Text>
+      <ScrollView>
+        <View style={styles.container}>
+          <View style={styles.logoContainer}>
+            <Image
+              source={require("../../assets/Images/MainLogo_1.png")}
+              style={{ width: 140, height: 140 }}
+            ></Image>
           </View>
-          <AuthButton
-            onPress={() => this.props.navigation.navigate("SignUp")}
-            title="회원가입"
-            backColor="#CEAEA7"
-          ></AuthButton>
-        </View>
+          <View style={styles.inputContainer}>
+            <Input
+              onChangeText={(val) => {
+                this.onChangeText("email", val);
+              }}
+              value={this.state.email}
+              inputStyle={{ color: "gray", fontSize: 16 }}
+              inputContainerStyle={{
+                borderBottomWidth: 0,
+                backgroundColor: "#F2F2F2",
+                borderRadius: 120,
+              }}
+              containerStyle={{ paddingBottom: 13 }}
+              placeholder="이메일"
+              leftIcon={<Icon name="mail" color="#CEAEA7" />}
+            />
 
-        <View>
-          <TouchableOpacity
-            style={styles.touchableContainer}
-            onPress={() => this.props.navigation.navigate("ResetPassword")}
-          >
-            <Text style={styles.text}>Forgot your password?</Text>
-          </TouchableOpacity>
+            <Input
+              onChangeText={(val) => {
+                this.onChangeText("passwd", val);
+              }}
+              value={this.state.passwd}
+              inputStyle={{ color: "gray", fontSize: 16 }}
+              inputContainerStyle={{
+                borderBottomWidth: 0,
+                backgroundColor: "#F2F2F2",
+                borderRadius: 120,
+              }}
+              placeholder="비밀번호"
+              secureTextEntry={true}
+              leftIcon={<Icon name="lock" color="#CEAEA7" />}
+            />
+          </View>
+
+          <View style={styles.buttonContainer}>
+            {!(this.state.email === "") && (
+              <AuthButton
+                onPress={() => this.signIn()}
+                title="로그인"
+                backColor="#CEAEA7"
+                loading={this.state.loginButton}
+              ></AuthButton>
+            )}
+            {this.state.email === "" && this.state.passwd === "" && (
+              <AuthButton
+                title="비회원으로 시작하기"
+                backColor="#CEAEA7"
+                onPress={() => this.props.navigation.navigate("Guide")}
+              ></AuthButton>
+            )}
+          </View>
+
+          <View style={styles.touchableContainer}>
+            <TouchableOpacity
+              style={styles.touchable}
+              onPress={() => this.props.navigation.navigate("SignUp")}
+            >
+              <Text style={styles.text}>회원가입 </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.touchable}
+              onPress={() => this.props.navigation.navigate("ResetPassword")}
+            >
+              <Text style={styles.text}>비밀번호 찾기 </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

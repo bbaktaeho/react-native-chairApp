@@ -8,25 +8,25 @@ import URL from "../../NET";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
   },
   logoContainer: {
-    marginTop: 35
+    marginTop: 35,
   },
   inputContainer: {
-    width: "90%",
-    marginTop: 30
+    width: "85%",
+    marginTop: 30,
   },
   buttonContainer: {
     width: "85%",
-    marginTop: 50
-  }
+    marginTop: 50,
+  },
 });
 
 export default class ResetPassword extends Component {
   state = {
     email: "",
-    name: ""
+    name: "",
   };
 
   onChangeText = (key, value) => {
@@ -38,7 +38,7 @@ export default class ResetPassword extends Component {
 
     const res = await Fetch(URL.modify, "POST", {
       email: email,
-      name: name
+      name: name,
     });
 
     if (res == "error") {
@@ -58,29 +58,41 @@ export default class ResetPassword extends Component {
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <Input
-            onChangeText={val => {
+            onChangeText={(val) => {
               this.onChangeText("email", val);
             }}
             value={this.state.email}
+            inputStyle={{ color: "gray", fontSize: 16 }}
+            inputContainerStyle={{
+              borderBottomWidth: 0,
+              backgroundColor: "#F2F2F2",
+              borderRadius: 10,
+            }}
             containerStyle={{ paddingBottom: 20 }}
             placeholder="이메일 입력"
-            leftIcon={<Icon name="mail" color="gray" />}
+            leftIcon={<Icon name="mail" color="#CEAEA7" />}
           />
           <Input
-            onChangeText={val => {
+            onChangeText={(val) => {
               this.onChangeText("name", val);
             }}
             value={this.state.name}
+            inputStyle={{ color: "gray", fontSize: 16 }}
+            inputContainerStyle={{
+              borderBottomWidth: 0,
+              backgroundColor: "#F2F2F2",
+              borderRadius: 10,
+            }}
             containerStyle={{ paddingBottom: 20 }}
             placeholder="이름 입력"
-            leftIcon={<Icon name="person" color="gray" />}
+            leftIcon={<Icon name="person" color="#CEAEA7" />}
           />
         </View>
 
         <View style={styles.buttonContainer}>
           <AuthButton
             title="확인"
-            backColor="#C8A480"
+            backColor="#CEAEA7"
             onPress={() => this.changePassword()}
           ></AuthButton>
         </View>

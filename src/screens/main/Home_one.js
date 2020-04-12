@@ -7,7 +7,7 @@ import {
   BackHandler,
   ScrollView,
   Image,
-  AsyncStorage
+  AsyncStorage,
 } from "react-native";
 // import { Card } from "react-native-elements";
 import { connect } from "react-redux";
@@ -67,7 +67,10 @@ class Home_one extends Component {
     // const aa = AsyncStorage.getItem(token);
     return (
       <View style={{ flex: 1 }}>
-        <MyHeader navigation={this.props.navigation} title="홈 1"></MyHeader>
+        <MyHeader
+          navigation={this.props.navigation}
+          title="실시간 자세"
+        ></MyHeader>
         <ScrollView>
           <View style={styles.container}>
             <Pos2></Pos2>
@@ -82,15 +85,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
 
 function mapStateToProps(state) {
   return {
     backData: state.bluedata.backData,
     seatData: state.bluedata.seatData,
-    statData: state.statdata.statData
+    statData: state.statdata.statData,
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -101,9 +104,9 @@ function mapDispatchToProps(dispatch) {
     seatchange: (num, da) => {
       dispatch(ActionCreator, seatchange(num, da));
     },
-    plus_1: num => {
+    plus_1: (num) => {
       dispatch(ActionCreator2, plus_1(num));
-    }
+    },
   };
 }
 

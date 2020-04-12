@@ -4,11 +4,11 @@ function Fetch(url = String, method = String, req = Object) {
       method,
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(req)
+      body: JSON.stringify(req),
     })
-      .then(resData => {
+      .then((resData) => {
         const res = JSON.parse(resData._bodyInit);
         if (res.success) {
           resolve(res);

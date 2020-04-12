@@ -8,19 +8,19 @@ import URL from "../../NET";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
   },
   logoContainer: {
-    marginTop: 35
+    marginTop: 35,
   },
   inputContainer: {
-    width: "90%",
-    marginTop: 30
+    width: "85%",
+    marginTop: 30,
   },
   buttonContainer: {
     width: "85%",
-    marginTop: 50
-  }
+    marginTop: 50,
+  },
 });
 
 export default class SignUp extends React.Component {
@@ -29,7 +29,7 @@ export default class SignUp extends React.Component {
     name: "",
     passwd: "",
     checkPasswd: "",
-    signUpButton: false
+    signUpButton: false,
   };
 
   onChangeText = (key, value) => {
@@ -40,8 +40,8 @@ export default class SignUp extends React.Component {
     Alert.alert(title, message, [
       {
         text,
-        onPress
-      }
+        onPress,
+      },
     ]);
 
   signUp = async () => {
@@ -55,7 +55,7 @@ export default class SignUp extends React.Component {
       const res = await Fetch(URL.signup, "POST", {
         email: email,
         name: name,
-        password: passwd
+        password: passwd,
       });
 
       if (res.success) {
@@ -80,48 +80,72 @@ export default class SignUp extends React.Component {
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Image
-            source={require("../../assets/Images/chair_font.png")}
-            style={{ width: 200, height: 100 }}
+            source={require("../../assets/Images/MainLogo_1.png")}
+            style={{ width: 100, height: 100 }}
           />
         </View>
         <View style={styles.inputContainer}>
           <Input
-            onChangeText={val => {
+            onChangeText={(val) => {
               this.onChangeText("email", val);
             }}
             value={this.state.email}
+            inputStyle={{ color: "gray", fontSize: 16 }}
+            inputContainerStyle={{
+              borderBottomWidth: 0,
+              backgroundColor: "#F2F2F2",
+              borderRadius: 10,
+            }}
             containerStyle={{ paddingBottom: 20 }}
             placeholder="이메일 입력"
-            leftIcon={<Icon name="mail" color="gray" />}
+            leftIcon={<Icon name="mail" color="#CEAEA7" />}
           />
           <Input
-            onChangeText={val => {
+            onChangeText={(val) => {
               this.onChangeText("name", val);
             }}
             value={this.state.name}
+            inputStyle={{ color: "gray", fontSize: 16 }}
+            inputContainerStyle={{
+              borderBottomWidth: 0,
+              backgroundColor: "#F2F2F2",
+              borderRadius: 10,
+            }}
             containerStyle={{ paddingBottom: 20 }}
             placeholder="이름 입력"
-            leftIcon={<Icon name="person" color="gray" />}
+            leftIcon={<Icon name="person" color="#CEAEA7" />}
           />
           <Input
-            onChangeText={val => {
+            onChangeText={(val) => {
               this.onChangeText("passwd", val);
             }}
             value={this.state.passwd}
+            inputStyle={{ color: "gray", fontSize: 16 }}
+            inputContainerStyle={{
+              borderBottomWidth: 0,
+              backgroundColor: "#F2F2F2",
+              borderRadius: 10,
+            }}
             containerStyle={{ paddingBottom: 20 }}
             placeholder="비밀번호 입력"
             secureTextEntry={true}
-            leftIcon={<Icon name="lock" color="gray" />}
+            leftIcon={<Icon name="lock" color="#CEAEA7" />}
           />
 
           <Input
-            onChangeText={val => {
+            onChangeText={(val) => {
               this.onChangeText("checkPasswd", val);
             }}
             value={this.state.checkPasswd}
+            inputStyle={{ color: "gray", fontSize: 16 }}
+            inputContainerStyle={{
+              borderBottomWidth: 0,
+              backgroundColor: "#F2F2F2",
+              borderRadius: 10,
+            }}
             placeholder="비밀번호 재입력"
             secureTextEntry={true}
-            leftIcon={<Icon name="lock" color="gray" />}
+            leftIcon={<Icon name="lock" color="#CEAEA7" />}
           />
         </View>
 
@@ -130,7 +154,7 @@ export default class SignUp extends React.Component {
             onPress={() => this.signUp()}
             title="가입하기"
             loading={this.state.signUpButton}
-            backColor="#C8A480"
+            backColor="#CEAEA7"
           ></AuthButton>
         </View>
       </View>

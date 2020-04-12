@@ -5,7 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   FlatList,
-  AsyncStorage
+  AsyncStorage,
 } from "react-native";
 import { Card, Button } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
@@ -36,7 +36,7 @@ class Home_two extends Component {
       <View style={{ flex: 1 }}>
         <MyHeader
           navigation={this.props.navigation}
-          title="실시간 센서"
+          title="실시간 의자"
         ></MyHeader>
         <Pos></Pos>
       </View>
@@ -48,14 +48,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
 
 function mapStateToProps(state) {
   return {
     backData: state.bluedata.backData,
-    seatData: state.bluedata.seatData
+    seatData: state.bluedata.seatData,
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -65,7 +65,7 @@ function mapDispatchToProps(dispatch) {
     },
     seatchange: (num, da) => {
       dispatch(ActionCreator, seatchange(num, da));
-    }
+    },
   };
 }
 
