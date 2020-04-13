@@ -1,15 +1,15 @@
 //const host = "https://chair-communication.herokuapp.com";
 const host = "http://13.124.213.28:9000";
+//const host = "http://localhost:9000";
 // const host = "http://172.30.1.31:9000";
 
 export default URL = {
-  login: host + "/user/login",
-  signup: host + "/user/signup",
-  account: host + "/user/account",
-  emailmodify: host + "/user/emailmodify",
-  passwordmodify: host + "/user/passwordmodify",
-  password: host + "/user/password",
-  modify: host + "/modify",
-  withdrawal: host + "/user/withdrawal",
-  check: host + "/user/login/check"
+  login: host + "/api/users/login",
+  check: host + "/api/users/login/check",
+  signup: host + "/api/users/signup",
+  account: host + "/api/users/account",
+  emailmodify: host + "/api/users/account/emailmodify",
+  passwordmodify: host + "/api/users/account/passwordmodify",
+  password: host + "/api/users/find/password",
+  withdrawal: host + "/api/users/withdrawal",
 };

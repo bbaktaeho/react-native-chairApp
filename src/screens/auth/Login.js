@@ -67,12 +67,13 @@ class Login extends React.Component {
       email: this.state.email,
       password: this.state.passwd,
     });
+    console.log(res);
 
     if (res.success) {
       let loginData = {
         message: res.message,
-        token: res.data.token,
-        check: res.data.check,
+        token: res.token,
+        check: res.check,
       };
       this.setState({ loginButton: false });
       this.props.navigation.navigate("AuthLoading", loginData);

@@ -36,7 +36,7 @@ export default class ResetPassword extends Component {
   changePassword = async () => {
     const { email, name } = this.state;
 
-    const res = await Fetch(URL.modify, "POST", {
+    const res = await Fetch(URL.password, "POST", {
       email: email,
       name: name,
     });

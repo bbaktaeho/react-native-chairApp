@@ -7,7 +7,7 @@ import {
   AsyncStorage,
   ScrollView,
   ToastAndroid,
-  Alert
+  Alert,
 } from "react-native";
 import { Input } from "react-native-elements";
 import Tabs from "react-native-tabs";
@@ -24,7 +24,7 @@ export default class Privacy extends Component {
     password: "",
     newemail: "",
     newpassword: "",
-    privacyButton: false
+    privacyButton: false,
   };
 
   requestInfo = async () => {
@@ -47,8 +47,8 @@ export default class Privacy extends Component {
     Alert.alert(title, message, [
       {
         text,
-        onPress
-      }
+        onPress,
+      },
     ]);
 
   logout_removeItem = async () => {
@@ -64,7 +64,7 @@ export default class Privacy extends Component {
 
     const res = await Fetch(URL.emailmodify, "PUT", {
       token: token,
-      email: newemail
+      email: newemail,
     });
 
     if (res == "error") {
@@ -87,7 +87,7 @@ export default class Privacy extends Component {
     const res = await Fetch(URL.passwordmodify, "PUT", {
       token: token,
       password: password,
-      newPassword: newpassword
+      newPassword: newpassword,
     });
 
     if (res == "error") {
@@ -103,7 +103,7 @@ export default class Privacy extends Component {
 
     const res = await Fetch(URL.withdrawal, "DELETE", {
       token: token,
-      password: password
+      password: password,
     });
 
     if (res == "error") {
@@ -147,16 +147,16 @@ export default class Privacy extends Component {
               style={{ backgroundColor: "white" }}
               selectedIconStyle={{
                 borderTopWidth: 2,
-                borderTopColor: "#CEAEA7"
+                borderTopColor: "#CEAEA7",
               }}
-              onSelect={el => this.setState({ page: el.props.name })}
+              onSelect={(el) => this.setState({ page: el.props.name })}
             >
               <Text name="first">내 정보</Text>
               <Text
                 name="second"
                 selectedIconStyle={{
                   borderTopWidth: 2,
-                  borderTopColor: "#CEAEA7"
+                  borderTopColor: "#CEAEA7",
                 }}
               >
                 이메일 변경
@@ -165,7 +165,7 @@ export default class Privacy extends Component {
                 name="third"
                 selectedIconStyle={{
                   borderTopWidth: 2,
-                  borderTopColor: "#CEAEA7"
+                  borderTopColor: "#CEAEA7",
                 }}
               >
                 비밀번호 변경
@@ -174,7 +174,7 @@ export default class Privacy extends Component {
                 name="fourth"
                 selectedIconStyle={{
                   borderTopWidth: 2,
-                  borderTopColor: "#CEAEA7"
+                  borderTopColor: "#CEAEA7",
                 }}
               >
                 회원 탈퇴
@@ -219,7 +219,7 @@ export default class Privacy extends Component {
                   ></Input>
 
                   <Input
-                    onChangeText={val => {
+                    onChangeText={(val) => {
                       this.onChangeText("newemail", val);
                     }}
                     containerStyle={{ paddingBottom: 13 }}
@@ -237,7 +237,7 @@ export default class Privacy extends Component {
               {this.state.page == "third" && (
                 <View>
                   <Input
-                    onChangeText={val => {
+                    onChangeText={(val) => {
                       this.onChangeText("password", val);
                     }}
                     secureTextEntry={true}
@@ -246,7 +246,7 @@ export default class Privacy extends Component {
                   ></Input>
 
                   <Input
-                    onChangeText={val => {
+                    onChangeText={(val) => {
                       this.onChangeText("newpassword", val);
                     }}
                     secureTextEntry={true}
@@ -267,7 +267,7 @@ export default class Privacy extends Component {
                     탈퇴한 회원 정보는 모두 삭제됩니다. 탈퇴하시겠습니까?
                   </Text>
                   <Input
-                    onChangeText={val => {
+                    onChangeText={(val) => {
                       this.onChangeText("password", val);
                     }}
                     containerStyle={{ paddingBottom: 13 }}
@@ -290,26 +290,26 @@ export default class Privacy extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   container1: {
-    flex: 1
+    flex: 1,
   },
   container2: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 50
+    marginTop: 50,
   },
   container3: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 20
+    marginTop: 20,
   },
   header: {
     backgroundColor: "gainsboro",
-    height: 240
+    height: 240,
   },
   avatar: {
     width: 130,
@@ -320,16 +320,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: "center",
     position: "absolute",
-    marginTop: 25
+    marginTop: 25,
   },
   inputContainer: {
     width: "80%",
-    marginTop: 20
+    marginTop: 20,
   },
   textContainer: {
     fontSize: 23,
     fontWeight: "bold",
     marginTop: 190,
-    alignSelf: "center"
-  }
+    alignSelf: "center",
+  },
 });

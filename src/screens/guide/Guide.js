@@ -5,7 +5,7 @@ import {
   View,
   Button,
   AsyncStorage,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import { Image } from "react-native-elements";
 
@@ -18,30 +18,30 @@ const styles = StyleSheet.create({
   wrapper: {},
   container: {
     flex: 1,
-    flexDirection: "column"
+    flexDirection: "column",
   },
   text: {
     fontWeight: "bold",
-    fontSize: 20
+    fontSize: 20,
   },
   content: {
     flex: 3,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   content2: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   content3: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   content4: {
     width: "88%",
-    flex: 2
-  }
+    flex: 2,
+  },
 });
 
 export default class SwiperComponent extends Component {
@@ -53,7 +53,7 @@ export default class SwiperComponent extends Component {
     } else {
       const res = await Fetch(URL.check, "PUT", {
         token: token,
-        check: "1"
+        check: "1",
       });
 
       if (res == "error") {
@@ -80,7 +80,7 @@ export default class SwiperComponent extends Component {
               style={{
                 height: 550,
                 width: screenWidth,
-                resizeMode: "contain"
+                resizeMode: "contain",
               }}
             />
           </View>
