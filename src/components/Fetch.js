@@ -13,12 +13,7 @@ function Fetch(url = String, method = String, req = Object, token) {
       body: JSON.stringify(req),
     })
       .then((resData) => {
-        const res = JSON.parse(resData._bodyInit);
-        if (res.success) {
-          resolve(res);
-        } else {
-          resolve(res.message);
-        }
+        resolve(resData);
       })
       .catch(() => {
         reject("error");

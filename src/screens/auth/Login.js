@@ -67,14 +67,16 @@ class Login extends React.Component {
       email: this.state.email,
       password: this.state.passwd,
     });
-    console.log(res);
 
-    if (res.success) {
+    const body = JSON.parse(res._bodyText);
+
+    if (body.success) {
       let loginData = {
-        message: res.message,
-        token: res.token,
-        check: res.check,
+        message: body.message,
+        token: res.headers.map.authorization,
+        check: body.check,
       };
+
       this.setState({ loginButton: false });
       this.props.navigation.navigate("AuthLoading", loginData);
     } else {
