@@ -19,7 +19,11 @@ const styles = StyleSheet.create({
 });
 
 const DivCard = ({ title = "copyright by taeho^^", Component = <View /> }) => {
-  return <Card containerStyle={styles.c} title={title}></Card>;
+  return (
+    <Card containerStyle={styles.c} title={title}>
+      <View></View>
+    </Card>
+  );
 };
 
 export default DivCard;
