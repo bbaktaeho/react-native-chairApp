@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { Alert, BackHandler, AsyncStorage } from "react-native";
 import { Icon } from "react-native-elements";
+import { connect } from "react-redux";
+import ActionCreator2 from "../actions_2/index";
+import Fetch from "../components/Fetch";
+import URL from "../NET";
 
-const LogoutMenu = props => {
+/* 로그인 체크하고 post로 state(p0 - p8 보내기) */
+
+const LogoutMenu = (props) => {
   logout_removeItem = async () => {
     await AsyncStorage.removeItem("token");
 
@@ -28,15 +34,15 @@ const LogoutMenu = props => {
             { text: "취소", style: "cancel" },
             {
               text: "로그아웃",
-              onPress: () => this.logout_removeItem()
+              onPress: () => this.logout_removeItem(),
             },
             {
               text: "종료",
-              onPress: () => this.exit_removeItem()
-            }
+              onPress: () => this.exit_removeItem(),
+            },
           ],
           {
-            cancelable: false
+            cancelable: false,
           }
         );
       }}
@@ -44,4 +50,10 @@ const LogoutMenu = props => {
   );
 };
 
-export default LogoutMenu;
+function mapStateToProps(state) {
+  return {
+    statData: state.statdata.statData,
+  };
+}
+
+export default connect(mapStateToProps)(LogoutMenu);
