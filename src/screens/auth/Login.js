@@ -12,6 +12,7 @@ import { Input, Icon, Image } from "react-native-elements";
 import URL from "../../NET";
 import AuthButton from "../../components/AuthButton";
 import Fetch from "../../components/Fetch";
+import testPush from "../../utils/localPushNotification";
 
 const styles = StyleSheet.create({
   container: {
@@ -163,6 +164,12 @@ class Login extends React.Component {
               onPress={() => this.props.navigation.navigate("ResetPassword")}
             >
               <Text style={styles.text}>비밀번호 찾기 </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.touchable}
+              onPress={() => testPush()}
+            >
+              <Text style={styles.text}>테스트 푸시알림</Text>
             </TouchableOpacity>
           </View>
         </View>
