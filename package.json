@@ -22,6 +22,7 @@
     "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "^1.0.12",
     "react-native-indicators": "^0.17.0",
+    "react-native-push-notification": "3.1.9",
     "react-native-reanimated": "^1.4.0",
     "react-native-svg": "^6.5.2",
     "react-native-svg-charts": "^5.1.1",
@@ -33,6 +34,7 @@
     "redux": "^4.0.1"
   },
   "devDependencies": {
+    "jetifier": "1.6.5",
     "metro-react-native-babel-preset": "0.46.0",
     "react-test-renderer": "16.5.0"
   },
