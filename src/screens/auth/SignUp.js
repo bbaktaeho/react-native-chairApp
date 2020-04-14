@@ -57,14 +57,15 @@ export default class SignUp extends React.Component {
         name: name,
         password: passwd,
       });
+      const body = JSON.parse(res._bodyText);
 
-      if (res.success) {
+      if (body.success) {
         this.setState({ signUpButton: false });
         return this.myAlert("", "로그인 성공", "로그인하러 가기", () =>
           this.props.navigation.navigate("Login")
         );
       } else {
-        return this.myAlert("경고", res, "확인", () => {
+        return this.myAlert("경고", "존재하는 이메일입니다.", "확인", () => {
           this.setState({ signUpButton: false });
         });
       }

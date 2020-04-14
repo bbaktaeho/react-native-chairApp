@@ -9,6 +9,7 @@ export default class AuthLoading extends React.Component {
 
     try {
       await AsyncStorage.setItem("token", token);
+
       if (check == 0) {
         setTimeout(() => {
           ToastAndroid.show("로그인 성공", ToastAndroid.SHORT);

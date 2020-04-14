@@ -24,12 +24,14 @@ class DrawerContent extends React.Component {
     if (token == null) {
       this.setState({ username: "비회원" });
     } else {
-      const res = await Fetch(URL.account, "POST", { token: token });
+      const res = await Fetch(URL.account, "GET", { empty: 0 }, token);
+      console.log(res);
 
       if (res == "error") {
         console.log("fetch error");
       } else {
-        this.setState({ username: res.user.name });
+        const body = JSON.parse(res._bodyText);
+        this.setState({ username: body.user.name });
       }
     }
   };

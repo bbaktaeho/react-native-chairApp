@@ -1,6 +1,5 @@
 function Fetch(url = String, method = String, req = Object, token) {
-  const headers = new Headers();
-  headers.append("Authorization", "Bearer " + token);
+  const bearer = `Bearer ${token}`;
 
   return new Promise(async (resolve, reject) => {
     await fetch(url, {
@@ -8,7 +7,7 @@ function Fetch(url = String, method = String, req = Object, token) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        ...headers,
+        Authorization: bearer,
       },
       body: JSON.stringify(req),
     })
@@ -16,7 +15,7 @@ function Fetch(url = String, method = String, req = Object, token) {
         resolve(resData);
       })
       .catch(() => {
-        reject("error");
+        reject("fetch 에러");
       });
   });
 }

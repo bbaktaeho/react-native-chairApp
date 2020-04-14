@@ -80,7 +80,7 @@ class Login extends React.Component {
       this.setState({ loginButton: false });
       this.props.navigation.navigate("AuthLoading", loginData);
     } else {
-      return this.myAlert(res);
+      return this.myAlert(body.message);
     }
   };
 

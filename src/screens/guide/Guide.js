@@ -12,6 +12,7 @@ import { Image } from "react-native-elements";
 import Swiper from "react-native-swiper";
 import AuthButton from "../../components/AuthButton";
 import Fetch from "../../components/Fetch";
+import URL from "../../NET";
 
 const screenWidth = Dimensions.get("window").width;
 const styles = StyleSheet.create({
@@ -50,15 +51,21 @@ export default class SwiperComponent extends Component {
     if (token == null) {
       this.props.navigation.navigate("MainNav");
     } else {
-      const res = await Fetch(URL.check, "PUT", {
-        token: token,
-        check: "1",
-      });
+      const res = await Fetch(
+        URL.check,
+        "PUT",
+        {
+          check: 1,
+        },
+        token
+      );
 
+      //수정해야함
       if (res == "error") {
         console.log("fetch error");
       } else {
-        console.log(res.message);
+        const body = JSON.parse(res._bodyText);
+        console.log(body.message);
         this.props.navigation.navigate("MainNav");
       }
     }

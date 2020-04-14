@@ -10,8 +10,8 @@ export default class AppConfig extends Component {
         <MyHeader navigation={this.props.navigation} title="앱 정보"></MyHeader>
         <View style={styles.stycenter}>
           <Image
-            source={require("../../assets/Images/chair_logo2.png")}
-            style={{ width: 150, height: 150 }}
+            source={require("../../assets/Images/MainLogo_1.png")}
+            style={{ width: 100, height: 100 }}
           />
           <Text style={styles.textcolor}>
             {"\n"}최신 버전을 사용 중 입니다.
@@ -51,25 +51,26 @@ export default class AppConfig extends Component {
 const styles = StyleSheet.create({
   stycenter: {
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: 30,
   },
   textcolor: {
-    color: "silver"
+    color: "silver",
   },
   s1: {
     marginLeft: 30,
     marginTop: 50,
     fontWeight: "bold",
-    fontSize: 16
+    fontSize: 16,
   },
   s2: {
     marginLeft: 30,
-    fontSize: 14
+    fontSize: 14,
   },
   s11: {
     marginLeft: 30,
     color: "silver",
     fontWeight: "bold",
-    fontSize: 16
-  }
+    fontSize: 16,
+  },
 });
