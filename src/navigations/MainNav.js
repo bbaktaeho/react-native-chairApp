@@ -92,7 +92,7 @@ export default MainNav = createDrawerNavigator(
       screen: HomeNav,
       navigationOptions: {
         drawerLabel: "홈",
-        drawerIcon: () => <Icon name="home" size={25} />,
+        drawerIcon: () => <Icon name="home" size={25} color="#857562" />,
       },
     },
 
@@ -100,7 +100,9 @@ export default MainNav = createDrawerNavigator(
       screen: Privacy,
       navigationOptions: {
         drawerLabel: "내 정보",
-        drawerIcon: () => <Icon name="user" size={25} type="font-awesome" />,
+        drawerIcon: () => (
+          <Icon name="user" size={25} type="font-awesome" color="#857562" />
+        ),
       },
     },
 
@@ -109,7 +111,12 @@ export default MainNav = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "통계",
         drawerIcon: () => (
-          <Icon name="bar-chart" size={25} type="font-awesome" />
+          <Icon
+            name="bar-chart"
+            size={25}
+            type="font-awesome"
+            color="#857562"
+          />
         ),
       },
     },
@@ -118,7 +125,9 @@ export default MainNav = createDrawerNavigator(
       screen: SettingNav,
       navigationOptions: {
         drawerLabel: "설정",
-        drawerIcon: () => <Icon name="cog" size={25} type="font-awesome" />,
+        drawerIcon: () => (
+          <Icon name="cog" size={25} type="font-awesome" color="#857562" />
+        ),
       },
     },
 
@@ -127,15 +136,20 @@ export default MainNav = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "앱 정보",
         drawerIcon: () => (
-          <Icon name="info-circle" size={25} type="font-awesome" />
+          <Icon
+            name="info-circle"
+            size={25}
+            type="font-awesome"
+            color="#857562"
+          />
         ),
       },
     },
   },
   {
-    hideStatusBar: true,
+    hideStatusBar: false,
     intialRouteName: "Home",
-    drawerBackgroundColor: "#ffffff", // 앱의 백그라운드 컬러와 맞추면 됨
+    // drawerBackgroundColor: "#DFCEBE", // 앱의 백그라운드 컬러와 맞추면 됨
     overlayColor: "#D8D8D8",
     contentComponent: DrawerContent,
     contentOptions: {
