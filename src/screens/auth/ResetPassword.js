@@ -27,6 +27,7 @@ export default class ResetPassword extends Component {
   state = {
     email: "",
     name: "",
+    resetpasswdButton: false,
   };
 
   onChangeText = (key, value) => {
@@ -34,6 +35,7 @@ export default class ResetPassword extends Component {
   };
 
   changePassword = async () => {
+    this.setState({ resetpasswdButton: true });
     const { email, name } = this.state;
 
     const res = await Fetch(URL.password, "POST", {
@@ -41,19 +43,22 @@ export default class ResetPassword extends Component {
       name: name,
     });
 
-    if (res == "error") {
-      console.log("fetch error");
+    const body = JSON.parse(res._bodyText);
+
+    if (body.success) {
+      ToastAndroid.show(
+        "이메일로 전송된 새비밀번호를 확인해주세요.",
+        ToastAndroid.LONG
+      );
+      this.props.navigation.navigate("Login");
     } else {
-      if (res.success) {
-        console.log("비밀번호 변경 성공");
-        this.props.navigation.navigate("Login");
-      } else {
-        ToastAndroid.show("다시 입력해주세요", ToastAndroid.SHORT);
-      }
+      ToastAndroid.show("다시 입력해주세요", ToastAndroid.SHORT);
+      this.setState({ resetpasswdButton: false });
     }
   };
 
   render() {
+    const { resetpasswdButton } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
@@ -94,6 +99,7 @@ export default class ResetPassword extends Component {
             title="확인"
             backColor="#CEAEA7"
             onPress={() => this.changePassword()}
+            loading={resetpasswdButton}
           ></AuthButton>
         </View>
       </View>

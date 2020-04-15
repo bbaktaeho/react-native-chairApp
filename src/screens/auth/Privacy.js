@@ -33,13 +33,31 @@ export default class Privacy extends Component {
     if (token == null) {
       this.setState({ email: "비회원", name: "비회원" });
     } else {
-      const res = await Fetch(URL.account, "POST", { token: token });
+      await fetch(URL.account, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((resData) => {
+        const body = JSON.parse(resData._bodyText);
 
-      if (res == "error") {
-        console.log("fetch error");
-      } else {
-        this.setState({ email: res.user.email, name: res.user.name });
-      }
+        if (body.success) {
+          this.setState({ email: body.user.email, name: body.user.name });
+        } else {
+          console.log(body.message);
+        }
+      });
+      // const res = await Fetch(URL.account, "GET", { empty: 0 }, token);
+
+      // const body = JSON.parse(res._bodyText);
+
+      // if (body.success) {
+      //   this.setState({ email: body.user.email, name: body.user.name });
+      // } else {
+      //   console.log("fetch error");
+      // }
     }
   };
 
@@ -62,20 +80,22 @@ export default class Privacy extends Component {
     const token = await AsyncStorage.getItem("token");
     const { newemail } = this.state;
 
-    const res = await Fetch(URL.emailmodify, "PUT", {
-      token: token,
-      email: newemail,
-    });
+    const res = await Fetch(
+      URL.emailmodify,
+      "PUT",
+      {
+        newEmail: newemail,
+      },
+      token
+    );
 
-    if (res == "error") {
-      console.log("fetch error");
+    const body = JSON.parse(res._bodyText);
+
+    if (body.success) {
+      this.logout_removeItem();
     } else {
-      if (res.success) {
-        this.logout_removeItem();
-      } else {
-        ToastAndroid.show(res, ToastAndroid.LONG);
-        this.setState({ privacyButton: false });
-      }
+      ToastAndroid.show(body.message, ToastAndroid.LONG);
+      this.setState({ privacyButton: false });
     }
   };
 
@@ -84,16 +104,23 @@ export default class Privacy extends Component {
     const token = await AsyncStorage.getItem("token");
     const { password, newpassword } = this.state;
 
-    const res = await Fetch(URL.passwordmodify, "PUT", {
-      token: token,
-      password: password,
-      newPassword: newpassword,
-    });
+    const res = await Fetch(
+      URL.passwordmodify,
+      "PUT",
+      {
+        password: password,
+        newPassword: newpassword,
+      },
+      token
+    );
 
-    if (res == "error") {
-      console.log("fetch error");
-    } else {
+    const body = JSON.parse(res._bodyText);
+
+    if (body.success) {
       this.logout_removeItem();
+    } else {
+      ToastAndroid.show(body.message, ToastAndroid.LONG);
+      this.setState({ privacyButton: false });
     }
   };
 
@@ -101,16 +128,22 @@ export default class Privacy extends Component {
     const token = await AsyncStorage.getItem("token");
     const { password } = this.state;
 
-    const res = await Fetch(URL.withdrawal, "DELETE", {
-      token: token,
-      password: password,
-    });
+    const res = await Fetch(
+      URL.withdrawal,
+      "DELETE",
+      {
+        password: password,
+      },
+      token
+    );
 
-    if (res == "error") {
-      console.log("fetch error");
-    } else {
-      console.log(res.message);
+    const body = JSON.parse(res._bodyText);
+
+    if (body.success) {
       this.logout_removeItem();
+    } else {
+      ToastAndroid.show(body.message, ToastAndroid.LONG);
+      this.setState({ privacyButton: false });
     }
   };
 
