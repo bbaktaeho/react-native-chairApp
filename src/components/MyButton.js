@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const AuthButton = ({
+const MyButton = ({
   title,
   onPress,
-  backColor = "gainsboro",
+  backColor = "#ABA095",
   loading = false,
 }) => (
   <View style={styles.container}>
@@ -35,4 +35,4 @@ const AuthButton = ({
   </View>
 );
 
-export default AuthButton;
+export default MyButton;

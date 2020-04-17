@@ -1,14 +1,6 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  FlatList,
-  AsyncStorage
-} from "react-native";
-import { Card, Button } from "react-native-elements";
-import Home_two from "../main/Home_two";
+import { View } from "react-native";
+import { Button } from "react-native-elements";
 import Pos from "./Pos";
 export default class First_pos extends Component {
   constructor(props) {
@@ -35,11 +27,3 @@ export default class First_pos extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});

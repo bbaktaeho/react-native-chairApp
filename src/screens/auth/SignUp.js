@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Alert } from "react-native";
-import { Input, Text, Icon, Image } from "react-native-elements";
-import AuthButton from "../../components/AuthButton";
+import { Input, Icon, Image } from "react-native-elements";
+import MyButton from "../../components/MyButton";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
@@ -151,12 +151,11 @@ export default class SignUp extends React.Component {
         </View>
 
         <View style={styles.buttonContainer}>
-          <AuthButton
+          <MyButton
             onPress={() => this.signUp()}
             title="가입하기"
             loading={this.state.signUpButton}
-            backColor="#CEAEA7"
-          ></AuthButton>
+          ></MyButton>
         </View>
       </View>
     );

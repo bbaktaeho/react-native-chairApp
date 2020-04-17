@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, StyleSheet, ToastAndroid } from "react-native";
 import { Input, Icon } from "react-native-elements";
-import AuthButton from "../../components/AuthButton";
+import MyButton from "../../components/MyButton";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
@@ -95,12 +95,12 @@ export default class ResetPassword extends Component {
         </View>
 
         <View style={styles.buttonContainer}>
-          <AuthButton
+          <MyButton
             title="확인"
             backColor="#CEAEA7"
             onPress={() => this.changePassword()}
             loading={resetpasswdButton}
-          ></AuthButton>
+          ></MyButton>
         </View>
       </View>
     );

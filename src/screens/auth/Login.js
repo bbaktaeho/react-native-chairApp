@@ -5,12 +5,12 @@ import {
   StyleSheet,
   Alert,
   TouchableOpacity,
-  AsyncStorage,
   ScrollView,
 } from "react-native";
-import { Input, Icon, Image } from "react-native-elements";
+import { Image } from "react-native-elements";
 import URL from "../../NET";
-import AuthButton from "../../components/AuthButton";
+import MyButton from "../../components/MyButton";
+import MyInput from "../../components/MyInput";
 import Fetch from "../../components/Fetch";
 import testPush from "../../utils/localPushNotification";
 
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    color: "#CEAEA7",
+    color: "#ABA095",
   },
 });
 
@@ -100,54 +100,40 @@ class Login extends React.Component {
             ></Image>
           </View>
           <View style={styles.inputContainer}>
-            <Input
-              onChangeText={(val) => {
+            <MyInput
+              value={this.state.email}
+              placeholder="이메일"
+              changeText={(val) => {
                 this.onChangeText("email", val);
               }}
-              value={this.state.email}
-              inputStyle={{ color: "gray", fontSize: 16 }}
-              inputContainerStyle={{
-                borderBottomWidth: 0,
-                backgroundColor: "#F2F2F2",
-                borderRadius: 120,
-              }}
-              containerStyle={{ paddingBottom: 13 }}
-              placeholder="이메일"
-              leftIcon={<Icon name="mail" color="#CEAEA7" />}
+              radius={120}
+              name="mail"
             />
 
-            <Input
-              onChangeText={(val) => {
+            <MyInput
+              value={this.state.passwd}
+              placeholder="비밀번호"
+              changeText={(val) => {
                 this.onChangeText("passwd", val);
               }}
-              value={this.state.passwd}
-              inputStyle={{ color: "gray", fontSize: 16 }}
-              inputContainerStyle={{
-                borderBottomWidth: 0,
-                backgroundColor: "#F2F2F2",
-                borderRadius: 120,
-              }}
-              placeholder="비밀번호"
-              secureTextEntry={true}
-              leftIcon={<Icon name="lock" color="#CEAEA7" />}
+              radius={120}
+              name="lock"
             />
           </View>
 
           <View style={styles.buttonContainer}>
             {!(this.state.email === "") && (
-              <AuthButton
+              <MyButton
                 onPress={() => this.signIn()}
                 title="로그인"
-                backColor="#CEAEA7"
                 loading={this.state.loginButton}
-              ></AuthButton>
+              ></MyButton>
             )}
             {this.state.email === "" && this.state.passwd === "" && (
-              <AuthButton
+              <MyButton
                 title="비회원으로 시작하기"
-                backColor="#CEAEA7"
                 onPress={() => this.props.navigation.navigate("Guide")}
-              ></AuthButton>
+              ></MyButton>
             )}
           </View>
 
@@ -165,12 +151,12 @@ class Login extends React.Component {
             >
               <Text style={styles.text}>비밀번호 찾기 </Text>
             </TouchableOpacity>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={styles.touchable}
               onPress={() => testPush()}
             >
               <Text style={styles.text}>테스트 푸시알림</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
       </ScrollView>

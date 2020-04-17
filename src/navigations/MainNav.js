@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import { View, Text, ScrollView, Image, AsyncStorage } from "react-native";
+import React from "react";
+import { View, Text, ScrollView, AsyncStorage } from "react-native";
 import { createDrawerNavigator, DrawerItems } from "react-navigation";
-import { Avatar, Button, Icon } from "react-native-elements";
+import { Avatar, Icon } from "react-native-elements";
 
 import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 import AppConfig from "../screens/main/AppConfig";
 import StatNav from "../navigations/StatNav";
-import Fetch from "../components/Fetch";
 import URL from "../NET";
 
 // 드로우 네비게이션 상단 컴포넌트(로그인 상태)

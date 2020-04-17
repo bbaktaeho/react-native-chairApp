@@ -1,25 +1,14 @@
 import React, { Component } from "react";
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  ImageBackground,
-  ScrollView,
-  Text
-} from "react-native";
-import { Icon, ListItem, Card, Image } from "react-native-elements";
+import { View, StyleSheet, Dimensions, ScrollView, Text } from "react-native";
+import { Icon, Card } from "react-native-elements";
 import { Svg, Rect } from "react-native-svg";
 import _ from "lodash";
 import { connect } from "react-redux";
 import initStore from "../../store/index";
 import ActionCreator from "../../actions/index.js";
-import { $CombinedState } from "redux";
 import divCardStyle from "../../myStyles/divCardStyle";
 
 const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
-
-const store = initStore();
 
 class Pos extends Component {
   constructor(props) {
@@ -52,7 +41,7 @@ class Pos extends Component {
     else return "battery-empty";
   }
   render() {
-    const { backData, seatData, angle, battery } = this.props;
+    const { backData, seatData, battery } = this.props;
 
     return (
       <View style={{ flex: 1 }}>
@@ -65,7 +54,7 @@ class Pos extends Component {
                 style={{
                   flex: 1,
                   flexDirection: "row",
-                  justifyContent: "space-between"
+                  justifyContent: "space-between",
                 }}
               >
                 <View style={{ flexDirection: "row", paddingLeft: 10 }}>
@@ -345,20 +334,12 @@ class Pos extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});
-
 function mapStateToProps(state) {
   return {
     backData: state.bluedata.backData,
     seatData: state.bluedata.seatData,
     angle: state.bluedata.angle,
-    battery: state.bluedata.battery
+    battery: state.bluedata.battery,
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -368,7 +349,7 @@ function mapDispatchToProps(dispatch) {
     },
     backchange: (da, da2, da3, da4, da5, da6, da7) => {
       dispatch(ActionCreator.backchange(da, da2, da3, da4, da5, da6, da7));
-    }
+    },
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Pos);

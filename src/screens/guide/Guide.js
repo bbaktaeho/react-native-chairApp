@@ -1,16 +1,9 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  AsyncStorage,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, Text, View, AsyncStorage, Dimensions } from "react-native";
 import { Image } from "react-native-elements";
 
 import Swiper from "react-native-swiper";
-import AuthButton from "../../components/AuthButton";
+import MyButton from "../../components/MyButton";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
@@ -135,11 +128,11 @@ export default class SwiperComponent extends Component {
           </View>
 
           <View style={styles.button}>
-            <AuthButton
+            <MyButton
               onPress={() => this.loginCheck()}
               title="홈으로 가기"
               backColor="#CEAEA7"
-            ></AuthButton>
+            ></MyButton>
           </View>
         </View>
       </Swiper>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text } from "react-native";
 import MyHeader from "../../components/MyHeader";
 import { Card } from "react-native-elements";
 
@@ -27,11 +27,3 @@ export default class Detail extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  }
-});

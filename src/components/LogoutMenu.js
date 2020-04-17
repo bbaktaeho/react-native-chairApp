@@ -1,10 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Alert, BackHandler, AsyncStorage } from "react-native";
 import { Icon } from "react-native-elements";
 import { connect } from "react-redux";
-import ActionCreator2 from "../actions_2/index";
-import Fetch from "../components/Fetch";
-import URL from "../NET";
 
 /* 로그인 체크하고 post로 state(p0 - p8 보내기) */
 

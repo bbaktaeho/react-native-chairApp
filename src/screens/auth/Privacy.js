@@ -12,7 +12,7 @@ import {
 import { Input } from "react-native-elements";
 import Tabs from "react-native-tabs";
 import MyHeader from "../../components/MyHeader";
-import AuthButton from "../../components/AuthButton";
+import MyButton from "../../components/MyButton";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
@@ -259,12 +259,12 @@ export default class Privacy extends Component {
                     leftIcon={<Text>변경 이메일ㅤㅤ</Text>}
                   ></Input>
 
-                  <AuthButton
+                  <MyButton
                     onPress={() => this.emailmodify()}
                     title="수정하기"
                     backColor="#C8A480"
                     loading={privacyButton}
-                  ></AuthButton>
+                  ></MyButton>
                 </View>
               )}
               {this.state.page == "third" && (
@@ -287,11 +287,11 @@ export default class Privacy extends Component {
                     leftIcon={<Text>변경 비밀번호ㅤㅤ</Text>}
                   ></Input>
 
-                  <AuthButton
+                  <MyButton
                     onPress={() => this.passwordmodify()}
                     title="수정하기"
                     backColor="#C8A480"
-                  ></AuthButton>
+                  ></MyButton>
                 </View>
               )}
               {this.state.page == "fourth" && (
@@ -306,11 +306,11 @@ export default class Privacy extends Component {
                     containerStyle={{ paddingBottom: 13 }}
                     leftIcon={<Text>비밀번호ㅤㅤㅤ</Text>}
                   ></Input>
-                  <AuthButton
+                  <MyButton
                     onPress={() => this.withdrawal()}
                     title="탈퇴하기"
                     backColor="#C8A480"
-                  ></AuthButton>
+                  ></MyButton>
                 </View>
               )}
             </View>
