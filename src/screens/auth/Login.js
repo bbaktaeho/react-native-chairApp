@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 class Login extends React.Component {
   state = {
     email: "",
-    passwd: "",
+    password: "",
     loginButton: false,
   };
 
@@ -66,7 +66,7 @@ class Login extends React.Component {
 
     const res = await Fetch(URL.login, "POST", {
       email: this.state.email,
-      password: this.state.passwd,
+      password: this.state.password,
     });
 
     const body = JSON.parse(res._bodyText);
@@ -111,10 +111,10 @@ class Login extends React.Component {
             />
 
             <MyInput
-              value={this.state.passwd}
+              value={this.state.password}
               placeholder="비밀번호"
               changeText={(val) => {
-                this.onChangeText("passwd", val);
+                this.onChangeText("password", val);
               }}
               radius={120}
               name="lock"
@@ -129,7 +129,7 @@ class Login extends React.Component {
                 loading={this.state.loginButton}
               ></MyButton>
             )}
-            {this.state.email === "" && this.state.passwd === "" && (
+            {this.state.email === "" && this.state.password === "" && (
               <MyButton
                 title="비회원으로 시작하기"
                 onPress={() => this.props.navigation.navigate("Guide")}

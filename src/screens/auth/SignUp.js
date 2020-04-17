@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Input, Icon, Image } from "react-native-elements";
 import MyButton from "../../components/MyButton";
+import MyInput from "../../components/MyInput";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   buttonContainer: {
-    width: "85%",
+    width: "90%",
     marginTop: 50,
   },
 });
@@ -27,8 +28,8 @@ export default class SignUp extends React.Component {
   state = {
     email: "",
     name: "",
-    passwd: "",
-    checkPasswd: "",
+    password: "",
+    checkpassword: "",
     signUpButton: false,
   };
 
@@ -46,16 +47,16 @@ export default class SignUp extends React.Component {
 
   signUp = async () => {
     this.setState({ signUpButton: true }); // 버튼 클릭 시 로딩
-    const { email, name, passwd, checkPasswd } = this.state;
-    if (!(email && name && passwd)) {
+    const { email, name, password, checkpassword } = this.state;
+    if (!(email && name && password)) {
       return this.myAlert("경고", "모두 입력하세요", "확인");
     }
 
-    if (checkPasswd == passwd) {
+    if (checkpassword == password) {
       const res = await Fetch(URL.signup, "POST", {
         email: email,
         name: name,
-        password: passwd,
+        password: password,
       });
       const body = JSON.parse(res._bodyText);
 
@@ -86,67 +87,37 @@ export default class SignUp extends React.Component {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Input
-            onChangeText={(val) => {
+          <MyInput
+            value={this.state.email}
+            placeholder="이메일 입력"
+            changeText={(val) => {
               this.onChangeText("email", val);
             }}
-            value={this.state.email}
-            inputStyle={{ color: "gray", fontSize: 16 }}
-            inputContainerStyle={{
-              borderBottomWidth: 0,
-              backgroundColor: "#F2F2F2",
-              borderRadius: 10,
-            }}
-            containerStyle={{ paddingBottom: 20 }}
-            placeholder="이메일 입력"
-            leftIcon={<Icon name="mail" color="#CEAEA7" />}
+            name="mail"
           />
-          <Input
-            onChangeText={(val) => {
+          <MyInput
+            value={this.state.name}
+            placeholder="이름 입력"
+            changeText={(val) => {
               this.onChangeText("name", val);
             }}
-            value={this.state.name}
-            inputStyle={{ color: "gray", fontSize: 16 }}
-            inputContainerStyle={{
-              borderBottomWidth: 0,
-              backgroundColor: "#F2F2F2",
-              borderRadius: 10,
-            }}
-            containerStyle={{ paddingBottom: 20 }}
-            placeholder="이름 입력"
-            leftIcon={<Icon name="person" color="#CEAEA7" />}
+            name="person"
           />
-          <Input
-            onChangeText={(val) => {
-              this.onChangeText("passwd", val);
-            }}
-            value={this.state.passwd}
-            inputStyle={{ color: "gray", fontSize: 16 }}
-            inputContainerStyle={{
-              borderBottomWidth: 0,
-              backgroundColor: "#F2F2F2",
-              borderRadius: 10,
-            }}
-            containerStyle={{ paddingBottom: 20 }}
+          <MyInput
+            value={this.state.password}
             placeholder="비밀번호 입력"
-            secureTextEntry={true}
-            leftIcon={<Icon name="lock" color="#CEAEA7" />}
+            changeText={(val) => {
+              this.onChangeText("password", val);
+            }}
+            name="lock"
           />
-
-          <Input
-            onChangeText={(val) => {
-              this.onChangeText("checkPasswd", val);
+          <MyInput
+            value={this.state.checkpassword}
+            placeholder="비밀번호 확인"
+            changeText={(val) => {
+              this.onChangeText("checkpassword", val);
             }}
-            value={this.state.checkPasswd}
-            inputStyle={{ color: "gray", fontSize: 16 }}
-            inputContainerStyle={{
-              borderBottomWidth: 0,
-              backgroundColor: "#F2F2F2",
-              borderRadius: 10,
-            }}
-            placeholder="비밀번호 재입력"
-            secureTextEntry={true}
-            leftIcon={<Icon name="lock" color="#CEAEA7" />}
+            name="lock"
           />
         </View>
 

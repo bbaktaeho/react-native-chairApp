@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, StyleSheet, ToastAndroid } from "react-native";
 import { Input, Icon } from "react-native-elements";
 import MyButton from "../../components/MyButton";
+import MyInput from "../../components/MyInput";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   buttonContainer: {
-    width: "85%",
+    width: "90%",
     marginTop: 50,
   },
 });
@@ -62,42 +63,27 @@ export default class ResetPassword extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-          <Input
-            onChangeText={(val) => {
+          <MyInput
+            value={this.state.email}
+            placeholder="이메일 입력"
+            changeText={(val) => {
               this.onChangeText("email", val);
             }}
-            value={this.state.email}
-            inputStyle={{ color: "gray", fontSize: 16 }}
-            inputContainerStyle={{
-              borderBottomWidth: 0,
-              backgroundColor: "#F2F2F2",
-              borderRadius: 10,
-            }}
-            containerStyle={{ paddingBottom: 20 }}
-            placeholder="이메일 입력"
-            leftIcon={<Icon name="mail" color="#CEAEA7" />}
+            name="mail"
           />
-          <Input
-            onChangeText={(val) => {
+          <MyInput
+            value={this.state.name}
+            placeholder="이름 입력"
+            changeText={(val) => {
               this.onChangeText("name", val);
             }}
-            value={this.state.name}
-            inputStyle={{ color: "gray", fontSize: 16 }}
-            inputContainerStyle={{
-              borderBottomWidth: 0,
-              backgroundColor: "#F2F2F2",
-              borderRadius: 10,
-            }}
-            containerStyle={{ paddingBottom: 20 }}
-            placeholder="이름 입력"
-            leftIcon={<Icon name="person" color="#CEAEA7" />}
+            name="person"
           />
         </View>
 
         <View style={styles.buttonContainer}>
           <MyButton
             title="확인"
-            backColor="#CEAEA7"
             onPress={() => this.changePassword()}
             loading={resetpasswdButton}
           ></MyButton>
