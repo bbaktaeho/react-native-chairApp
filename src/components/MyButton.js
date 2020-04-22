@@ -29,7 +29,7 @@ const MyButton = ({
     >
       {!loading && <Text style={{ color: "white" }}>{title}</Text>}
       {loading && (
-        <BarIndicator color="rgb(255,255,255)" size={30}></BarIndicator>
+        <BarIndicator color="rgb(255,255,255)" size={20}></BarIndicator>
       )}
     </TouchableOpacity>
   </View>

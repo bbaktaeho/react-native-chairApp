@@ -1,6 +1,6 @@
 import React from "react";
 import { View, AsyncStorage, ToastAndroid } from "react-native";
-import { PacmanIndicator } from "react-native-indicators";
+import { BarIndicator } from "react-native-indicators";
 
 export default class AuthLoading extends React.Component {
   async componentDidMount() {
@@ -29,7 +29,7 @@ export default class AuthLoading extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <PacmanIndicator size={50}></PacmanIndicator>
+        <BarIndicator size={25}></BarIndicator>
       </View>
     );
   }
