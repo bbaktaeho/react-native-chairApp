@@ -4,7 +4,7 @@ import React from "react";
 import Home_one from "../screens/main/Home_one";
 import Home_two from "../screens/main/Home_two";
 import Home_three from "../screens/main/Home_three";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import Icon from "react-native-vector-icons/EvilIcons";
 
 const HomeNav = createBottomTabNavigator(
   {
@@ -20,18 +20,18 @@ const HomeNav = createBottomTabNavigator(
         let iconName;
 
         if (routeName === "내자세") {
-          iconName = "child";
+          iconName = "heart";
         } else if (routeName === "내의자") {
-          iconName = "chair";
+          iconName = "archive";
         } else if (routeName === "예측") {
-          iconName = "chart-line";
+          iconName = "clock";
         }
         return <IconComponent name={iconName} size={25} color={tintColor} />;
       },
     }),
     tabBarOptions: {
-      activeTintColor: "#857562",
-      inactiveTintColor: "#cfc1b0",
+      activeTintColor: "#695c4c",
+      inactiveTintColor: "#d3d3d3",
     },
   }
 );

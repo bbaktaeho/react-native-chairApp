@@ -22,28 +22,28 @@ class Pos2 extends Component {
       middle: [],
       l_avg: 0,
       r_avg: 0,
-      m_avg: 0
+      m_avg: 0,
     };
 
     var calf = {
       left: [],
       right: [],
       l_avg: 0,
-      r_avg: 0
+      r_avg: 0,
     };
 
     var hip = {
       left: [],
       right: [],
       l_avg: 0,
-      r_avg: 0
+      r_avg: 0,
     };
 
     var back = {
       left: [],
       right: [],
       l_avg: 0,
-      r_avg: 0
+      r_avg: 0,
     };
 
     for (let i = 0; i < 6; i++) {
@@ -135,7 +135,7 @@ class Pos2 extends Component {
     };
     return (
       <View>
-        <TextInput value={result()}></TextInput>
+        <TextInput value={result()} style={{ fontSize: 25 }}></TextInput>
       </View>
     );
   }
@@ -145,12 +145,12 @@ function mapStateToProps(state) {
   return {
     backData: state.bluedata.backData,
     seatData: state.bluedata.seatData,
-    statData: state.statdata.statData
+    statData: state.statdata.statData,
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    plus_1: num => {
+    plus_1: (num) => {
       dispatch(ActionCreator2.plus_1(num));
     },
     backchange: (da, da2, da3, da4, da5) => {
@@ -158,7 +158,7 @@ function mapDispatchToProps(dispatch) {
     },
     seatchange: (num, da) => {
       dispatch(ActionCreator, seatchange(num, da));
-    }
+    },
   };
 }
 

@@ -1,24 +1,34 @@
 import React, { Component } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   ToastAndroid,
   BackHandler,
   ScrollView,
   Image,
-  AsyncStorage,
 } from "react-native";
-// import { Card } from "react-native-elements";
 import { connect } from "react-redux";
 import ActionCreator from "../../actions/index";
 import ActionCreator2 from "../../actions_2/index";
-import initStore from "../../store/index";
+import { Card } from "react-native-elements";
 
-import Swiper from "react-native-swiper";
-
+import divCardStyle from "../../myStyles/divCardStyle";
 import MyHeader from "../../components/MyHeader";
 import Pos2 from "../../screens/guide/Pos2.js";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 25,
+  },
+});
 
 class Home_one extends Component {
   constructor(props) {
@@ -58,13 +68,12 @@ class Home_one extends Component {
       );
     } else {
       clearTimeout(this.timeout);
-      BackHandler.exitApp(); // 앱 종료
+      BackHandler.exitApp();
     }
     return true;
   };
 
   render() {
-    // const aa = AsyncStorage.getItem(token);
     return (
       <View style={{ flex: 1 }}>
         <MyHeader
@@ -73,21 +82,20 @@ class Home_one extends Component {
         ></MyHeader>
         <ScrollView>
           <View style={styles.container}>
-            <Pos2></Pos2>
+            <Card containerStyle={divCardStyle.c}>
+              <View style={styles.container}>
+                <Image source={require("../../assets/Images/f_1.png")} />
+              </View>
+              <View style={styles.text}>
+                <Pos2></Pos2>
+              </View>
+            </Card>
           </View>
         </ScrollView>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 function mapStateToProps(state) {
   return {

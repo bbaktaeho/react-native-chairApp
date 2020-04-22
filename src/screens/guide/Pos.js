@@ -49,31 +49,37 @@ class Pos extends Component {
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Card containerStyle={divCardStyle.c}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: 10,
+              }}
+            >
               <View
                 style={{
-                  flex: 1,
                   flexDirection: "row",
-                  justifyContent: "space-between",
+                  marginRight: 150,
                 }}
               >
-                <View style={{ flexDirection: "row", paddingLeft: 10 }}>
-                  <Text style={{ fontSize: 18 }}>연결 상태 : </Text>
-                  <Icon
-                    name="circle"
-                    color={this.connecte()}
-                    type="font-awesome"
-                  ></Icon>
-                </View>
-                <View style={{ paddingRight: 10 }}>
-                  <Icon
-                    size={30}
-                    name={this.batterycheck(battery)}
-                    type="font-awesome"
-                  ></Icon>
-                </View>
+                <Text style={{ fontSize: 14 }}>연결 </Text>
+                <Icon
+                  name="circle"
+                  size={20}
+                  color={this.connecte()}
+                  type="font-awesome"
+                ></Icon>
               </View>
-            </Card>
+              <View style={{ marginLeft: 150 }}>
+                <Icon
+                  size={20}
+                  name={this.batterycheck(battery)}
+                  type="font-awesome"
+                ></Icon>
+              </View>
+            </View>
+
             <Card title="등받이" containerStyle={divCardStyle.c}>
               <Svg width={screenWidth} height="230">
                 <Rect

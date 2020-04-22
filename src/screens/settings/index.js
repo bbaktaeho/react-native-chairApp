@@ -12,19 +12,9 @@ class Set extends React.Component {
       list: [
         {
           name: "푸시 알림",
-          right: () => <Switch></Switch>
+          right: () => <Switch></Switch>,
         },
-
-        {
-          name: "진동 설정",
-          right: () => (
-            <Icon
-              name="arrow-forward"
-              onPress={() => props.navigation.navigate("Vib")}
-            ></Icon>
-          )
-        }
-      ]
+      ],
     };
   }
 

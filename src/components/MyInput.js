@@ -2,10 +2,20 @@ import { View } from "react-native";
 import { Input, Icon } from "react-native-elements";
 import React from "react";
 
-const MyInput = ({ value, placeholder, changeText, radius = 10, name }) => {
+const MyInput = ({
+  disabled = false,
+  secure = false,
+  value,
+  placeholder,
+  changeText,
+  radius = 10,
+  name,
+}) => {
   return (
-    <View>
+    <View style={{ marginTop: 5 }}>
       <Input
+        disabled={disabled}
+        secureTextEntry={secure}
         value={value}
         placeholder={placeholder}
         onChangeText={changeText}

@@ -70,12 +70,14 @@ class DrawerContent extends React.Component {
           }}
         >
           <Avatar
-            overlayContainerStyle={{ backgroundColor: "white" }}
+            size="small"
+            rounded
+            icon={{ name: "user", type: "font-awesome" }}
             onPress={() => this.props.navigation.navigate("Privacy")}
-            containerStyle={{ padding: 20 }}
-            source={require("../assets/Images/ex.png")}
+            overlayContainerStyle={{ backgroundColor: "#695c4c" }}
+            containerStyle={{ marginLeft: 15, marginTop: 10 }}
           />
-          <Text style={{ paddingRight: 130, fontSize: 23, color: "black" }}>
+          <Text style={{ paddingRight: 130, fontSize: 23, color: "#695c4c" }}>
             {this.state.username}
           </Text>
         </View>
@@ -91,7 +93,7 @@ export default MainNav = createDrawerNavigator(
       screen: HomeNav,
       navigationOptions: {
         drawerLabel: "홈",
-        drawerIcon: () => <Icon name="home" size={25} color="#857562" />,
+        drawerIcon: () => <Icon name="home" size={25} color="#544e48" />,
       },
     },
 
@@ -100,7 +102,7 @@ export default MainNav = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "내 정보",
         drawerIcon: () => (
-          <Icon name="user" size={25} type="font-awesome" color="#857562" />
+          <Icon name="user" size={25} type="font-awesome" color="#544e48" />
         ),
       },
     },
@@ -114,7 +116,7 @@ export default MainNav = createDrawerNavigator(
             name="bar-chart"
             size={25}
             type="font-awesome"
-            color="#857562"
+            color="#544e48"
           />
         ),
       },
@@ -125,7 +127,7 @@ export default MainNav = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "설정",
         drawerIcon: () => (
-          <Icon name="cog" size={25} type="font-awesome" color="#857562" />
+          <Icon name="cog" size={25} type="font-awesome" color="#544e48" />
         ),
       },
     },
@@ -139,7 +141,7 @@ export default MainNav = createDrawerNavigator(
             name="info-circle"
             size={25}
             type="font-awesome"
-            color="#857562"
+            color="#544e48"
           />
         ),
       },
@@ -148,11 +150,13 @@ export default MainNav = createDrawerNavigator(
   {
     hideStatusBar: false,
     intialRouteName: "Home",
-    // drawerBackgroundColor: "#DFCEBE", // 앱의 백그라운드 컬러와 맞추면 됨
-    overlayColor: "#D8D8D8",
+    //drawerBackgroundColor: "#DFCEBE", // 앱의 백그라운드 컬러와 맞추면 됨
+    overlayColor: "#d3d3d3",
     contentComponent: DrawerContent,
     contentOptions: {
       labelStyle: { fontSize: 15 },
+      activeTintColor: "#695c4c",
+      inactiveTintColor: "#d3d3d3",
     },
   }
 );

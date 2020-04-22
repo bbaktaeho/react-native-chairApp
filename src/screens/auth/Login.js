@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     width: "85%",
   },
   buttonContainer: {
-    marginTop: 30,
     width: "88%",
   },
   touchableContainer: {
@@ -97,7 +96,7 @@ class Login extends React.Component {
             <Image
               source={require("../../assets/Images/MainLogo_1.png")}
               style={{ width: 140, height: 140 }}
-            ></Image>
+            />
           </View>
           <View style={styles.inputContainer}>
             <MyInput

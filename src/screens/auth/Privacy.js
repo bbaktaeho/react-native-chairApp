@@ -8,13 +8,22 @@ import {
   ScrollView,
   ToastAndroid,
   Alert,
+  Avatar,
 } from "react-native";
-import { Input } from "react-native-elements";
+import { Icon } from "react-native-elements";
 import Tabs from "react-native-tabs";
 import MyHeader from "../../components/MyHeader";
 import MyButton from "../../components/MyButton";
+import MyInput from "../../components/MyInput";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
+
+const style = StyleSheet.create({
+  buttonContainer: {
+    marginTop: 30,
+    width: "88%",
+  },
+});
 
 export default class Privacy extends Component {
   state = {
@@ -170,6 +179,12 @@ export default class Privacy extends Component {
                 style={styles.avatar}
                 source={require("../../assets/Images/ex.png")}
               />
+              {/* <Avatar
+                size="large"
+                rounded
+                icon={{ name: "user", type: "font-awesome" }}
+                overlayContainerStyle={{ backgroundColor: "#695c4c" }}
+              /> */}
               <Text style={styles.textContainer}>{name}</Text>
             </View>
           </View>
@@ -180,7 +195,7 @@ export default class Privacy extends Component {
               style={{ backgroundColor: "white" }}
               selectedIconStyle={{
                 borderTopWidth: 2,
-                borderTopColor: "#CEAEA7",
+                borderTopColor: "#ABA095",
               }}
               onSelect={(el) => this.setState({ page: el.props.name })}
             >
@@ -219,98 +234,82 @@ export default class Privacy extends Component {
             <View style={styles.inputContainer}>
               {this.state.page == "first" && (
                 <View>
-                  <Input
+                  <MyInput disabled={true} value={email} name="mail" />
+                  <MyInput disabled={true} value={name} name="mail" />
+                  <MyInput
                     disabled={true}
-                    value={email}
-                    containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>이메일ㅤㅤ</Text>}
-                  ></Input>
-
-                  <Input
-                    disabled={true}
-                    value={name}
-                    containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>이름ㅤㅤㅤ</Text>}
-                  ></Input>
-
-                  <Input
-                    disabled={true}
-                    secureTextEntry={true}
-                    value="1234567"
-                    containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>비밀번호ㅤ</Text>}
-                  ></Input>
+                    secure={true}
+                    value="123456"
+                    name="mail"
+                  />
                 </View>
               )}
               {this.state.page == "second" && (
                 <View>
-                  <Input
-                    disabled={true}
-                    value={email}
-                    containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>현재 이메일ㅤㅤ</Text>}
-                  ></Input>
-
-                  <Input
-                    onChangeText={(val) => {
+                  <MyInput disabled={true} value={email} name="mail" />
+                  <MyInput
+                    changeText={(val) => {
                       this.onChangeText("newemail", val);
                     }}
-                    containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>변경 이메일ㅤㅤ</Text>}
-                  ></Input>
+                    name="mail"
+                  />
 
                   <MyButton
                     onPress={() => this.emailmodify()}
                     title="수정하기"
-                    backColor="#C8A480"
                     loading={privacyButton}
                   ></MyButton>
                 </View>
               )}
               {this.state.page == "third" && (
                 <View>
-                  <Input
-                    onChangeText={(val) => {
+                  <MyInput
+                    secure={true}
+                    changeText={(val) => {
                       this.onChangeText("password", val);
                     }}
-                    secureTextEntry={true}
-                    containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>현재 비밀번호ㅤㅤ</Text>}
-                  ></Input>
-
-                  <Input
-                    onChangeText={(val) => {
+                    name="mail"
+                  />
+                  <MyInput
+                    secure={true}
+                    changeText={(val) => {
                       this.onChangeText("newpassword", val);
                     }}
-                    secureTextEntry={true}
-                    containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>변경 비밀번호ㅤㅤ</Text>}
-                  ></Input>
+                    name="mail"
+                  />
 
                   <MyButton
                     onPress={() => this.passwordmodify()}
                     title="수정하기"
-                    backColor="#C8A480"
                   ></MyButton>
                 </View>
               )}
               {this.state.page == "fourth" && (
                 <View>
-                  <Text>
-                    탈퇴한 회원 정보는 모두 삭제됩니다. 탈퇴하시겠습니까?
-                  </Text>
-                  <Input
-                    onChangeText={(val) => {
-                      this.onChangeText("password", val);
+                  <View
+                    style={{
+                      alignItems: "center",
                     }}
-                    containerStyle={{ paddingBottom: 13 }}
-                    leftIcon={<Text>비밀번호ㅤㅤㅤ</Text>}
-                  ></Input>
-                  <MyButton
-                    onPress={() => this.withdrawal()}
-                    title="탈퇴하기"
-                    backColor="#C8A480"
-                  ></MyButton>
+                  >
+                    <Text style={{ fontSize: 15, fontWeight: "bold" }}>
+                      탈퇴한 회원 정보는 모두 삭제됩니다.{"\n"}탈퇴를
+                      진행하시려면 비밀번호를 입력해주세요.
+                    </Text>
+                  </View>
+
+                  <View style={{ marginTop: 20 }}>
+                    <MyInput
+                      secure={true}
+                      changeText={(val) => {
+                        this.onChangeText("password", val);
+                      }}
+                      name="mail"
+                    />
+                    <MyButton
+                      onPress={() => this.withdrawal()}
+                      title="탈퇴하기"
+                    ></MyButton>
+                  </View>
                 </View>
               )}
             </View>
@@ -341,15 +340,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   header: {
-    backgroundColor: "gainsboro",
+    backgroundColor: "#cfccc8",
     height: 240,
   },
   avatar: {
     width: 130,
     height: 130,
-    borderRadius: 63,
-    borderWidth: 4,
-    borderColor: "white",
+
     marginBottom: 10,
     alignSelf: "center",
     position: "absolute",
@@ -360,9 +357,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   textContainer: {
+    color: "#695c4c",
     fontSize: 23,
     fontWeight: "bold",
-    marginTop: 190,
+    marginTop: 170,
     alignSelf: "center",
   },
 });
