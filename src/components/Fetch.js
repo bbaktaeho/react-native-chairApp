@@ -1,4 +1,5 @@
-function Fetch(url = String, method = String, req = Object, token) {
+function Fetch(url = String, method = String, req, token) {
+  const bearer = `Bearer ${token}`;
   const option = {
     method,
     headers: {
@@ -7,8 +8,8 @@ function Fetch(url = String, method = String, req = Object, token) {
       Authorization: bearer,
     },
     body: JSON.stringify(req),
-  }
-  const bearer = `Bearer ${token}`;
+  };
+
   if (method == "GET") delete option.body;
 
   return new Promise(async (resolve, reject) => {

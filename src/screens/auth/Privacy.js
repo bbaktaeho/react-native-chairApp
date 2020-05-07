@@ -217,12 +217,12 @@ export default class Privacy extends Component {
               {this.state.page == "first" && (
                 <View>
                   <MyInput disabled={true} value={email} name="mail" />
-                  <MyInput disabled={true} value={name} name="mail" />
+                  <MyInput disabled={true} value={name} name="person" />
                   <MyInput
                     disabled={true}
                     secure={true}
                     value="123456"
-                    name="mail"
+                    name="lock"
                   />
                 </View>
               )}
@@ -233,6 +233,7 @@ export default class Privacy extends Component {
                     changeText={(val) => {
                       this.onChangeText("newemail", val);
                     }}
+                    placeholder="이메일 입력"
                     name="mail"
                   />
 
@@ -250,14 +251,16 @@ export default class Privacy extends Component {
                     changeText={(val) => {
                       this.onChangeText("password", val);
                     }}
-                    name="mail"
+                    placeholder="현재 비밀번호 입력"
+                    name="lock"
                   />
                   <MyInput
                     secure={true}
                     changeText={(val) => {
                       this.onChangeText("newpassword", val);
                     }}
-                    name="mail"
+                    placeholder="변경 비밀번호 입력"
+                    name="lock"
                   />
 
                   <MyButton
@@ -285,7 +288,8 @@ export default class Privacy extends Component {
                       changeText={(val) => {
                         this.onChangeText("password", val);
                       }}
-                      name="mail"
+                      placeholder="비밀번호 입력"
+                      name="lock"
                     />
                     <MyButton
                       onPress={() => this.withdrawal()}

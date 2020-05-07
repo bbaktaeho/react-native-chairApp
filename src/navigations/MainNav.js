@@ -8,6 +8,7 @@ import HomeNav from "../navigations/HomeNav";
 import Privacy from "../screens/auth/Privacy";
 import AppConfig from "../screens/main/AppConfig";
 import StatNav from "../navigations/StatNav";
+import Fetch from "../components/Fetch";
 import URL from "../NET";
 
 // 드로우 네비게이션 상단 컴포넌트(로그인 상태)
@@ -22,34 +23,13 @@ class DrawerContent extends React.Component {
     if (token == null) {
       this.setState({ username: "비회원" });
     } else {
-      await fetch(URL.account, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((resData) => {
-        const body = JSON.parse(resData._bodyText);
-
-        if (body.success) {
-          this.setState({ username: body.user.name });
-        } else {
-          console.log(body.message);
-        }
-      });
-      // const res = await Fetch(URL.account, "GET", null, token);
-
-      // console.log(res);
-
-      // const body = JSON.parse(res._bodyText);
-      // console.log("body 파싱한것이다." + body);
-
-      // if (body.success) {
-      //   this.setState({ username: body.user.name });
-      // } else {
-      //   console.log("fetch error");
-      // }
+      const res = await Fetch(URL.account, "GET", null, token);
+      const body = JSON.parse(res._bodyText);
+      if (body.success) {
+        this.setState({ username: body.user.name });
+      } else {
+        console.log("fetch error");
+      }
     }
   };
 
