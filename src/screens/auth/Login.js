@@ -110,6 +110,7 @@ class Login extends React.Component {
             />
 
             <MyInput
+              secure={true}
               value={this.state.password}
               placeholder="비밀번호"
               changeText={(val) => {

@@ -42,31 +42,13 @@ export default class Privacy extends Component {
     if (token == null) {
       this.setState({ email: "비회원", name: "비회원" });
     } else {
-      await fetch(URL.account, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }).then((resData) => {
-        const body = JSON.parse(resData._bodyText);
-
-        if (body.success) {
-          this.setState({ email: body.user.email, name: body.user.name });
-        } else {
-          console.log(body.message);
-        }
-      });
-      // const res = await Fetch(URL.account, "GET", { empty: 0 }, token);
-
-      // const body = JSON.parse(res._bodyText);
-
-      // if (body.success) {
-      //   this.setState({ email: body.user.email, name: body.user.name });
-      // } else {
-      //   console.log("fetch error");
-      // }
+      const res = await Fetch(URL.account, "GET", null, token);
+      const body = JSON.parse(res._bodyText);
+      if (body.success) {
+        this.setState({ email: body.user.email, name: body.user.name });
+      } else {
+        console.log("fetch error");
+      }
     }
   };
 
