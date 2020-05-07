@@ -12,4 +12,9 @@ export default URL = {
   passwordmodify: host + "/api/users/account/passwordmodify",
   password: host + "/api/users/find/password",
   withdrawal: host + "/api/users/withdrawal",
+  posturesave: host + "/api/statistic/date",
+  date: host + "/api/statistic/date", //일간통계
+  month: host + "/api/statistic/month", //월간통계
+  statisticall: host + "/api/statistic/all", //총통계
+  postureinference: host + "/api/postures/inference",
 };

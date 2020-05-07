@@ -4,7 +4,7 @@ import {
   PermissionsAndroid,
   BackHandler,
   AsyncStorage,
-  ToastAndroid
+  ToastAndroid,
 } from "react-native";
 import ActionCreator from "../actions/index";
 import ActionCreator2 from "../actions_2/index";
@@ -13,6 +13,8 @@ import initStore from "../store/index";
 import BluetoothSerial from "react-native-bluetooth-serial-next";
 
 import { Buffer } from "buffer";
+import Fetch from "./Fetch";
+
 global.Buffer = Buffer;
 global.connected = false;
 
@@ -28,7 +30,7 @@ class Bluete extends React.Component {
       device: null,
       devices: [],
       scanning: false,
-      processing: false
+      processing: false,
     };
   }
 
@@ -37,7 +39,7 @@ class Bluete extends React.Component {
     // 블루투스 검색할 수 있는 permission
     await PermissionsAndroid.check(
       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION
-    ).then(result => {
+    ).then((result) => {
       if (!result) {
         PermissionsAndroid.request(
           PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION
@@ -50,7 +52,7 @@ class Bluete extends React.Component {
       const [isEnabled, devices] = await Promise.all([
         // paired 가져옴
         BluetoothSerial.isEnabled(),
-        BluetoothSerial.list()
+        BluetoothSerial.list(),
       ]);
       // 블루투스가 off 라면
       if (!isEnabled) {
@@ -71,12 +73,12 @@ class Bluete extends React.Component {
       if (temp.length > 0) {
         this.setState({
           isEnabled,
-          devices: temp.map(device => ({
+          devices: temp.map((device) => ({
             // chairCommunication 발견 했다면 devices에 넣어놓고
             // 객체 속성을 추가함(paired, connected)
             ...device,
-            paired: true
-          }))
+            paired: true,
+          })),
         });
         // 찾은게 있다면 강제 커넥트
         await BluetoothSerial.connect(id);
@@ -88,9 +90,10 @@ class Bluete extends React.Component {
 
         let splitData = [];
         let vib = [];
-        let back = [];
         let seat = [];
+        let backd = [];
         let a, b, c;
+        let merge = [];
         // 블루투스 모듈 연결이 성공했을 때
         BluetoothSerial.read((data, subscription) => {
           splitData = data.split(",");
@@ -100,6 +103,7 @@ class Bluete extends React.Component {
           global.vib = vib;
           backd = splitData[1].split("^");
           seat = splitData[0].split("^");
+          merge = seat.concat(backd);
           for (var i = 0; i < 4; i++) {
             switch (i) {
               case 0:
@@ -111,6 +115,9 @@ class Bluete extends React.Component {
               case 3:
             }
           }
+          merge.forEach((e, i) => {
+            merge[i] = parseInt(e);
+          });
           this.props.backchange(
             a,
             b,
@@ -121,124 +128,29 @@ class Bluete extends React.Component {
             batteryd
           );
 
-          var thigh = {
-            left: [],
-            right: [],
-            middle: [],
-            l_avg: 0,
-            r_avg: 0,
-            m_avg: 0
-          };
+          fetch("http://192.168.0.6:9009/", {
+            method: "post",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ posture: merge }),
+          })
+            .then((res) => {
+              console.log("dsfafadfadfdfaffdf");
 
-          var calf = {
-            left: [],
-            right: [],
-            l_avg: 0,
-            r_avg: 0
-          };
+              const body = JSON.parse(res._bodyText);
+              console.log("바디입니다 : ", body);
+            })
+            .catch((e) => {
+              console.error("에러입니다!!!!!!: ", e.message);
+            });
 
-          var hip = {
-            left: [],
-            right: [],
-            l_avg: 0,
-            r_avg: 0
-          };
-
-          var back = {
-            left: [],
-            right: [],
-            l_avg: 0,
-            r_avg: 0
-          };
-
-          for (let i = 0; i < 6; i++) {
-            thigh.left[i] = parseInt(seat[i + 6]);
-            thigh.right[i] = parseInt(seat[i + 15]);
-            if (i < 3) {
-              thigh.middle[i] = parseInt(seat[i + 12]);
-              thigh.m_avg += thigh.middle[i];
-            }
-            thigh.l_avg[i] += thigh.left[i];
-            thigh.r_avg[i] += thigh.right[i];
-          }
-
-          thigh.l_avg /= 6;
-          thigh.r_avg /= 6;
-
-          for (let i = 0; i < 3; i++) {
-            calf.left[i] = parseInt(seat[i]);
-            calf.right[i] = parseInt(seat[i + 3]);
-            calf.l_avg += calf.left[i];
-            calf.r_avg += calf.right[i];
-          }
-          calf.l_avg /= 3;
-          calf.r_avg /= 3;
-
-          for (let i = 0; i < 5; i++) {
-            hip.left[i] = parseInt(seat[i + 21]);
-            hip.right[i] = parseInt(seat[i + 26]);
-
-            hip.l_avg += hip.left[i];
-            hip.r_avg += hip.right[i];
-          }
-
-          for (let i = 0; i < 2; i++) {
-            back.left[i] = parseInt(backd[i]);
-            back.right[i] = parseInt(backd[i + 2]);
-            back.l_avg += back.left[i];
-            back.r_avg += back.right[i];
-          }
-
-          back.r_avg /= 2;
-          back.l_avg /= 2;
-
-          if (
-            calf.l_avg == 0 &&
-            calf.r_avg == 0 &&
-            hip.r_avg == 0 &&
-            hip.l_avg == 0 &&
-            back.l_avg == 0 &&
-            back.r_avg == 0 &&
-            thigh.l_avg == 0 &&
-            thigh.r_avg == 0 &&
-            thigh.m_avg == 0
-          ) {
-          }
-
-          if (
-            (calf.l_avg == 0 && calf.r_avg != 0) ||
-            (calf.l_avg != 0 && calf.r_avg == 0)
-          ) {
-            //다리 꼬았는지 확인
-            if (calf.l_avg == 0 && calf.r_avg != 0) {
-              this.props.plus_1(1);
-            } else {
-              this.props.plus_2(1);
-            }
-          } else {
-            if (hip.r_avg == 0 && hip.l_avg == 0) {
-              this.props.plus_3(1);
-            } else {
-              if ((back.r_avg == 0) & (back.l_avg == 0)) {
-                this.props.plus_4(1);
-              } else {
-                if (Math.abs(hip.l_avg - hip.r_avg) > 30) {
-                  if (hip.l_avg > hip.r_avg) {
-                    this.props.plus_5(1);
-                  } else this.props.plus_6(1);
-                } else {
-                  if (thigh.m_avg < 21) this.props.plus_7(1);
-                  else {
-                    this.props.plus_8(1);
-                  }
-                }
-              }
-            }
-          }
           if (this.imBoredNow && subscription) {
             BluetoothSerial.removeSubscription(subscription);
           }
         }, "\r\n");
+
         // await this.read();
       } else {
         ToastAndroid.show(
@@ -274,7 +186,7 @@ class Bluete extends React.Component {
   // 등록한 체어가 없다면 실행
   noneChair() {
     return new Promise((resolve, reject) => {
-      setTimeout(function() {
+      setTimeout(function () {
         BackHandler.exitApp();
       }, 2500);
     });
@@ -291,7 +203,7 @@ function mapStateToProps(state) {
     seatData: state.bluedata.seatData,
     angle: state.bluedata.angle,
     battery: state.bluedata.battery,
-    statData: state.statdata.statData
+    statData: state.statdata.statData,
   };
 }
 function mapDispatchToProps(dispatch) {
@@ -302,30 +214,30 @@ function mapDispatchToProps(dispatch) {
     backchange: (da, da2, da3, da4, da5, da6, da7) => {
       dispatch(ActionCreator.backchange(da, da2, da3, da4, da5, da6, da7));
     },
-    plus_1: num => {
+    plus_1: (num) => {
       dispatch(ActionCreator2.plus_1(num));
     },
-    plus_2: num => {
+    plus_2: (num) => {
       dispatch(ActionCreator2.plus_2(num));
     },
-    plus_3: num => {
+    plus_3: (num) => {
       dispatch(ActionCreator2.plus_3(num));
     },
-    plus_4: num => {
+    plus_4: (num) => {
       dispatch(ActionCreator2.plus_4(num));
     },
-    plus_5: num => {
+    plus_5: (num) => {
       dispatch(ActionCreator2.plus_5(num));
     },
-    plus_6: num => {
+    plus_6: (num) => {
       dispatch(ActionCreator2.plus_6(num));
     },
-    plus_7: num => {
+    plus_7: (num) => {
       dispatch(ActionCreator2.plus_7(num));
     },
-    plus_8: num => {
+    plus_8: (num) => {
       dispatch(ActionCreator2.plus_8(num));
-    }
+    },
   };
 }
 

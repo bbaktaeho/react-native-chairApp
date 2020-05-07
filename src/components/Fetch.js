@@ -10,6 +10,16 @@ function Fetch(url = String, method = String, req, token) {
     body: JSON.stringify(req),
   };
 
+  // if (method == "GET") {
+  //   option = {
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       Authorization: bearer,
+  //     },
+  //     query,
+  //   };
+  // }
   if (method == "GET") delete option.body;
 
   return new Promise(async (resolve, reject) => {

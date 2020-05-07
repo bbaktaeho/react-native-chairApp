@@ -34,6 +34,14 @@ class Stat_one extends Component {
       { pos: "양반다리", val: 0 },
     ],
   };
+
+  // info = () => {
+  //   const { date } = this.state;
+  //   const token = await AsyncStorage.getItem("token");
+
+  //   const res = Fetch(date, "GET", null, token, date);
+  // };
+
   componentDidMount() {
     const date2 = new Date();
     this.setState({ year: date2.getFullYear().toString() });
