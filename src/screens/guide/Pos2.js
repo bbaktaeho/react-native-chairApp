@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, TextInput } from "react-native";
+import { View, Text } from "react-native";
 
 import { Provider, connect } from "react-redux";
 import ActionCreator from "../../actions/index.js";
@@ -15,8 +15,11 @@ class Pos2 extends Component {
   render() {
     const { backData, seatData, statData } = this.props;
     const store = initStore();
-
-    return <View></View>;
+    return (
+      <View>
+        <Text>{statData.pos}</Text>
+      </View>
+    );
   }
 }
 

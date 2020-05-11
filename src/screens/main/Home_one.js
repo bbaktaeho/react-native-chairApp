@@ -6,6 +6,7 @@ import {
   BackHandler,
   ScrollView,
   Image,
+  Text,
 } from "react-native";
 import { connect } from "react-redux";
 import ActionCreator from "../../actions/index";
@@ -72,7 +73,23 @@ class Home_one extends Component {
     }
     return true;
   };
-
+  imageshow(a) {
+    if (a == "앞으로 숙이고 있습니다.") {
+      return require("../../assets/Images/f_1.png");
+    } else if (a == "왼 다리를 꼬았습니다.") {
+      return require("../../assets/Images/f_2.png");
+    } else if (a == "오른 다리를 꼬았습니다.") {
+      return require("../../assets/Images/f_3.png");
+    } else if (a == "둔부를 앞으로 한 자세 입니다.") {
+      return require("../../assets/Images/f_4.png");
+    } else if (a == "걸터앉은 자세입니다.") {
+      return require("../../assets/Images/f_5.png");
+    } else if (a == "바른자세 입니다.") {
+      return require("../../assets/Images/f_6.png");
+    } else {
+      return require("../../assets/Images/MainLogo_1.png");
+    }
+  }
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -84,10 +101,10 @@ class Home_one extends Component {
           <View style={styles.container}>
             <Card containerStyle={divCardStyle.c}>
               <View style={styles.container}>
-                <Image source={require("../../assets/Images/f_1.png")} />
+                <Image source={this.imageshow(this.props.statData.pos)} />
               </View>
               <View style={styles.text}>
-                <Pos2></Pos2>
+                <Text>{this.props.statData.pos}</Text>
               </View>
             </Card>
           </View>

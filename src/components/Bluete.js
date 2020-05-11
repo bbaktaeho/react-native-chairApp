@@ -127,25 +127,43 @@ class Bluete extends React.Component {
             angled,
             batteryd
           );
-
-          fetch("http://192.168.0.6:9009/", {
-            method: "post",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ posture: merge }),
-          })
-            .then((res) => {
-              console.log("dsfafadfadfdfaffdf");
-
-              const body = JSON.parse(res._bodyText);
-              console.log("바디입니다 : ", body);
+          let sum = merge.reduce((a, b) => a + b, 0);
+          console.log(sum);
+          if (sum == "0") {
+            this.props.pos_0(1);
+          } else {
+            fetch("http://172.30.1.51:9009/", {
+              method: "post",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ posture: merge }),
             })
-            .catch((e) => {
-              console.error("에러입니다!!!!!!: ", e.message);
-            });
+              .then((res) => {
+                console.log("dsfafadfadfdfaffdf");
 
+                const body = JSON.parse(res._bodyText);
+                console.log("바디입니다 : ", body);
+
+                if (body.inference == "p1") {
+                  this.props.plus_1(1);
+                } else if (body.inference == "p2") {
+                  this.props.plus_2(1);
+                } else if (body.inference == "p3") {
+                  this.props.plus_3(1);
+                } else if (body.inference == "p4") {
+                  this.props.plus_4(1);
+                } else if (body.inference == "p5") {
+                  this.props.plus_5(1);
+                } else if (body.inference == "p6") {
+                  this.props.plus_6(1);
+                }
+              })
+              .catch((e) => {
+                console.error("에러입니다!!!!!!: ", e.message);
+              });
+          }
           if (this.imBoredNow && subscription) {
             BluetoothSerial.removeSubscription(subscription);
           }
@@ -232,11 +250,8 @@ function mapDispatchToProps(dispatch) {
     plus_6: (num) => {
       dispatch(ActionCreator2.plus_6(num));
     },
-    plus_7: (num) => {
-      dispatch(ActionCreator2.plus_7(num));
-    },
-    plus_8: (num) => {
-      dispatch(ActionCreator2.plus_8(num));
+    pos_0: (num) => {
+      dispatch(ActionCreator2.pos_0(num));
     },
   };
 }
