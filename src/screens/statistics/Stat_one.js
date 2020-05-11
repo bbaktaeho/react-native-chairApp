@@ -1,18 +1,24 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, ScrollView, Picker } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Picker,
+  AsyncStorage,
+} from "react-native";
 
 import { Provider, connect } from "react-redux";
-import { Card } from "react-native-elements";
+import { Card, Button } from "react-native-elements";
 import { BarChart } from "react-native-chart-kit";
 import divCardStyle from "../../myStyles/divCardStyle";
 
-import * as scale from "d3-scale";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 import MyHeader from "../../components/MyHeader";
-import { isMonday } from "date-fns";
+import moment from "moment";
 
-/* 날짜 바꾸면 post로 날짜 보내고 p0-p8받아서 state.data에 setState
+/* 날짜 바꾸면 post로 날짜 보내고 p0-p5받아서 state.data에 setState
    로그인 안하면 안나옴
 */
 
@@ -32,53 +38,42 @@ class Stat_one extends Component {
     year: "",
     month: "",
     date: "",
-    data: {
-      labels: ["p1", "p2", "p3", "p4", "p5", "p6"],
-      datasets: [
-        {
-          data: [80, 50, 40, 60, 20, 60],
-        },
-      ],
-    },
+    dataset: [0, 0, 0, 0, 0, 0],
   };
   componentDidMount() {
-    const date2 = new Date();
-    this.setState({ year: date2.getFullYear().toString() });
-    date3 = date2.getMonth() + 1;
-    this.setState({ month: date3.toString() });
-    date4 = date2.getDate();
-    this.setState({ date: date4.toString() });
+    const yesterday = moment().subtract(1, "day");
+    this.setState({
+      year: yesterday.get("year").toString(),
+      month: (yesterday.get("month") + 1).toString(),
+      date: yesterday.get("date").toString(),
+    });
   }
 
-  statOne = async () => {
-    const res = await Fetch(URL.스탯, "POST", {
-      year: this.state.year,
-      month: this.state.month,
-      date: this.state.date,
-    });
-
+  async getStatistics() {
+    let { year, month, date } = this.state;
+    if (month.length == 1) month = "0" + month;
+    if (date.length == 1) date = "0" + date;
+    const token = await AsyncStorage.getItem("token");
+    const resData = await Fetch(
+      URL.statisticdate + `?date=${year}-${month}-${date}`,
+      "GET",
+      null,
+      token
+    );
+    const res = JSON.parse(resData._bodyInit);
     if (res.success) {
-      let statData = {
-        message: res.message,
-        p1: res.data.p1,
-        p2: res.data.p2,
-        p3: res.data.p3,
-        p4: res.data.p4,
-        p5: res.data.p5,
-        p6: res.data.p6,
-        p7: res.data.p7,
-        p8: res.data.p8,
-      };
-      this.setState();
+      let statistics = [];
+      res.statistics.forEach((element) => {
+        statistics.push(parseInt(element));
+      });
+      this.setState({ dataset: statistics });
     } else {
-      return this.myAlert(res);
+      // 불러온 데이터가 없을 때 처리하기
     }
-  };
-  render() {
-    const { statData } = this.props;
-    const da2 = ["시간", "", "", "", "", "", "", "", ""];
-    const { year, month, date, data } = this.state;
+  }
 
+  render() {
+    const { year, month, date, dataset } = this.state;
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="통 계"></MyHeader>
@@ -115,7 +110,7 @@ class Stat_one extends Component {
                     onValueChange={(itemValue, itemIndex) =>
                       this.setState({ month: itemValue })
                     }
-                    mode="dropdown"
+                    mode="dialog"
                   >
                     <Picker.Item label="1" value="1" />
                     <Picker.Item label="2" value="2" />
@@ -180,6 +175,12 @@ class Stat_one extends Component {
                 </View>
               </View>
             </Card>
+            <Button
+              containerStyle={divCardStyle.c}
+              type="outline"
+              title="통계보기"
+              onPress={() => this.getStatistics()}
+            ></Button>
             <Card containerStyle={divCardStyle.c}>
               <View
                 style={{
@@ -189,7 +190,10 @@ class Stat_one extends Component {
                 }}
               >
                 <BarChart
-                  data={data}
+                  data={{
+                    labels: ["p0", "p1", "p2", "p3", "p4", "p5"],
+                    datasets: [{ data: dataset }],
+                  }}
                   width={350}
                   height={350}
                   chartConfig={chartConfig}
@@ -197,7 +201,12 @@ class Stat_one extends Component {
                 />
               </View>
             </Card>
-            <Card containerStyle={divCardStyle.c}></Card>
+            <Card containerStyle={divCardStyle.c}>
+              {/* 최고로 많이 했던 자세 */}
+              {/* 총 사용 시간 */}
+              {/* 각 자세별 사용 시간 */}
+              {/* 뭐 넣을까? */}
+            </Card>
           </View>
         </ScrollView>
       </View>
