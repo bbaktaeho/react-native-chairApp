@@ -6,13 +6,13 @@ import Vib from "../screens/settings/Vibrator";
 export default SettingNav = createSwitchNavigator(
   {
     Index: {
-      screen: Sets
+      screen: Sets,
       // navigationOptions: ({ navigation }) => ({})
     },
-    Vib
+    Vib,
     // Not
   },
   {
-    initialRouteName: "Index"
+    initialRouteName: "Index",
   }
 );

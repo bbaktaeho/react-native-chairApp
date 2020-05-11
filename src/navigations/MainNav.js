@@ -52,12 +52,12 @@ class DrawerContent extends React.Component {
           <Avatar
             size="small"
             rounded
-            icon={{ name: "user", type: "font-awesome" }}
+            icon={{ name: "user", type: "antdesign" }}
             onPress={() => this.props.navigation.navigate("Privacy")}
             overlayContainerStyle={{ backgroundColor: "#695c4c" }}
             containerStyle={{ marginLeft: 15, marginTop: 10 }}
           />
-          <Text style={{ paddingRight: 130, fontSize: 23, color: "#695c4c" }}>
+          <Text style={{ paddingRight: 120, fontSize: 23, color: "#695c4c" }}>
             {this.state.username}
           </Text>
         </View>
@@ -73,7 +73,9 @@ export default MainNav = createDrawerNavigator(
       screen: HomeNav,
       navigationOptions: {
         drawerLabel: "홈",
-        drawerIcon: () => <Icon name="home" size={25} color="#544e48" />,
+        drawerIcon: () => (
+          <Icon name="home" size={25} type="antdesign" color="#544e48" />
+        ),
       },
     },
 
@@ -92,12 +94,7 @@ export default MainNav = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "통계",
         drawerIcon: () => (
-          <Icon
-            name="bar-chart"
-            size={25}
-            type="font-awesome"
-            color="#544e48"
-          />
+          <Icon name="barschart" size={25} type="antdesign" color="#544e48" />
         ),
       },
     },
@@ -107,7 +104,7 @@ export default MainNav = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "설정",
         drawerIcon: () => (
-          <Icon name="cog" size={25} type="font-awesome" color="#544e48" />
+          <Icon name="setting" size={25} type="antdesign" color="#544e48" />
         ),
       },
     },
@@ -117,12 +114,7 @@ export default MainNav = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: "앱 정보",
         drawerIcon: () => (
-          <Icon
-            name="info-circle"
-            size={25}
-            type="font-awesome"
-            color="#544e48"
-          />
+          <Icon name="staro" size={25} type="antdesign" color="#544e48" />
         ),
       },
     },

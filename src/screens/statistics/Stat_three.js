@@ -40,21 +40,6 @@ class Stat_three extends React.PureComponent {
         value: 30,
         svg: { fill: "#c55de8" },
       },
-      {
-        key: 7,
-        value: 60,
-        svg: { fill: "#d4a1e6" },
-      },
-      {
-        key: 8,
-        value: 10,
-        svg: { fill: "#eabefa" },
-      },
-      {
-        key: 9,
-        value: 10,
-        svg: { fill: "#bdacbf" },
-      },
     ];
 
     data.sort((a, b) => b.value - a.value);
@@ -112,14 +97,12 @@ class Stat_three extends React.PureComponent {
               <View style={{ flex: 1, alignItems: "center" }}>
                 <Text style={styles.te1}>총 사용시간 : {data3} 중</Text>
                 <Text style={styles.te1}>바른 자세 : {data[0].value}</Text>
-                <Text style={styles.te1}>둔부 앞 자세 : {data[1].value}</Text>
-                <Text style={styles.te1}>숙인 자세 : {data[2].value}</Text>
+                <Text style={styles.te1}>걸터 앉기 : {data[1].value}</Text>
+                <Text style={styles.te1}>둔부 앞 자세 : {data[2].value}</Text>
+
                 <Text style={styles.te1}>왼다리 꼬기 : {data[3].value}</Text>
                 <Text style={styles.te1}>오른다리 꼬기 : {data[4].value}</Text>
-                <Text style={styles.te1}>왼쪽 기울기 : {data[5].value}</Text>
-                <Text style={styles.te1}>오른쪽 기울기 : {data[6].value}</Text>
-                <Text style={styles.te1}>걸터 앉기 : {data[7].value}</Text>
-                <Text style={styles.te1}>양반 다리 : {data[8].value}</Text>
+                <Text style={styles.te1}>숙인 자세 : {data[5].value}</Text>
               </View>
             </Card>
           </View>

@@ -3,8 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Picker } from "react-native";
 
 import { Provider, connect } from "react-redux";
 import { Card } from "react-native-elements";
-import { BarChart, XAxis, Grid, YAxis } from "react-native-svg-charts";
-import { LinearGradient, Stop, Defs } from "react-native-svg";
+import { BarChart } from "react-native-chart-kit";
 import divCardStyle from "../../myStyles/divCardStyle";
 
 import * as scale from "d3-scale";
@@ -17,31 +16,31 @@ import { isMonday } from "date-fns";
    로그인 안하면 안나옴
 */
 
+const chartConfig = {
+  backgroundGradientFrom: "#FFFFFF",
+  backgroundGradientFromOpacity: 0,
+  backgroundGradientTo: "#FFFFFF",
+  backgroundGradientToOpacity: 0.5,
+  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  strokeWidth: 2, // optional, default 3
+  barPercentage: 0.5,
+  useShadowColorFromDataset: false, // optional
+};
+
 class Stat_one extends Component {
   state = {
     year: "",
     month: "",
     date: "",
-    data: [
-      { pos: "바른자세", val: 0 },
-      { pos: "둔부앞자세", val: 0 },
-      { pos: "숙인자세", val: 0 },
-      { pos: "왼다리꼬기", val: 0 },
-      { pos: "오른다리꼬기", val: 0 },
-      { pos: "오른쪽기울기", val: 0 },
-      { pos: "왼쪽기울기", val: 0 },
-      { pos: "걸터앉기", val: 0 },
-      { pos: "양반다리", val: 0 },
-    ],
+    data: {
+      labels: ["p1", "p2", "p3", "p4", "p5", "p6"],
+      datasets: [
+        {
+          data: [80, 50, 40, 60, 20, 60],
+        },
+      ],
+    },
   };
-
-  // info = () => {
-  //   const { date } = this.state;
-  //   const token = await AsyncStorage.getItem("token");
-
-  //   const res = Fetch(date, "GET", null, token, date);
-  // };
-
   componentDidMount() {
     const date2 = new Date();
     this.setState({ year: date2.getFullYear().toString() });
@@ -79,21 +78,6 @@ class Stat_one extends Component {
     const { statData } = this.props;
     const da2 = ["시간", "", "", "", "", "", "", "", ""];
     const { year, month, date, data } = this.state;
-
-    const Gradient = () => (
-      <Defs key={"gradient"}>
-        <LinearGradient
-          id={"gradient"}
-          x1={"0%"}
-          y={"0%"}
-          x2={"0%"}
-          y2={"100%"}
-        >
-          <Stop offset={"0%"} stopColor={"rgb(134, 65, 244)"} />
-          <Stop offset={"100%"} stopColor={"rgb(66, 194, 244)"} />
-        </LinearGradient>
-      </Defs>
-    );
 
     return (
       <View style={{ flex: 1 }}>
@@ -197,47 +181,23 @@ class Stat_one extends Component {
               </View>
             </Card>
             <Card containerStyle={divCardStyle.c}>
-              <View style={{ flex: 4, flexDirection: "row" }}>
-                <View style={{ flex: 1, flexDirection: "row" }}>
-                  <YAxis
-                    data={data}
-                    yAccessor={({ index }) => index}
-                    scale={scale.scaleBand}
-                    formatLabel={(_, index) => da2[index]}
-                  />
-                </View>
-                <View style={{ flex: 9, paddingRight: 20 }}>
-                  <BarChart
-                    data={data}
-                    contentInset={{ top: 10, bottom: 10 }}
-                    spacing={0.2}
-                    yAccessor={({ item }) => item.val}
-                    svg={{ fill: "url(#gradient)" }}
-                  >
-                    <Gradient></Gradient>
-                  </BarChart>
-                  <XAxis
-                    data={data}
-                    scale={scale.scaleBand}
-                    style={{ marginHorizontal: -15, height: 20 }}
-                    formatLabel={(_, index) => data[index].pos}
-                    svg={{
-                      fill: "black",
-                      fontSize: 8,
-                      fontWeight: "bold",
-                      rotation: 20,
-                      originY: 30,
-                      y: 5,
-                    }}
-                  />
-                </View>
+              <View
+                style={{
+                  flex: 1,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <BarChart
+                  data={data}
+                  width={350}
+                  height={350}
+                  chartConfig={chartConfig}
+                  verticalLabelRotation={30}
+                />
               </View>
             </Card>
-            <Card containerStyle={divCardStyle.c}>
-              <Text>
-                {data[0].pos}를 {data[0].val}동안 앉으셨습니다.
-              </Text>
-            </Card>
+            <Card containerStyle={divCardStyle.c}></Card>
           </View>
         </ScrollView>
       </View>
