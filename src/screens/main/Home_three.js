@@ -41,6 +41,7 @@ export default class Home_three extends React.PureComponent {
       {
         name: "개인 정보 수정",
         chevron: true,
+        Tdivider: true,
         press: () => {
           this.props.navigation.navigate("Privacy");
         },
@@ -51,18 +52,19 @@ export default class Home_three extends React.PureComponent {
       },
       {
         name: "로그아웃",
-        divider: true,
+        Bdivider: true,
       },
     ],
     list2: [
       {
         name: "PUSH 알림",
         text: "실시간 자세에 대한 PUSH 알림 받기",
+        Tdivider: true,
         right: () => <Switch></Switch>,
       },
       {
         name: "캐시 삭제",
-        divider: true,
+        Bdivider: true,
       },
     ],
     name: "김희연",
@@ -91,7 +93,8 @@ export default class Home_three extends React.PureComponent {
             <ListItem
               key={i}
               title={l.name}
-              bottomDivider={l.divider}
+              topDivider={l.Tdivider}
+              bottomDivider={l.Bdivider}
               chevron={l.chevron}
               onPress={l.press}
             />
@@ -102,7 +105,8 @@ export default class Home_three extends React.PureComponent {
             <ListItem
               key={i}
               title={l.name}
-              bottomDivider={l.divider}
+              topDivider={l.Tdivider}
+              bottomDivider={l.Bdivider}
               chevron={l.chevron}
               rightElement={l.right}
               subtitle={l.text}
