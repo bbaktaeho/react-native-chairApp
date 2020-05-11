@@ -1,12 +1,12 @@
 import React from "react";
 import { Icon } from "react-native-elements";
 
-const PreviousMenu = props => {
+const PreviousMenu = (props) => {
   return (
     <Icon
       color="black"
       name="arrow-back"
-      onPress={() => props.navigation.navigate("Index")}
+      onPress={() => props.navigation.navigate("Home_three")}
     />
   );
 };

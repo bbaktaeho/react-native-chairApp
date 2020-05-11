@@ -13,6 +13,7 @@
     "d3-shape": "^1.0.6",
     "date-fns": "^1.28.5",
     "get-dev-paths": "^0.1.0",
+    "moment": "2.25.3",
     "native-base": "^2.13.8",
     "prop-types": "^15.7.2",
     "react": "16.5.0",

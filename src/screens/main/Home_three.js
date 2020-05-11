@@ -5,7 +5,7 @@ import {
   StyleSheet,
   Dimensions,
   ScrollView,
-  Image,
+  Switch,
 } from "react-native";
 import { Avatar, ListItem } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
@@ -40,20 +40,29 @@ export default class Home_three extends React.PureComponent {
     list1: [
       {
         name: "개인 정보 수정",
+        chevron: true,
+        press: () => {
+          this.props.navigation.navigate("Privacy");
+        },
       },
       {
         name: "회원 탈퇴",
+        chevron: true,
       },
       {
         name: "로그아웃",
+        divider: true,
       },
     ],
     list2: [
       {
-        name: "알림 설정",
+        name: "PUSH 알림",
+        text: "실시간 자세에 대한 PUSH 알림 받기",
+        right: () => <Switch></Switch>,
       },
       {
         name: "캐시 삭제",
+        divider: true,
       },
     ],
     name: "김희연",
@@ -82,9 +91,9 @@ export default class Home_three extends React.PureComponent {
             <ListItem
               key={i}
               title={l.name}
-              // rightElement={l.right}
-              // containerStyle={{ marginTop: 5 }}
-              bottomDivider={true}
+              bottomDivider={l.divider}
+              chevron={l.chevron}
+              onPress={l.press}
             />
           ))}
 
@@ -93,9 +102,11 @@ export default class Home_three extends React.PureComponent {
             <ListItem
               key={i}
               title={l.name}
-              // rightElement={l.right}
-              // containerStyle={{ marginTop: 5 }}
-              bottomDivider={true}
+              bottomDivider={l.divider}
+              chevron={l.chevron}
+              rightElement={l.right}
+              subtitle={l.text}
+              subtitleStyle={{ fontSize: 12, marginTop: 5 }}
             />
           ))}
         </View>

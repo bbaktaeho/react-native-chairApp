@@ -10,7 +10,6 @@ import {
   Alert,
   Avatar,
 } from "react-native";
-import { Icon } from "react-native-elements";
 import Tabs from "react-native-tabs";
 import MyHeader from "../../components/MyHeader";
 import MyButton from "../../components/MyButton";
@@ -27,7 +26,7 @@ const style = StyleSheet.create({
 
 export default class Privacy extends Component {
   state = {
-    page: "first",
+    page: "second",
     email: "",
     name: "",
     password: "",
@@ -151,22 +150,17 @@ export default class Privacy extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
+          <MyHeader
+            navigation={this.props.navigation}
+            type="privacy"
+          ></MyHeader>
           <View style={styles.container1}>
-            <MyHeader
-              navigation={this.props.navigation}
-              title="내 정보"
-            ></MyHeader>
             <View style={styles.header}>
               <Image
                 style={styles.avatar}
                 source={require("../../assets/Images/ex.png")}
               />
-              {/* <Avatar
-                size="large"
-                rounded
-                icon={{ name: "user", type: "font-awesome" }}
-                overlayContainerStyle={{ backgroundColor: "#695c4c" }}
-              /> */}
+
               <Text style={styles.textContainer}>{name}</Text>
             </View>
           </View>
@@ -181,7 +175,6 @@ export default class Privacy extends Component {
               }}
               onSelect={(el) => this.setState({ page: el.props.name })}
             >
-              <Text name="first">내 정보</Text>
               <Text
                 name="second"
                 selectedIconStyle={{
@@ -214,18 +207,6 @@ export default class Privacy extends Component {
 
           <View style={styles.container3}>
             <View style={styles.inputContainer}>
-              {this.state.page == "first" && (
-                <View>
-                  <MyInput disabled={true} value={email} name="mail" />
-                  <MyInput disabled={true} value={name} name="person" />
-                  <MyInput
-                    disabled={true}
-                    secure={true}
-                    value="123456"
-                    name="lock"
-                  />
-                </View>
-              )}
               {this.state.page == "second" && (
                 <View>
                   <MyInput disabled={true} value={email} name="mail" />

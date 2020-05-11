@@ -5,7 +5,7 @@ import { Avatar, Icon } from "react-native-elements";
 
 import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
-import Privacy from "../screens/auth/Privacy";
+// import Privacy from "../screens/auth/Privacy";
 import AppConfig from "../screens/main/AppConfig";
 import StatNav from "../navigations/StatNav";
 import Fetch from "../components/Fetch";
@@ -53,7 +53,6 @@ class DrawerContent extends React.Component {
             size="small"
             rounded
             icon={{ name: "user", type: "antdesign" }}
-            onPress={() => this.props.navigation.navigate("Privacy")}
             overlayContainerStyle={{ backgroundColor: "#695c4c" }}
             containerStyle={{ marginLeft: 15, marginTop: 10 }}
           />
@@ -79,15 +78,15 @@ export default MainNav = createDrawerNavigator(
       },
     },
 
-    Privacy: {
-      screen: Privacy,
-      navigationOptions: {
-        drawerLabel: "내 정보",
-        drawerIcon: () => (
-          <Icon name="user" size={25} type="font-awesome" color="#544e48" />
-        ),
-      },
-    },
+    // Privacy: {
+    //   screen: Privacy,
+    //   navigationOptions: {
+    //     drawerLabel: "내 정보",
+    //     drawerIcon: () => (
+    //       <Icon name="user" size={25} type="font-awesome" color="#544e48" />
+    //     ),
+    //   },
+    // },
 
     Stat: {
       screen: StatNav,

@@ -3,6 +3,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import Loading from "../screens/loding";
 import MainNav from "./MainNav";
 import AuthNav from "./AuthNav";
+import PrivacyNav from "./PrivacyNav";
 import AuthLoading from "../screens/auth/AuthLoading";
 
 const Root = createSwitchNavigator(
@@ -10,10 +11,11 @@ const Root = createSwitchNavigator(
     Loading,
     AuthNav,
     MainNav,
-    AuthLoading: { screen: AuthLoading }
+    PrivacyNav,
+    AuthLoading: { screen: AuthLoading },
   },
   {
-    initialRouteName: "Loading"
+    initialRouteName: "Loading",
   }
 );
 // root에만 AppContainer 가 존재해야함
