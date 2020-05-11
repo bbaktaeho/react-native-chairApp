@@ -8,10 +8,8 @@ const initState = {
     data4: 0,
     data5: 0,
     data6: 0,
-    data7: 0,
-    data8: 0,
-    data9: 0
-  }
+    pos: "의자에 앉지 않았습니다.",
+  },
 };
 
 export default statdata = (state = initState, action) => {
@@ -25,10 +23,7 @@ export default statdata = (state = initState, action) => {
           data4: action.payload4,
           data5: action.payload5,
           data6: action.payload6,
-          data7: action.payload7,
-          data8: action.payload8,
-          data9: action.payload9
-        }
+        },
       };
     case types.PLUS_1:
       return {
@@ -39,10 +34,8 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5,
           data6: state.statData.data6,
-          data7: state.statData.data7,
-          data8: state.statData.data8,
-          data9: state.statData.data9
-        }
+          pos: "바른자세 입니다.",
+        },
       };
     case types.PLUS_2:
       return {
@@ -53,10 +46,8 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5,
           data6: state.statData.data6,
-          data7: state.statData.data7,
-          data8: state.statData.data8,
-          data9: state.statData.data9
-        }
+          pos: "걸터앉은 자세입니다.",
+        },
       };
     case types.PLUS_3:
       return {
@@ -67,10 +58,8 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5,
           data6: state.statData.data6,
-          data7: state.statData.data7,
-          data8: state.statData.data8,
-          data9: state.statData.data9
-        }
+          pos: "둔부를 앞으로 한 자세 입니다.",
+        },
       };
     case types.PLUS_4:
       return {
@@ -81,10 +70,8 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4 + action.payload,
           data5: state.statData.data5,
           data6: state.statData.data6,
-          data7: state.statData.data7,
-          data8: state.statData.data8,
-          data9: state.statData.data9
-        }
+          pos: "오른 다리를 꼬았습니다.",
+        },
       };
     case types.PLUS_5:
       return {
@@ -95,10 +82,8 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5 + action.payload,
           data6: state.statData.data6,
-          data7: state.statData.data7,
-          data8: state.statData.data8,
-          data9: state.statData.data9
-        }
+          pos: "왼 다리를 꼬았습니다.",
+        },
       };
     case types.PLUS_6:
       return {
@@ -109,12 +94,10 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5,
           data6: state.statData.data6 + action.payload,
-          data7: state.statData.data7,
-          data8: state.statData.data8,
-          data9: state.statData.data9
-        }
+          pos: "앞으로 숙이고 있습니다.",
+        },
       };
-    case types.PLUS_7:
+    case types.POS_0:
       return {
         statData: {
           data1: state.statData.data1,
@@ -123,38 +106,8 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5,
           data6: state.statData.data6,
-          data7: state.statData.data7 + action.payload,
-          data8: state.statData.data8,
-          data9: state.statData.data9
-        }
-      };
-    case types.PLUS_8:
-      return {
-        statData: {
-          data1: state.statData.data1,
-          data2: state.statData.data2,
-          data3: state.statData.data3,
-          data4: state.statData.data4,
-          data5: state.statData.data5,
-          data6: state.statData.data6,
-          data7: state.statData.data7,
-          data8: state.statData.data8 + action.payload,
-          data9: state.statData.data9
-        }
-      };
-    case types.PLUS_9:
-      return {
-        statData: {
-          data1: state.statData.data1,
-          data2: state.statData.data2,
-          data3: state.statData.data3,
-          data4: state.statData.data4,
-          data5: state.statData.data5,
-          data6: state.statData.data6,
-          data7: state.statData.data7,
-          data8: state.statData.data8,
-          data9: action.payload
-        }
+          pos: "의자에 앉지 않았습니다.",
+        },
       };
     default:
       return state;

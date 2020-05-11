@@ -17,13 +17,9 @@ class Pos extends Component {
   }
 
   map1(x) {
-    if (x == 0) {
-      return "rgb(255,255,255)";
-    } else {
-      let z = ((x - 0) * (245 - 0)) / (60 - 0) + 0;
-      let y = 245 - parseInt(z);
-      return `rgb(${y},255,${y})`;
-    }
+    let z = ((x - 0) * (245 - 0)) / (60 - 0) + 0;
+    let y = 245 - parseInt(z);
+    return `rgb(${y},255,${y})`;
   }
 
   map2(x) {
