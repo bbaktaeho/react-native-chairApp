@@ -153,6 +153,7 @@ export default class Privacy extends Component {
           <MyHeader
             navigation={this.props.navigation}
             type="privacy"
+            title="개인 정보 수정"
           ></MyHeader>
           <View style={styles.container1}>
             <View style={styles.header}>
