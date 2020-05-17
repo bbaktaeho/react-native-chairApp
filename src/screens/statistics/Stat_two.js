@@ -17,6 +17,7 @@ import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 import MyHeader from "../../components/MyHeader";
 import moment from "moment";
+import PostureEx from "../../components/PostureEx";
 
 const chartConfig = {
   backgroundGradientFrom: "#FFFFFF",
@@ -35,7 +36,7 @@ export default class Stat_one extends Component {
     month: "",
     dataset: [0, 0, 0, 0, 0, 0],
   };
-  componentDidMount() {
+  componentWillMount() {
     const yesterday = moment().subtract(1, "day");
     this.setState({
       year: yesterday.get("year").toString(),
@@ -47,6 +48,7 @@ export default class Stat_one extends Component {
     let { year, month } = this.state;
     if (month.length == 1) month = "0" + month;
     const token = await AsyncStorage.getItem("token");
+    if (!token) return;
     const resData = await Fetch(
       URL.statisticmonth + `?date=${year}-${month}-01`,
       "GET",
@@ -132,7 +134,7 @@ export default class Stat_one extends Component {
               title="통계보기"
               onPress={() => this.getStatistics()}
             ></Button>
-            <Card containerStyle={divCardStyle.c}>
+            <Card containerStyle={divCardStyle.c} title="차트">
               <View
                 style={{
                   flex: 1,
@@ -152,7 +154,10 @@ export default class Stat_one extends Component {
                 />
               </View>
             </Card>
-            <Card containerStyle={divCardStyle.c}>
+            <Card containerStyle={divCardStyle.c} title="기본 정보"></Card>
+
+            <Card containerStyle={divCardStyle.c} title="자세 정보">
+              <PostureEx p={dataset}></PostureEx>
               {/* 최고로 많이 했던 자세 */}
               {/* 총 사용 시간 */}
               {/* 각 자세별 사용 시간 */}

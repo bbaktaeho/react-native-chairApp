@@ -17,6 +17,8 @@ import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 import MyHeader from "../../components/MyHeader";
 import moment from "moment";
+import PostureEx from "../../components/PostureEx";
+import StatisticsEx from "../../components/StatisticsEx";
 
 /* 날짜 바꾸면 post로 날짜 보내고 p0-p5받아서 state.data에 setState
    로그인 안하면 안나옴
@@ -40,7 +42,7 @@ class Stat_one extends Component {
     date: "",
     dataset: [0, 0, 0, 0, 0, 0],
   };
-  componentDidMount() {
+  componentWillMount() {
     const yesterday = moment().subtract(1, "day");
     this.setState({
       year: yesterday.get("year").toString(),
@@ -54,6 +56,7 @@ class Stat_one extends Component {
     if (month.length == 1) month = "0" + month;
     if (date.length == 1) date = "0" + date;
     const token = await AsyncStorage.getItem("token");
+    if (!token) return;
     const resData = await Fetch(
       URL.statisticdate + `?date=${year}-${month}-${date}`,
       "GET",
@@ -76,7 +79,10 @@ class Stat_one extends Component {
     const { year, month, date, dataset } = this.state;
     return (
       <View style={{ flex: 1 }}>
-        <MyHeader navigation={this.props.navigation} title="통 계"></MyHeader>
+        <MyHeader
+          navigation={this.props.navigation}
+          title="일간 통계"
+        ></MyHeader>
 
         <ScrollView>
           <View
@@ -181,7 +187,7 @@ class Stat_one extends Component {
               title="통계보기"
               onPress={() => this.getStatistics()}
             ></Button>
-            <Card containerStyle={divCardStyle.c}>
+            <Card containerStyle={divCardStyle.c} title="차트">
               <View
                 style={{
                   flex: 1,
@@ -201,7 +207,11 @@ class Stat_one extends Component {
                 />
               </View>
             </Card>
-            <Card containerStyle={divCardStyle.c}>
+            <Card containerStyle={divCardStyle.c} title="기본 정보">
+              <StatisticsEx p={dataset}></StatisticsEx>
+            </Card>
+            <Card containerStyle={divCardStyle.c} title="자세 정보">
+              <PostureEx p={dataset}></PostureEx>
               {/* 최고로 많이 했던 자세 */}
               {/* 총 사용 시간 */}
               {/* 각 자세별 사용 시간 */}
