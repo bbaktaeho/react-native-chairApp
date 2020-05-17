@@ -3,10 +3,7 @@ import { View } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 
 const StatisticsEx = ({ p }) => {
-  console.log("statistics: ", p);
-
   let sum = p.reduce((a, b) => a + b);
-  console.log(sum);
 
   let time = `${parseInt(sum / 3600)}시간 ${parseInt((sum % 3600) / 60)}분`;
   let max = Math.max.apply(null, p);
@@ -23,8 +20,9 @@ const StatisticsEx = ({ p }) => {
       {list.map((e, i) => (
         <ListItem
           key={i}
-          titleStyle={{ fontSize: 12 }}
-          rightTitleStyle={{ fontSize: 12 }}
+          titleStyle={{ fontSize: 12, color: "black", fontWeight: "bold" }}
+          subtitleStyle={{ fontSize: 10 }}
+          rightTitleStyle={{ fontSize: 12, color: "black" }}
           title={e.title}
           subtitle={e.sub}
           rightTitle={e.rightTitle}

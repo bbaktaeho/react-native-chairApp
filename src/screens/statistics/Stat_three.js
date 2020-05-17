@@ -1,26 +1,26 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView, AsyncStorage } from "react-native";
-import { PieChart, BarChart, XAxis } from "react-native-svg-charts";
-import { Icon, ListItem, Card } from "react-native-elements";
+import { View, StyleSheet, ScrollView, AsyncStorage } from "react-native";
+import { PieChart } from "react-native-svg-charts";
+import { Circle, G, Line } from "react-native-svg";
+import { Icon, ListItem, Text, Card } from "react-native-elements";
 import divCardStyle from "../../myStyles/divCardStyle";
 
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 import MyHeader from "../../components/MyHeader";
+import StatisticsEx from "../../components/StatisticsEx";
+import PostureEx from "../../components/PostureEx";
 
-class Stat_three extends React.Component {
+class Stat_three extends React.PureComponent {
   state = {
-    p0: 1,
-    p1: 1,
-    p2: 1,
-    p3: 1,
-    p4: 1,
-    p5: 1,
+    dataset: [1, 1, 1, 1, 1, 1],
     allTime: "",
   };
 
   async getStatistics() {
     const token = await AsyncStorage.getItem("token");
+    if (!token) return;
+
     const resData = await Fetch(URL.statisticall, "GET", null, token);
     const res = JSON.parse(resData._bodyInit);
 
@@ -30,16 +30,28 @@ class Stat_three extends React.Component {
         statistics.push(parseInt(element));
       });
       this.setState({
-        p0: statistics[0],
-        p1: statistics[1],
-        p2: statistics[2],
-        p3: statistics[3],
-        p4: statistics[4],
-        p5: statistics[5],
+        dataset: statistics,
         allTime: res.time,
       });
     } else {
       // 불러온 데이터가 없을 때 처리하기
+    }
+  }
+
+  pieColor(pNum) {
+    switch (pNum) {
+      case 0:
+        return "#F78181"; // 바른자세
+      case 1:
+        return "#F7BE81"; // 걸터앉은자세
+      case 2:
+        return "#F3F781"; // 왼쪽으로 기울어진 자세
+      case 3:
+        return "#81F781"; // 오른쪽으로 기울어진 자세
+      case 4:
+        return "#81DAF5"; // 둔부 앞 자세
+      case 5:
+        return "#8181F7"; // 숙인 자세
     }
   }
 
@@ -48,52 +60,12 @@ class Stat_three extends React.Component {
   }
 
   render() {
-    const { p0, p1, p2, p3, p4, p5, allTime } = this.state;
-    let data = [
-      {
-        key: 1,
-        value: p0,
-        svg: { fill: "#600080" },
-        p: "p0",
-      },
-      {
-        key: 2,
-        value: p1,
-        svg: { fill: "#9900cc" },
-        p: "p1",
-      },
-      {
-        key: 3,
-        value: p2,
-        svg: { fill: "#c61aff" },
-        p: "p2",
-      },
-      {
-        key: 4,
-        value: p3,
-        svg: { fill: "#d966ff" },
-        p: "p3",
-      },
-      {
-        key: 5,
-        value: p4,
-        svg: { fill: "#ecb3ff" },
-        p: "p4",
-      },
-      {
-        key: 6,
-        value: p5,
-        svg: { fill: "#c55de8" },
-        p: "p5",
-      },
-    ];
-
-    // data.sort((a, b) => b.value - a.value);
-    // data2 = data.slice(0, 5);
-    // let data3 = 0;
-    // for (i in data) {
-    //   data3 += data[i].value;
-    // }
+    const { dataset, allTime } = this.state;
+    let data = dataset.map((e, i) => ({
+      key: `pie-${i}`,
+      value: e,
+      svg: { fill: this.pieColor(i) },
+    }));
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="총 통계"></MyHeader>
@@ -101,59 +73,49 @@ class Stat_three extends React.Component {
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Card containerStyle={divCardStyle.c}>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: "row",
-                }}
-              >
-                <View style={{ flex: 2 }}>
+            <Card containerStyle={divCardStyle.c} title="차트">
+              <View style={styles.chartContainer}>
+                <View style={{ flex: 3 }}>
                   <PieChart
-                    style={{ height: 280, width: 230 }}
+                    style={{
+                      height: 240,
+                    }}
                     outerRadius={"70%"}
                     innerRadius={10}
                     data={data}
-                  />
+                  ></PieChart>
                 </View>
-
                 <View style={{ flex: 1 }}>
                   {data.map((item, i) => (
                     <ListItem
                       key={i}
                       containerStyle={{
-                        backgroundColor: View.backgroundColor,
-                        height: 50,
+                        height: 40,
                       }}
                       leftElement={
                         <Icon
                           name="circle"
                           color={item.svg.fill}
                           type="font-awesome"
-                        ></Icon>
+                        />
                       }
                       pad={0}
-                      title={<Text> {item.p}</Text>}
+                      title={`  P${i}`}
+                      titleStyle={{
+                        fontSize: 12,
+                        fontWeight: "bold",
+                        color: "black",
+                      }}
                     />
                   ))}
                 </View>
               </View>
             </Card>
-            <Card containerStyle={divCardStyle.c}>
-              <View style={{ flex: 1, alignItems: "center" }}>
-                <Text style={styles.te1}>총 사용시간 : {allTime}</Text>
-                <Text style={styles.te1}>바른 자세 : {data[0].value}</Text>
-                <Text style={styles.te1}>걸터 앉기 : {data[1].value}</Text>
-                <Text style={styles.te1}>
-                  왼쪽으로 기울어짐 : {data[2].value}
-                </Text>
-
-                <Text style={styles.te1}>
-                  오른쪽으로 기울어짐 : {data[3].value}
-                </Text>
-                <Text style={styles.te1}>둔부 앞 자세 : {data[4].value}</Text>
-                <Text style={styles.te1}>허리숙인 자세 : {data[5].value}</Text>
-              </View>
+            <Card containerStyle={divCardStyle.c} title="기본 정보">
+              <StatisticsEx p={dataset}></StatisticsEx>
+            </Card>
+            <Card containerStyle={divCardStyle.c} title="자세 정보">
+              <PostureEx p={dataset}></PostureEx>
             </Card>
           </View>
         </ScrollView>
@@ -163,14 +125,9 @@ class Stat_three extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  chartContainer: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  te1: {
-    fontSize: 15,
-    fontWeight: "bold",
+    flexDirection: "row",
   },
 });
 
