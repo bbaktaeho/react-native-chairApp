@@ -3,11 +3,12 @@ import {
   View,
   Text,
   StyleSheet,
-  Dimensions,
   AsyncStorage,
   Switch,
+  Alert,
+  ToastAndroid,
 } from "react-native";
-import { Avatar, ListItem, Card, Divider } from "react-native-elements";
+import { Avatar, ListItem, Divider } from "react-native-elements";
 import Fetch from "../../components/Fetch";
 import MyHeader from "../../components/MyHeader";
 
@@ -21,24 +22,19 @@ const styles = StyleSheet.create({
     width: "95%",
   },
   avatar: {
-    flex: 1.3,
+    flex: 1,
     flexDirection: "row",
-    justifyContent: "space-around",
     alignItems: "center",
-    backgroundColor: "#695c4c",
-    borderRadius: 10,
-    margin: 5,
+    backgroundColor: "#f0eeeb",
+    borderRadius: 8,
+    margin: 10,
   },
-  avatarText1: {
-    fontSize: 30,
-    color: "white",
-  },
-  avatarText2: {
-    fontSize: 15,
-    color: "white",
+  avatarText: {
+    fontSize: 23,
+    marginLeft: 30,
   },
   text: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "bold",
     marginLeft: 15,
     marginTop: 22,
@@ -47,11 +43,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Home_three extends React.PureComponent {
+export default class Home_three extends Component {
+  logout_removeItem = async () => {
+    await AsyncStorage.removeItem("token");
+    this.props.navigation.navigate("AuthNav");
+    ToastAndroid.show("로그아웃 되었습니다.", ToastAndroid.LONG);
+  };
+
   state = {
     list1: [
       {
-        name: "개인 정보 수정",
+        name: "회원 정보 수정",
         chevron: true,
         press: () => {
           this.props.navigation.navigate("Privacy");
@@ -60,9 +62,28 @@ export default class Home_three extends React.PureComponent {
       {
         name: "회원 탈퇴",
         chevron: true,
+        press: () => {
+          this.props.navigation.navigate("Withdrawal");
+        },
       },
       {
         name: "로그아웃",
+        press: () => {
+          Alert.alert(
+            "의자소통 로그아웃",
+            "로그아웃하시겠습니까?",
+            [
+              { text: "취소", style: "cancel" },
+              {
+                text: "로그아웃",
+                onPress: () => this.logout_removeItem(),
+              },
+            ],
+            {
+              cancelable: false,
+            }
+          );
+        },
       },
     ],
     list2: [
@@ -100,23 +121,22 @@ export default class Home_three extends React.PureComponent {
   }
 
   render() {
-    const { list1, list2, email, name } = this.state;
+    const { list1, list2, name } = this.state;
     return (
       <View style={styles.container}>
         <MyHeader navigation={this.props.navigation} title="내정보"></MyHeader>
 
         <View style={styles.avatar}>
           <Avatar
-            size="large"
+            size="medium"
             rounded
             icon={{ name: "user", type: "antdesign" }}
             overlayContainerStyle={{
-              backgroundColor: "#695c4c",
-            }}
-            containerStyle={{ borderColor: "white" }}
+              backgroundColor: "#d1cbc5",
+            }} //695c4c
+            containerStyle={{ marginLeft: 20 }}
           />
-          <Text style={styles.avatarText1}>{name} 님</Text>
-          <Text style={styles.avatarText2}>( {email} )</Text>
+          <Text style={styles.avatarText}>{name}</Text>
         </View>
 
         <View style={{ flex: 4 }}>

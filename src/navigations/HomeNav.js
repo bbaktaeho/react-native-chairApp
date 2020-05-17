@@ -4,7 +4,7 @@ import React from "react";
 import Home_one from "../screens/main/Home_one";
 import Home_two from "../screens/main/Home_two";
 import PrivacyNav from "../navigations/PrivacyNav";
-import Home_four from "../screens/main/Home_four";
+import MoreNav from "../navigations/MoreNav";
 import Icon from "react-native-vector-icons/EvilIcons";
 
 const HomeNav = createBottomTabNavigator(
@@ -12,7 +12,7 @@ const HomeNav = createBottomTabNavigator(
     내자세: { screen: Home_one },
     내의자: { screen: Home_two },
     내정보: { screen: PrivacyNav },
-    더보기: { screen: Home_four },
+    더보기: { screen: MoreNav },
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

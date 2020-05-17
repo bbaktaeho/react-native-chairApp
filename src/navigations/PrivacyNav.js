@@ -1,6 +1,7 @@
 import { createStackNavigator } from "react-navigation";
 import Home_three from "../screens/main/Home_three";
 import Privacy from "../screens/auth/Privacy";
+import Withdrawal from "../screens/auth/Withdrawal";
 
 export default PrivacyNav = createStackNavigator(
   {
@@ -17,12 +18,13 @@ export default PrivacyNav = createStackNavigator(
         title: "개인 정보 수정",
       }),
     },
-    // Withdrawal: {
-    //   screen: Withdrawal,
-    //   navigationOptions: ({ navigation }) => ({
-    //     title: "회원 탈퇴",
-    //   }),
-    // },
+    Withdrawal: {
+      screen: Withdrawal,
+      navigationOptions: ({ navigation }) => ({
+        header: () => {},
+        title: "회원 탈퇴",
+      }),
+    },
   },
   {
     initialRouteName: "Home_three",

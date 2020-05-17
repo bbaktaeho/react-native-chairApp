@@ -114,29 +114,6 @@ export default class Privacy extends Component {
     }
   };
 
-  withdrawal = async () => {
-    const token = await AsyncStorage.getItem("token");
-    const { password } = this.state;
-
-    const res = await Fetch(
-      URL.withdrawal,
-      "DELETE",
-      {
-        password: password,
-      },
-      token
-    );
-
-    const body = JSON.parse(res._bodyText);
-
-    if (body.success) {
-      this.logout_removeItem();
-    } else {
-      ToastAndroid.show(body.message, ToastAndroid.LONG);
-      this.setState({ privacyButton: false });
-    }
-  };
-
   onChangeText = (key, value) => {
     this.setState({ [key]: value });
   };
@@ -153,7 +130,7 @@ export default class Privacy extends Component {
           <MyHeader
             navigation={this.props.navigation}
             type="privacy"
-            title="개인 정보 수정"
+            title="회원 정보 수정"
           ></MyHeader>
           <View style={styles.container1}>
             <View style={styles.header}>
@@ -193,15 +170,6 @@ export default class Privacy extends Component {
                 }}
               >
                 비밀번호 변경
-              </Text>
-              <Text
-                name="fourth"
-                selectedIconStyle={{
-                  borderTopWidth: 2,
-                  borderTopColor: "#CEAEA7",
-                }}
-              >
-                회원 탈퇴
               </Text>
             </Tabs>
           </View>
@@ -249,35 +217,6 @@ export default class Privacy extends Component {
                     onPress={() => this.passwordmodify()}
                     title="수정하기"
                   ></MyButton>
-                </View>
-              )}
-              {this.state.page == "fourth" && (
-                <View>
-                  <View
-                    style={{
-                      alignItems: "center",
-                    }}
-                  >
-                    <Text style={{ fontSize: 15, fontWeight: "bold" }}>
-                      탈퇴한 회원 정보는 모두 삭제됩니다.{"\n"}탈퇴를
-                      진행하시려면 비밀번호를 입력해주세요.
-                    </Text>
-                  </View>
-
-                  <View style={{ marginTop: 20 }}>
-                    <MyInput
-                      secure={true}
-                      changeText={(val) => {
-                        this.onChangeText("password", val);
-                      }}
-                      placeholder="비밀번호 입력"
-                      name="lock"
-                    />
-                    <MyButton
-                      onPress={() => this.withdrawal()}
-                      title="탈퇴하기"
-                    ></MyButton>
-                  </View>
                 </View>
               )}
             </View>

@@ -17,7 +17,7 @@ const MyHeader = (props) => {
       })}
       leftComponent={
         props.type == "privacy" ? (
-          <PreviousMenu navigation={props.navigation} />
+          <PreviousMenu navigation={props.navigation} nav="privacy" />
         ) : (
           <HamburgerMenu navigation={props.navigation} />
         )

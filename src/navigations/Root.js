@@ -4,6 +4,7 @@ import Loading from "../screens/loding";
 import MainNav from "./MainNav";
 import AuthNav from "./AuthNav";
 import PrivacyNav from "./PrivacyNav";
+import MoreNav from "./MoreNav";
 import AuthLoading from "../screens/auth/AuthLoading";
 
 const Root = createSwitchNavigator(
@@ -12,6 +13,7 @@ const Root = createSwitchNavigator(
     AuthNav,
     MainNav,
     PrivacyNav,
+    MoreNav,
     AuthLoading: { screen: AuthLoading },
   },
   {

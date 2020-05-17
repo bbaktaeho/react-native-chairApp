@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet, Dimensions, ScrollView } from "react-native";
-import { ListItem } from "react-native-elements";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { ListItem, Divider } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
 
 const styles = StyleSheet.create({
@@ -27,16 +27,22 @@ export default class Home_four extends React.PureComponent {
       },
       {
         name: "앱 정보",
-        divider: true,
+        chevron: true,
+        press: () => {
+          this.props.navigation.navigate("AppConfig");
+        },
       },
     ],
     list2: [
       {
         name: "의자소통 가이드",
+        chevron: true,
+        press: () => {
+          this.props.navigation.navigate("Guide");
+        },
       },
       {
         name: "문의하기",
-        divider: true,
       },
     ],
   };
@@ -48,18 +54,56 @@ export default class Home_four extends React.PureComponent {
 
         <View style={{ flex: 1 }}>
           <Text style={styles.text}>어플리케이션</Text>
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Divider
+              style={{
+                width: 380,
+                height: 2,
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "silver",
+              }}
+            ></Divider>
+          </View>
           {list1.map((l, i) => (
             <ListItem
               key={i}
               title={l.name}
-              bottomDivider={l.divider}
               rightTitle={l.rightT}
+              chevron={l.chevron}
+              onPress={l.press}
             />
           ))}
 
           <Text style={styles.text}>기타</Text>
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Divider
+              style={{
+                width: 380,
+                height: 2,
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "silver",
+              }}
+            ></Divider>
+          </View>
           {list2.map((l, i) => (
-            <ListItem key={i} title={l.name} bottomDivider={l.divider} />
+            <ListItem
+              key={i}
+              title={l.name}
+              chevron={l.chevron}
+              onPress={l.press}
+            />
           ))}
         </View>
       </View>
