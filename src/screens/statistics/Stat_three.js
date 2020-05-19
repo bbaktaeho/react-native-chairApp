@@ -1,7 +1,13 @@
 import React from "react";
 import { View, StyleSheet, ScrollView, AsyncStorage } from "react-native";
-import { PieChart } from "react-native-svg-charts";
-import { Circle, G, Line } from "react-native-svg";
+import {
+  PieChart,
+  Grid,
+  LineChart,
+  XAxis,
+  YAxis,
+} from "react-native-svg-charts";
+
 import { Icon, ListItem, Text, Card } from "react-native-elements";
 import divCardStyle from "../../myStyles/divCardStyle";
 
@@ -14,6 +20,7 @@ import PostureEx from "../../components/PostureEx";
 class Stat_three extends React.PureComponent {
   state = {
     dataset: [1, 1, 1, 1, 1, 1],
+    lineChartDataset: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     allTime: "",
   };
 
@@ -23,15 +30,27 @@ class Stat_three extends React.PureComponent {
 
     const resData = await Fetch(URL.statisticall, "GET", null, token);
     const res = JSON.parse(resData._bodyInit);
+    const comparisonData = await Fetch(
+      URL.statisticallComparison,
+      "GET",
+      null,
+      token
+    );
+    const resComparison = JSON.parse(comparisonData._bodyInit);
 
-    if (res.success) {
+    if (res.success && resComparison.success) {
       let statistics = [];
+      let comparisonStatistics = [];
       res.statistics.forEach((element) => {
         statistics.push(parseInt(element));
+      });
+      resComparison.statistics.forEach((e) => {
+        comparisonStatistics.push(parseInt(e));
       });
       this.setState({
         dataset: statistics,
         allTime: res.time,
+        lineChartDataset: comparisonStatistics,
       });
     } else {
       // 불러온 데이터가 없을 때 처리하기
@@ -60,12 +79,15 @@ class Stat_three extends React.PureComponent {
   }
 
   render() {
-    const { dataset, allTime } = this.state;
+    const { dataset, lineChartDataset, allTime } = this.state;
     let data = dataset.map((e, i) => ({
       key: `pie-${i}`,
       value: e,
       svg: { fill: this.pieColor(i) },
     }));
+    const axesSvg = { fontSize: 10, fill: "grey" };
+    const verticalContentInset = { top: 10, bottom: 10 };
+    const xAxisHeight = 30;
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="총 통계"></MyHeader>
@@ -108,6 +130,54 @@ class Stat_three extends React.PureComponent {
                       }}
                     />
                   ))}
+                </View>
+              </View>
+            </Card>
+            <Card containerStyle={divCardStyle.c} title="바른 자세 비교">
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  color: "black",
+                }}
+              >
+                2020년
+              </Text>
+
+              <View
+                style={{
+                  height: 180,
+                  paddingLeft: 20,
+                  paddingRight: 20,
+                  paddingTop: 20,
+                  paddingBottom: 20,
+                  flexDirection: "row",
+                }}
+              >
+                <YAxis
+                  data={lineChartDataset}
+                  style={{ marginBottom: 30 }}
+                  contentInset={verticalContentInset}
+                  svg={axesSvg}
+                />
+                <View style={{ flex: 1, marginLeft: 10 }}>
+                  <LineChart
+                    style={{ flex: 1 }}
+                    data={lineChartDataset}
+                    contentInset={verticalContentInset}
+                    svg={{ stroke: "rgb(134, 65, 244)" }}
+                  >
+                    <Grid />
+                  </LineChart>
+                  <XAxis
+                    style={{
+                      marginHorizontal: -10,
+                      height: xAxisHeight,
+                    }}
+                    data={lineChartDataset}
+                    formatLabel={(value, index) => index + 1}
+                    contentInset={{ left: 10, right: 10 }}
+                    svg={{ fontSize: 10, fill: "gray" }}
+                  />
                 </View>
               </View>
             </Card>

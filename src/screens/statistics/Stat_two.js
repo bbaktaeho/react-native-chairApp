@@ -18,6 +18,7 @@ import URL from "../../NET";
 import MyHeader from "../../components/MyHeader";
 import moment from "moment";
 import PostureEx from "../../components/PostureEx";
+import StatisticsEx from "../../components/StatisticsEx";
 
 const chartConfig = {
   backgroundGradientFrom: "#FFFFFF",
@@ -154,7 +155,9 @@ export default class Stat_one extends Component {
                 />
               </View>
             </Card>
-            <Card containerStyle={divCardStyle.c} title="기본 정보"></Card>
+            <Card containerStyle={divCardStyle.c} title="기본 정보">
+              <StatisticsEx p={dataset}></StatisticsEx>
+            </Card>
 
             <Card containerStyle={divCardStyle.c} title="자세 정보">
               <PostureEx p={dataset}></PostureEx>

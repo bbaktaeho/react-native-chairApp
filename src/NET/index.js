@@ -16,5 +16,6 @@ export default URL = {
   statisticdate: host + "/api/statistic/date", //일간통계
   statisticmonth: host + "/api/statistic/month", //월간통계
   statisticall: host + "/api/statistic/all", //총통계
+  statisticallComparison: host + "/api/statistic/all/comparison", // 총 통계에서 바른자세만 비교
   postureinference: host + "/api/postures/inference",
 };
