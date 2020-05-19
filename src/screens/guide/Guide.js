@@ -131,7 +131,6 @@ export default class SwiperComponent extends Component {
             <MyButton
               onPress={() => this.loginCheck()}
               title="홈으로 가기"
-              backColor="#CEAEA7"
             ></MyButton>
           </View>
         </View>

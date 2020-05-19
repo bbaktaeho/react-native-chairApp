@@ -74,7 +74,7 @@ class Stat_three extends React.PureComponent {
     }
   }
 
-  async componentDidMount() {
+  async componentWillMount() {
     await this.getStatistics();
   }
 
@@ -86,8 +86,9 @@ class Stat_three extends React.PureComponent {
       svg: { fill: this.pieColor(i) },
     }));
     const axesSvg = { fontSize: 10, fill: "grey" };
-    const verticalContentInset = { top: 10, bottom: 10 };
+    const verticalContentInset = { top: 15, bottom: 15 };
     const xAxisHeight = 30;
+    const lineYdata = lineChartDataset.map((e, i) => e / 60);
     return (
       <View style={{ flex: 1 }}>
         <MyHeader navigation={this.props.navigation} title="총 통계"></MyHeader>
@@ -145,24 +146,24 @@ class Stat_three extends React.PureComponent {
 
               <View
                 style={{
-                  height: 180,
-                  paddingLeft: 20,
-                  paddingRight: 20,
+                  height: 240,
                   paddingTop: 20,
                   paddingBottom: 20,
+                  paddingLeft: 5,
+                  paddingRight: 5,
                   flexDirection: "row",
                 }}
               >
                 <YAxis
-                  data={lineChartDataset}
+                  data={lineYdata}
                   style={{ marginBottom: 30 }}
                   contentInset={verticalContentInset}
-                  svg={axesSvg}
+                  svg={{ fontSize: 10, fill: "black" }}
                 />
                 <View style={{ flex: 1, marginLeft: 10 }}>
                   <LineChart
                     style={{ flex: 1 }}
-                    data={lineChartDataset}
+                    data={lineYdata}
                     contentInset={verticalContentInset}
                     svg={{ stroke: "rgb(134, 65, 244)" }}
                   >
@@ -173,9 +174,9 @@ class Stat_three extends React.PureComponent {
                       marginHorizontal: -10,
                       height: xAxisHeight,
                     }}
-                    data={lineChartDataset}
+                    data={lineYdata}
                     formatLabel={(value, index) => index + 1}
-                    contentInset={{ left: 10, right: 10 }}
+                    contentInset={{ left: 10, right: 30 }}
                     svg={{ fontSize: 10, fill: "gray" }}
                   />
                 </View>

@@ -130,9 +130,9 @@ export default class Stat_one extends Component {
               </View>
             </Card>
             <Button
-              containerStyle={divCardStyle.c}
-              type="outline"
-              title="통계보기"
+              buttonStyle={{ backgroundColor: "#ABA095" }}
+              containerStyle={{ borderRadius: 5, width: "95%" }}
+              title="통계 보기"
               onPress={() => this.getStatistics()}
             ></Button>
             <Card containerStyle={divCardStyle.c} title="차트">
@@ -161,10 +161,6 @@ export default class Stat_one extends Component {
 
             <Card containerStyle={divCardStyle.c} title="자세 정보">
               <PostureEx p={dataset}></PostureEx>
-              {/* 최고로 많이 했던 자세 */}
-              {/* 총 사용 시간 */}
-              {/* 각 자세별 사용 시간 */}
-              {/* 뭐 넣을까? */}
             </Card>
           </View>
         </ScrollView>

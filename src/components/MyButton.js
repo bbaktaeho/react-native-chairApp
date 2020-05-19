@@ -22,17 +22,28 @@ const MyButton = ({
   onPress,
   backColor = "#ABA095",
   loading = false,
+  isStat = false,
 }) => (
   <View style={styles.container}>
-    <TouchableOpacity
-      style={[styles.authButton, { backgroundColor: backColor }]}
-      onPress={onPress}
-    >
-      {!loading && <Text style={{ color: "white" }}>{title}</Text>}
-      {loading && (
-        <BarIndicator color="rgb(255,255,255)" size={20}></BarIndicator>
-      )}
-    </TouchableOpacity>
+    {!isStat && (
+      <TouchableOpacity
+        style={[styles.authButton, { backgroundColor: backColor }]}
+        onPress={onPress}
+      >
+        {!loading && <Text style={{ color: "white" }}>{title}</Text>}
+        {loading && (
+          <BarIndicator color="rgb(255,255,255)" size={20}></BarIndicator>
+        )}
+      </TouchableOpacity>
+    )}
+    {isStat && (
+      <TouchableOpacity
+        style={{ backgroundColor: backColor }}
+        onPress={onPress}
+      >
+        {!loading && <Text style={{ color: "white" }}>{title}</Text>}
+      </TouchableOpacity>
+    )}
   </View>
 );
 

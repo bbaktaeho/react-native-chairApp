@@ -182,9 +182,9 @@ class Stat_one extends Component {
               </View>
             </Card>
             <Button
-              containerStyle={divCardStyle.c}
-              type="outline"
-              title="통계보기"
+              buttonStyle={{ backgroundColor: "#ABA095" }}
+              containerStyle={{ borderRadius: 5, width: "95%" }}
+              title="통계 보기"
               onPress={() => this.getStatistics()}
             ></Button>
             <Card containerStyle={divCardStyle.c} title="차트">
