@@ -59,10 +59,16 @@ const PostureEx = ({ p }) => {
           key={i}
           leftAvatar={
             <Tooltip
-              width={240}
-              height={50}
-              backgroundColor="#ffffee"
-              popover={<Text>{e.subTtile}</Text>}
+              width={300}
+              height={60}
+              backgroundColor="#ABA095"
+              popover={
+                <Text
+                  style={{ fontSize: 12, color: "white", fontWeight: "700" }}
+                >
+                  {e.subTtile}
+                </Text>
+              }
             >
               <Avatar rounded title={e.pTitle} />
             </Tooltip>
