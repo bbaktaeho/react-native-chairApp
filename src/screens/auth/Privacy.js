@@ -8,8 +8,9 @@ import {
   ScrollView,
   ToastAndroid,
   Alert,
-  Avatar,
 } from "react-native";
+import { Avatar, Divider, ListItem } from "react-native-elements";
+
 import Tabs from "react-native-tabs";
 import MyHeader from "../../components/MyHeader";
 import MyButton from "../../components/MyButton";
@@ -17,10 +18,47 @@ import MyInput from "../../components/MyInput";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
-const style = StyleSheet.create({
-  buttonContainer: {
-    marginTop: 30,
-    width: "88%",
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  container2: {
+    flex: 0.3,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  container3: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  header: {
+    backgroundColor: "#cfccc8",
+    height: 240,
+  },
+  avatar: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#f0eeeb",
+    borderRadius: 8,
+    margin: 10,
+  },
+  avatarText: {
+    fontSize: 23,
+    marginLeft: 30,
+  },
+  inputContainer: {
+    width: "80%",
+    marginTop: 20,
+  },
+  text: {
+    fontSize: 17,
+    fontWeight: "bold",
+    marginLeft: 15,
+    marginTop: 22,
+    marginBottom: 5,
+    color: "silver",
   },
 });
 
@@ -33,6 +71,26 @@ export default class Privacy extends Component {
     newemail: "",
     newpassword: "",
     privacyButton: false,
+    list1: [
+      {
+        name: "이메일",
+        chevron: true,
+        // subtitle: this.state.page,
+      },
+      {
+        name: "이름",
+        chevron: true,
+        subtitle: "Vice President",
+        // press: () => {
+        //   this.props.navigation.navigate("AppConfig");
+        // },
+      },
+      {
+        name: "비밀번호",
+        chevron: true,
+        subtitle: "Vice President",
+      },
+    ],
   };
 
   requestInfo = async () => {
@@ -123,151 +181,137 @@ export default class Privacy extends Component {
   }
 
   render() {
-    const { email, name, privacyButton } = this.state;
+    const { email, name, privacyButton, list1 } = this.state;
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <MyHeader
-            navigation={this.props.navigation}
-            type="privacy"
-            title="회원 정보 수정"
-          ></MyHeader>
-          <View style={styles.container1}>
-            <View style={styles.header}>
-              <Image
-                style={styles.avatar}
-                source={require("../../assets/Images/ex.png")}
-              />
+      <View style={styles.container}>
+        <MyHeader
+          navigation={this.props.navigation}
+          type="privacy"
+          title="회원 정보 수정"
+        ></MyHeader>
 
-              <Text style={styles.textContainer}>{name}</Text>
-            </View>
-          </View>
+        <View style={styles.avatar}>
+          <Avatar
+            size="medium"
+            rounded
+            icon={{ name: "user", type: "antdesign" }}
+            overlayContainerStyle={{
+              backgroundColor: "#d1cbc5",
+            }} //695c4c
+            containerStyle={{ marginLeft: 20 }}
+          />
+          <Text style={styles.avatarText}>{name}</Text>
+        </View>
 
-          <View style={styles.container2}>
-            <Tabs
-              selected={this.state.page}
-              style={{ backgroundColor: "white" }}
-              selectedIconStyle={{
-                borderTopWidth: 2,
-                borderTopColor: "#ABA095",
+        <View style={{ flex: 4 }}>
+          <Text style={styles.text}>회원 정보</Text>
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Divider
+              style={{
+                width: 380,
+                height: 2,
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "silver",
               }}
-              onSelect={(el) => this.setState({ page: el.props.name })}
-            >
-              <Text
-                name="second"
-                selectedIconStyle={{
-                  borderTopWidth: 2,
-                  borderTopColor: "#CEAEA7",
-                }}
-              >
-                이메일 변경
-              </Text>
-              <Text
-                name="third"
-                selectedIconStyle={{
-                  borderTopWidth: 2,
-                  borderTopColor: "#CEAEA7",
-                }}
-              >
-                비밀번호 변경
-              </Text>
-            </Tabs>
-          </View>
-
-          <View style={styles.container3}>
-            <View style={styles.inputContainer}>
-              {this.state.page == "second" && (
-                <View>
-                  <MyInput disabled={true} value={email} name="mail" />
-                  <MyInput
-                    changeText={(val) => {
-                      this.onChangeText("newemail", val);
-                    }}
-                    placeholder="이메일 입력"
-                    name="mail"
-                  />
-
-                  <MyButton
-                    onPress={() => this.emailmodify()}
-                    title="수정하기"
-                    loading={privacyButton}
-                  ></MyButton>
-                </View>
-              )}
-              {this.state.page == "third" && (
-                <View>
-                  <MyInput
-                    secure={true}
-                    changeText={(val) => {
-                      this.onChangeText("password", val);
-                    }}
-                    placeholder="현재 비밀번호 입력"
-                    name="lock"
-                  />
-                  <MyInput
-                    secure={true}
-                    changeText={(val) => {
-                      this.onChangeText("newpassword", val);
-                    }}
-                    placeholder="변경 비밀번호 입력"
-                    name="lock"
-                  />
-
-                  <MyButton
-                    onPress={() => this.passwordmodify()}
-                    title="수정하기"
-                  ></MyButton>
-                </View>
-              )}
-            </View>
+            ></Divider>
           </View>
         </View>
-      </ScrollView>
+        {list1.map((l, i) => (
+          <ListItem
+            key={i}
+            title={l.name}
+            rightTitle={l.rightT}
+            chevron={l.chevron}
+            onPress={l.press}
+            subtitle={l.subtitle}
+          />
+        ))}
+
+        {/* <View style={styles.container2}>
+          <Tabs
+            selected={this.state.page}
+            style={{ backgroundColor: "white" }}
+            selectedIconStyle={{
+              borderTopWidth: 2,
+              borderTopColor: "#ABA095",
+            }}
+            onSelect={(el) => this.setState({ page: el.props.name })}
+          >
+            <Text
+              name="second"
+              selectedIconStyle={{
+                borderTopWidth: 2,
+                borderTopColor: "#CEAEA7",
+              }}
+            >
+              이메일 변경
+            </Text>
+            <Text
+              name="third"
+              selectedIconStyle={{
+                borderTopWidth: 2,
+                borderTopColor: "#CEAEA7",
+              }}
+            >
+              비밀번호 변경
+            </Text>
+          </Tabs>
+        </View>
+
+        <View style={styles.container3}>
+          <View style={styles.inputContainer}>
+            {this.state.page == "second" && (
+              <View>
+                <MyInput disabled={true} value={email} name="mail" />
+                <MyInput
+                  changeText={(val) => {
+                    this.onChangeText("newemail", val);
+                  }}
+                  placeholder="이메일 입력"
+                  name="mail"
+                />
+
+                <MyButton
+                  onPress={() => this.emailmodify()}
+                  title="수정하기"
+                  loading={privacyButton}
+                ></MyButton>
+              </View>
+            )}
+            {this.state.page == "third" && (
+              <View>
+                <MyInput
+                  secure={true}
+                  changeText={(val) => {
+                    this.onChangeText("password", val);
+                  }}
+                  placeholder="현재 비밀번호 입력"
+                  name="lock"
+                />
+                <MyInput
+                  secure={true}
+                  changeText={(val) => {
+                    this.onChangeText("newpassword", val);
+                  }}
+                  placeholder="변경 비밀번호 입력"
+                  name="lock"
+                />
+
+                <MyButton
+                  onPress={() => this.passwordmodify()}
+                  title="수정하기"
+                ></MyButton>
+              </View>
+            )}
+          </View> */}
+        {/* </View> */}
+      </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  container1: {
-    flex: 1,
-  },
-  container2: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 50,
-  },
-  container3: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 20,
-  },
-  header: {
-    backgroundColor: "#cfccc8",
-    height: 240,
-  },
-  avatar: {
-    width: 130,
-    height: 130,
-
-    marginBottom: 10,
-    alignSelf: "center",
-    position: "absolute",
-    marginTop: 25,
-  },
-  inputContainer: {
-    width: "80%",
-    marginTop: 20,
-  },
-  textContainer: {
-    color: "#695c4c",
-    fontSize: 23,
-    fontWeight: "bold",
-    marginTop: 170,
-    alignSelf: "center",
-  },
-});

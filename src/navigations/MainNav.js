@@ -56,7 +56,7 @@ class DrawerContent extends React.Component {
             overlayContainerStyle={{ backgroundColor: "#695c4c" }}
             containerStyle={{ marginLeft: 15, marginTop: 10 }}
           />
-          <Text style={{ paddingRight: 120, fontSize: 23, color: "#695c4c" }}>
+          <Text style={{ paddingRight: 185, fontSize: 23, color: "#695c4c" }}>
             {this.state.username}
           </Text>
         </View>
@@ -78,42 +78,12 @@ export default MainNav = createDrawerNavigator(
       },
     },
 
-    // Privacy: {
-    //   screen: Privacy,
-    //   navigationOptions: {
-    //     drawerLabel: "내 정보",
-    //     drawerIcon: () => (
-    //       <Icon name="user" size={25} type="font-awesome" color="#544e48" />
-    //     ),
-    //   },
-    // },
-
     Stat: {
       screen: StatNav,
       navigationOptions: {
         drawerLabel: "통계",
         drawerIcon: () => (
           <Icon name="barschart" size={25} type="antdesign" color="#544e48" />
-        ),
-      },
-    },
-
-    Setting: {
-      screen: SettingNav,
-      navigationOptions: {
-        drawerLabel: "설정",
-        drawerIcon: () => (
-          <Icon name="setting" size={25} type="antdesign" color="#544e48" />
-        ),
-      },
-    },
-
-    Appinfo: {
-      screen: AppConfig,
-      navigationOptions: {
-        drawerLabel: "앱 정보",
-        drawerIcon: () => (
-          <Icon name="staro" size={25} type="antdesign" color="#544e48" />
         ),
       },
     },
