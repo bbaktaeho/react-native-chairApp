@@ -9,7 +9,7 @@ import {
   AsyncStorage,
 } from "react-native";
 
-import { Card, Button } from "react-native-elements";
+import { Card, Button, Divider } from "react-native-elements";
 import { BarChart } from "react-native-chart-kit";
 import divCardStyle from "../../myStyles/divCardStyle";
 
@@ -72,7 +72,7 @@ export default class Stat_one extends Component {
     const { year, month, dataset } = this.state;
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "white" }}>
         <MyHeader
           navigation={this.props.navigation}
           title="월간 통계"
@@ -87,7 +87,7 @@ export default class Stat_one extends Component {
                 <View style={styles.pickContainer}>
                   <Picker
                     selectedValue={year}
-                    style={{ height: 50, width: 105, color: "#CEAEA7" }}
+                    style={{ height: 50, width: 105, color: "#ABA095" }}
                     onValueChange={(itemValue, itemIndex) =>
                       this.setState({ year: itemValue })
                     }
@@ -105,7 +105,7 @@ export default class Stat_one extends Component {
                     style={{
                       height: 50,
                       width: 75,
-                      color: "#CEAEA7",
+                      color: "#ABA095",
                     }}
                     onValueChange={(itemValue, itemIndex) =>
                       this.setState({ month: itemValue })
@@ -128,14 +128,38 @@ export default class Stat_one extends Component {
                   <Text style={{ fontWeight: "bold" }}>월 </Text>
                 </View>
               </View>
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <Button
+                  buttonStyle={{ backgroundColor: "#ABA095" }}
+                  containerStyle={{
+                    borderRadius: 5,
+                    width: "100%",
+                    marginTop: 9,
+                  }}
+                  title="통계 보기"
+                  onPress={() => this.getStatistics()}
+                ></Button>
+              </View>
             </Card>
-            <Button
-              buttonStyle={{ backgroundColor: "#ABA095" }}
-              containerStyle={{ borderRadius: 5, width: "95%" }}
-              title="통계 보기"
-              onPress={() => this.getStatistics()}
-            ></Button>
-            <Card containerStyle={divCardStyle.c} title="차트">
+
+            <View
+              style={{
+                marginTop: 15,
+              }}
+            >
+              <Text style={styles.text}>자세 그래프</Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ABA095",
+                }}
+              ></Divider>
+            </View>
+
+            <Card containerStyle={divCardStyle.c}>
               <View
                 style={{
                   flex: 1,
@@ -155,13 +179,49 @@ export default class Stat_one extends Component {
                 />
               </View>
             </Card>
-            <Card containerStyle={divCardStyle.c} title="기본 정보">
-              <StatisticsEx p={dataset}></StatisticsEx>
-            </Card>
 
-            <Card containerStyle={divCardStyle.c} title="자세 정보">
+            <View
+              style={{
+                marginTop: 15,
+              }}
+            >
+              <Text style={styles.text}>자세 요약</Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ABA095",
+                }}
+              ></Divider>
+            </View>
+
+            <Card containerStyle={divCardStyle.c}>
               <PostureEx p={dataset}></PostureEx>
             </Card>
+
+            <View
+              style={{
+                marginTop: 15,
+              }}
+            >
+              <Text style={styles.text}>자세 분석</Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ABA095",
+                }}
+              ></Divider>
+            </View>
+
+            <Card containerStyle={divCardStyle.c}>
+              <StatisticsEx p={dataset}></StatisticsEx>
+            </Card>
+            <View style={{ marginTop: 20 }}></View>
           </View>
         </ScrollView>
       </View>
@@ -179,5 +239,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  text: {
+    fontSize: 17,
+    fontWeight: "bold",
+    marginLeft: 15,
+    marginTop: 22,
+    marginBottom: 5,
+    color: "#ABA095",
   },
 });

@@ -217,7 +217,6 @@ class Stat_one extends Component {
                   flex: 1,
                   alignItems: "center",
                   justifyContent: "center",
-                  marginTop: 15,
                 }}
               >
                 <BarChart
@@ -263,7 +262,7 @@ class Stat_one extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>기타 정보</Text>
+              <Text style={styles.text}>자세 분석</Text>
               <Divider
                 style={{
                   width: 380,

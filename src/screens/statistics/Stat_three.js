@@ -8,7 +8,7 @@ import {
   YAxis,
 } from "react-native-svg-charts";
 
-import { Icon, ListItem, Text, Card } from "react-native-elements";
+import { Icon, ListItem, Text, Card, Divider } from "react-native-elements";
 import divCardStyle from "../../myStyles/divCardStyle";
 
 import Fetch from "../../components/Fetch";
@@ -96,7 +96,20 @@ class Stat_three extends React.PureComponent {
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
-            <Card containerStyle={divCardStyle.c} title="차트">
+            <View>
+              <Text style={styles.text}>총 자세 그래프</Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ABA095",
+                }}
+              ></Divider>
+            </View>
+
+            <Card containerStyle={divCardStyle.c}>
               <View style={styles.chartContainer}>
                 <View style={{ flex: 3 }}>
                   <PieChart
@@ -134,7 +147,25 @@ class Stat_three extends React.PureComponent {
                 </View>
               </View>
             </Card>
-            <Card containerStyle={divCardStyle.c} title="바른 자세 비교">
+
+            <View
+              style={{
+                marginTop: 15,
+              }}
+            >
+              <Text style={styles.text}>총 자세 비교</Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ABA095",
+                }}
+              ></Divider>
+            </View>
+
+            <Card containerStyle={divCardStyle.c}>
               <Text
                 style={{
                   fontWeight: "bold",
@@ -182,13 +213,48 @@ class Stat_three extends React.PureComponent {
                 </View>
               </View>
             </Card>
-            <Card containerStyle={divCardStyle.c} title="기본 정보">
-              <StatisticsEx p={dataset}></StatisticsEx>
-            </Card>
-            <Card containerStyle={divCardStyle.c} title="자세 정보">
+
+            <View
+              style={{
+                marginTop: 15,
+              }}
+            >
+              <Text style={styles.text}>총 자세 요약</Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ABA095",
+                }}
+              ></Divider>
+            </View>
+            <Card containerStyle={divCardStyle.c}>
               <PostureEx p={dataset}></PostureEx>
             </Card>
+
+            <View
+              style={{
+                marginTop: 15,
+              }}
+            >
+              <Text style={styles.text}>총 자세 분석</Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ABA095",
+                }}
+              ></Divider>
+            </View>
+            <Card containerStyle={divCardStyle.c}>
+              <StatisticsEx p={dataset}></StatisticsEx>
+            </Card>
           </View>
+          <View style={{ marginTop: 20 }}></View>
         </ScrollView>
       </View>
     );
@@ -199,6 +265,14 @@ const styles = StyleSheet.create({
   chartContainer: {
     flex: 1,
     flexDirection: "row",
+  },
+  text: {
+    fontSize: 17,
+    fontWeight: "bold",
+    marginLeft: 15,
+    marginTop: 22,
+    marginBottom: 5,
+    color: "#ABA095",
   },
 });
 
