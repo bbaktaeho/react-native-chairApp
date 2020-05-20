@@ -6,23 +6,6 @@ import URL from "../NET";
 import Fetch from "../components/Fetch";
 
 const LogoutMenu = (props) => {
-<<<<<<< HEAD
-  logout_removeItem = async () => {
-    await AsyncStorage.removeItem("token");
-
-    let posarr = [];
-    posarr[0] = props.statData.data1;
-    posarr[1] = props.statData.data2;
-    posarr[2] = props.statData.data3;
-    posarr[3] = props.statData.data4;
-    posarr[4] = props.statData.data5;
-    posarr[5] = props.statData.data6;
-
-    props.navigation.navigate("AuthNav");
-  };
-
-=======
->>>>>>> 01055d0419ccdf92a47e32f7fb163f60484b5ca9
   exit_removeItem = async () => {
     try {
       const token = await AsyncStorage.getItem("token");

@@ -17,7 +17,7 @@ const PostureEx = ({ p }) => {
     },
     {
       pTitle: "P1",
-      title: "걸터 앚은 자세",
+      title: "걸터 앉은 자세",
       subTtile: "의자 끝 부분에 걸터 앉은 자세",
       time: `${parseInt(p[1] / 3600)}시간 ${parseInt((p[1] % 3600) / 60)}분`,
       second: p[1],

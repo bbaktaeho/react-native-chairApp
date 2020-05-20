@@ -23,11 +23,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  text: {
+  textContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 25,
+  },
+  text: {
+    fontSize: 25,
+    color: "#ABA095",
   },
 });
 
@@ -75,19 +79,19 @@ class Home_one extends Component {
   };
   imageshow(a) {
     if (a == "앞으로 숙이고 있습니다.") {
-      return require("../../assets/Images/f_1.png");
-    } else if (a == "왼 다리를 꼬았습니다.") {
-      return require("../../assets/Images/f_2.png");
-    } else if (a == "오른 다리를 꼬았습니다.") {
-      return require("../../assets/Images/f_3.png");
+      return require("../../assets/Images/P5.png");
+    } else if (a == "왼쪽으로 기울어졌습니다.") {
+      return require("../../assets/Images/P2.png");
+    } else if (a == "오른쪽으로 기울어졌습니다.") {
+      return require("../../assets/Images/P3.png");
     } else if (a == "둔부를 앞으로 한 자세 입니다.") {
-      return require("../../assets/Images/f_4.png");
-    } else if (a == "걸터앉은 자세입니다.") {
-      return require("../../assets/Images/f_5.png");
-    } else if (a == "바른자세 입니다.") {
-      return require("../../assets/Images/f_6.png");
+      return require("../../assets/Images/P4.png");
+    } else if (a == "걸터앉았습니다.") {
+      return require("../../assets/Images/P1.png");
+    } else if (a == "바른자세입니다.") {
+      return require("../../assets/Images/P0.png");
     } else {
-      return require("../../assets/Images/MainLogo_1.png");
+      return require("../../assets/Images/P_noshow.png");
     }
   }
   render() {
@@ -101,10 +105,13 @@ class Home_one extends Component {
           <View style={styles.container}>
             <Card containerStyle={divCardStyle.c}>
               <View style={styles.container}>
-                <Image source={this.imageshow(this.props.statData.pos)} />
+                <Image
+                  source={this.imageshow(this.props.statData.pos)}
+                  style={{ width: 430, height: 430 }}
+                />
               </View>
-              <View style={styles.text}>
-                <Text>{this.props.statData.pos}</Text>
+              <View style={styles.textContainer}>
+                <Text style={styles.text}>{this.props.statData.pos}</Text>
               </View>
             </Card>
           </View>
