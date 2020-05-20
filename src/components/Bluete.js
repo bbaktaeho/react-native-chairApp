@@ -128,11 +128,11 @@ class Bluete extends React.Component {
             batteryd
           );
           let sum = merge.reduce((a, b) => a + b, 0);
-          console.log(sum);
+
           if (sum == "0") {
             this.props.pos_0(1);
           } else {
-            fetch("http://172.30.1.51:9009/", {
+            fetch("http://192.168.0.6:9009/", {
               method: "post",
               headers: {
                 Accept: "application/json",

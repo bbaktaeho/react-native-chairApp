@@ -9,6 +9,7 @@ const initState = {
     data5: 0,
     data6: 0,
     pos: "의자에 앉지 않았습니다.",
+    bad: 0,
   },
 };
 
@@ -35,6 +36,7 @@ export default statdata = (state = initState, action) => {
           data5: state.statData.data5,
           data6: state.statData.data6,
           pos: "바른자세 입니다.",
+          bad: 0,
         },
       };
     case types.PLUS_2:
@@ -47,6 +49,7 @@ export default statdata = (state = initState, action) => {
           data5: state.statData.data5,
           data6: state.statData.data6,
           pos: "걸터앉은 자세입니다.",
+          bad: state.statData.bad + 1,
         },
       };
     case types.PLUS_3:
@@ -59,6 +62,7 @@ export default statdata = (state = initState, action) => {
           data5: state.statData.data5,
           data6: state.statData.data6,
           pos: "둔부를 앞으로 한 자세 입니다.",
+          bad: state.statData.bad + 1,
         },
       };
     case types.PLUS_4:
@@ -71,6 +75,7 @@ export default statdata = (state = initState, action) => {
           data5: state.statData.data5,
           data6: state.statData.data6,
           pos: "오른 다리를 꼬았습니다.",
+          bad: state.statData.bad + 1,
         },
       };
     case types.PLUS_5:
@@ -83,6 +88,7 @@ export default statdata = (state = initState, action) => {
           data5: state.statData.data5 + action.payload,
           data6: state.statData.data6,
           pos: "왼 다리를 꼬았습니다.",
+          bad: state.statData.bad + 1,
         },
       };
     case types.PLUS_6:
@@ -95,6 +101,7 @@ export default statdata = (state = initState, action) => {
           data5: state.statData.data5,
           data6: state.statData.data6 + action.payload,
           pos: "앞으로 숙이고 있습니다.",
+          bad: state.statData.bad + 1,
         },
       };
     case types.POS_0:
@@ -107,6 +114,7 @@ export default statdata = (state = initState, action) => {
           data5: state.statData.data5,
           data6: state.statData.data6,
           pos: "의자에 앉지 않았습니다.",
+          bad: state.statData.bad,
         },
       };
     default:

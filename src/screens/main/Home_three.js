@@ -90,7 +90,12 @@ export default class Home_three extends Component {
       {
         name: "PUSH 알림",
         text: "실시간 자세에 대한 PUSH 알림 받기",
-        right: () => <Switch></Switch>,
+        right: () => (
+          <Switch
+            value={this.state.pus}
+            onValueChange={this.pusChange}
+          ></Switch>
+        ),
       },
       {
         name: "캐시 삭제",
@@ -98,6 +103,30 @@ export default class Home_three extends Component {
     ],
     email: "",
     name: "",
+    pus: true,
+  };
+
+  pusChange = async () => {
+    if (this.state.pus == false) {
+      this.setState({ pus: true });
+      await AsyncStorage.setItem("push", "on");
+    } else {
+      this.setState({ pus: false });
+      await AsyncStorage.setItem("push", "off");
+    }
+  };
+
+  pusInfo = async () => {
+    const pushi = await AsyncStorage.getItem("push");
+
+    if (pushi == null) {
+      this.setState({ pus: true });
+      await AsyncStorage.setItem("on");
+    } else if (pushi == "on") {
+      this.setState({ pus: true });
+    } else {
+      this.setState({ pus: false });
+    }
   };
 
   requestInfo = async () => {
@@ -118,10 +147,11 @@ export default class Home_three extends Component {
 
   componentWillMount() {
     this.requestInfo();
+    this.pusInfo();
   }
 
   render() {
-    const { list1, list2, name } = this.state;
+    const { list1, list2, name, pus } = this.state;
     return (
       <View style={styles.container}>
         <MyHeader navigation={this.props.navigation} title="내정보"></MyHeader>
