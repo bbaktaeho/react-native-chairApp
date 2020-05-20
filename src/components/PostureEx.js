@@ -14,6 +14,7 @@ const PostureEx = ({ p }) => {
       subTtile: "의자를 이용하는 옳바른 자세",
       time: `${parseInt(p[0] / 3600)}시간 ${parseInt((p[0] % 3600) / 60)}분`,
       second: p[0],
+      bDivider: true,
     },
     {
       pTitle: "P1",
@@ -21,6 +22,7 @@ const PostureEx = ({ p }) => {
       subTtile: "의자 끝 부분에 걸터 앉은 자세",
       time: `${parseInt(p[1] / 3600)}시간 ${parseInt((p[1] % 3600) / 60)}분`,
       second: p[1],
+      bDivider: true,
     },
     {
       pTitle: "P2",
@@ -28,6 +30,7 @@ const PostureEx = ({ p }) => {
       subTtile: "무게중심이 왼쪽으로 기울어진 자세(오른 다리 꼬기)",
       time: `${parseInt(p[2] / 3600)}시간 ${parseInt((p[2] % 3600) / 60)}분`,
       second: p[2],
+      bDivider: true,
     },
     {
       pTitle: "P3",
@@ -35,6 +38,7 @@ const PostureEx = ({ p }) => {
       subTtile: "무게중심이 오른쪽으로 기울어진 자세(왼쪽 다리 꼬기)",
       time: `${parseInt(p[3] / 3600)}시간 ${parseInt((p[3] % 3600) / 60)}분`,
       second: p[3],
+      bDivider: true,
     },
     {
       pTitle: "P4",
@@ -42,6 +46,7 @@ const PostureEx = ({ p }) => {
       subTtile: "둔부를 의자 앞으로 내밀어 어깨를 등받이에 기댄 자세",
       time: `${parseInt(p[4] / 3600)}시간 ${parseInt((p[4] % 3600) / 60)}분`,
       second: p[4],
+      bDivider: true,
     },
     {
       pTitle: "P5",
@@ -78,8 +83,7 @@ const PostureEx = ({ p }) => {
           rightTitleStyle={{ fontSize: 12, color: "black" }}
           title={e.title}
           rightTitle={e.time}
-          //   topDivider={true}
-          bottomDivider={true}
+          bottomDivider={e.bDivider}
         />
       ))}
     </View>

@@ -11,7 +11,7 @@ const StatisticsEx = ({ p }) => {
   let posture = "바른 자세";
   if (maxIndex != 0) posture = "나쁜 자세";
   let list = [
-    { title: "사용 시간", sub: null, rightTitle: time },
+    { title: "사용 시간", sub: null, rightTitle: time, bDivider: true },
     { title: "많이 앉은 자세", sub: "P" + maxIndex, rightTitle: posture },
   ];
 
@@ -26,7 +26,7 @@ const StatisticsEx = ({ p }) => {
           title={e.title}
           subtitle={e.sub}
           rightTitle={e.rightTitle}
-          bottomDivider={true}
+          bottomDivider={e.bDivider}
         />
       ))}
     </View>
