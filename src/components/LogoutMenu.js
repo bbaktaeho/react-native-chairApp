@@ -2,27 +2,30 @@ import React from "react";
 import { Alert, BackHandler, AsyncStorage } from "react-native";
 import { Icon } from "react-native-elements";
 import { connect } from "react-redux";
-
-/* 로그인 체크하고 post로 state(p0 - p8 보내기) */
+import URL from '../NET'
+import Fetch from '../components/Fetch'
 
 const LogoutMenu = (props) => {
-  logout_removeItem = async () => {
-    await AsyncStorage.removeItem("token");
-
-    props.navigation.navigate("AuthNav");
-  };
 
   exit_removeItem = async () => {
-    await AsyncStorage.removeItem("token");
-    let posarr = [];
-    posarr[0] = props.statData.data1;
-    posarr[1] = props.statData.data2;
-    posarr[2] = props.statData.data3;
-    posarr[3] = props.statData.data4;
-    posarr[4] = props.statData.data5;
-    posarr[5] = props.statData.data6;
-
+    try {
+      const token = await AsyncStorage.getItem('token')
+      const {data1, data2, data3, data4, data5, data6} = props.statData
+      let posarr = [data1, data2, data3, data4, data5, data6];
+      const result = await Fetch(URL.posturesave, 'POST', {
+        postures: posarr
+      }, token)
+      const body = JSON.parse(result._bodyText)
+      if (body.success) console.log('저장 성공');
+      else {
+        console.log('저장 실패');
+        await AsyncStorage.setItem("tmpPostures", JSON.stringify(posarr))
+      }
+      await AsyncStorage.removeItem("token");
     BackHandler.exitApp();
+    } catch (err) {
+
+    }
   };
 
   return (
@@ -37,11 +40,7 @@ const LogoutMenu = (props) => {
           [
             { text: "취소", style: "cancel" },
             {
-              text: "로그아웃",
-              onPress: () => this.logout_removeItem(),
-            },
-            {
-              text: "종료",
+              text: "종료", style='destructive',
               onPress: () => this.exit_removeItem(),
             },
           ],
