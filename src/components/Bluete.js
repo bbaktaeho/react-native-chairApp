@@ -95,6 +95,7 @@ class Bluete extends React.Component {
         let a, b, c;
         let merge = [];
         let pushi;
+        let pusht;
         // 블루투스 모듈 연결이 성공했을 때
         BluetoothSerial.read((data, subscription) => {
           splitData = data.split(",");
@@ -166,11 +167,15 @@ class Bluete extends React.Component {
               });
           }
           pushi = AsyncStorage.getItem("time");
-          if (this.props.statData.bad >= parseInt(pushi)) {
-            Push();
-            this.props.clear;
+          console.log(pushi);
+          pusht = AsyncStorage.getItem("push");
+          console.log(pusht);
+          if (pusht == "on") {
+            if (this.props.statData.bad >= parseInt(pushi)) {
+              Push();
+              this.props.clear;
+            }
           }
-
           if (this.imBoredNow && subscription) {
             BluetoothSerial.removeSubscription(subscription);
           }
