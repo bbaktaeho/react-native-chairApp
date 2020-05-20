@@ -117,6 +117,19 @@ export default statdata = (state = initState, action) => {
           bad: state.statData.bad,
         },
       };
+    case types.CLEAR:
+      return {
+        statData: {
+          data1: state.statData.data1,
+          data2: state.statData.data2,
+          data3: state.statData.data3,
+          data4: state.statData.data4,
+          data5: state.statData.data5,
+          data6: state.statData.data6,
+          pos: state.statData.pos,
+          bad: 0,
+        },
+      };
     default:
       return state;
   }

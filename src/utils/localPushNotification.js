@@ -63,7 +63,7 @@ export default () => {
     // category: // (optional) default: null
     // userInfo: // (optional) default: null (object containing additional notification data)
 
-    title: "잘하자", // (optional)
-    message: "알겠니?", // (required)
+    title: "바른자세로 앉아 주세요", // (optional)
+    message: "바른자세로 앉아 주세요", // (required)
   });
 };

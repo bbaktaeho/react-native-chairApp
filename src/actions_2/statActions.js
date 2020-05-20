@@ -57,3 +57,8 @@ export function up(num1, num2, num3, num4, num5, num6) {
     payload6: num6,
   };
 }
+export function clear() {
+  return {
+    type: types.CLEAR,
+  };
+}

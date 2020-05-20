@@ -8,7 +8,7 @@ import {
   Alert,
   ToastAndroid,
 } from "react-native";
-import { Avatar, ListItem, Divider } from "react-native-elements";
+import { Avatar, ListItem, Divider, Slider } from "react-native-elements";
 import Fetch from "../../components/Fetch";
 import MyHeader from "../../components/MyHeader";
 
@@ -97,36 +97,48 @@ export default class Home_three extends Component {
           ></Switch>
         ),
       },
-      {
-        name: "캐시 삭제",
-      },
     ],
     email: "",
     name: "",
     pus: true,
+    slid: true,
+    num: 60,
   };
 
   pusChange = async () => {
     if (this.state.pus == false) {
       this.setState({ pus: true });
+      this.setState({ slid: true });
       await AsyncStorage.setItem("push", "on");
     } else {
       this.setState({ pus: false });
+      this.setState({ slid: false });
       await AsyncStorage.setItem("push", "off");
     }
   };
 
   pusInfo = async () => {
     const pushi = await AsyncStorage.getItem("push");
-
+    const pusht = await AsyncStorage.getItem("time");
     if (pushi == null) {
       this.setState({ pus: true });
-      await AsyncStorage.setItem("on");
+      this.setState({ slid: true });
+      await AsyncStorage.setItem("push", "on");
+      await AsyncStorage.setItem("time", "60");
     } else if (pushi == "on") {
       this.setState({ pus: true });
+      this.setState({ slid: true });
+      this.setState({ num: parseInt(pusht) });
     } else {
       this.setState({ pus: false });
+      this.setState({ slid: false });
+      this.setState({ num: parseInt(pusht) });
     }
+  };
+
+  slideComp = async () => {
+    const pushi = this.state.num.toString();
+    await AsyncStorage.setItem("time", pushi);
   };
 
   requestInfo = async () => {
@@ -224,6 +236,31 @@ export default class Home_three extends Component {
               subtitleStyle={{ fontSize: 12, marginTop: 5 }}
             />
           ))}
+
+          {this.state.slid ? (
+            <View
+              style={{
+                alignItems: "stretch",
+                justifyContent: "center",
+                margin: 20,
+              }}
+            >
+              <Slider
+                minimumValue={60}
+                minimumTrackTintColor="#98e3fa"
+                maximumValue={500}
+                step={10}
+                thumbTintColor="#bfe8f5"
+                value={this.state.num}
+                onValueChange={(num) => this.setState({ num })}
+                onSlidingComplete={this.slideComp}
+              />
+              <Text style={{ justifyContent: "center" }}>
+                {parseInt(this.state.num)}초 마다
+              </Text>
+            </View>
+          ) : null}
+          <ListItem title={"캐시 삭제"}></ListItem>
         </View>
       </View>
     );

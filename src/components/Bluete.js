@@ -9,7 +9,7 @@ import {
 import ActionCreator from "../actions/index";
 import ActionCreator2 from "../actions_2/index";
 import initStore from "../store/index";
-
+import Push from "../utils/localPushNotification";
 import BluetoothSerial from "react-native-bluetooth-serial-next";
 
 import { Buffer } from "buffer";
@@ -94,6 +94,7 @@ class Bluete extends React.Component {
         let backd = [];
         let a, b, c;
         let merge = [];
+        let pushi;
         // 블루투스 모듈 연결이 성공했을 때
         BluetoothSerial.read((data, subscription) => {
           splitData = data.split(",");
@@ -164,6 +165,12 @@ class Bluete extends React.Component {
                 console.error("에러입니다!!!!!!: ", e.message);
               });
           }
+          pushi = AsyncStorage.getItem("time");
+          if (this.props.statData.bad >= parseInt(pushi)) {
+            Push();
+            this.props.clear;
+          }
+
           if (this.imBoredNow && subscription) {
             BluetoothSerial.removeSubscription(subscription);
           }
@@ -252,6 +259,9 @@ function mapDispatchToProps(dispatch) {
     },
     pos_0: (num) => {
       dispatch(ActionCreator2.pos_0(num));
+    },
+    clear: () => {
+      dispatch(ActionCreator2.clear());
     },
   };
 }

@@ -7,6 +7,7 @@ const types = {
   PLUS_6: "Plus_6",
   UP: "Up",
   POS_0: "Pos_0",
+  CLEAR: "Clear",
 };
 
 export default types;
