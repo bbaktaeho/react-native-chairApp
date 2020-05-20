@@ -244,7 +244,7 @@ class Stat_one extends Component {
                   height: 2,
                   alignItems: "center",
                   justifyContent: "center",
-                  backgroundColor: "silver",
+                  backgroundColor: "#ABA095",
                 }}
               ></Divider>
             </View>
@@ -269,7 +269,7 @@ class Stat_one extends Component {
                   height: 2,
                   alignItems: "center",
                   justifyContent: "center",
-                  backgroundColor: "silver",
+                  backgroundColor: "#ABA095",
                 }}
               ></Divider>
             </View>
@@ -297,7 +297,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 17,
     fontWeight: "bold",
-    marginLeft: 15,
     marginTop: 22,
     marginBottom: 5,
     color: "#ABA095",

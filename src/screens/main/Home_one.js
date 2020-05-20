@@ -11,7 +11,7 @@ import {
 import { connect } from "react-redux";
 import ActionCreator from "../../actions/index";
 import ActionCreator2 from "../../actions_2/index";
-import { Card } from "react-native-elements";
+import { Card, Divider } from "react-native-elements";
 
 import divCardStyle from "../../myStyles/divCardStyle";
 import MyHeader from "../../components/MyHeader";
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   text: {
-    fontSize: 25,
+    fontSize: 20,
     color: "#ABA095",
   },
 });
@@ -107,9 +107,10 @@ class Home_one extends Component {
               <View style={styles.container}>
                 <Image
                   source={this.imageshow(this.props.statData.pos)}
-                  style={{ width: 430, height: 430 }}
+                  style={{ width: 435, height: 435 }}
                 />
               </View>
+              <Divider />
               <View style={styles.textContainer}>
                 <Text style={styles.text}>{this.props.statData.pos}</Text>
               </View>

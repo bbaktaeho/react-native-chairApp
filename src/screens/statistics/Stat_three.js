@@ -90,7 +90,7 @@ class Stat_three extends React.PureComponent {
     const xAxisHeight = 30;
     const lineYdata = lineChartDataset.map((e, i) => e / 60);
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "white" }}>
         <MyHeader navigation={this.props.navigation} title="총 통계"></MyHeader>
         <ScrollView>
           <View
@@ -269,7 +269,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 17,
     fontWeight: "bold",
-    marginLeft: 15,
     marginTop: 22,
     marginBottom: 5,
     color: "#ABA095",

@@ -1,20 +1,9 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  FlatList,
-  AsyncStorage,
-} from "react-native";
-import { Card, Button } from "react-native-elements";
+import { View } from "react-native";
 import MyHeader from "../../components/MyHeader";
-import { Provider, connect } from "react-redux";
+import { connect } from "react-redux";
 import Pos from "../../screens/guide/Pos.js";
-import initStore from "../../store/index.js";
 import ActionCreator from "../../actions/index.js";
-
-const store = initStore();
 
 class Home_two extends Component {
   constructor(props) {
@@ -39,18 +28,11 @@ class Home_two extends Component {
           title="실시간 의자"
         ></MyHeader>
         <Pos></Pos>
+        <View style={{ marginTop: 20 }}></View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 function mapStateToProps(state) {
   return {

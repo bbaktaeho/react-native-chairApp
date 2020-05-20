@@ -24,7 +24,7 @@ const MyHeader = (props) => {
       }
       centerComponent={{
         text: props.title,
-        style: { color: "black" },
+        style: { color: "#6e675f" },
       }}
       rightComponent={<LogoutMenu navigation={props.navigation} />}
       backgroundColor={colors.header}

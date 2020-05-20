@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Dimensions, ScrollView, Text } from "react-native";
-import { Icon, Card } from "react-native-elements";
+import { Icon, Card, Divider } from "react-native-elements";
 import { Svg, Rect } from "react-native-svg";
 import _ from "lodash";
 import { connect } from "react-redux";
-import initStore from "../../store/index";
 import ActionCreator from "../../actions/index.js";
 import divCardStyle from "../../myStyles/divCardStyle";
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 17,
+    fontWeight: "bold",
+    marginTop: 22,
+    marginBottom: 5,
+    color: "#ABA095",
+  },
+});
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -18,8 +27,8 @@ class Pos extends Component {
 
   map1(x) {
     let z = ((x - 0) * (245 - 0)) / (60 - 0) + 0;
-    let y = 245 - parseInt(z);
-    return `rgb(${y},255,${y})`;
+    let y = 242 - parseInt(z);
+    return `rgb(${y},242,${y})`;
   }
 
   map2(x) {
@@ -40,7 +49,7 @@ class Pos extends Component {
     const { backData, seatData, battery } = this.props;
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "white" }}>
         <ScrollView>
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
@@ -53,30 +62,61 @@ class Pos extends Component {
                 marginTop: 10,
               }}
             >
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginRight: 150,
-                }}
-              >
-                <Text style={{ fontSize: 14 }}>연결 </Text>
-                <Icon
-                  name="circle"
-                  size={20}
-                  color={this.connecte()}
-                  type="font-awesome"
-                ></Icon>
-              </View>
-              <View style={{ marginLeft: 150 }}>
-                <Icon
-                  size={20}
-                  name={this.batterycheck(battery)}
-                  type="font-awesome"
-                ></Icon>
-              </View>
+              <Card containerStyle={divCardStyle.c}>
+                <View
+                  style={{
+                    flexDirection: "row",
+                  }}
+                >
+                  <View
+                    style={{
+                      flexDirection: "row",
+                    }}
+                  >
+                    <Text style={{ fontSize: 14 }}>연결 </Text>
+                    <Icon
+                      name="circle"
+                      size={20}
+                      color={this.connecte()}
+                      type="font-awesome"
+                      style={{ marginTop: 20 }}
+                    ></Icon>
+                  </View>
+
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      marginLeft: 280,
+                    }}
+                  >
+                    <Icon
+                      size={20}
+                      name={this.batterycheck(battery)}
+                      type="font-awesome"
+                    ></Icon>
+                  </View>
+                </View>
+              </Card>
             </View>
 
-            <Card title="등받이" containerStyle={divCardStyle.c}>
+            <View
+              style={{
+                marginTop: 15,
+              }}
+            >
+              <Text style={styles.text}>등받이</Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ABA095",
+                }}
+              ></Divider>
+            </View>
+
+            <Card containerStyle={divCardStyle.c}>
               <Svg width={screenWidth} height="230">
                 <Rect
                   x="23%"
@@ -108,7 +148,25 @@ class Pos extends Component {
                 />
               </Svg>
             </Card>
-            <Card title="엉덩이" containerStyle={divCardStyle.c}>
+
+            <View
+              style={{
+                marginTop: 15,
+              }}
+            >
+              <Text style={styles.text}>엉덩이</Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#ABA095",
+                }}
+              ></Divider>
+            </View>
+
+            <Card containerStyle={divCardStyle.c}>
               <Svg width={screenWidth} height="300">
                 <Rect
                   x="4%"

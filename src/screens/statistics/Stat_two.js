@@ -243,7 +243,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 17,
     fontWeight: "bold",
-    marginLeft: 15,
     marginTop: 22,
     marginBottom: 5,
     color: "#ABA095",
