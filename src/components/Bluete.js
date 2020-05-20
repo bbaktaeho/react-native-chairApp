@@ -9,9 +9,8 @@ import {
 import ActionCreator from "../actions/index";
 import ActionCreator2 from "../actions_2/index";
 import initStore from "../store/index";
-import Push from "../utils/localPushNotification";
 import BluetoothSerial from "react-native-bluetooth-serial-next";
-
+import Push from "../utils/localPushNotification";
 import { Buffer } from "buffer";
 import Fetch from "./Fetch";
 
@@ -94,8 +93,6 @@ class Bluete extends React.Component {
         let backd = [];
         let a, b, c;
         let merge = [];
-        let pushi;
-        let pusht;
         // 블루투스 모듈 연결이 성공했을 때
         BluetoothSerial.read((data, subscription) => {
           splitData = data.split(",");
@@ -166,16 +163,7 @@ class Bluete extends React.Component {
                 console.error("에러입니다!!!!!!: ", e.message);
               });
           }
-          pushi = AsyncStorage.getItem("time");
-          console.log(pushi);
-          pusht = AsyncStorage.getItem("push");
-          console.log(pusht);
-          if (pusht == "on") {
-            if (this.props.statData.bad >= parseInt(pushi)) {
-              Push();
-              this.props.clear;
-            }
-          }
+          this.pushCheck();
           if (this.imBoredNow && subscription) {
             BluetoothSerial.removeSubscription(subscription);
           }
@@ -222,6 +210,24 @@ class Bluete extends React.Component {
     });
   }
 
+  pushCheck = async () => {
+    const pushc = await AsyncStorage.getItem("push");
+    const pusht = await AsyncStorage.getItem("time");
+    if (pushc == null) {
+      await AsyncStorage.setItem("push", "on");
+      await AsyncStorage.setItem("time", "60");
+      if (this.props.statData.bad >= 60) {
+        Push();
+        this.props.clear();
+      }
+    } else if (pushc == "on") {
+      if (this.props.statData.bad >= parseInt(pusht)) {
+        Push();
+        this.props.clear();
+      }
+    } else {
+    }
+  };
   render() {
     return <Provider store={store}></Provider>;
   }

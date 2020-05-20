@@ -121,8 +121,6 @@ export default class Home_three extends Component {
     const pushi = await AsyncStorage.getItem("push");
     const pusht = await AsyncStorage.getItem("time");
     if (pushi == null) {
-      this.setState({ pus: true });
-      this.setState({ slid: true });
       await AsyncStorage.setItem("push", "on");
       await AsyncStorage.setItem("time", "60");
     } else if (pushi == "on") {
@@ -248,7 +246,7 @@ export default class Home_three extends Component {
               <Slider
                 minimumValue={60}
                 minimumTrackTintColor="#98e3fa"
-                maximumValue={500}
+                maximumValue={600}
                 step={10}
                 thumbTintColor="#bfe8f5"
                 value={this.state.num}
