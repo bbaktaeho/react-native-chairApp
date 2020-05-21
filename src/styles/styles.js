@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 //#D2B48C
 const colors = {
-  statusbar: "#FFF",
-  header: "#FFF",
+  statusbar: "#c2bab2",
+  header: "#c2bab2",
   drawerBackground: "#ffeae7",
 };
 

@@ -49,7 +49,7 @@ class Pos extends Component {
     const { backData, seatData, battery } = this.props;
 
     return (
-      <View style={{ flex: 1, backgroundColor: "white" }}>
+      <View style={{ flex: 1 }}>
         <ScrollView>
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
