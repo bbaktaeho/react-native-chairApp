@@ -86,7 +86,7 @@ class Stat_three extends React.PureComponent {
       svg: { fill: this.pieColor(i) },
     }));
     const axesSvg = { fontSize: 10, fill: "grey" };
-    const verticalContentInset = { top: 15, bottom: 15 };
+    const verticalContentInset = { top: 10, bottom: 10 };
     const xAxisHeight = 30;
     const lineYdata = lineChartDataset.map((e, i) => e / 60);
     return (
@@ -189,7 +189,8 @@ class Stat_three extends React.PureComponent {
                   data={lineYdata}
                   style={{ marginBottom: 30 }}
                   contentInset={verticalContentInset}
-                  svg={{ fontSize: 10, fill: "black" }}
+                  svg={{ fontSize: 9, fill: "gray" }}
+                  formatLabel={(value) => `  ${value}분  `}
                 />
                 <View style={{ flex: 1, marginLeft: 10 }}>
                   <LineChart

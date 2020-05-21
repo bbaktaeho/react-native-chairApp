@@ -55,7 +55,14 @@ class DrawerContent extends React.Component {
             overlayContainerStyle={{ backgroundColor: "#695c4c" }}
             containerStyle={{ marginLeft: 15, marginTop: 10 }}
           />
-          <Text style={{ paddingLeft: 15, fontSize: 23, color: "#695c4c" }}>
+          <Text
+            style={{
+              paddingLeft: 15,
+              fontSize: 23,
+              color: "#695c4c",
+              fontWeight: "bold",
+            }}
+          >
             {this.state.username}
           </Text>
         </View>
