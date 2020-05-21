@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { ListItem, Divider } from "react-native-elements";
 import MyHeader from "../../components/MyHeader";
+import Guide from "../guide/Guide";
 
 const styles = StyleSheet.create({
   container: {
@@ -38,7 +39,7 @@ export default class Home_four extends React.PureComponent {
         name: "의자소통 가이드",
         chevron: true,
         press: () => {
-          this.props.navigation.navigate("Guide");
+          <Guide></Guide>;
         },
       },
       {
