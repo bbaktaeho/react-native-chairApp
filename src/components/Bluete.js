@@ -128,7 +128,7 @@ class Bluete extends React.Component {
           );
           let sum = merge.reduce((a, b) => a + b, 0);
 
-          if (sum == "0") {
+          if (parseInt(sum) <= 10) {
             this.props.pos_0(1);
           } else {
             fetch("http://192.168.0.6:9009/", {

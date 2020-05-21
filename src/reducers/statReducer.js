@@ -35,7 +35,7 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5,
           data6: state.statData.data6,
-          pos: "바른자세 입니다.",
+          pos: "바른자세입니다.",
           bad: 0,
         },
       };
@@ -48,7 +48,7 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5,
           data6: state.statData.data6,
-          pos: "걸터앉은 자세입니다.",
+          pos: "걸터앉았습니다.",
           bad: state.statData.bad + 1,
         },
       };
@@ -74,7 +74,7 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4 + action.payload,
           data5: state.statData.data5,
           data6: state.statData.data6,
-          pos: "오른 다리를 꼬았습니다.",
+          pos: "왼쪽으로 기울어졌습니다.",
           bad: state.statData.bad + 1,
         },
       };
@@ -87,7 +87,7 @@ export default statdata = (state = initState, action) => {
           data4: state.statData.data4,
           data5: state.statData.data5 + action.payload,
           data6: state.statData.data6,
-          pos: "왼 다리를 꼬았습니다.",
+          pos: "오른쪽으로 기울어졌습니다.",
           bad: state.statData.bad + 1,
         },
       };
