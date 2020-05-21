@@ -81,9 +81,9 @@ class Home_one extends Component {
     if (a == "앞으로 숙이고 있습니다.") {
       return require("../../assets/Images/P5.png");
     } else if (a == "왼쪽으로 기울어졌습니다.") {
-      return require("../../assets/Images/P2.png");
-    } else if (a == "오른쪽으로 기울어졌습니다.") {
       return require("../../assets/Images/P3.png");
+    } else if (a == "오른쪽으로 기울어졌습니다.") {
+      return require("../../assets/Images/P2.png");
     } else if (a == "둔부를 앞으로 한 자세 입니다.") {
       return require("../../assets/Images/P4.png");
     } else if (a == "걸터앉았습니다.") {

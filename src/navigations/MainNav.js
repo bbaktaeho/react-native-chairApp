@@ -39,14 +39,13 @@ class DrawerContent extends React.Component {
 
   render() {
     return (
-      <ScrollView>
+      <View>
         <View
           style={{
             backgroundColor: "#ffffff",
             height: 140,
             alignItems: "center",
             flexDirection: "row",
-            justifyContent: "space-between",
           }}
         >
           <Avatar
@@ -56,12 +55,12 @@ class DrawerContent extends React.Component {
             overlayContainerStyle={{ backgroundColor: "#695c4c" }}
             containerStyle={{ marginLeft: 15, marginTop: 10 }}
           />
-          <Text style={{ paddingRight: 185, fontSize: 23, color: "#695c4c" }}>
+          <Text style={{ paddingLeft: 15, fontSize: 23, color: "#695c4c" }}>
             {this.state.username}
           </Text>
         </View>
         <DrawerItems {...this.props} />
-      </ScrollView>
+      </View>
     );
   }
 }
