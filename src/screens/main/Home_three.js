@@ -7,6 +7,7 @@ import {
   Switch,
   Alert,
   ToastAndroid,
+  ScrollView,
 } from "react-native";
 import { Avatar, ListItem, Divider, Slider } from "react-native-elements";
 import Fetch from "../../components/Fetch";
@@ -23,6 +24,8 @@ const styles = StyleSheet.create({
   },
   avatar: {
     flex: 1,
+    paddingTop: 18,
+    paddingBottom: 18,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f0eeeb",
@@ -163,104 +166,109 @@ export default class Home_three extends Component {
   render() {
     const { list1, list2, name, pus } = this.state;
     return (
-      <View style={styles.container}>
-        <MyHeader navigation={this.props.navigation} title="내정보"></MyHeader>
+      <ScrollView>
+        <View style={styles.container}>
+          <MyHeader
+            navigation={this.props.navigation}
+            title="내정보"
+          ></MyHeader>
 
-        <View style={styles.avatar}>
-          <Avatar
-            size="medium"
-            rounded
-            icon={{ name: "user", type: "antdesign" }}
-            overlayContainerStyle={{
-              backgroundColor: "#d1cbc5",
-            }} //695c4c
-            containerStyle={{ marginLeft: 20 }}
-          />
-          <Text style={styles.avatarText}>{name}</Text>
-        </View>
-
-        <View style={{ flex: 4 }}>
-          <Text style={styles.text}>계정</Text>
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Divider
-              style={{
-                width: 380,
-                height: 2,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "silver",
-              }}
-            ></Divider>
+          <View style={styles.avatar}>
+            <Avatar
+              size="medium"
+              rounded
+              icon={{ name: "user", type: "antdesign" }}
+              overlayContainerStyle={{
+                backgroundColor: "#d1cbc5",
+              }} //695c4c
+              containerStyle={{ marginLeft: 20 }}
+            />
+            <Text style={styles.avatarText}>{name}</Text>
           </View>
 
-          {list1.map((l, i) => (
-            <ListItem
-              key={i}
-              title={l.name}
-              chevron={l.chevron}
-              onPress={l.press}
-            />
-          ))}
-
-          <Text style={styles.text}>설정</Text>
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Divider
-              style={{
-                width: 380,
-                height: 2,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "silver",
-              }}
-            ></Divider>
-          </View>
-          {list2.map((l, i) => (
-            <ListItem
-              key={i}
-              title={l.name}
-              chevron={l.chevron}
-              rightElement={l.right}
-              subtitle={l.text}
-              subtitleStyle={{ fontSize: 12, marginTop: 5 }}
-            />
-          ))}
-
-          {this.state.slid ? (
+          <View style={{ flex: 4 }}>
+            <Text style={styles.text}>계정</Text>
             <View
               style={{
-                alignItems: "stretch",
+                alignItems: "center",
                 justifyContent: "center",
-                margin: 20,
               }}
             >
-              <Slider
-                minimumValue={60}
-                minimumTrackTintColor="#98e3fa"
-                maximumValue={600}
-                step={10}
-                thumbTintColor="#bfe8f5"
-                value={this.state.num}
-                onValueChange={(num) => this.setState({ num })}
-                onSlidingComplete={this.slideComp}
-              />
-              <Text style={{ justifyContent: "center" }}>
-                {parseInt(this.state.num)}초 마다
-              </Text>
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "silver",
+                }}
+              ></Divider>
             </View>
-          ) : null}
-          <ListItem title={"캐시 삭제"}></ListItem>
+
+            {list1.map((l, i) => (
+              <ListItem
+                key={i}
+                title={l.name}
+                chevron={l.chevron}
+                onPress={l.press}
+              />
+            ))}
+
+            <Text style={styles.text}>설정</Text>
+            <View
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Divider
+                style={{
+                  width: 380,
+                  height: 2,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "silver",
+                }}
+              ></Divider>
+            </View>
+            {list2.map((l, i) => (
+              <ListItem
+                key={i}
+                title={l.name}
+                chevron={l.chevron}
+                rightElement={l.right}
+                subtitle={l.text}
+                subtitleStyle={{ fontSize: 12, marginTop: 5 }}
+              />
+            ))}
+
+            {this.state.slid ? (
+              <View
+                style={{
+                  alignItems: "stretch",
+                  justifyContent: "center",
+                  margin: 20,
+                }}
+              >
+                <Slider
+                  minimumValue={60}
+                  minimumTrackTintColor="#98e3fa"
+                  maximumValue={600}
+                  step={10}
+                  thumbTintColor="#bfe8f5"
+                  value={this.state.num}
+                  onValueChange={(num) => this.setState({ num })}
+                  onSlidingComplete={this.slideComp}
+                />
+                <Text style={{ justifyContent: "center" }}>
+                  {parseInt(this.state.num)}초 마다
+                </Text>
+              </View>
+            ) : null}
+            <ListItem title={"캐시 삭제"}></ListItem>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
