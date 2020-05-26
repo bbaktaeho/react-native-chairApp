@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, AsyncStorage, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  AsyncStorage,
+  Dimensions,
+  BackHandler,
+} from "react-native";
 import { Image } from "react-native-elements";
 
 import Swiper from "react-native-swiper";
@@ -65,7 +72,14 @@ export default class SwiperComponent extends Component {
     }
   };
 
+  handleBackPress() {
+    return true;
+  }
   render() {
+    this.backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      this.handleBackPress
+    );
     return (
       <Swiper
         loop={false}

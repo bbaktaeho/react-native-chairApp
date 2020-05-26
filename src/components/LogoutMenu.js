@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert, BackHandler, AsyncStorage } from "react-native";
 import { Icon } from "react-native-elements";
+import RNExitApp from "react-native-exit-app";
 import { connect } from "react-redux";
 import URL from "../NET";
 import Fetch from "../components/Fetch";
@@ -26,7 +27,7 @@ const LogoutMenu = (props) => {
         await AsyncStorage.setItem("tmpPostures", JSON.stringify(posarr));
       }
       await AsyncStorage.removeItem("token");
-      BackHandler.exitApp();
+      RNExitApp.exitApp();
     } catch (err) {}
   };
 

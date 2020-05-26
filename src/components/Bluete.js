@@ -221,7 +221,7 @@ class Bluete extends React.Component {
         this.props.clear();
       }
     } else if (pushc == "on") {
-      if (this.props.statData.bad >= parseInt(pusht)) {
+      if (this.props.statData.bad >= parseInt(pusht) ) {
         Push();
         this.props.clear();
       }

@@ -1,4 +1,5 @@
 import React from "react";
+import { BackHandler } from "react-native";
 import { RootNav } from "./navigations/Root";
 import { Provider, connect } from "react-redux";
 import MyStatusBar from "./components/StatusBar";
@@ -13,7 +14,16 @@ class Start extends React.Component {
     this.events = null;
     this.state = {};
   }
+
+  handleBackPress() {
+    return true;
+  }
+
   render() {
+    this.backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      this.handleBackPress
+    );
     return (
       <Provider store={store}>
         <MyStatusBar></MyStatusBar>

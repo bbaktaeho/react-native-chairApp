@@ -39,7 +39,7 @@ export default class Home_four extends React.PureComponent {
         name: "의자소통 가이드",
         chevron: true,
         press: () => {
-          <Guide></Guide>;
+          this.props.navigation.push("Guide");
         },
       },
       {
