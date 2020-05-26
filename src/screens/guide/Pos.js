@@ -104,7 +104,7 @@ class Pos extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>등받이</Text>
+              <Text style={styles.text}>등 압력분포</Text>
               <Divider
                 style={{
                   width: 380,
@@ -154,7 +154,7 @@ class Pos extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>엉덩이</Text>
+              <Text style={styles.text}>엉덩이 압력분포</Text>
               <Divider
                 style={{
                   width: 380,

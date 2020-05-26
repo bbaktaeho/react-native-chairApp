@@ -107,7 +107,7 @@ class Home_one extends Component {
               <View style={styles.container}>
                 <Image
                   source={this.imageshow(this.props.statData.pos)}
-                  style={{ width: 435, height: 435 }}
+                  style={{ width: 435, height: 600 }}
                 />
               </View>
               <Divider />
