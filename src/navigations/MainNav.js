@@ -1,12 +1,10 @@
 import React from "react";
-import { View, Text, ScrollView, AsyncStorage } from "react-native";
+import { View, Text, AsyncStorage } from "react-native";
 import { createDrawerNavigator, DrawerItems } from "react-navigation";
 import { Avatar, Icon } from "react-native-elements";
 
-import SettingNav from "../navigations/SettingNav";
 import HomeNav from "../navigations/HomeNav";
-// import Privacy from "../screens/auth/Privacy";
-import AppConfig from "../screens/main/AppConfig";
+import Posture from "../screens/main/Posture";
 import StatNav from "../navigations/StatNav";
 import Fetch from "../components/Fetch";
 import URL from "../NET";
@@ -48,13 +46,7 @@ class DrawerContent extends React.Component {
             flexDirection: "row",
           }}
         >
-          <Avatar
-            size="small"
-            rounded
-            icon={{ name: "user", type: "antdesign" }}
-            overlayContainerStyle={{ backgroundColor: "#695c4c" }}
-            containerStyle={{ marginLeft: 15, marginTop: 10 }}
-          />
+          <Avatar size="small" rounded icon={{ name: "user", type: "antdesign" }} overlayContainerStyle={{ backgroundColor: "#695c4c" }} containerStyle={{ marginLeft: 15, marginTop: 10 }} />
           <Text
             style={{
               paddingLeft: 15,
@@ -78,9 +70,7 @@ export default MainNav = createDrawerNavigator(
       screen: HomeNav,
       navigationOptions: {
         drawerLabel: "홈",
-        drawerIcon: () => (
-          <Icon name="home" size={25} type="antdesign" color="#544e48" />
-        ),
+        drawerIcon: () => <Icon name="home" size={25} type="antdesign" color="#544e48" />,
       },
     },
 
@@ -88,9 +78,15 @@ export default MainNav = createDrawerNavigator(
       screen: StatNav,
       navigationOptions: {
         drawerLabel: "통계",
-        drawerIcon: () => (
-          <Icon name="barschart" size={25} type="antdesign" color="#544e48" />
-        ),
+        drawerIcon: () => <Icon name="barschart" size={25} type="antdesign" color="#544e48" />,
+      },
+    },
+
+    Posture: {
+      screen: Posture,
+      navigationOptions: {
+        drawerLabel: "자세 설명",
+        drawerIcon: () => <Icon name="airline-seat-recline-normal" size={25} type="material" color="#544e48" />,
       },
     },
   },
