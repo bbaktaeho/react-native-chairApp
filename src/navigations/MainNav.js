@@ -5,6 +5,7 @@ import { Avatar, Icon } from "react-native-elements";
 
 import HomeNav from "../navigations/HomeNav";
 import Posture from "../screens/main/Posture";
+import PostureSwiper from "../screens/main/PostureSwiper";
 import StatNav from "../navigations/StatNav";
 import Fetch from "../components/Fetch";
 import URL from "../NET";
@@ -86,6 +87,13 @@ export default MainNav = createDrawerNavigator(
       screen: Posture,
       navigationOptions: {
         drawerLabel: "자세 설명",
+        drawerIcon: () => <Icon name="airline-seat-recline-normal" size={25} type="material" color="#544e48" />,
+      },
+    },
+    PostureSwiper: {
+      screen: PostureSwiper,
+      navigationOptions: {
+        drawerLabel: "자세 스와이프",
         drawerIcon: () => <Icon name="airline-seat-recline-normal" size={25} type="material" color="#544e48" />,
       },
     },
