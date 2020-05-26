@@ -11,7 +11,7 @@ const PostureEx = ({ p }) => {
     {
       pTitle: "P0",
       title: "바른 자세",
-      subTtile: "의자를 이용하는 옳바른 자세",
+      subTtile: "의자를 이용하는 올바른 자세",
       time: `${parseInt(p[0] / 3600)}시간 ${parseInt((p[0] % 3600) / 60)}분`,
       second: p[0],
       bDivider: true,
@@ -63,18 +63,7 @@ const PostureEx = ({ p }) => {
         <ListItem
           key={i}
           leftAvatar={
-            <Tooltip
-              width={300}
-              height={60}
-              backgroundColor="#ABA095"
-              popover={
-                <Text
-                  style={{ fontSize: 12, color: "white", fontWeight: "700" }}
-                >
-                  {e.subTtile}
-                </Text>
-              }
-            >
+            <Tooltip width={300} height={60} backgroundColor="#ABA095" popover={<Text style={{ fontSize: 12, color: "white", fontWeight: "700" }}>{e.subTtile}</Text>}>
               <Avatar rounded title={e.pTitle} />
             </Tooltip>
           }
