@@ -9,12 +9,13 @@ import {
   ToastAndroid,
   Alert,
 } from "react-native";
-import { Avatar, Divider, ListItem } from "react-native-elements";
+import { Avatar, ListItem } from "react-native-elements";
 
 import Tabs from "react-native-tabs";
 import MyHeader from "../../components/MyHeader";
 import MyButton from "../../components/MyButton";
 import MyInput from "../../components/MyInput";
+import MyDivider from "../../components/MyDivider";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
@@ -37,28 +38,20 @@ const styles = StyleSheet.create({
     height: 240,
   },
   avatar: {
-    flex: 1,
     flexDirection: "row",
+    paddingTop: 40,
+    paddingBottom: 40,
     alignItems: "center",
-    backgroundColor: "#f0eeeb",
-    borderRadius: 8,
-    margin: 10,
+    backgroundColor: "#c2bab2",
   },
   avatarText: {
     fontSize: 23,
     marginLeft: 30,
+    color: "white",
   },
   inputContainer: {
     width: "80%",
     marginTop: 20,
-  },
-  text: {
-    fontSize: 17,
-    fontWeight: "bold",
-    marginLeft: 15,
-    marginTop: 22,
-    marginBottom: 5,
-    color: "silver",
   },
 });
 
@@ -71,26 +64,6 @@ export default class Privacy extends Component {
     newemail: "",
     newpassword: "",
     privacyButton: false,
-    list1: [
-      {
-        name: "이메일",
-        chevron: true,
-        // subtitle: this.state.page,
-      },
-      {
-        name: "이름",
-        chevron: true,
-        subtitle: "Vice President",
-        // press: () => {
-        //   this.props.navigation.navigate("AppConfig");
-        // },
-      },
-      {
-        name: "비밀번호",
-        chevron: true,
-        subtitle: "Vice President",
-      },
-    ],
   };
 
   requestInfo = async () => {
@@ -183,57 +156,39 @@ export default class Privacy extends Component {
   render() {
     const { email, name, privacyButton, list1 } = this.state;
     return (
-      <View style={styles.container}>
-        <MyHeader
-          navigation={this.props.navigation}
-          type="privacy"
-          title="회원 정보 수정"
-        ></MyHeader>
+      <ScrollView>
+        <View style={styles.container}>
+          <MyHeader
+            navigation={this.props.navigation}
+            type="privacy"
+            title="회원 정보 수정"
+          ></MyHeader>
 
-        <View style={styles.avatar}>
-          <Avatar
-            size="medium"
-            rounded
-            icon={{ name: "user", type: "antdesign" }}
-            overlayContainerStyle={{
-              backgroundColor: "#d1cbc5",
-            }} //695c4c
-            containerStyle={{ marginLeft: 20 }}
-          />
-          <Text style={styles.avatarText}>{name}</Text>
-        </View>
-
-        <View style={{ flex: 4 }}>
-          <Text style={styles.text}>회원 정보</Text>
-          <View
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Divider
-              style={{
-                width: 380,
-                height: 2,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "silver",
+          <View style={styles.avatar}>
+            <Avatar
+              size="medium"
+              rounded
+              icon={{ name: "user", type: "antdesign" }}
+              overlayContainerStyle={{
+                backgroundColor: "#d1cbc5",
+              }} //695c4c
+              containerStyle={{
+                marginLeft: 20,
+                borderWidth: 2,
+                borderColor: "white",
               }}
-            ></Divider>
+            />
+            <Text style={styles.avatarText}>{name}</Text>
           </View>
-        </View>
-        {list1.map((l, i) => (
-          <ListItem
-            key={i}
-            title={l.name}
-            rightTitle={l.rightT}
-            chevron={l.chevron}
-            onPress={l.press}
-            subtitle={l.subtitle}
-          />
-        ))}
 
-        {/* <View style={styles.container2}>
+          <View style={{ flex: 4 }}>
+            <MyDivider title="회원 정보" left={15} />
+          </View>
+          <ListItem title="이름" subtitle={name}></ListItem>
+          <ListItem title="이메일" subtitle={email} chevron></ListItem>
+          <ListItem title="비밀번호" subtitle="********" chevron></ListItem>
+
+          {/* <View style={styles.container2}>
           <Tabs
             selected={this.state.page}
             style={{ backgroundColor: "white" }}
@@ -310,8 +265,9 @@ export default class Privacy extends Component {
               </View>
             )}
           </View> */}
-        {/* </View> */}
-      </View>
+          {/* </View> */}
+        </View>
+      </ScrollView>
     );
   }
 }

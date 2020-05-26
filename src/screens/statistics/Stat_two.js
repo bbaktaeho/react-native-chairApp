@@ -5,11 +5,10 @@ import {
   StyleSheet,
   ScrollView,
   Picker,
-  TouchableOpacity,
   AsyncStorage,
 } from "react-native";
 
-import { Card, Button, Divider } from "react-native-elements";
+import { Card, Button } from "react-native-elements";
 import { BarChart } from "react-native-chart-kit";
 import divCardStyle from "../../myStyles/divCardStyle";
 
@@ -19,6 +18,7 @@ import MyHeader from "../../components/MyHeader";
 import moment from "moment";
 import PostureEx from "../../components/PostureEx";
 import StatisticsEx from "../../components/StatisticsEx";
+import MyDivider from "../../components/MyDivider";
 
 const chartConfig = {
   backgroundGradientFrom: "#FFFFFF",
@@ -147,16 +147,7 @@ export default class Stat_one extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>자세 그래프</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="자세 그래프" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -185,16 +176,7 @@ export default class Stat_one extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>자세 요약</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="자세 요약" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -206,16 +188,7 @@ export default class Stat_one extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>자세 분석</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="자세 분석" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -239,12 +212,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-  },
-  text: {
-    fontSize: 17,
-    fontWeight: "bold",
-    marginTop: 22,
-    marginBottom: 5,
-    color: "#ABA095",
   },
 });

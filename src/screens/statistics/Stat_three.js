@@ -8,7 +8,7 @@ import {
   YAxis,
 } from "react-native-svg-charts";
 
-import { Icon, ListItem, Text, Card, Divider } from "react-native-elements";
+import { Icon, ListItem, Text, Card } from "react-native-elements";
 import divCardStyle from "../../myStyles/divCardStyle";
 
 import Fetch from "../../components/Fetch";
@@ -16,6 +16,7 @@ import URL from "../../NET";
 import MyHeader from "../../components/MyHeader";
 import StatisticsEx from "../../components/StatisticsEx";
 import PostureEx from "../../components/PostureEx";
+import MyDivider from "../../components/MyDivider";
 
 class Stat_three extends React.PureComponent {
   state = {
@@ -97,16 +98,7 @@ class Stat_three extends React.PureComponent {
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
             <View>
-              <Text style={styles.text}>총 자세 그래프</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="총 자세 그래프" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -153,16 +145,7 @@ class Stat_three extends React.PureComponent {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>총 자세 비교</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="총 자세 비교" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -220,16 +203,7 @@ class Stat_three extends React.PureComponent {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>총 자세 요약</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="총 자세 요약" />
             </View>
             <Card containerStyle={divCardStyle.c}>
               <PostureEx p={dataset}></PostureEx>
@@ -240,16 +214,7 @@ class Stat_three extends React.PureComponent {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>총 자세 분석</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="총 자세 분석" />
             </View>
             <Card containerStyle={divCardStyle.c}>
               <StatisticsEx p={dataset}></StatisticsEx>
@@ -266,13 +231,6 @@ const styles = StyleSheet.create({
   chartContainer: {
     flex: 1,
     flexDirection: "row",
-  },
-  text: {
-    fontSize: 17,
-    fontWeight: "bold",
-    marginTop: 22,
-    marginBottom: 5,
-    color: "#ABA095",
   },
 });
 

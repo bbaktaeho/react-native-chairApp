@@ -8,8 +8,8 @@ import {
   AsyncStorage,
 } from "react-native";
 
-import { Provider, connect } from "react-redux";
-import { Card, Button, Divider } from "react-native-elements";
+import { connect } from "react-redux";
+import { Card, Button } from "react-native-elements";
 import { BarChart } from "react-native-chart-kit";
 import divCardStyle from "../../myStyles/divCardStyle";
 
@@ -19,6 +19,7 @@ import MyHeader from "../../components/MyHeader";
 import moment from "moment";
 import PostureEx from "../../components/PostureEx";
 import StatisticsEx from "../../components/StatisticsEx";
+import MyDivider from "../../components/MyDivider";
 
 /* 날짜 바꾸면 post로 날짜 보내고 p0-p5받아서 state.data에 setState
    로그인 안하면 안나옴
@@ -94,7 +95,7 @@ class Stat_one extends Component {
                   <Picker
                     selectedValue={year}
                     style={{ height: 50, width: 105, color: "#ABA095" }}
-                    onValueChange={(itemValue, itemIndex) =>
+                    onValueChange={(itemValue) =>
                       this.setState({ year: itemValue })
                     }
                     mode="dialog"
@@ -113,7 +114,7 @@ class Stat_one extends Component {
                       width: 75,
                       color: "#ABA095",
                     }}
-                    onValueChange={(itemValue, itemIndex) =>
+                    onValueChange={(itemValue) =>
                       this.setState({ month: itemValue })
                     }
                     mode="dialog"
@@ -140,7 +141,7 @@ class Stat_one extends Component {
                       color: "#ABA095",
                       alignItems: "flex-end",
                     }}
-                    onValueChange={(itemValue, itemIndex) =>
+                    onValueChange={(itemValue) =>
                       this.setState({ date: itemValue })
                     }
                     mode="dialog"
@@ -199,16 +200,7 @@ class Stat_one extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>자세 그래프</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="자세 그래프" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -237,16 +229,7 @@ class Stat_one extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>자세 요약</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="자세 요약" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -262,16 +245,7 @@ class Stat_one extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>자세 분석</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="자세 분석" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -293,13 +267,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-  },
-  text: {
-    fontSize: 17,
-    fontWeight: "bold",
-    marginTop: 22,
-    marginBottom: 5,
-    color: "#ABA095",
   },
 });
 
