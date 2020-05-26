@@ -88,6 +88,8 @@ export default class Home_three extends Component {
         text: "실시간 자세에 대한 PUSH 알림 받기",
         right: () => (
           <Switch
+            trackColor={{ false: "#767577", true: "#e6dbd1" }}
+            thumbColor={this.state.pus ? "#c2bab2" : "#f4f3f4"}
             value={this.state.pus}
             onValueChange={this.pusChange}
           ></Switch>
@@ -213,10 +215,10 @@ export default class Home_three extends Component {
               >
                 <Slider
                   minimumValue={60}
-                  minimumTrackTintColor="#98e3fa"
+                  minimumTrackTintColor="#e6dbd1"
                   maximumValue={600}
                   step={10}
-                  thumbTintColor="#bfe8f5"
+                  thumbTintColor="#c2bab2"
                   value={this.state.num}
                   onValueChange={(num) => this.setState({ num })}
                   onSlidingComplete={this.slideComp}
