@@ -15,7 +15,7 @@ import { Card, Divider } from "react-native-elements";
 
 import divCardStyle from "../../myStyles/divCardStyle";
 import MyHeader from "../../components/MyHeader";
-import Pos2 from "../../screens/guide/Pos2.js";
+import MyDivider from "../../components/MyDivider";
 
 const styles = StyleSheet.create({
   container: {
@@ -103,11 +103,12 @@ class Home_one extends Component {
         ></MyHeader>
         <ScrollView>
           <View style={styles.container}>
+            <MyDivider title="실시간 자세" />
             <Card containerStyle={divCardStyle.c}>
               <View style={styles.container}>
                 <Image
                   source={this.imageshow(this.props.statData.pos)}
-                  style={{ width: 435, height: 600 }}
+                  style={{ width: 435, height: 510 }}
                 />
               </View>
               <Divider />

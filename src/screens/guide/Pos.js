@@ -1,21 +1,12 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Dimensions, ScrollView, Text } from "react-native";
-import { Icon, Card, Divider } from "react-native-elements";
+import { View, Dimensions, ScrollView, Text } from "react-native";
+import { Icon, Card } from "react-native-elements";
 import { Svg, Rect } from "react-native-svg";
 import _ from "lodash";
 import { connect } from "react-redux";
 import ActionCreator from "../../actions/index.js";
 import divCardStyle from "../../myStyles/divCardStyle";
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 17,
-    fontWeight: "bold",
-    marginTop: 22,
-    marginBottom: 5,
-    color: "#ABA095",
-  },
-});
+import MyDivider from "../../components/MyDivider";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -104,16 +95,7 @@ class Pos extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>등 압력분포</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="등 압력분포" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -154,16 +136,7 @@ class Pos extends Component {
                 marginTop: 15,
               }}
             >
-              <Text style={styles.text}>엉덩이 압력분포</Text>
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#ABA095",
-                }}
-              ></Divider>
+              <MyDivider title="엉덩이 압력분포" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>

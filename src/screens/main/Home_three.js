@@ -9,9 +9,10 @@ import {
   ToastAndroid,
   ScrollView,
 } from "react-native";
-import { Avatar, ListItem, Divider, Slider } from "react-native-elements";
+import { Avatar, ListItem, Slider } from "react-native-elements";
 import Fetch from "../../components/Fetch";
 import MyHeader from "../../components/MyHeader";
+import MyDivider from "../../components/MyDivider";
 
 const styles = StyleSheet.create({
   container: {
@@ -24,8 +25,8 @@ const styles = StyleSheet.create({
   },
   avatar: {
     flex: 1,
-    paddingTop: 18,
-    paddingBottom: 18,
+    paddingTop: 21,
+    paddingBottom: 21,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f0eeeb",
@@ -35,14 +36,6 @@ const styles = StyleSheet.create({
   avatarText: {
     fontSize: 23,
     marginLeft: 30,
-  },
-  text: {
-    fontSize: 17,
-    fontWeight: "bold",
-    marginLeft: 15,
-    marginTop: 22,
-    marginBottom: 5,
-    color: "silver",
   },
 });
 
@@ -187,23 +180,7 @@ export default class Home_three extends Component {
           </View>
 
           <View style={{ flex: 4 }}>
-            <Text style={styles.text}>계정</Text>
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "silver",
-                }}
-              ></Divider>
-            </View>
+            <MyDivider title="계정" left={15} />
 
             {list1.map((l, i) => (
               <ListItem
@@ -214,23 +191,7 @@ export default class Home_three extends Component {
               />
             ))}
 
-            <Text style={styles.text}>설정</Text>
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Divider
-                style={{
-                  width: 380,
-                  height: 2,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "silver",
-                }}
-              ></Divider>
-            </View>
+            <MyDivider title="설정" left={15} />
             {list2.map((l, i) => (
               <ListItem
                 key={i}
