@@ -103,6 +103,7 @@ export default class SignUp extends React.Component {
             name="person"
           />
           <MyInput
+            secure={true}
             value={this.state.password}
             placeholder="비밀번호 입력"
             changeText={(val) => {
@@ -111,6 +112,7 @@ export default class SignUp extends React.Component {
             name="lock"
           />
           <MyInput
+            secure={true}
             value={this.state.checkpassword}
             placeholder="비밀번호 확인"
             changeText={(val) => {

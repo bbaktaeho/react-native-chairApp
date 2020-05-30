@@ -6,6 +6,7 @@ const MyInput = ({
   disabled = false,
   secure = false,
   value,
+  label,
   placeholder,
   changeText,
   radius = 10,
@@ -17,6 +18,7 @@ const MyInput = ({
         disabled={disabled}
         secureTextEntry={secure}
         value={value}
+        label={label}
         placeholder={placeholder}
         onChangeText={changeText}
         containerStyle={{ paddingBottom: 13 }}
@@ -26,6 +28,7 @@ const MyInput = ({
           borderRadius: radius,
         }}
         inputStyle={{ color: "gray", fontSize: 16 }}
+        labelStyle={{ fontSize: 13, marginBottom: 4, color: "#ABA095" }}
         leftIcon={<Icon name={name} color="#DECEBC" />}
       ></Input>
     </View>

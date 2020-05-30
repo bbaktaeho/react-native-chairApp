@@ -12,31 +12,48 @@ import MyButton from "../../components/MyButton";
 import MyInput from "../../components/MyInput";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
+import { Divider } from "react-native-elements";
 
 const styles = StyleSheet.create({
-  container: {
+  container1: {
     flex: 1,
   },
-  textContainer: {
-    margin: 13,
+  container2: {
+    alignItems: "center",
   },
+
   text1: {
     fontSize: 23,
     fontWeight: "bold",
   },
   text2: {
-    marginTop: 3,
+    marginTop: 10,
+    fontSize: 13,
+    fontWeight: "bold",
   },
   text3: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#cd5c5c",
+    marginTop: 3,
+    fontSize: 13,
+  },
+
+  inputContainer: {
+    width: "90%",
+  },
+
+  textContainer1: {
+    margin: 28,
+  },
+
+  textContainer2: {
+    marginTop: 30,
   },
 });
 
 export default class Withdrawal extends Component {
   state = {
     password: "",
+    repassword: "",
+
     privacyButton: false,
   };
 
@@ -78,44 +95,56 @@ export default class Withdrawal extends Component {
     const { privacyButton } = this.state;
 
     return (
-      <View style={styles.container}>
+      <View style={styles.container1}>
         <MyHeader
           navigation={this.props.navigation}
           title="회원 탈퇴"
           type="privacy"
         ></MyHeader>
 
-        <View style={styles.textContainer}>
-          <Text style={styles.text1}>회원탈퇴 안내사항</Text>
-          <Text style={styles.text2}>
-            {"\n"}- 회원탈퇴 시 계정 정보는 즉시 삭제되며 복구가 불가합니다.
-          </Text>
-          <Text style={styles.text2}>
-            - 회원님의 자세데이터는 모두 소멸되며 복구할 수 없습니다.
-          </Text>
-          <Text style={styles.text2}>
-            - 탈퇴 후 자동 로그아웃되며 재가입이 가능합니다.
-          </Text>
-          <Text style={styles.text3}>
-            {"\n"}
-            {"\n"}탈퇴를 하시려면 비밀번호를 입력해주세요.
+        <View style={styles.textContainer1}>
+          <Text style={styles.text1}>회원 탈퇴</Text>
+          <Text style={{ marginTop: 3, fontSize: 13 }}>
+            탈퇴를 진행하려면 비밀번호를 입력해주세요.
           </Text>
         </View>
 
-        <View>
-          <MyInput
-            secure={true}
-            changeText={(val) => {
-              this.onChangeText("password", val);
-            }}
-            placeholder="비밀번호 입력"
-            name="lock"
-          />
-          <MyButton
-            onPress={() => this.withdrawal()}
-            title="탈퇴하기"
-            loading={privacyButton}
-          ></MyButton>
+        <View style={styles.container2}>
+          <View style={styles.inputContainer}>
+            <MyInput
+              secure={true}
+              changeText={(val) => {
+                this.onChangeText("password", val);
+              }}
+              label="비밀번호"
+            />
+            <MyInput
+              secure={true}
+              changeText={(val) => {
+                this.onChangeText("repassword", val);
+              }}
+              label="비밀번호 확인"
+            />
+            <MyButton
+              onPress={() => this.withdrawal()}
+              title="탈퇴하기"
+              loading={privacyButton}
+            ></MyButton>
+          </View>
+
+          <View style={styles.textContainer2}>
+            <Divider width={380} />
+            <Text style={styles.text2}>회원탈퇴 안내사항</Text>
+            <Text style={styles.text3}>
+              {"\n"}✔︎ 회원탈퇴 시 계정 정보는 즉시 삭제되며 복구가 불가합니다.
+            </Text>
+            <Text style={styles.text3}>
+              ✔︎ 회원님의 자세데이터는 모두 소멸되며 복구할 수 없습니다.
+            </Text>
+            <Text style={styles.text3}>
+              ✔︎ 탈퇴 후 자동 로그아웃되며 즉시 재가입이 가능합니다.
+            </Text>
+          </View>
         </View>
       </View>
     );

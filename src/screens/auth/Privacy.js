@@ -263,6 +263,7 @@ export default class Privacy extends Component {
             <MyButton
               onPress={() => this.passwordmodify()}
               title="수정하기"
+              loading={privacyButton}
             ></MyButton>
           </View>
         </Modal>
