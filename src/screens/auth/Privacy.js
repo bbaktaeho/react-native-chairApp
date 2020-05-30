@@ -173,8 +173,9 @@ export default class Privacy extends Component {
       <View style={styles.container}>
         <MyHeader
           navigation={this.props.navigation}
-          type="privacy"
+          type="nav"
           title="회원 정보 수정"
+          select="p"
         ></MyHeader>
 
         <View style={styles.avatar}>

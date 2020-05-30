@@ -99,7 +99,8 @@ export default class Withdrawal extends Component {
         <MyHeader
           navigation={this.props.navigation}
           title="회원 탈퇴"
-          type="privacy"
+          type="nav"
+          select="p"
         ></MyHeader>
 
         <View style={styles.textContainer1}>

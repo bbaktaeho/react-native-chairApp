@@ -16,8 +16,12 @@ const MyHeader = (props) => {
         android: Platform.Version <= 20 ? myHeaderStyle.container : {},
       })}
       leftComponent={
-        props.type == "privacy" ? (
-          <PreviousMenu navigation={props.navigation} nav="privacy" />
+        props.type == "nav" ? (
+          props.select == "p" ? (
+            <PreviousMenu navigation={props.navigation} select="p" />
+          ) : (
+            <PreviousMenu navigation={props.navigation} />
+          )
         ) : (
           <HamburgerMenu navigation={props.navigation} />
         )

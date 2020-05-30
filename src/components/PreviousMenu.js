@@ -1,10 +1,8 @@
 import React from "react";
 import { Icon } from "react-native-elements";
 
-const PreviousMenu = (props, nav) => {
-  // console.log("안녕", nav);
-
-  return nav == "privacy" ? (
+const PreviousMenu = (props) => {
+  return props.select == "p" ? (
     <Icon
       color="black"
       name="arrow-back"
@@ -14,7 +12,7 @@ const PreviousMenu = (props, nav) => {
     <Icon
       color="black"
       name="arrow-back"
-      onPress={() => props.navigation.navigate("Home_three")}
+      onPress={() => props.navigation.navigate("Home_four")}
     />
   );
 };
