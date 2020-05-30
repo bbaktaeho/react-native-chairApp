@@ -10,8 +10,8 @@ import {
   Alert,
 } from "react-native";
 import { Avatar, ListItem } from "react-native-elements";
+import Modal from "react-native-modalbox";
 
-import Tabs from "react-native-tabs";
 import MyHeader from "../../components/MyHeader";
 import MyButton from "../../components/MyButton";
 import MyInput from "../../components/MyInput";
@@ -51,7 +51,20 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "80%",
+    marginTop: 50,
+  },
+  modal: {
+    height: 380,
+    width: 380,
+    alignItems: "center",
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: "bold",
     marginTop: 20,
+
+    marginBottom: 5,
+    color: "#ABA095",
   },
 });
 
@@ -64,6 +77,7 @@ export default class Privacy extends Component {
     newemail: "",
     newpassword: "",
     privacyButton: false,
+    isDisabled: false,
   };
 
   requestInfo = async () => {
@@ -156,118 +170,103 @@ export default class Privacy extends Component {
   render() {
     const { email, name, privacyButton, list1 } = this.state;
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <MyHeader
-            navigation={this.props.navigation}
-            type="privacy"
-            title="회원 정보 수정"
-          ></MyHeader>
+      <View style={styles.container}>
+        <MyHeader
+          navigation={this.props.navigation}
+          type="privacy"
+          title="회원 정보 수정"
+        ></MyHeader>
 
-          <View style={styles.avatar}>
-            <Avatar
-              size="medium"
-              rounded
-              icon={{ name: "user", type: "antdesign" }}
-              overlayContainerStyle={{
-                backgroundColor: "#d1cbc5",
-              }} //695c4c
-              containerStyle={{
-                marginLeft: 20,
-                borderWidth: 2,
-                borderColor: "white",
-              }}
-            />
-            <Text style={styles.avatarText}>{name}</Text>
-          </View>
-
-          <View style={{ flex: 4 }}>
-            <MyDivider title="회원 정보" left={15} />
-          </View>
-          <ListItem title="이름" subtitle={name}></ListItem>
-          <ListItem title="이메일" subtitle={email} chevron></ListItem>
-          <ListItem title="비밀번호" subtitle="********" chevron></ListItem>
-
-          {/* <View style={styles.container2}>
-          <Tabs
-            selected={this.state.page}
-            style={{ backgroundColor: "white" }}
-            selectedIconStyle={{
-              borderTopWidth: 2,
-              borderTopColor: "#ABA095",
+        <View style={styles.avatar}>
+          <Avatar
+            size="medium"
+            rounded
+            icon={{ name: "user", type: "antdesign" }}
+            overlayContainerStyle={{
+              backgroundColor: "#d1cbc5",
+            }} //695c4c
+            containerStyle={{
+              marginLeft: 20,
+              borderWidth: 2,
+              borderColor: "white",
             }}
-            onSelect={(el) => this.setState({ page: el.props.name })}
-          >
-            <Text
-              name="second"
-              selectedIconStyle={{
-                borderTopWidth: 2,
-                borderTopColor: "#CEAEA7",
-              }}
-            >
-              이메일 변경
-            </Text>
-            <Text
-              name="third"
-              selectedIconStyle={{
-                borderTopWidth: 2,
-                borderTopColor: "#CEAEA7",
-              }}
-            >
-              비밀번호 변경
-            </Text>
-          </Tabs>
+          />
+          <Text style={styles.avatarText}>{name}</Text>
         </View>
 
-        <View style={styles.container3}>
+        <MyDivider title="회원 정보" left={15} />
+
+        <ListItem title="이름" subtitle={name}></ListItem>
+        <ListItem
+          title="이메일"
+          subtitle={email}
+          onPress={() => this.refs.modal1.open()}
+          chevron
+        ></ListItem>
+        <ListItem
+          title="비밀번호"
+          subtitle="********"
+          onPress={() => this.refs.modal2.open()}
+          chevron
+        ></ListItem>
+
+        <Modal
+          style={[styles.modal]}
+          ref={"modal1"}
+          position={"center"}
+          isDisabled={this.state.isDisabled}
+        >
+          <Text style={styles.text}>이메일 수정</Text>
           <View style={styles.inputContainer}>
-            {this.state.page == "second" && (
-              <View>
-                <MyInput disabled={true} value={email} name="mail" />
-                <MyInput
-                  changeText={(val) => {
-                    this.onChangeText("newemail", val);
-                  }}
-                  placeholder="이메일 입력"
-                  name="mail"
-                />
+            <MyInput disabled={true} value={email} name="mail" />
+            <MyInput
+              changeText={(val) => {
+                this.onChangeText("newemail", val);
+              }}
+              placeholder="이메일 입력"
+              name="mail"
+            />
 
-                <MyButton
-                  onPress={() => this.emailmodify()}
-                  title="수정하기"
-                  loading={privacyButton}
-                ></MyButton>
-              </View>
-            )}
-            {this.state.page == "third" && (
-              <View>
-                <MyInput
-                  secure={true}
-                  changeText={(val) => {
-                    this.onChangeText("password", val);
-                  }}
-                  placeholder="현재 비밀번호 입력"
-                  name="lock"
-                />
-                <MyInput
-                  secure={true}
-                  changeText={(val) => {
-                    this.onChangeText("newpassword", val);
-                  }}
-                  placeholder="변경 비밀번호 입력"
-                  name="lock"
-                />
+            <MyButton
+              onPress={() => this.emailmodify()}
+              title="수정하기"
+              loading={privacyButton}
+            ></MyButton>
+          </View>
+        </Modal>
 
-                <MyButton
-                  onPress={() => this.passwordmodify()}
-                  title="수정하기"
-                ></MyButton>
-              </View>
-            )}
-          </View> */}
-          {/* </View> */}
-        </View>
-      </ScrollView>
+        <Modal
+          style={[styles.modal]}
+          ref={"modal2"}
+          position={"center"}
+          isDisabled={this.state.isDisabled}
+        >
+          <Text style={styles.text}>비밀번호 수정</Text>
+          <View style={styles.inputContainer}>
+            <MyInput
+              secure={true}
+              changeText={(val) => {
+                this.onChangeText("password", val);
+              }}
+              placeholder="현재 비밀번호 입력"
+              name="lock"
+            />
+            <MyInput
+              secure={true}
+              changeText={(val) => {
+                this.onChangeText("newpassword", val);
+              }}
+              placeholder="변경 비밀번호 입력"
+              name="lock"
+            />
+
+            <MyButton
+              onPress={() => this.passwordmodify()}
+              title="수정하기"
+            ></MyButton>
+          </View>
+        </Modal>
+      </View>
     );
   }
 }
