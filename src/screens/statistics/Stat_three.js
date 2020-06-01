@@ -1,12 +1,6 @@
 import React from "react";
 import { View, StyleSheet, ScrollView, AsyncStorage } from "react-native";
-import {
-  PieChart,
-  Grid,
-  LineChart,
-  XAxis,
-  YAxis,
-} from "react-native-svg-charts";
+import { PieChart, Grid, LineChart, XAxis, YAxis } from "react-native-svg-charts";
 
 import { Icon, ListItem, Text, Card } from "react-native-elements";
 import divCardStyle from "../../myStyles/divCardStyle";
@@ -31,12 +25,7 @@ class Stat_three extends React.PureComponent {
 
     const resData = await Fetch(URL.statisticall, "GET", null, token);
     const res = JSON.parse(resData._bodyInit);
-    const comparisonData = await Fetch(
-      URL.statisticallComparison,
-      "GET",
-      null,
-      token
-    );
+    const comparisonData = await Fetch(URL.statisticallComparison, "GET", null, token);
     const resComparison = JSON.parse(comparisonData._bodyInit);
 
     if (res.success && resComparison.success) {
@@ -94,9 +83,7 @@ class Stat_three extends React.PureComponent {
       <View style={{ flex: 1, backgroundColor: "white" }}>
         <MyHeader navigation={this.props.navigation} title="총 통계"></MyHeader>
         <ScrollView>
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
             <View>
               <MyDivider title="총 자세 그래프" />
             </View>
@@ -120,13 +107,7 @@ class Stat_three extends React.PureComponent {
                       containerStyle={{
                         height: 40,
                       }}
-                      leftElement={
-                        <Icon
-                          name="circle"
-                          color={item.svg.fill}
-                          type="font-awesome"
-                        />
-                      }
+                      leftElement={<Icon name="circle" color={item.svg.fill} type="font-awesome" />}
                       pad={0}
                       title={`  P${i}`}
                       titleStyle={{
@@ -145,7 +126,7 @@ class Stat_three extends React.PureComponent {
                 marginTop: 15,
               }}
             >
-              <MyDivider title="총 자세 비교" />
+              <MyDivider title="바른 자세 비교" />
             </View>
 
             <Card containerStyle={divCardStyle.c}>
@@ -168,20 +149,9 @@ class Stat_three extends React.PureComponent {
                   flexDirection: "row",
                 }}
               >
-                <YAxis
-                  data={lineYdata}
-                  style={{ marginBottom: 30 }}
-                  contentInset={verticalContentInset}
-                  svg={{ fontSize: 9, fill: "gray" }}
-                  formatLabel={(value) => `  ${value}분  `}
-                />
+                <YAxis data={lineYdata} style={{ marginBottom: 30 }} contentInset={verticalContentInset} svg={{ fontSize: 9, fill: "gray" }} formatLabel={(value) => `  ${value}분  `} />
                 <View style={{ flex: 1, marginLeft: 10 }}>
-                  <LineChart
-                    style={{ flex: 1 }}
-                    data={lineYdata}
-                    contentInset={verticalContentInset}
-                    svg={{ stroke: "rgb(134, 65, 244)" }}
-                  >
+                  <LineChart style={{ flex: 1 }} data={lineYdata} contentInset={verticalContentInset} svg={{ stroke: "rgb(134, 65, 244)" }}>
                     <Grid />
                   </LineChart>
                   <XAxis
