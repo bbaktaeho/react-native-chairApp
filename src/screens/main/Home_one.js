@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  StyleSheet,
-  ToastAndroid,
-  BackHandler,
-  ScrollView,
-  Image,
-  Text,
-} from "react-native";
+import { View, StyleSheet, ToastAndroid, BackHandler, ScrollView, Image, Text } from "react-native";
 import { connect } from "react-redux";
 import ActionCreator from "../../actions/index";
 import ActionCreator2 from "../../actions_2/index";
@@ -97,19 +89,13 @@ class Home_one extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <MyHeader
-          navigation={this.props.navigation}
-          title="실시간 자세"
-        ></MyHeader>
+        <MyHeader navigation={this.props.navigation} title="실시간 자세"></MyHeader>
         <ScrollView>
           <View style={styles.container}>
             <MyDivider title="실시간 자세" />
             <Card containerStyle={divCardStyle.c}>
               <View style={styles.container}>
-                <Image
-                  source={this.imageshow(this.props.statData.pos)}
-                  style={{ width: 435, height: 510 }}
-                />
+                <Image source={this.imageshow(this.props.statData.pos)} style={{ width: 435, height: 510 }} />
               </View>
               <Divider />
               <View style={styles.textContainer}>
