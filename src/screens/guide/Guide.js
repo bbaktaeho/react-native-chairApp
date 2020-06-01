@@ -61,12 +61,9 @@ export default class SwiperComponent extends Component {
         token
       );
 
-      //수정해야함
       if (res == "error") {
         console.log("fetch error");
       } else {
-        const body = JSON.parse(res._bodyText);
-        console.log(body.message);
         this.props.navigation.navigate("MainNav");
       }
     }

@@ -12,7 +12,7 @@ import MyButton from "../../components/MyButton";
 import MyInput from "../../components/MyInput";
 import Fetch from "../../components/Fetch";
 import URL from "../../NET";
-import { Divider } from "react-native-elements";
+import { Divider, Overlay } from "react-native-elements";
 
 const styles = StyleSheet.create({
   container1: {
@@ -53,9 +53,15 @@ export default class Withdrawal extends Component {
   state = {
     password: "",
     repassword: "",
-
+    view: "",
     privacyButton: false,
   };
+
+  async componentWillMount() {
+    const token = await AsyncStorage.getItem("token");
+    if (token == null) this.setState({ view: "unlogin" });
+    else this.setState({ view: "login" });
+  }
 
   logout_removeItem = async () => {
     await AsyncStorage.removeItem("token");
@@ -146,6 +152,33 @@ export default class Withdrawal extends Component {
               ✔︎ 탈퇴 후 자동 로그아웃되며 즉시 재가입이 가능합니다.
             </Text>
           </View>
+          {/* {this.state.view == "unlogin" && (
+            <Overlay
+              isVisible={true}
+              overlayStyle={{ height: 300, justifyContent: "center" }}
+            >
+              <View>
+                <View style={styles.textContainer}>
+                  <Text style={styles.text1}>비회원 접근제한</Text>
+
+                  <Text>로그인이 필요한 서비스 입니다.</Text>
+                  <Text style={styles.text2}>로그인 후 사용해주세요.</Text>
+                </View>
+
+                <MyButton
+                  title="로그인 하러가기"
+                  radius={5}
+                  onPress={() => this.props.navigation.navigate("AuthNav")}
+                ></MyButton>
+
+                <MyButton
+                  title="홈으로 돌아가기"
+                  radius={5}
+                  onPress={() => this.props.navigation.navigate("MainNav")}
+                ></MyButton>
+              </View>
+            </Overlay>
+          )} */}
         </View>
       </View>
     );

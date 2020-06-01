@@ -262,13 +262,30 @@ class Stat_one extends Component {
           </View>
 
           {this.state.view == "unlogin" && (
-            <Overlay isVisible={true} overlayStyle={{ height: 400 }}>
-              <Text>비회원 접근 권한없음</Text>
-              <Text>의자소통 회원만이 사용할 수 있는 곳입니다.</Text>
-              <Text>로그인 후 사용해주세요.</Text>
+            <Overlay
+              isVisible={true}
+              overlayStyle={{ height: 300, justifyContent: "center" }}
+            >
+              <View>
+                <View style={styles.textContainer}>
+                  <Text style={styles.text1}>비회원 접근제한</Text>
 
-              <MyButton title="로그인 하러가기" radius={5}></MyButton>
-              <MyButton title="홈으로 돌아가기" radius={5}></MyButton>
+                  <Text>로그인이 필요한 서비스 입니다.</Text>
+                  <Text style={styles.text2}>로그인 후 사용해주세요.</Text>
+                </View>
+
+                <MyButton
+                  title="로그인 하러가기"
+                  radius={5}
+                  onPress={() => this.props.navigation.navigate("AuthNav")}
+                ></MyButton>
+
+                <MyButton
+                  title="홈으로 돌아가기"
+                  radius={5}
+                  onPress={() => this.props.navigation.navigate("MainNav")}
+                ></MyButton>
+              </View>
             </Overlay>
           )}
         </ScrollView>
@@ -285,6 +302,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  textContainer: {
+    alignItems: "center",
+  },
+  text1: {
+    fontWeight: "bold",
+    fontSize: 20,
+    alignItems: "center",
+    marginBottom: 20,
+    color: "#ABA095",
+  },
+  text2: {
+    marginBottom: 10,
   },
 });
 
