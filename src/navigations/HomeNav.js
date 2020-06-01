@@ -1,4 +1,8 @@
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import {
+  createBottomTabNavigator,
+  createAppContainer,
+  createStackNavigator,
+} from "react-navigation";
 import React from "react";
 
 import Home_one from "../screens/main/Home_one";

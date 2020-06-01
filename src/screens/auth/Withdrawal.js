@@ -22,14 +22,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  text1: {
+  Text1: {
     fontSize: 23,
     fontWeight: "bold",
   },
-  text2: {
+  Text2: {
     marginTop: 10,
     fontSize: 13,
     fontWeight: "bold",
+  },
+  text1: {
+    fontWeight: "bold",
+    fontSize: 20,
+    alignItems: "center",
+    marginBottom: 20,
+    color: "#ABA095",
+  },
+  text2: {
+    marginBottom: 10,
   },
   text3: {
     marginTop: 3,
@@ -39,7 +49,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: "90%",
   },
-
+  textContainer: {
+    alignItems: "center",
+  },
   textContainer1: {
     margin: 28,
   },
@@ -110,7 +122,7 @@ export default class Withdrawal extends Component {
         ></MyHeader>
 
         <View style={styles.textContainer1}>
-          <Text style={styles.text1}>회원 탈퇴</Text>
+          <Text style={styles.Text1}>회원 탈퇴</Text>
           <Text style={{ marginTop: 3, fontSize: 13 }}>
             탈퇴를 진행하려면 비밀번호를 입력해주세요.
           </Text>
@@ -141,7 +153,7 @@ export default class Withdrawal extends Component {
 
           <View style={styles.textContainer2}>
             <Divider width={380} />
-            <Text style={styles.text2}>회원탈퇴 안내사항</Text>
+            <Text style={styles.Text2}>회원탈퇴 안내사항</Text>
             <Text style={styles.text3}>
               {"\n"}✔︎ 회원탈퇴 시 계정 정보는 즉시 삭제되며 복구가 불가합니다.
             </Text>
@@ -152,7 +164,8 @@ export default class Withdrawal extends Component {
               ✔︎ 탈퇴 후 자동 로그아웃되며 즉시 재가입이 가능합니다.
             </Text>
           </View>
-          {/* {this.state.view == "unlogin" && (
+
+          {this.state.view == "unlogin" && (
             <Overlay
               isVisible={true}
               overlayStyle={{ height: 300, justifyContent: "center" }}
@@ -172,13 +185,13 @@ export default class Withdrawal extends Component {
                 ></MyButton>
 
                 <MyButton
-                  title="홈으로 돌아가기"
+                  title="돌아가기"
                   radius={5}
-                  onPress={() => this.props.navigation.navigate("MainNav")}
+                  onPress={() => this.props.navigation.goBack()}
                 ></MyButton>
               </View>
             </Overlay>
-          )} */}
+          )}
         </View>
       </View>
     );

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
   avatarText: {
     fontSize: 23,
-    marginLeft: 30,
+    marginLeft: 20,
   },
 });
 
@@ -168,18 +168,36 @@ export default class Home_three extends Component {
             title="내정보"
           ></MyHeader>
 
-          <View style={styles.avatar}>
-            <Avatar
-              size="medium"
-              rounded
-              icon={{ name: "user", type: "antdesign" }}
-              overlayContainerStyle={{
-                backgroundColor: "#d1cbc5",
-              }} //695c4c
-              containerStyle={{ marginLeft: 20 }}
-            />
-            <Text style={styles.avatarText}>{name}</Text>
-          </View>
+          {name == "로그인 해주세요." && (
+            <View style={styles.avatar}>
+              <Avatar
+                size="medium"
+                rounded
+                icon={{ name: "user", type: "antdesign" }}
+                overlayContainerStyle={{
+                  backgroundColor: "#d1cbc5",
+                }} //695c4c
+                containerStyle={{ marginLeft: 20 }}
+                onPress={() => this.props.navigation.navigate("AuthNav")}
+              />
+              <Text style={styles.avatarText}>{name}</Text>
+            </View>
+          )}
+          {name != "로그인 해주세요." && (
+            <View style={styles.avatar}>
+              <Avatar
+                size="medium"
+                rounded
+                icon={{ name: "user", type: "antdesign" }}
+                overlayContainerStyle={{
+                  backgroundColor: "#d1cbc5",
+                }} //695c4c
+                containerStyle={{ marginLeft: 20 }}
+                onPress={() => this.props.navigation.navigate("Privacy")}
+              />
+              <Text style={styles.avatarText}>{name}</Text>
+            </View>
+          )}
 
           <View style={{ flex: 4 }}>
             <MyDivider title="계정" left={15} />

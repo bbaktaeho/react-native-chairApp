@@ -10,7 +10,6 @@ import StatNav from "../navigations/StatNav";
 import Fetch from "../components/Fetch";
 import URL from "../NET";
 
-// 드로우 네비게이션 상단 컴포넌트(로그인 상태)
 class DrawerContent extends React.Component {
   state = {
     username: "",
@@ -47,7 +46,13 @@ class DrawerContent extends React.Component {
             flexDirection: "row",
           }}
         >
-          <Avatar size="small" rounded icon={{ name: "user", type: "antdesign" }} overlayContainerStyle={{ backgroundColor: "#695c4c" }} containerStyle={{ marginLeft: 15, marginTop: 10 }} />
+          <Avatar
+            size="small"
+            rounded
+            icon={{ name: "user", type: "antdesign" }}
+            overlayContainerStyle={{ backgroundColor: "#695c4c" }}
+            containerStyle={{ marginLeft: 15, marginTop: 10 }}
+          />
           <Text
             style={{
               paddingLeft: 15,
@@ -71,7 +76,9 @@ export default MainNav = createDrawerNavigator(
       screen: HomeNav,
       navigationOptions: {
         drawerLabel: "홈",
-        drawerIcon: () => <Icon name="home" size={25} type="antdesign" color="#544e48" />,
+        drawerIcon: () => (
+          <Icon name="home" size={25} type="antdesign" color="#544e48" />
+        ),
       },
     },
 
@@ -79,7 +86,9 @@ export default MainNav = createDrawerNavigator(
       screen: StatNav,
       navigationOptions: {
         drawerLabel: "통계",
-        drawerIcon: () => <Icon name="barschart" size={25} type="antdesign" color="#544e48" />,
+        drawerIcon: () => (
+          <Icon name="barschart" size={25} type="antdesign" color="#544e48" />
+        ),
       },
     },
 
@@ -87,14 +96,28 @@ export default MainNav = createDrawerNavigator(
       screen: Posture,
       navigationOptions: {
         drawerLabel: "자세 설명",
-        drawerIcon: () => <Icon name="airline-seat-recline-normal" size={25} type="material" color="#544e48" />,
+        drawerIcon: () => (
+          <Icon
+            name="airline-seat-recline-normal"
+            size={25}
+            type="material"
+            color="#544e48"
+          />
+        ),
       },
     },
     PostureSwiper: {
       screen: PostureSwiper,
       navigationOptions: {
         drawerLabel: "자세 스와이프",
-        drawerIcon: () => <Icon name="airline-seat-recline-normal" size={25} type="material" color="#544e48" />,
+        drawerIcon: () => (
+          <Icon
+            name="airline-seat-recline-normal"
+            size={25}
+            type="material"
+            color="#544e48"
+          />
+        ),
       },
     },
   },

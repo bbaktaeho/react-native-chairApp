@@ -9,7 +9,7 @@ import {
   ToastAndroid,
   Alert,
 } from "react-native";
-import { Avatar, ListItem } from "react-native-elements";
+import { Avatar, ListItem, Overlay } from "react-native-elements";
 import Modal from "react-native-modalbox";
 
 import MyHeader from "../../components/MyHeader";
@@ -66,6 +66,19 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     color: "#ABA095",
   },
+  textContainer: {
+    alignItems: "center",
+  },
+  text1: {
+    fontWeight: "bold",
+    fontSize: 20,
+    alignItems: "center",
+    marginBottom: 20,
+    color: "#ABA095",
+  },
+  text2: {
+    marginBottom: 10,
+  },
 });
 
 export default class Privacy extends Component {
@@ -76,6 +89,7 @@ export default class Privacy extends Component {
     password: "",
     newemail: "",
     newpassword: "",
+    view: "",
     privacyButton: false,
     isDisabled: false,
   };
@@ -163,8 +177,11 @@ export default class Privacy extends Component {
     this.setState({ [key]: value });
   };
 
-  componentWillMount() {
+  async componentWillMount() {
     this.requestInfo();
+    const token = await AsyncStorage.getItem("token");
+    if (token == null) this.setState({ view: "unlogin" });
+    else this.setState({ view: "login" });
   }
 
   render() {
@@ -265,6 +282,33 @@ export default class Privacy extends Component {
             ></MyButton>
           </View>
         </Modal>
+        {this.state.view == "unlogin" && (
+          <Overlay
+            isVisible={true}
+            overlayStyle={{ height: 300, justifyContent: "center" }}
+          >
+            <View>
+              <View style={styles.textContainer}>
+                <Text style={styles.text1}>비회원 접근제한</Text>
+
+                <Text>로그인이 필요한 서비스 입니다.</Text>
+                <Text style={styles.text2}>로그인 후 사용해주세요.</Text>
+              </View>
+
+              <MyButton
+                title="로그인 하러가기"
+                radius={5}
+                onPress={() => this.props.navigation.navigate("AuthNav")}
+              ></MyButton>
+
+              <MyButton
+                title="돌아가기"
+                radius={5}
+                onPress={() => this.props.navigation.goBack()}
+              ></MyButton>
+            </View>
+          </Overlay>
+        )}
       </View>
     );
   }

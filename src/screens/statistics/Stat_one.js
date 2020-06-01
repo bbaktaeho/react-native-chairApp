@@ -274,17 +274,19 @@ class Stat_one extends Component {
                   <Text style={styles.text2}>로그인 후 사용해주세요.</Text>
                 </View>
 
-                <MyButton
-                  title="로그인 하러가기"
-                  radius={5}
-                  onPress={() => this.props.navigation.navigate("AuthNav")}
-                ></MyButton>
+                <View>
+                  <MyButton
+                    title="로그인 하러가기"
+                    radius={5}
+                    onPress={() => this.props.navigation.navigate("AuthNav")}
+                  ></MyButton>
 
-                <MyButton
-                  title="홈으로 돌아가기"
-                  radius={5}
-                  onPress={() => this.props.navigation.navigate("MainNav")}
-                ></MyButton>
+                  <MyButton
+                    title="돌아가기"
+                    radius={5}
+                    onPress={() => this.props.navigation.navigate("Guide")}
+                  ></MyButton>
+                </View>
               </View>
             </Overlay>
           )}
