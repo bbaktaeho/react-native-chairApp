@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import { connect } from "react-redux";
-import { Card, Button } from "react-native-elements";
+import { Card, Button, Overlay, Divider } from "react-native-elements";
 import { BarChart } from "react-native-chart-kit";
 import divCardStyle from "../../myStyles/divCardStyle";
 
@@ -20,6 +20,7 @@ import moment from "moment";
 import PostureEx from "../../components/PostureEx";
 import StatisticsEx from "../../components/StatisticsEx";
 import MyDivider from "../../components/MyDivider";
+import MyButton from "../../components/MyButton";
 
 /* 날짜 바꾸면 post로 날짜 보내고 p0-p5받아서 state.data에 setState
    로그인 안하면 안나옴
@@ -42,14 +43,19 @@ class Stat_one extends Component {
     month: "",
     date: "",
     dataset: [0, 0, 0, 0, 0, 0],
+    view: "",
   };
-  componentWillMount() {
+  async componentWillMount() {
     const yesterday = moment().subtract(1, "day");
     this.setState({
       year: yesterday.get("year").toString(),
       month: (yesterday.get("month") + 1).toString(),
       date: yesterday.get("date").toString(),
     });
+
+    const token = await AsyncStorage.getItem("token");
+    if (token == null) this.setState({ view: "unlogin" });
+    else this.setState({ view: "login" });
   }
 
   async getStatistics() {
@@ -78,6 +84,7 @@ class Stat_one extends Component {
 
   render() {
     const { year, month, date, dataset } = this.state;
+
     return (
       <View style={{ flex: 1, backgroundColor: "white" }}>
         <MyHeader
@@ -253,6 +260,17 @@ class Stat_one extends Component {
             </Card>
             <View style={{ marginTop: 20 }}></View>
           </View>
+
+          {this.state.view == "unlogin" && (
+            <Overlay isVisible={true} overlayStyle={{ height: 400 }}>
+              <Text>비회원 접근 권한없음</Text>
+              <Text>의자소통 회원만이 사용할 수 있는 곳입니다.</Text>
+              <Text>로그인 후 사용해주세요.</Text>
+
+              <MyButton title="로그인 하러가기" radius={5}></MyButton>
+              <MyButton title="홈으로 돌아가기" radius={5}></MyButton>
+            </Overlay>
+          )}
         </ScrollView>
       </View>
     );

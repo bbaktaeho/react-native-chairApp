@@ -29,7 +29,7 @@ const MyInput = ({
         }}
         inputStyle={{ color: "gray", fontSize: 16 }}
         labelStyle={{ fontSize: 13, marginBottom: 4, color: "#ABA095" }}
-        leftIcon={<Icon name={name} color="#DECEBC" />}
+        leftIcon={<Icon name={name} color="#c2bab2" />}
       ></Input>
     </View>
   );

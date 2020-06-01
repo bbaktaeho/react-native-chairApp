@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "80%",
-    marginTop: 50,
+    marginTop: 33,
   },
   modal: {
     height: 380,
@@ -219,13 +219,12 @@ export default class Privacy extends Component {
         >
           <Text style={styles.text}>이메일 수정</Text>
           <View style={styles.inputContainer}>
-            <MyInput disabled={true} value={email} name="mail" />
+            <MyInput disabled={true} value={email} label="현재 이메일" />
             <MyInput
               changeText={(val) => {
                 this.onChangeText("newemail", val);
               }}
-              placeholder="이메일 입력"
-              name="mail"
+              label="변경 이메일"
             />
 
             <MyButton
@@ -249,16 +248,14 @@ export default class Privacy extends Component {
               changeText={(val) => {
                 this.onChangeText("password", val);
               }}
-              placeholder="현재 비밀번호 입력"
-              name="lock"
+              label="현재 비밀번호"
             />
             <MyInput
               secure={true}
               changeText={(val) => {
                 this.onChangeText("newpassword", val);
               }}
-              placeholder="변경 비밀번호 입력"
-              name="lock"
+              label="변경 비밀번호"
             />
 
             <MyButton

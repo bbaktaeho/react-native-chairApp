@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 30,
   },
-  authButton: {
-    borderRadius: 120,
+  myButton: {
     justifyContent: "center",
     alignItems: "center",
     width: "90%",
@@ -21,13 +20,17 @@ const MyButton = ({
   title,
   onPress,
   backColor = "#ABA095",
+  radius = 120,
   loading = false,
   isStat = false,
 }) => (
   <View style={styles.container}>
     {!isStat && (
       <TouchableOpacity
-        style={[styles.authButton, { backgroundColor: backColor }]}
+        style={[
+          styles.myButton,
+          { backgroundColor: backColor, borderRadius: radius },
+        ]}
         onPress={onPress}
       >
         {!loading && <Text style={{ color: "white" }}>{title}</Text>}
@@ -38,7 +41,7 @@ const MyButton = ({
     )}
     {isStat && (
       <TouchableOpacity
-        style={{ backgroundColor: backColor }}
+        style={{ backgroundColor: backColor, borderRadius: radius }}
         onPress={onPress}
       >
         {!loading && <Text style={{ color: "white" }}>{title}</Text>}
