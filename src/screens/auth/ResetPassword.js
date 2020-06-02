@@ -64,7 +64,7 @@ export default class ResetPassword extends Component {
         <View style={styles.inputContainer}>
           <MyInput
             value={this.state.email}
-            placeholder="이메일 입력"
+            label="이메일"
             changeText={(val) => {
               this.onChangeText("email", val);
             }}
@@ -72,7 +72,7 @@ export default class ResetPassword extends Component {
           />
           <MyInput
             value={this.state.name}
-            placeholder="이름 입력"
+            label="이름"
             changeText={(val) => {
               this.onChangeText("name", val);
             }}
@@ -83,6 +83,8 @@ export default class ResetPassword extends Component {
         <View style={styles.buttonContainer}>
           <MyButton
             title="확인"
+            radius={10}
+            width="89%"
             onPress={() => this.changePassword()}
             loading={resetpasswdButton}
           ></MyButton>

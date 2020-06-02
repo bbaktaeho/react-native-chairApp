@@ -15,13 +15,10 @@ import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
 const screenWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
-  wrapper: {},
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    // backgroundColor: "#ABA095",
   },
   text: {
     fontWeight: "bold",
@@ -78,31 +75,33 @@ export default class SwiperComponent extends Component {
       this.handleBackPress
     );
     return (
-      <Swiper
-        loop={false}
-        style={styles.wrapper}
-        autoplay={true}
-        autoplayTimeout={2}
-      >
+      <Swiper loop={false} autoplay={true} autoplayTimeout={2}>
         <View style={styles.container}>
-          <Image
-            source={require("../../assets/Images/m_2.png")}
-            style={{
-              height: 550,
-              width: screenWidth,
-              resizeMode: "contain",
-            }}
-          />
-          <Text style={styles.text}>무릎은 90도를 유지하고</Text>
-          <Text style={styles.text}>엉덩이와 허벅지는</Text>
-          <Text style={styles.text}>바닥과 평행을 유지해주세요</Text>
+          <View style={{ flex: 5, backgroundColor: "black", margin: 20 }}>
+            <Image
+              source={require("../../assets/Images/m_2.png")}
+              style={{
+                height: 540,
+                width: screenWidth,
+              }}
+              containerStyle={{
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            />
+          </View>
+
+          <View style={{ flex: 1, alignItems: "center" }}>
+            <Text style={styles.text}>무릎은 90도를 유지하고</Text>
+            <Text style={styles.text}>엉덩이와 허벅지는</Text>
+            <Text style={styles.text}>바닥과 평행을 유지해주세요</Text>
+          </View>
         </View>
 
         <View style={styles.container}>
           <Image
             source={require("../../assets/Images/m_3.png")}
             style={{
-              height: 550,
               width: screenWidth,
               resizeMode: "contain",
             }}

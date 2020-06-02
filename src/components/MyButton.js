@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
   myButton: {
     justifyContent: "center",
     alignItems: "center",
-    width: "90%",
     height: 45,
   },
 });
@@ -21,6 +20,7 @@ const MyButton = ({
   onPress,
   backColor = "#ABA095",
   radius = 120,
+  width = "90%",
   loading = false,
   isStat = false,
 }) => (
@@ -29,7 +29,7 @@ const MyButton = ({
       <TouchableOpacity
         style={[
           styles.myButton,
-          { backgroundColor: backColor, borderRadius: radius },
+          { backgroundColor: backColor, borderRadius: radius, width: width },
         ]}
         onPress={onPress}
       >

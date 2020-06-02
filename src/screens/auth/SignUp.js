@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "85%",
-    marginTop: 30,
+    marginTop: 20,
   },
   buttonContainer: {
     width: "90%",
@@ -88,7 +88,7 @@ export default class SignUp extends React.Component {
         <View style={styles.inputContainer}>
           <MyInput
             value={this.state.email}
-            placeholder="이메일 입력"
+            label="이메일"
             changeText={(val) => {
               this.onChangeText("email", val);
             }}
@@ -96,7 +96,7 @@ export default class SignUp extends React.Component {
           />
           <MyInput
             value={this.state.name}
-            placeholder="이름 입력"
+            label="이름"
             changeText={(val) => {
               this.onChangeText("name", val);
             }}
@@ -105,7 +105,7 @@ export default class SignUp extends React.Component {
           <MyInput
             secure={true}
             value={this.state.password}
-            placeholder="비밀번호 입력"
+            label="비밀번호"
             changeText={(val) => {
               this.onChangeText("password", val);
             }}
@@ -114,7 +114,7 @@ export default class SignUp extends React.Component {
           <MyInput
             secure={true}
             value={this.state.checkpassword}
-            placeholder="비밀번호 확인"
+            label="비밀번호 확인"
             changeText={(val) => {
               this.onChangeText("checkpassword", val);
             }}
@@ -126,6 +126,8 @@ export default class SignUp extends React.Component {
           <MyButton
             onPress={() => this.signUp()}
             title="가입하기"
+            radius={10}
+            width="89%"
             loading={this.state.signUpButton}
           ></MyButton>
         </View>
