@@ -50,25 +50,6 @@ class Home_one extends Component {
     // BackHandler.removeEventListener("hardwareBackPress", this.handleBackButton);
   }
 
-  // 이벤트 동작
-  handleBackButton = () => {
-    // 2000(2초) 안에 back 버튼을 한번 더 클릭 할 경우 앱 종료
-    if (this.exitApp == undefined || !this.exitApp) {
-      ToastAndroid.show("한번 더 누르시면 종료됩니다.", ToastAndroid.SHORT);
-      this.exitApp = true;
-
-      this.timeout = setTimeout(
-        () => {
-          this.exitApp = false;
-        },
-        2000 // 2초
-      );
-    } else {
-      clearTimeout(this.timeout);
-      BackHandler.exitApp();
-    }
-    return true;
-  };
   imageshow(a) {
     if (a == "앞으로 숙이고 있습니다.") {
       return require("../../assets/Images/P5.png");

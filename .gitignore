@@ -15,3 +15,4 @@ node_modules/react-native/node_modules/.cache/@babel/register/
 !node_modules/d3-scale/build/
 !node_modules/d3-interpolate-path/build/
 *.iml
+src/NET

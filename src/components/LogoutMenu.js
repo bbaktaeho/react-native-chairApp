@@ -5,6 +5,7 @@ import RNExitApp from "react-native-exit-app";
 import { connect } from "react-redux";
 import URL from "../NET";
 import Fetch from "../components/Fetch";
+import moment from "moment";
 
 const LogoutMenu = (props) => {
   exit_removeItem = async () => {
@@ -24,7 +25,8 @@ const LogoutMenu = (props) => {
       if (body.success) console.log("저장 성공");
       else {
         console.log("저장 실패");
-        await AsyncStorage.setItem("tmpPostures", JSON.stringify(posarr));
+        const date = moment().format("YYYY-MM-DD");
+        await AsyncStorage.setItem(date, JSON.stringify(posarr));
       }
       await AsyncStorage.removeItem("token");
       RNExitApp.exitApp();
