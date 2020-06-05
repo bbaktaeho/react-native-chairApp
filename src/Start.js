@@ -1,5 +1,5 @@
 import React from "react";
-import { BackHandler } from "react-native";
+import { BackHandler, AppState } from "react-native";
 import { RootNav } from "./navigations/Root";
 import { Provider, connect } from "react-redux";
 import MyStatusBar from "./components/StatusBar";
@@ -12,18 +12,38 @@ class Start extends React.Component {
   constructor(props) {
     super(props);
     this.events = null;
-    this.state = {};
+    this.state = {
+      appState: AppState.currentState,
+    };
   }
+
+  componentDidMount() {
+    console.log("addEvent");
+
+    AppState.addEventListener("change", this._handleAppStateChange);
+  }
+
+  componentWillUnmount() {
+    console.log("removeEvent");
+
+    AppState.removeEventListener("change", this._handleAppStateChange);
+  }
+
+  _handleAppStateChange = (nextAppState) => {
+    console.log("!!!!!!!!!!!!!", nextAppState);
+
+    if (this.state.appState.match(/inactive|background/) && nextAppState === "active") {
+      console.log("App has come to the foreground!");
+    }
+    this.setState({ appState: nextAppState });
+  };
 
   handleBackPress() {
     return true;
   }
 
   render() {
-    this.backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      this.handleBackPress
-    );
+    this.backHandler = BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
     return (
       <Provider store={store}>
         <MyStatusBar></MyStatusBar>
