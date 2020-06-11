@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  AsyncStorage,
-  Dimensions,
-  BackHandler,
-} from "react-native";
+import { StyleSheet, Text, View, AsyncStorage, Dimensions, BackHandler } from "react-native";
 import { Image } from "react-native-elements";
 
 import Swiper from "react-native-swiper";
@@ -15,10 +8,13 @@ import Fetch from "../../components/Fetch";
 import URL from "../../NET";
 
 const screenWidth = Dimensions.get("window").width;
-
 const styles = StyleSheet.create({
+  wrapper: {},
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    // backgroundColor: "#ABA095",
   },
   text: {
     fontWeight: "bold",
@@ -70,45 +66,33 @@ export default class SwiperComponent extends Component {
     return true;
   }
   render() {
-    this.backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      this.handleBackPress
-    );
+    this.backHandler = BackHandler.addEventListener("hardwareBackPress", this.handleBackPress);
     return (
-      <Swiper loop={false} autoplay={true} autoplayTimeout={2}>
+      <Swiper loop={false} style={styles.wrapper} autoplay={true} autoplayTimeout={2}>
         <View style={styles.container}>
-          <View style={{ flex: 5, backgroundColor: "black", margin: 20 }}>
-            <Image
-              source={require("../../assets/Images/m_2.png")}
-              style={{
-                height: 540,
-                width: screenWidth,
-              }}
-              containerStyle={{
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            />
-          </View>
-
-          <View style={{ flex: 1, alignItems: "center" }}>
-            <Text style={styles.text}>무릎은 90도를 유지하고</Text>
-            <Text style={styles.text}>엉덩이와 허벅지는</Text>
-            <Text style={styles.text}>바닥과 평행을 유지해주세요</Text>
-          </View>
+          <Image
+            source={require("../../assets/Images/m_2.png")}
+            style={{
+              height: 550,
+              width: screenWidth,
+              resizeMode: "contain",
+            }}
+          />
+          <Text style={styles.text}>무릎은 90도를 유지하고</Text>
+          <Text style={styles.text}>엉덩이와 허벅지는</Text>
+          <Text style={styles.text}>바닥과 평행을 유지해주세요</Text>
         </View>
 
         <View style={styles.container}>
           <Image
             source={require("../../assets/Images/m_3.png")}
             style={{
+              height: 550,
               width: screenWidth,
               resizeMode: "contain",
             }}
           />
-          <Text style={styles.text}>
-            허리를 세우고 등받이에 닿도록 해주세요
-          </Text>
+          <Text style={styles.text}>허리를 세우고 등받이에 닿도록 해주세요</Text>
         </View>
 
         <View style={styles.container}>
@@ -139,10 +123,7 @@ export default class SwiperComponent extends Component {
           </View>
 
           <View style={styles.button}>
-            <MyButton
-              onPress={() => this.loginCheck()}
-              title="홈으로 가기"
-            ></MyButton>
+            <MyButton onPress={() => this.loginCheck()} title="홈으로 가기"></MyButton>
           </View>
         </View>
       </Swiper>

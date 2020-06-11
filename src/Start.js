@@ -18,20 +18,14 @@ class Start extends React.Component {
   }
 
   componentDidMount() {
-    console.log("addEvent");
-
     AppState.addEventListener("change", this._handleAppStateChange);
   }
 
   componentWillUnmount() {
-    console.log("removeEvent");
-
     AppState.removeEventListener("change", this._handleAppStateChange);
   }
 
   _handleAppStateChange = (nextAppState) => {
-    console.log("!!!!!!!!!!!!!", nextAppState);
-
     if (this.state.appState.match(/inactive|background/) && nextAppState === "active") {
       console.log("App has come to the foreground!");
     }
